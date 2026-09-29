@@ -24,11 +24,14 @@ def modulo(slug):
     if not mo or not mo["ativo"]:
         abort(404, description="Módulo não encontrado.")
     correcao.tocar_modulo(conn, usuario["id"], mo["id"])
+    # Topicos mais errados do modulo. O agregado vem de um JOIN (e nao de subconsulta
+    # correlacionada dentro de um GROUP BY), forma aceita pelos dois motores.
     topicos = db.q(conn, """
-        SELECT p.topico, COUNT(*) AS n,
-               (SELECT COUNT(*) FROM respostas r JOIN tentativas t ON t.id = r.tentativa_id
-                 WHERE r.pergunta_id = p.id AND t.usuario_id = ? AND r.correta = 0) AS erros
-        FROM perguntas p WHERE p.modulo_id = ? AND p.ativo = 1 AND p.topico IS NOT NULL
+        SELECT p.topico, COUNT(DISTINCT p.id) AS n, COUNT(et.id) AS erros
+        FROM perguntas p
+        LEFT JOIN respostas er ON er.pergunta_id = p.id AND er.correta = 0
+        LEFT JOIN tentativas et ON et.id = er.tentativa_id AND et.usuario_id = ?
+        WHERE p.modulo_id = ? AND p.ativo = 1 AND p.topico IS NOT NULL
         GROUP BY p.topico ORDER BY erros DESC, p.topico LIMIT 30
     """, [usuario["id"], mo["id"]])
     return render_template(

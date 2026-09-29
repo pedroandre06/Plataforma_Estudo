@@ -5,7 +5,9 @@ flashcards, quiz de treino com feedback imediato, provas por módulo, simulados 
 simulado geral, simulado personalizado, simulado de reforço (gerado a partir dos seus erros)
 e prova oficial com questões fixas.
 
-Tudo roda localmente, em SQLite, sem dependências externas além do Flask.
+Tudo roda localmente com SQLite (nenhum serviço externo), mas a camada de banco também fala
+**PostgreSQL** — é o que permite o deploy na Vercel, onde o disco é somente leitura.
+Veja a seção 8.
 
 ---
 
@@ -14,8 +16,9 @@ Tudo roda localmente, em SQLite, sem dependências externas além do Flask.
 - Windows (os comandos abaixo são de `cmd.exe`), Python 3.11+.
 - Ambiente virtual já criado na pasta `.venv` (se não existir, veja “Criando do zero”).
 
-Dependências (`requirements.txt`): `flask>=3.0`, `pypdf>=5.0`
-(`pypdf` só é usado para importar/extrair o texto dos PDFs das disciplinas).
+Dependências (`requirements.txt`): `flask>=3.0`, `pypdf>=5.0`, `psycopg[binary]>=3.2`.
+(`pypdf` só é usado para importar/extrair o texto dos PDFs das disciplinas; `psycopg` só é
+acionado quando `DATABASE_URL` aponta para um PostgreSQL — sem essa variável nada dele é usado.)
 
 ## 2. Rodar a plataforma
 
@@ -65,19 +68,25 @@ originais **não são copiados nem modificados** — a plataforma lê o arquivo 
 | `.venv\Scripts\python.exe tools\smoke_servidor.py` | sobe o `app.py` de verdade, faz requisições HTTP e encerra o servidor |
 | `.venv\Scripts\python.exe tools\smoke_templates.py` | compila todos os templates-chave do Jinja |
 | `.venv\Scripts\python.exe tools\validate_content.py` | valida a estrutura das questões em `data/content` |
-| `.venv\Scripts\python.exe tools\inspecionar_db.py` | contagens e integridade do banco (`PRAGMA foreign_key_check`) |
+| `.venv\Scripts\python.exe tools\inspecionar_db.py` | contagens, índices e integridade do banco — funciona com SQLite (`PRAGMA`) e com Postgres (`information_schema`) |
+| `.venv\Scripts\python.exe tools\verificar_dialeto.py` | varredura estática: SQL portável nos `.py`, igualdade entre `schema.sql` e `schema_pg.sql` e a tradução `SQLite → Postgres` comando a comando |
+| `.venv\Scripts\python.exe tools\migrar_para_postgres.py` | copia o `data/platform.db` para o Postgres, preservando os `id` e conferindo as contagens (seção 8) |
 
-> Os testes E2E usam um banco descartável `data/qa_e2e.db`, recriado a cada execução —
-> **seus dados de estudo em `data/platform.db` não são alterados**. Pode apagar o
-> `data/qa_e2e.db` a qualquer momento.
+> Os testes E2E usam um banco descartável, recriado a cada execução —
+> **seus dados de estudo em `data/platform.db` não são alterados**. No SQLite é o arquivo
+> `data/qa_e2e.db` (pode apagar quando quiser); no Postgres é o banco apontado por
+> `DATABASE_URL`, e a ferramenta **recusa** qualquer destino que não tenha `qa` no nome,
+> exatamente para não cair no banco de produção:
+> `set DATABASE_URL=postgresql://postgres:postgres@localhost:55432/qa_plataforma` antes de rodar.
 
 ## 5. Estrutura do projeto
 
 ```
 app.py                  cria o app Flask, registra blueprints e configs
 config.py               caminhos (banco, conteúdo, materiais), segurança, regras padrão
-db.py                   acesso ao SQLite + migrações automáticas de schema
-schema.sql              DDL completo (tabelas, checks, índices)
+db.py                   acesso ao banco nos dois motores + migrações automáticas de schema
+schema.sql              DDL no dialeto SQLite (tabelas, checks, índices)
+schema_pg.sql           o mesmo DDL em dialeto PostgreSQL (usado quando DATABASE_URL existe)
 comum.py                login_required/admin_required, CSRF, helpers de data/hora
 auth.py                 /login /registro /logout e páginas de erro
 rotas_catalogo.py       painel (dashboard) e página de matéria
@@ -107,7 +116,9 @@ data/                   banco, conteúdo (JSON) e textos dos PDFs
   sessão); `login`/`registro` isentos por serem o ponto de entrada.
 - Isolamento por usuário: tentativas, respostas, anotações e histórico são filtrados por
   `usuario_id`; rotas `/admin` exigem papel `admin`; tentativa de outro usuário devolve 403.
-- `SECRET_KEY` persistida em `data/.secret_key`; cookies `HttpOnly` e `SameSite=Lax`.
+- `SECRET_KEY` persistida em `data/.secret_key`; na Vercel ela vem da variável `SECRET_KEY`
+  (o disco é somente leitura, então gravar o arquivo não é opção) — cookies `HttpOnly` e
+  `SameSite=Lax`.
 
 ## 7. Migrações de schema (bancos antigos)
 
@@ -135,7 +146,81 @@ del data\platform.db
 .venv\Scripts\python.exe seed_data.py
 ```
 
-## 8. Pontos conhecidos
+## 8. PostgreSQL e deploy na Vercel
+
+A camada de banco decide o motor pela variável `DATABASE_URL`:
+
+| `DATABASE_URL` | motor usado | quando |
+| --- | --- | --- |
+| ausente | SQLite em `data/platform.db` | desenvolvimento local (padrão) |
+| `postgres://…` / `postgresql://…` | PostgreSQL | produção (Neon, Supabase, Render…) |
+
+O SQL continua escrito **sempre no dialeto do SQLite** (`?`, `INSERT OR IGNORE`,
+`cursor.lastrowid`) e o `db.py` traduz na hora para o Postgres (`%s`,
+`ON CONFLICT DO NOTHING`, `RETURNING id`), consultando uma vez as tabelas que têm coluna
+`id`. Assim as rotas não levam `if/else` de banco. As regras que essa camada exige — e que
+`tools/verificar_dialeto.py` confere em todas as strings SQL do projeto — são:
+
+- `LIKE` sempre com `lower()` dos dois lados (no SQLite o `LIKE` ignora maiúsculas por
+  padrão; no Postgres **não** ignora, e a busca deixaria de achar “Teste”);
+- `COALESCE` em vez de `IFNULL`, `EXTRACT(EPOCH FROM …)` em vez de `julianday`, sem
+  `strftime`, sem `PRAGMA`, sem `CAST(… AS REAL)` (tipo que só existe no SQLite);
+- nenhum `%` literal fora de `LIKE` (para o psycopg, `%` é marcador de parâmetro).
+
+### Variáveis de ambiente
+
+| variável | obrigatória na Vercel | o que faz |
+| --- | --- | --- |
+| `DATABASE_URL` (também aceita `POSTGRES_URL` / `DATABASE_POSTGRES`) | **sim** | aponta o Postgres. Sem ela o app tenta abrir o SQLite e, como o disco da Vercel é somente leitura, tudo quebra (a tela de boot avisa disso). O Postgres do Marketplace da Vercel (Neon) já injeta essas variáveis sozinho |
+| `SECRET_KEY` | **sim** | assina o cookie de sessão; sem ela cada deployment derrubava todo mundo do login |
+| `INIT_DB_ON_STARTUP` | não (padrão `1`) | cria/completa as tabelas no primeiro acesso |
+
+No boot o app imprime `config.resumo()` (motor e caminho) e `/healthz` responde
+`{"status": "ok", "motor": "postgres", "banco": "…", "consulta": 1}` — o `consulta` é o
+resultado de um `SELECT 1` real, útil para o monitoramento da Vercel.
+
+### Deploy na Vercel
+
+1. Crie o banco (Neon/Supabase) e copie a string de conexão.
+2. Settings → Environment Variables: adicione `DATABASE_URL` e `SECRET_KEY`.
+3. Faça o deploy: as tabelas são criadas sozinhas no primeiro acesso, a partir do
+   `schema_pg.sql`.
+4. `vercel env pull .env.local` para espelhar as variáveis no `app.py` local (o arquivo
+   `data/.env.local` já está no `.gitignore` e a Vercel também lê `.env.local`).
+
+### Postgres local para testar (Docker)
+
+```bat
+docker run -d --name pg-plataforma -e POSTGRES_PASSWORD=*** -e POSTGRES_DB=plataforma ^
+    -p 55432:5432 postgres:16-alpine
+
+set DATABASE_URL=postgresql://postgres:postgres@localhost:55432/plataforma
+.venv\Scripts\python.exe seed_data.py
+.venv\Scripts\python.exe app.py
+```
+
+Para os testes E2E contra o Postgres, aponte para um banco com `qa` no nome (a ferramenta
+recusa os outros) e use o botão **“Reset schema”** da interface ou rode o `tools\teste_e2e.py`:
+
+```bat
+docker exec pg-plataforma psql -U postgres -c "CREATE DATABASE qa_plataforma"
+set DATABASE_URL=postgresql://postgres:postgres@localhost:55432/qa_plataforma
+.venv\Scripts\python.exe tools\teste_e2e.py
+```
+
+### Levar o histórico do SQLite para o Postgres
+
+```bat
+set DATABASE_URL=postgresql://postgres:postgres@localhost:55432/plataforma
+.venv\Scripts\python.exe tools\migrar_para_postgres.py            :: só simula, não grava
+.venv\Scripts\python.exe tools\migrar_para_postgres.py --apply    :: grava de verdade
+```
+
+O utilitário cria as tabelas se preciso, copia na ordem das FKs, **preserva os `id`**,
+realinha as sequências e confere as contagens tabela por tabela. Ele se recusa a gravar num
+destino que já tenha dados — migre para um banco vazio.
+
+## 9. Pontos conhecidos
 
 - **Flashcards**: a tela (`/modulo/<slug>/flashcards`) e a tabela existem e funcionam, mas
   nenhuma fonte popula `flashcards` ainda — por isso a aba só aparece quando houver cartões
@@ -144,7 +229,7 @@ del data\platform.db
   para uso local. Se um dia precisar expor na rede, ajuste o `HOST`/`PORT` e considere um
   servidor WSGI de produção.
 
-## 9. Criando do zero (máquina nova)
+## 10. Criando do zero (máquina nova)
 
 ```bat
 py -m venv .venv

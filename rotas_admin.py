@@ -27,13 +27,13 @@ def painel():
                (SELECT COUNT(*) FROM modulos m WHERE m.materia_id = mt.id) AS modulos,
                (SELECT COUNT(*) FROM perguntas p JOIN modulos m ON m.id = p.modulo_id
                  WHERE m.materia_id = mt.id) AS perguntas,
-               (SELECT ROUND(AVG(t.nota), 1) FROM tentativas t JOIN modulos m ON m.id = t.modulo_id
+               (SELECT ROUND(AVG(t.nota) * 10) / 10 FROM tentativas t JOIN modulos m ON m.id = t.modulo_id
                  WHERE m.materia_id = mt.id AND t.status = 'entregue') AS media
         FROM materias mt ORDER BY mt.ordem
     """)
     usuarios = db.q(conn, """
         SELECT u.*, (SELECT COUNT(*) FROM tentativas t WHERE t.usuario_id = u.id) AS tentativas,
-               (SELECT ROUND(AVG(t.nota), 1) FROM tentativas t WHERE t.usuario_id = u.id
+               (SELECT ROUND(AVG(t.nota) * 10) / 10 FROM tentativas t WHERE t.usuario_id = u.id
                  AND t.status = 'entregue') AS media
         FROM usuarios u ORDER BY u.id
     """)

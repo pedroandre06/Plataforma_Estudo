@@ -22,12 +22,12 @@ def dashboard():
                  WHERE m.materia_id = mt.id AND p.ativo = 1) AS n_perguntas,
                (SELECT COUNT(*) FROM progresso pr JOIN modulos m ON m.id = pr.modulo_id
                  WHERE m.materia_id = mt.id AND pr.usuario_id = ? AND pr.status = 'concluido') AS concluidos,
-               (SELECT ROUND(AVG(pr.melhor_nota), 1) FROM progresso pr JOIN modulos m ON m.id = pr.modulo_id
+               (SELECT ROUND(AVG(pr.melhor_nota) * 10) / 10 FROM progresso pr JOIN modulos m ON m.id = pr.modulo_id
                  WHERE m.materia_id = mt.id AND pr.usuario_id = ? AND pr.melhor_nota IS NOT NULL) AS media
         FROM materias mt WHERE mt.ativo = 1 ORDER BY mt.ordem
     """, [uid, uid])
     stats = db.q1(conn, """
-        SELECT COUNT(*) AS tentativas, ROUND(AVG(nota), 1) AS media, MAX(nota) AS melhor,
+        SELECT COUNT(*) AS tentativas, ROUND(AVG(nota) * 10) / 10 AS media, MAX(nota) AS melhor,
                COALESCE(SUM(acertos), 0) AS acertos, COALESCE(SUM(total), 0) AS respondidas
         FROM tentativas WHERE usuario_id = ? AND status = 'entregue'
     """, [uid])

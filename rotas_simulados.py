@@ -49,7 +49,7 @@ def lista():
                (SELECT COUNT(*) FROM simulado_questoes sq WHERE sq.simulado_id = s.id) AS n_fixas,
                (SELECT COUNT(*) FROM tentativas t WHERE t.usuario_id = ? AND t.simulado_id = s.id
                  AND t.status <> 'em_andamento') AS feitas,
-               (SELECT ROUND(MAX(t.nota), 1) FROM tentativas t WHERE t.usuario_id = ?
+               (SELECT ROUND(MAX(t.nota) * 10) / 10 FROM tentativas t WHERE t.usuario_id = ?
                  AND t.simulado_id = s.id AND t.status = 'entregue') AS melhor
         FROM simulados s
         LEFT JOIN materias mt ON mt.id = (SELECT sm.materia_id FROM simulado_materias sm

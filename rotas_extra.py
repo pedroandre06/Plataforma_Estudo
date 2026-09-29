@@ -71,7 +71,7 @@ def historico():
         WHERE usuario_id = ? AND status = 'entregue' AND nota IS NOT NULL ORDER BY id ASC LIMIT 60
     """, [usuario["id"]])]
     resumo = db.q1(conn, """
-        SELECT COUNT(*) AS n, ROUND(AVG(nota), 1) AS media, MAX(nota) AS melhor,
+        SELECT COUNT(*) AS n, ROUND(AVG(nota) * 10) / 10 AS media, MAX(nota) AS melhor,
                SUM(CASE WHEN aprovado = 1 THEN 1 ELSE 0 END) AS aprovadas
         FROM tentativas WHERE usuario_id = ? AND status = 'entregue'
     """, [usuario["id"]])
@@ -100,14 +100,14 @@ def busca():
     conn = db.get_db()
     resultados = []
     if termo:
-        like = f"%{termo}%"
+        like = f"%{termo.lower()}%"
         resultados = db.q(conn, """
             SELECT p.id, p.enunciado, p.topico, p.dificuldade, mo.nome AS modulo_nome,
                    mo.slug AS modulo_slug, mt.nome AS materia_nome, mt.cor AS materia_cor
             FROM perguntas p
             JOIN modulos mo ON mo.id = p.modulo_id
             JOIN materias mt ON mt.id = mo.materia_id
-            WHERE p.ativo = 1 AND (p.enunciado LIKE ? OR p.topico LIKE ?)
+            WHERE p.ativo = 1 AND (lower(p.enunciado) LIKE lower(?) OR lower(p.topico) LIKE lower(?))
             ORDER BY mo.ordem LIMIT 60
         """, [like, like])
     return render_template("busca.html", termo=termo, resultados=resultados)

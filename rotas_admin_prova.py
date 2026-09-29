@@ -51,8 +51,9 @@ def prova_nova():
         sql.append("AND mt.id = ?")
         params.append(filtros["materia"])
     if filtros["q"]:
-        sql.append("AND p.enunciado LIKE ?")
-        params.append(f"%{filtros['q']}%")
+        # lower() dos dois lados para a busca ignorar caixa tambem no PostgreSQL.
+        sql.append("AND lower(p.enunciado) LIKE lower(?)")
+        params.append(f"%{filtros['q'].lower()}%")
     sql.append("ORDER BY mt.ordem, mo.ordem, p.id LIMIT 400")
     provas = db.q(conn, """SELECT s.*, (SELECT COUNT(*) FROM simulado_questoes sq
                           WHERE sq.simulado_id = s.id) AS n_fixas

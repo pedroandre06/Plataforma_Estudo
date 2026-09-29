@@ -38,6 +38,9 @@ def buscar(caminho: str, seguir: bool = True) -> tuple[int, str, str]:
     except urllib.error.HTTPError as erro:
         local = erro.headers.get("Location", "") if erro.headers else ""
         return erro.code, local, ""
+    except urllib.error.URLError:
+        # conexao recusada: o servidor ainda esta subindo (aguardar_servidor vai tentar de novo)
+        return 0, "", ""
 
 
 def aguardar_servidor(limite_seg: int = 30) -> bool:
@@ -83,6 +86,10 @@ def principal() -> int:
 
         codigo, _, _ = buscar("/rota-que-nao-existe-xyz", seguir=False)
         conferir(codigo == 404, f"GET /rota-que-nao-existe-xyz -> {codigo} (404 esperado)")
+
+        codigo, _, corpo = buscar("/healthz")
+        conferir(codigo == 200 and '"status":"ok"' in corpo.replace(" ", ""),
+                 f"GET /healthz -> {codigo} {corpo[:80]}")
     finally:
         subprocess.run(["taskkill", "/F", "/T", "/PID", str(processo.pid)], capture_output=True, text=True)
         processo.wait(timeout=15)

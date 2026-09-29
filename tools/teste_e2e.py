@@ -1,10 +1,15 @@
 """Teste de ponta a ponta da plataforma (usa o test_client do Flask).
 
-Roda contra um banco de QA descartável (data/qa_e2e.db), recriado a cada
-execução, para não mexer nos seus dados de estudo (data/platform.db).
+Roda contra um banco de QA descartavel, recriado a cada execucao, para nao mexer
+nos seus dados de estudo:
+  * SQLite  -> arquivo data/qa_e2e.db
+  * Postgres-> o banco apontado por DATABASE_URL (o nome precisa ter "qa",
+               ou entao rode com --force). Cuidado: ele APAGA o schema public.
 
 Uso:
     .venv\\Scripts\\python.exe tools\\teste_e2e.py
+    DATABASE_URL=postgresql://postgres:postgres@localhost:5432/qa_plataforma ^
+        .venv\\Scripts\\python.exe tools\\teste_e2e.py
 """
 from __future__ import annotations
 
@@ -27,10 +32,20 @@ import qa_common  # noqa: E402
 
 def preparar_banco() -> None:
     """Recria o banco de QA do zero: schema + admin + conteúdo + simulados."""
-    for sufixo in ("", "-wal", "-shm"):
-        arquivo = Path(str(config.DB_PATH) + sufixo)
-        if arquivo.exists():
-            arquivo.unlink()
+    if config.usar_postgres():
+        with db.abrir() as conn:
+            nome = db.q1(conn, "SELECT current_database() AS db")["db"]
+            if "qa" not in nome.lower() and "--force" not in sys.argv:
+                raise SystemExit(
+                    f"[e2e] recusei apagar o PostgreSQL '{nome}'. Use um banco com 'qa' no nome\n"
+                    f"        ou passe --force para confirmar que este banco pode ser zerado.")
+            print(f"[e2e] zerando o schema public de '{nome}'")
+            conn.executescript("DROP SCHEMA public CASCADE; CREATE SCHEMA public;")
+    else:
+        for sufixo in ("", "-wal", "-shm"):
+            arquivo = Path(str(config.DB_PATH) + sufixo)
+            if arquivo.exists():
+                arquivo.unlink()
     db.init_db(verbose=False)
     import seed_conteudo
     import seed_data
@@ -43,7 +58,7 @@ def preparar_banco() -> None:
 
 def main() -> int:
     preparar_banco()
-    print(f"[e2e] banco de teste: {config.DB_PATH}")
+    print(f"[e2e] banco de teste: {db.resumo()}")
     appmod.app.config.update(TESTING=True)
     cliente = appmod.app.test_client()
 

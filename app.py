@@ -29,13 +29,32 @@ def criar_app() -> Flask:
         SESSION_COOKIE_HTTPONLY=True,
         SESSION_COOKIE_SAMESITE="Lax",
         PERMANENT_SESSION_LIFETIME=timedelta(days=config.SESSION_DIAS),
-        MAX_CONTENT_LENGTH=8 * 1024 * 1024,
+        MAX_CONTENT_LENGTH=config.limite_upload_bytes(),
         JSON_AS_ASCII=False,
     )
     db.init_app(app)
     comum.registrar_app(app)
     app.jinja_env.globals.update(MODOS_QUIZ=MODOS_QUIZ, MODOS_SIMULADO=MODOS_SIMULADO,
                                  DIFICULDADES=DIFICULDADES)
+
+    @app.before_request
+    def _garantir_banco_pronto():
+        """No primeiro cold start (Vercel) cria as tabelas se o banco estiver vazio."""
+        db.garantir_schema()
+
+    @app.route("/healthz")
+    def healthz():
+        """Checagem de sanidade: confirma a conexao e mostra qual motor esta em uso."""
+        from flask import jsonify
+
+        try:
+            linha = db.q1(db.get_db(), "SELECT 1 AS ok")
+            return jsonify(status="ok", motor=db.motor(), banco=config.resumo_dsn(),
+                           consulta=linha["ok"] if linha is not None else None)
+        except Exception as erro:  # noqa: BLE001 - o healthz nunca devolve 500 cru
+            return jsonify(status="erro", motor=db.motor(), banco=config.resumo_dsn(),
+                           detalhe=str(erro)), 500
+
 
     from auth import registrar_erros, registrar_rotas_auth
     from rotas_admin import bp as bp_admin
@@ -69,4 +88,5 @@ if __name__ == "__main__":
     host = os.environ.get("HOST", "127.0.0.1")
     port = int(os.environ.get("PORT", "5000"))
     print(f"Plataforma de Estudos -> http://{host}:{port}")
+    print(f"Banco de dados: {db.resumo()}")
     app.run(host=host, port=port, debug=True)

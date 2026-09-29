@@ -20,7 +20,8 @@ def registrar_rotas_auth(app: Flask) -> None:
             nome_usuario = (request.form.get("usuario") or "").strip()
             senha = request.form.get("senha") or ""
             conn = db.get_db()
-            linha = db.q1(conn, "SELECT * FROM usuarios WHERE usuario = ?", [nome_usuario])
+            linha = db.q1(conn, "SELECT * FROM usuarios WHERE lower(usuario) = lower(?)",
+                          [nome_usuario])
             if linha is not None and linha["bloqueado_ate"] and linha["bloqueado_ate"] > comum.agora():
                 flash(f"Conta bloqueada até {linha['bloqueado_ate'][11:16]}.", "erro")
                 return render_template("login.html")
@@ -73,7 +74,7 @@ def registrar_rotas_auth(app: Flask) -> None:
             if senha != confirma:
                 erros.append("As senhas não conferem.")
             conn = db.get_db()
-            if db.q1(conn, "SELECT 1 FROM usuarios WHERE usuario = ?", [nome_usuario]):
+            if db.q1(conn, "SELECT 1 FROM usuarios WHERE lower(usuario) = lower(?)", [nome_usuario]):
                 erros.append("Este usuário já existe.")
             if erros:
                 for e in erros:

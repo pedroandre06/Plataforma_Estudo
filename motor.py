@@ -53,17 +53,23 @@ def ids_de_revisao(conn, usuario_id: int, modulo_ids=None) -> list[int]:
 
 
 def ids_pontos_fracos(conn, usuario_id: int, limite: int = 40) -> list[int]:
-    """Questões com menor taxa de acerto histórico (prioriza o que o usuário erra)."""
-    linhas = db.q(conn, """
+    """Questões com menor taxa de acerto histórico (prioriza o que o usuário erra).
+
+    Portabilidade SQLite/PostgreSQL: o HAVING e o ORDER BY repetem os agregados por
+    extensao (nenhum dos dois motores garante alias de agregado no HAVING) e a divisao
+    usa "* 1.0" em vez de CAST(... AS REAL), tipo que so existe no SQLite.
+    """
+    erros = "SUM(CASE WHEN r.correta = 1 THEN 1 ELSE 0 END)"
+    linhas = db.q(conn, f"""
         SELECT r.pergunta_id,
-               SUM(CASE WHEN r.correta = 1 THEN 1 ELSE 0 END) AS acertos,
+               {erros} AS acertos,
                COUNT(*) AS total
         FROM respostas r
         JOIN tentativas t ON t.id = r.tentativa_id
         WHERE t.usuario_id = ? AND t.status = 'entregue' AND r.alternativa_id IS NOT NULL
         GROUP BY r.pergunta_id
-        HAVING acertos < total
-        ORDER BY (CAST(acertos AS REAL) / total) ASC, total DESC
+        HAVING {erros} < COUNT(*)
+        ORDER BY ({erros} * 1.0 / COUNT(*)) ASC, COUNT(*) DESC
     """, [usuario_id])
     escolhidas = [r["pergunta_id"] for r in linhas[:limite]]
     if len(escolhidas) < 8:

@@ -23,7 +23,8 @@ ADMIN_NOME = "Pedro Santos"
 
 
 def criar_admin(conn) -> None:
-    existente = db.q1(conn, "SELECT id, papel FROM usuarios WHERE usuario = ?", [ADMIN_USUARIO])
+    existente = db.q1(conn, "SELECT id, papel FROM usuarios WHERE lower(usuario) = lower(?)",
+                      [ADMIN_USUARIO])
     if existente:
         if existente["papel"] != "admin":
             db.run(conn, "UPDATE usuarios SET papel = 'admin' WHERE id = ?", [existente["id"]])

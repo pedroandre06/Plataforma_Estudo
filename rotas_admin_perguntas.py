@@ -39,8 +39,9 @@ def perguntas():
         sql.append("AND p.dificuldade = ?")
         params.append(filtros["dificuldade"])
     if filtros["q"]:
-        sql.append("AND (p.enunciado LIKE ? OR p.topico LIKE ?)")
-        params += [f"%{filtros['q']}%"] * 2
+        # lower() dos dois lados: no SQLite o LIKE ja ignora caixa (ASCII), no Postgres nao.
+        sql.append("AND (lower(p.enunciado) LIKE lower(?) OR lower(p.topico) LIKE lower(?))")
+        params += [f"%{filtros['q'].lower()}%"] * 2
     sql.append("ORDER BY mt.ordem, mo.ordem, p.id LIMIT 300")
     return render_template("admin_perguntas.html", filtros=filtros,
                            perguntas=db.q(conn, " ".join(sql), params),
