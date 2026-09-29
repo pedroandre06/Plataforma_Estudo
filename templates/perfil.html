@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block titulo %}Perfil{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">Meu perfil</h1>
+    <p class="sub">Usuário: <strong>{{ usuario_atual()['usuario'] }}</strong>
+      ({{ 'administrador' if usuario_atual()['papel'] == 'admin' else 'aluno' }})
+      · entrou em {{ usuario_atual()['criado_em'][:10] }}</p>
+  </div>
+</div>
+
+<div class="grid grid-3">
+  <div class="stat"><div class="stat-valor">{{ stats['tentativas'] }}</div><div class="stat-rotulo">Tentativas</div></div>
+  <div class="stat"><div class="stat-valor">{{ stats['concluidos'] }}</div><div class="stat-rotulo">Módulos concluídos</div></div>
+  <div class="stat"><div class="stat-valor">{{ stats['acertos'] }}</div><div class="stat-rotulo">Questões acertadas</div></div>
+</div>
+
+<div class="grid grid-2 espaco-topo-2">
+  <div class="card">
+    <h2>Dados da conta</h2>
+    <form method="post" class="form espaco-topo">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <label class="campo"><span>Nome</span>
+        <input type="text" name="nome" value="{{ usuario_atual()['nome'] }}" required>
+      </label>
+      <label class="campo"><span>E-mail (opcional)</span>
+        <input type="email" name="email" value="{{ usuario_atual()['email'] or '' }}">
+      </label>
+      <button class="btn btn-primario" type="submit">Salvar dados</button>
+    </form>
+  </div>
+  <div class="card">
+    <h2>Trocar senha</h2>
+    <form method="post" class="form espaco-topo">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <label class="campo"><span>Senha atual</span>
+        <input type="password" name="atual" autocomplete="current-password">
+      </label>
+      <div class="dupla">
+        <label class="campo"><span>Nova senha</span>
+          <input type="password" name="nova" autocomplete="new-password">
+        </label>
+        <label class="campo"><span>Confirmar nova senha</span>
+          <input type="password" name="confirma" autocomplete="new-password">
+        </label>
+      </div>
+      <button class="btn" type="submit">Alterar senha</button>
+      <p class="item-meta">Dica de segurança: troque a senha inicial (1234) por uma maior e única.</p>
+    </form>
+  </div>
+</div>
+{% endblock %}

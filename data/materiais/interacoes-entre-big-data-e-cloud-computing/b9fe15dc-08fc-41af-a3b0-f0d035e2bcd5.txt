@@ -1,0 +1,361 @@
+
+
+===== PAGINA 1 =====
+WBA0736_v2.0
+Interações entre Big Data e 
+Cloud Computing
+
+===== PAGINA 2 =====
+Fundamentos de Big Data e Cloud 
+Computing
+Conceitos e Características de Big Data
+Bloco 1
+Valéria Baptista
+
+===== PAGINA 3 =====
+Vamos refletir?
+Uma empresa de e-commerce está enfrentando dificuldades 
+para gerenciar o crescente volume de dados gerados 
+diariamente pelas suas operações e precisa encontrar uma 
+solução para:
+Processar e analisar esses dados em tempo real para 
+oferecer recomendações personalizadas aos clientes e lidar 
+com a diversidade de formatos de dados gerados pela 
+empresa (textos, imagens, vídeos etc.).
+Com base nos “5 Vs” do Big Data como você estruturaria 
+uma solução que possa resolver os problemas dessa 
+empresa?
+
+===== PAGINA 4 =====
+Características do Big Data
+Os 5 Vs do Big Data
+Fonte: https://www.blogson.com.br/big-data-conceitos-e-os-5-vs-do-big-data-parte-1/ 
+OS 5 Vs 
+do Big 
+Data
+
+===== PAGINA 5 =====
+Características do Big Data - Volume
+• Volume massivo de dados.
+• Petabytes ou exabytes.
+• Registro de transações financeiras, 
+preferências de usuários, mídias sociais, 
+streaming de vídeos ou músicas.
+• Netflix e YouTube são ótimos exemplos.
+Volume
+
+===== PAGINA 6 =====
+Características do Big Data - Velocidade
+• Geração de dados vs. coleta e processamento.
+• Análise de dados em tempo real.
+• Deteccção de fraudes e monitoramento de 
+tráfego.
+• Posts em redes sociais.
+• Coleta de dados de dispositivos como Apple 
+Watches.
+Velocidade
+
+===== PAGINA 7 =====
+Características do Big Data - Variedade
+• Tipos de dados e fontes.
+• Redes sociais, e-mails, fotos, áudios, vídeos, 
+transações financeiras.
+• Dados Estruturados.
+• Dados Semiestruturados.
+• Não estruturados.
+Variedade
+
+===== PAGINA 8 =====
+Características do Big Data - Veracidade
+• Veracidade e confiabilidade dos dados 
+coletados.
+• É um desafio garantir que as fontes sejam 
+confiáveis.
+• Validar os dados a cada etapa do processo.
+• Valores ausentes, ruído, ambiguidade etc...
+Veracidade
+
+===== PAGINA 9 =====
+Características do Big Data - Valor
+• De dados brutos a processos de negócios.
+• Contrução de métricas de interesse.
+• Comportamento do cliente.
+• Desempenho empresarial.
+• Tendências e padrões numéricos.
+Valor
+
+===== PAGINA 10 =====
+Fundamentos de Big Data e Cloud 
+Computing 
+Infraestrutura e Tecnologias Subjacentes
+Bloco 2
+Valéria Baptista
+
+===== PAGINA 11 =====
+O que é o Hadoop?
+• Criado pela Apache Software 
+Foundation.
+• Framework de código aberto.
+• Capaz de armazenar e processar 
+grandes volumes de dados.
+É uma tecnologia essencial para a 
+análise de big data, pois é capaz de 
+escalar de forma eficiente; tolera falhas 
+e processa informações de forma 
+distribuída.
+Fonte: 
+https://acodeartist.com/202
+3/07/15/what-is-hadoop-
+and-why-you-should-be-
+using-it/.
+Logotipo
+
+===== PAGINA 12 =====
+Banco de dados NoSQL
+• Altamente indicado para trabalhar com grandes 
+volumes de dados em tempo real.
+• Fornecem velocidade de processamento.
+• Flexibilidade no armazenamento de dados.
+• Possui suporte a dados distribuídos geograficamente.
+
+===== PAGINA 13 =====
+Como funciona o Data Warehousing
+• Indicado em cenários de tomada de decisão com base 
+em grandes volumes de dados.
+• Permite centralizar dados de diversas fontes.
+• Garante maior qualidade e consistência dos dados.
+• Elimina duplicidades ou inconsistências.
+• Facilita a criação de políticas de governança de dados.
+
+===== PAGINA 14 =====
+No que consiste o Stream Processing?
+• Modelo de processamento de dados que analisa as 
+informações em movimento, em tempo real e à medida 
+que são recebidos.
+• As informações são processadas conforme chegam.
+• Ideal para ambientes que exigem resposta imediata 
+como monitoramento de redes sociais e detecção de 
+fraudes, mercado de ações ou localização.
+
+===== PAGINA 15 =====
+Ferramentas de Análise e Machine Learning 
+Ferramentas de análise e machine learning fundamentais 
+para extrair valor dos dados.
+Apache Spark TensorFlow
+Scikit-learn Tableau e Power BI
+
+===== PAGINA 16 =====
+Fundamentos de Big Data e Cloud 
+Computing 
+Introdução a Cloud Computing e Seus Modelos 
+de Serviço
+Bloco 3
+Valéria Baptista
+
+===== PAGINA 17 =====
+Modelo de Responsabilidade Compartilhada
+Fonte: https://learn.microsoft.com/pt-br/training/modules/describe-cloud-service-
+types/2-describe-infrastructure-service 
+Modelo de Responsabilidade
+
+===== PAGINA 18 =====
+Infraestrutura como Serviço (IaaS)
+• Controle total do recurso sem gerenciar fisicamente.
+• Você tem a responsabilidade de configurar backup, 
+monitoramento, rede, etc...
+• Ocasionalmente é mais oneroso.
+• Necessita de maior envolvimento por parte do cliente.
+
+===== PAGINA 19 =====
+Plataforma como Serviço (PaaS)
+• Foco no desenvolvimento.
+• Integração de serviços.
+• Menor nível de responsabilidade por parte do cliente.
+• Não necessita de iteração com o sistema operacional.
+
+===== PAGINA 20 =====
+Software como Serviço (SaaS)
+• Focado na execução de aplicativos.
+• Fornece custos mais previsíveis.
+• Facilidade do uso.
+• Menor nível de configuração por parte do cliente.
+
+===== PAGINA 21 =====
+Teoria em prática
+Fundamentos de Big Data e Cloud 
+Computing 
+Bloco 4
+Valéria Baptista
+
+===== PAGINA 22 =====
+Reflita sobre a seguinte situação
+Uma grande rede de e-commerce internacional está enfrentando 
+desafios para melhorar a experiência do cliente e aumentar as 
+vendas, lidando com uma vasta quantidade de dados vindos de 
+várias fontes. Nos últimos 12 meses, os dados acumulados incluem:
+• Informações de transações (volume de vendas, ticket médio, 
+formas de pagamento).
+• Interações de clientes em redes sociais (curtidas, 
+compartilhamentos, comentários).
+• Feedbacks de clientes via e-mail e avaliações de produtos.
+• Dados de navegação no site (páginas mais acessadas, tempo de 
+permanência).
+• Registros de atendimento ao cliente via chat e telefone.
+
+===== PAGINA 23 =====
+Reflita sobre a seguinte situação
+A diretoria quer respostas para perguntas-chave:
+1. Como podemos identificar os produtos que mais 
+impulsionam as vendas em cada mercado?
+2. Quais são as principais reclamações ou insatisfações 
+dos clientes?
+3. Como otimizar o processo de marketing digital usando 
+os dados das redes sociais e do site?
+4. Como podemos aumentar a retenção de clientes 
+usando insights baseados em dados?
+Você foi designado para liderar a análise e resolver esses 
+desafios utilizando a abordagem dos 5 Vs do Big Data.
+
+===== PAGINA 24 =====
+Norte para a resolução
+Por onde começar? 
+Por Onde Começar:
+Entendimento dos 5 Vs:  
+• Volume: Qual a quantidade de dados que está sendo gerada e como você pretende 
+lidar com esse volume de maneira eficiente?
+• Velocidade: Como garantir que os dados sejam processados em tempo real para 
+decisões imediatas?
+• Variedade: Como lidar com os diferentes tipos de dados (estruturados, não 
+estruturados, semiestruturados)?
+• Veracidade: Como garantir que os dados sejam precisos e confiáveis para a análise?
+• Valor: Como extrair insights valiosos dos dados para resolver os problemas da 
+empresa?
+
+===== PAGINA 25 =====
+Norte para a resolução
+Por onde começar? 
+Definição de um Plano de Ação Inicial:
+• Reúna os dados já disponíveis (transações, redes sociais, 
+avaliações).
+• Escolha ferramentas de análise de Big Data e plataformas de 
+cloud computing para processar essas informações (ex.: Azure, 
+AWS, Google Cloud).
+• Defina as métricas-chave que serão analisadas para gerar 
+insights (KPIs como taxa de conversão, satisfação do cliente, 
+engajamento em redes sociais).
+
+===== PAGINA 26 =====
+Norte para a resolução
+Possíveis ajustes a serem implementados:
+Utilize uma plataforma de Big Data (como Hadoop ou Spark) hospedada em uma 
+solução de Cloud (como Azure Data Lake) para armazenar e processar esses dados 
+em larga escala.
+Use ferramentas de processamento em tempo real, como Apache Kafka ou 
+Azure Stream Analytics, para captar dados em tempo real das redes sociais e 
+interações no site.
+Implemente uma abordagem de ETL (Extração, Transformação e Carga) para 
+coletar, limpar e organizar esses diferentes formatos de dados.
+Use ferramentas de data governance e data quality, para identificar dados 
+duplicados ou incorretos e garantir que somente dados confiáveis sejam 
+utilizados para a tomada de decisões.
+Realize análises preditivas e de segmentação utilizando Azure Machine Learning 
+para identificar padrões de compra e comportamento dos clientes, criando 
+sugestões de ações baseadas nesses insights.
+
+===== PAGINA 27 =====
+Consolidando o aprendizado
+Fundamentos de Big Data e Cloud 
+Computing 
+Bloco 5
+Valéria Baptista
+
+===== PAGINA 28 =====
+Consolidando o aprendizado
+• Características de Big Data.
+• Características dos 5 Vs.
+• Aplicações de processamento de grandes 
+volumes de dados.
+• Modelo de responsabilidade compartilhada.
+
+===== PAGINA 29 =====
+Quiz
+A B
+C D
+Qual mecanismo de processamento distribuído 
+de código aberto é incluído no Azure Synapse 
+Analytics?
+Apache Hadoop. Apache Spark.
+Apache Storm. Apache noSQL.
+
+===== PAGINA 30 =====
+Quiz
+A B
+C D
+Apache Hadoop. Apache Spark.
+Apache Storm. Apache noSQL.
+Qual mecanismo de processamento distribuído 
+de código aberto é incluído no Azure Synapse 
+Analytics?
+
+===== PAGINA 31 =====
+Quiz – Resolução
+B) Apache Spark.
+O Apache Spark é uma plataforma de software livre para 
+processamento de dados distribuídos. 
+O Spark tornou-se uma das tecnologias mais usadas para 
+análise de dados em larga escala e está no centro de 
+muitos produtos e serviços de análises populares. 
+O Spark dá suporte à programação em várias linguagens, 
+incluindo Python, Scala, Java, SQL e outros, tornando-o 
+uma solução muito versátil para trabalhar com dados 
+estruturados e não estruturados.
+
+===== PAGINA 32 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da sua 
+carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 33 =====
+Indicação de leitura 1
+Este livro aborda os conceitos sobre banco de dados e seu 
+gerenciamento. Desta forma, o leitor passa a entender 
+mais sobre como desempenhar seu papel e contribuir na 
+construção de sistemas resilientes.
+Referência:
+FERRARETO, Leonardo De Marchi; NISHIMURA, Roberto 
+Yukio. Banco de dados I. Londrina: Editora e Distribuidora 
+Educacional S.A., 2018.
+
+===== PAGINA 34 =====
+Indicação de leitura 2
+Este livro aborda os conceitos sobre SQL e suas estruturas. 
+Desta forma, o leitor passa a entender mais sobre como 
+criar tabelas, garantir a integridade dos dados e gerenciar 
+grandes ambientes.
+Referência:
+CEZAR, Douglas Fujita de Oliveira. Banco de dados II. 
+Londrina: Editora e Distribuidora Educacional S.A., 2017.
+
+===== PAGINA 35 =====
+Referências
+MICROSOFT. Escolha uma tecnologia de armazenamento de Big Data no 
+Azure. Disponível em: https://learn.microsoft.com/pt-
+br/azure/architecture/data-guide/technology-choices/data-storage. Acesso 
+em: 14 nov. 2024.
+OLIVEIRA, Anderson. Big Data – Conceitos e os 5 Vs do Big Data. Disponível 
+em: https://www.blogson.com.br/big-data-conceitos-e-os-5-vs-do-big-data-
+parte-1/. Acesso em: 14 nov. 2024.
+
+===== PAGINA 36 =====
+Bons estudos!

@@ -1,0 +1,69 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "ferramentas-tecnologias-dw",
+  "perguntas": [
+    {
+      "e": "Quais são os três tipos de fontes de dados de um Data Warehouse apresentados no material?",
+      "t": "Fontes de dados",
+      "d": "facil",
+      "r": "Bloco 1 - Fontes de dados em DWs: uma visão geral",
+      "x": "Bancos de dados relacionais (ex.: MySQL), arquivos CSV e APIs/Web Services.",
+      "a": ["Planilhas, e-mails e documentos PDF", "Bancos de dados relacionais, arquivos CSV e APIs/Web Services", "Data Marts, Data Lakes e cubos OLAP", "Sensores, redes sociais e logs de servidor"],
+      "c": 1
+    },
+    {
+      "e": "Qual característica é típica dos bancos de dados relacionais usados como fonte de um DW?",
+      "t": "Fontes de dados",
+      "d": "facil",
+      "r": "Bloco 1 - Banco de dados relacionais",
+      "x": "Dados organizados em linhas e colunas, consultas com SQL e integridade referencial garantida por chaves primárias e estrangeiras.",
+      "a": ["Dados sem esquema, armazenados como documentos", "Dados em tabelas, consultas SQL e integridade referencial", "Dados acessados apenas por APIs SOAP", "Dados exclusivamente em formato CSV"],
+      "c": 1
+    },
+    {
+      "e": "Qual é um desafio comum ao usar arquivos CSV como fonte de dados para um DW?",
+      "t": "Fontes de dados",
+      "d": "medio",
+      "r": "Bloco 1 - Arquivos CSV",
+      "x": "Os CSVs, muito usados em exportações de sistemas legados, podem trazer dados não estruturados, duplicações e inconsistências.",
+      "a": ["Impossibilidade de abrir o arquivo em editores de texto", "Possibilidade de duplicações e inconsistências nos dados", "Necessidade de compilar o arquivo antes do uso", "Obrigatoriedade de criptografia em cada linha"],
+      "c": 1
+    },
+    {
+      "e": "Sobre as APIs/Web Services como fonte de dados, é correto afirmar:",
+      "t": "APIs",
+      "d": "medio",
+      "r": "Bloco 1 - APIs e Web Services",
+      "x": "São interfaces que permitem comunicação entre sistemas para acessar dados em tempo real, em formatos como JSON e XML, via RESTful e SOAP. Ex.: API do Google Analytics.",
+      "a": ["Só funcionam com o protocolo FTP e formato TXT", "Permitem acesso a dados em tempo real, em JSON e XML, usando RESTful e SOAP", "Não podem ser consumidas por ferramentas de ETL", "Só entregam dados em lote, uma vez por mês"],
+      "c": 1
+    },
+    {
+      "e": "Por que um DW eficaz deve integrar fontes heterogêneas?",
+      "t": "Fontes de dados",
+      "d": "medio",
+      "r": "Bloco 1 - Importância da diversidade de fonte de dados",
+      "x": "Diferentes sistemas trazem perspectivas distintas (operacionais, históricas, tempo real), o que melhora a qualidade da análise e dá visão holística do negócio.",
+      "a": ["Para aumentar o custo de manutenção", "Porque sistemas diferentes trazem perspectivas distintas e melhoram a análise", "Para eliminar a necessidade de ETL", "Porque o DW não aceita dados de uma única fonte"],
+      "c": 1
+    },
+    {
+      "e": "O que é o processo ETL?",
+      "t": "ETL",
+      "d": "facil",
+      "r": "Bloco 2 - O que é ETL",
+      "x": "ETL = extração de dados de diversas fontes (Extract), transformação para um formato adequado (Transform) e carregamento no Data Warehouse (Load).",
+      "a": ["Um modelo de dados multidimensional em forma de cubo", "Um processo de extração, transformação e carga de dados para o DW", "Uma técnica de mineração de dados para detecção de anomalias", "Um tipo de índice usado para acelerar consultas"],
+      "c": 1
+    },
+    {
+      "e": "Qual é o principal objetivo do processo de transformação (transform) em uma ferramenta de ETL?",
+      "t": "ETL - Transform",
+      "d": "medio",
+      "r": "Bloco 2 - Fase de transformação (Quiz do curso)",
+      "x": "A transformação modifica, padroniza e formata os dados para a análise, incluindo agregação, limpeza (duplicatas e ausentes) e conversão de formatos.",
+      "a": ["Armazenar dados em um Data Warehouse", "Transferir dados de uma fonte para outra", "Modificar e formatar dados para análise", "Excluir dados redundantes"],
+      "c": 2
+    }
+  ]
+}

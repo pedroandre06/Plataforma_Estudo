@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block titulo %}Administração · questões{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">Banco de questões</h1>
+    <p class="sub">{{ perguntas|length }} questão(ões) listadas (limite de 300 por consulta).</p>
+  </div>
+  <div class="linha">
+    <a class="btn btn-primario" href="{{ url_for('admin_q.pergunta_nova') }}">+ Nova questão</a>
+    <a class="btn" href="{{ url_for('admin_io.importar') }}">Importar</a>
+    <a class="btn" href="{{ url_for('admin_exp.exportar', formato='json') }}">Exportar JSON</a>
+    <a class="btn" href="{{ url_for('admin_exp.exportar', formato='csv') }}">Exportar CSV</a>
+    <a class="btn" href="{{ url_for('admin.painel') }}">Painel</a>
+  </div>
+</div>
+
+<form method="get" class="card">
+  <div class="grid grid-4">
+    <label class="campo"><span>Matéria</span>
+      <select name="materia">
+        <option value="">Todas</option>
+        {% for m in materias %}
+          <option value="{{ m['id'] }}" {{ 'selected' if filtros['materia'] == m['id'] }}>{{ m['nome'] }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label class="campo"><span>Módulo</span>
+      <select name="modulo">
+        <option value="">Todos</option>
+        {% for mo in modulos %}
+          <option value="{{ mo['id'] }}" {{ 'selected' if filtros['modulo'] == mo['id'] }}>{{ mo['materia_nome'] }} · {{ mo['nome'] }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label class="campo"><span>Dificuldade</span>
+      <select name="dificuldade">
+        <option value="">Todas</option>
+        {% for chave, rotulo in DIFICULDADES.items() %}
+          <option value="{{ chave }}" {{ 'selected' if filtros['dificuldade'] == chave }}>{{ rotulo }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label class="campo"><span>Busca</span>
+      <input type="search" name="q" value="{{ filtros['q'] }}" placeholder="enunciado ou tópico">
+    </label>
+  </div>
+  <div class="linha espaco-topo">
+    <button class="btn btn-primario" type="submit">Filtrar</button>
+    <a class="btn" href="{{ url_for('admin_q.perguntas') }}">Limpar</a>
+  </div>
+</form>
+
+<div class="rolagem espaco-topo-2">
+  <table class="tabela">
+    <thead><tr><th>#</th><th>Matéria / módulo</th><th>Enunciado</th><th>Tópico</th><th>Dif.</th><th>Alt.</th><th>Status</th><th>Ações</th></tr></thead>
+    <tbody>
+      {% for p in perguntas %}
+        <tr>
+          <td>{{ p['id'] }}</td>
+          <td><span class="badge" style="border-color: {{ p['materia_cor'] }}">{{ p['materia_nome'] }}</span>
+            <div class="item-meta">{{ p['modulo_nome'] }}</div></td>
+          <td>{{ p['enunciado'][:140] }}{% if p['enunciado']|length > 140 %}...{% endif %}</td>
+          <td>{{ p['topico'] or '-' }}</td>
+          <td>{{ DIFICULDADES.get(p['dificuldade'], p['dificuldade']) }}</td>
+          <td>{{ p['n_alternativas'] }}</td>
+          <td>{% if p['ativo'] %}<span class="badge badge-ok">ativa</span>{% else %}<span class="badge badge-erro">inativa</span>{% endif %}</td>
+          <td>
+            <div class="linha">
+              <a class="btn btn-mini" href="{{ url_for('admin_q.pergunta_editar', pid=p['id']) }}">Editar</a>
+              {% if p['ativo'] %}
+                <form method="post" action="{{ url_for('admin_q.pergunta_excluir', pid=p['id']) }}">
+                  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                  <button class="btn btn-mini btn-perigo" type="submit">Desativar</button>
+                </form>
+              {% else %}
+                <form method="post" action="{{ url_for('admin_q.pergunta_ativar', pid=p['id']) }}">
+                  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                  <button class="btn btn-mini btn-ok" type="submit">Reativar</button>
+                </form>
+              {% endif %}
+            </div>
+          </td>
+        </tr>
+      {% else %}
+        <tr><td colspan="8" class="sub">Nenhuma questão encontrada com esses filtros.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

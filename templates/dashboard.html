@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block titulo %}Painel{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">Painel de estudos</h1>
+    <p class="sub">Acompanhe o progresso por matéria, treine por módulo e faça simulados.</p>
+  </div>
+  <div class="linha">
+    <form method="post" action="{{ url_for('simulados.reforco') }}">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <button class="btn" type="submit">⚡ Simulado de reforço</button>
+    </form>
+    <a class="btn btn-primario" href="{{ url_for('simulados.lista') }}">Simulados e provas</a>
+  </div>
+</div>
+
+<div class="grid grid-4">
+  <div class="stat"><div class="stat-valor">{{ stats['tentativas'] or 0 }}</div><div class="stat-rotulo">Tentativas entregues</div></div>
+  <div class="stat"><div class="stat-valor">{{ fmt_nota(stats['media']) }}</div><div class="stat-rotulo">Média das notas</div></div>
+  <div class="stat"><div class="stat-valor">{{ fmt_nota(stats['melhor']) }}</div><div class="stat-rotulo">Melhor nota</div></div>
+  <div class="stat"><div class="stat-valor">{{ sequencia }}</div><div class="stat-rotulo">Dias com estudo</div></div>
+</div>
+
+{% if em_andamento %}
+<div class="card espaco-topo-2">
+  <div class="card-titulo"><h2>Continuar de onde parou</h2></div>
+  <ul class="lista espaco-topo">
+    {% for t in em_andamento %}
+      <li class="item">
+        <div class="item-principal">
+          <span class="item-num">{{ t['respondidas'] }}</span>
+          <div>
+            <div class="item-titulo">{{ t['simulado_nome'] or t['modulo_nome'] or MODOS_QUIZ.get(t['modo'], t['modo']) }}</div>
+            <div class="item-meta">{{ MODOS_SIMULADO.get(t['modo'], MODOS_QUIZ.get(t['modo'], t['modo'])) }}
+              · {{ t['respondidas'] }}/{{ t['total'] }} respondidas · início {{ t['inicio_em'][11:16] }}</div>
+          </div>
+        </div>
+        <div class="item-acoes">
+          {% if t['simulado_id'] %}
+            <a class="btn btn-primario btn-mini" href="{{ url_for('simulado_exec.executar', tid=t['id']) }}">Retomar</a>
+          {% else %}
+            <a class="btn btn-primario btn-mini" href="{{ url_for('quiz.executar', tid=t['id']) }}">Retomar</a>
+          {% endif %}
+          <form method="post" action="{{ url_for('resultado.abandonar', tid=t['id']) }}">
+            <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+            <button class="btn btn-perigo btn-mini" type="submit">Descartar</button>
+          </form>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<h2 class="espaco-topo-2">Matérias</h2>
+<div class="grid grid-3">
+  {% for m in materias %}
+    {% set pct = (100 * m['concluidos'] / m['n_modulos']) | round(0, 'floor') if m['n_modulos'] else 0 %}
+    <div class="card card-materia" style="border-top-color: {{ m['cor'] }}">
+      <h2>{{ m['nome'] }}</h2>
+      <p class="sub">{{ m['descricao'] }}</p>
+      <div class="linha" style="justify-content: space-between">
+        <span class="item-meta">{{ m['n_modulos'] }} módulos · {{ m['n_perguntas'] }} questões</span>
+        <span class="badge badge-info">{{ pct|int }}%</span>
+      </div>
+      <div class="barra espaco-topo"><span style="width: {{ pct }}%"></span></div>
+      <div class="linha espaco-topo" style="justify-content: space-between">
+        <span class="item-meta">Média: {{ fmt_nota(m['media']) }}</span>
+        <a class="btn btn-mini" href="{{ url_for('geral.materia', slug=m['slug']) }}">Abrir matéria</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% if recentes %}
+<div class="card espaco-topo-2">
+  <div class="card-titulo">
+    <h2>Últimas tentativas</h2>
+    <a class="btn btn-mini" href="{{ url_for('extra.historico') }}">Ver histórico completo</a>
+  </div>
+  <div class="rolagem espaco-topo">
+    <table class="tabela">
+      <thead>
+        <tr><th>Quando</th><th>O que</th><th>Modo</th><th>Acertos</th><th>Nota</th><th>Situação</th><th></th></tr>
+      </thead>
+      <tbody>
+        {% for t in recentes %}
+          <tr>
+            <td>{{ t['fim_em'][8:10] }}/{{ t['fim_em'][5:7] }} {{ t['fim_em'][11:16] }}</td>
+            <td>{{ t['simulado_nome'] or t['modulo_nome'] or '-' }}</td>
+            <td><span class="badge">{{ MODOS_SIMULADO.get(t['modo'], MODOS_QUIZ.get(t['modo'], t['modo'])) }}</span></td>
+            <td>{{ t['acertos'] }}/{{ t['total'] }}</td>
+            <td><strong>{{ fmt_nota(t['nota']) }}</strong></td>
+            <td>
+              {% if t['aprovado'] %}<span class="badge badge-ok">aprovado</span>
+              {% else %}<span class="badge badge-erro">abaixo de {{ fmt_nota(t['nota_corte']) }}</span>{% endif %}
+            </td>
+            <td>
+              {% if t['simulado_id'] %}
+                <a class="btn btn-mini" href="{{ url_for('simulado_exec.resultado', tid=t['id']) }}">Revisar</a>
+              {% else %}
+                <a class="btn btn-mini" href="{{ url_for('resultado.resultado', tid=t['id']) }}">Revisar</a>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

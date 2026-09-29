@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block titulo %}Simulados e provas{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">Simulados e provas</h1>
+    <p class="sub">Meça seu desempenho com nota de 0 a 10, cronômetro e gabarito comentado.</p>
+  </div>
+  <div class="linha">
+    <a class="btn btn-primario" href="{{ url_for('sim_cfg.novo') }}">Criar simulado</a>
+    <form method="post" action="{{ url_for('simulados.reforco') }}">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <button class="btn" type="submit">⚡ Reforço dos pontos fracos</button>
+    </form>
+  </div>
+</div>
+
+{% if em_andamento %}
+  <div class="card">
+    <h2>Simulados em andamento</h2>
+    <ul class="lista espaco-topo">
+      {% for t in em_andamento %}
+        <li class="item">
+          <div class="item-principal"><div>
+            <div class="item-titulo">{{ t['simulado_nome'] or MODOS_SIMULADO.get(t['modo'], t['modo']) }}</div>
+            <div class="item-meta">{{ t['respondidas'] }}/{{ t['total'] }} respondidas · iniciado {{ t['inicio_em'][:16] }}
+              {% if t['limite_em'] %} · prazo {{ t['limite_em'][11:16] }}{% endif %}</div>
+          </div></div>
+          <div class="item-acoes">
+            <a class="btn btn-primario btn-mini" href="{{ url_for('simulado_exec.executar', tid=t['id']) }}">Retomar</a>
+            <form method="post" action="{{ url_for('resultado.abandonar', tid=t['id']) }}">
+              <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+              <button class="btn btn-perigo btn-mini" type="submit">Descartar</button>
+            </form>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
+<h2 class="espaco-topo-2">Disponíveis</h2>
+<ul class="lista espaco-topo">
+  {% for s in disponiveis %}
+    {% set pct = (100 * s['n_fixas'] / s['n_questoes']) | round(0, 'floor') if s['n_questoes'] else 0 %}
+    <li class="item">
+      <div class="item-principal">
+        <span class="item-num">{{ s['n_questoes'] }}</span>
+        <div>
+          <div class="item-titulo">
+            {{ s['nome'] }}
+            <span class="badge badge-livre">{{ MODOS_SIMULADO.get(s['tipo'], s['tipo']) }}</span>
+          </div>
+          <div class="item-meta">
+            {{ s['tempo_min'] }} min · nota de corte {{ fmt_nota(s['nota_corte']) }}
+            {% if s['max_tentativas'] %} · máx. {{ s['max_tentativas'] }} tentativa(s){% else %} · tentativas livres{% endif %}
+            {% if s['melhor'] is not none %} · sua melhor nota: {{ fmt_nota(s['melhor']) }}{% endif %}
+          </div>
+          <div class="item-meta">{{ s['descricao'] }}</div>
+        </div>
+      </div>
+      <div class="item-acoes">
+        {% if s['max_tentativas'] and s['feitas'] >= s['max_tentativas'] %}
+          <span class="badge badge-erro">limite atingido</span>
+        {% else %}
+          <form method="post" action="{{ url_for('simulados.iniciar', simulado_id=s['id']) }}">
+            <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+            <button class="btn btn-primario btn-mini" type="submit">Iniciar</button>
+          </form>
+        {% endif %}
+      </div>
+    </li>
+  {% else %}
+    <li class="vazio">Nenhum simulado cadastrado. Use “Criar simulado”.</li>
+  {% endfor %}
+</ul>
+
+{% if historico %}
+  <h2 class="espaco-topo-2">Histórico de simulados</h2>
+  <div class="rolagem espaco-topo">
+    <table class="tabela">
+      <thead><tr><th>Data</th><th>Simulado</th><th>Acertos</th><th>Nota</th><th>Tempo</th><th>Situação</th><th></th></tr></thead>
+      <tbody>
+        {% for t in historico %}
+          <tr>
+            <td>{{ t['fim_em'][:16] if t['fim_em'] else t['inicio_em'][:16] }}</td>
+            <td>{{ t['simulado_nome'] or '-' }}</td>
+            <td>{{ t['acertos'] }}/{{ t['total'] }}</td>
+            <td><strong>{{ fmt_nota(t['nota']) }}</strong></td>
+            <td>{{ (t['tempo_seg'] or 0) // 60 }} min</td>
+            <td>{% if t['status'] == 'expirada' %}<span class="badge badge-aviso">tempo esgotado</span>
+                {% elif t['aprovado'] %}<span class="badge badge-ok">aprovado</span>
+                {% else %}<span class="badge badge-erro">abaixo do corte</span>{% endif %}</td>
+            <td><a class="btn btn-mini" href="{{ url_for('simulado_exec.resultado', tid=t['id']) }}">Revisar</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endif %}
+{% endblock %}

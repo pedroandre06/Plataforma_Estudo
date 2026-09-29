@@ -1,0 +1,69 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "programacao-nuvem",
+  "perguntas": [
+    {
+      "e": "Uma equipe de desenvolvimento quer criar, testar e implantar aplicações sem se preocupar em manter servidores e a infraestrutura de desenvolvimento. Qual modelo atende diretamente?",
+      "t": "PaaS",
+      "d": "medio",
+      "r": "Bloco 2 - Plataforma como serviço (PaaS)",
+      "x": "O PaaS fornece um ambiente completo para criação, teste e implantação de aplicações, sem a preocupação de manter toda a infraestrutura de desenvolvimento.",
+      "a": ["IaaS", "PaaS", "SaaS", "Nuvem privada"],
+      "c": 1
+    },
+    {
+      "e": "A empresa decide usar um sistema de CRM totalmente pronto, acessado pela internet, sem se preocupar com desenvolvimento ou servidores. Esse consumo corresponde a:",
+      "t": "SaaS",
+      "d": "medio",
+      "r": "Bloco 2 - Software como serviço (SaaS)",
+      "x": "No SaaS o usuário aluga/usa um aplicativo totalmente desenvolvido — o modelo mais completo do ponto de vista de produto.",
+      "a": ["IaaS", "PaaS", "SaaS", "IaC"],
+      "c": 2
+    },
+    {
+      "e": "Sobre a flexibilidade dos modelos de serviço, é correto afirmar:",
+      "t": "Comparação IaaS/PaaS/SaaS",
+      "d": "medio",
+      "r": "Bloco 2 - Modelos de serviço de nuvem",
+      "x": "O IaaS é o mais flexível (maior controle); o SaaS é o menos flexível, porém o mais fácil de colocar em funcionamento; o PaaS fica no meio.",
+      "a": ["O SaaS é o mais flexível e o IaaS o mais fácil de usar", "O IaaS é o mais flexível e o SaaS o menos flexível, mas o mais fácil de usar", "Todos têm o mesmo grau de flexibilidade", "O PaaS é o modelo mais flexível de todos"],
+      "c": 1
+    },
+    {
+      "e": "O que é computação em nuvem, segundo o material?",
+      "t": "Computação em nuvem",
+      "d": "facil",
+      "r": "Bloco 2 - Quiz do curso",
+      "x": "Computação em nuvem é a entrega de serviços de computação pela Internet; é um conjunto de computadores e sistemas acessíveis de qualquer lugar.",
+      "a": ["Entrega de serviços de computação pela Internet", "Entrega de serviços de armazenamento pela Internet", "Disponibilização de sites acessíveis pela Internet", "Entrega de serviços de banco de dados pela Internet"],
+      "c": 0
+    },
+    {
+      "e": "Quais benefícios as organizações obtêm ao usar a nuvem, conforme o material?",
+      "t": "Benefícios da nuvem",
+      "d": "facil",
+      "r": "Bloco 2 - Resolução do Quiz (computação em nuvem)",
+      "x": "Acesso a recursos sob demanda, redução de custos operacionais e aceleração da inovação, adaptando a infraestrutura conforme a necessidade.",
+      "a": ["Necessidade de manter todo o hardware próprio", "Acesso a recursos sob demanda, redução de custos operacionais e aceleração da inovação", "Aumento obrigatório do número de servidores locais", "Fim da necessidade de segurança da informação"],
+      "c": 1
+    },
+    {
+      "e": "No modelo de serviço de nuvem, quem é responsável por manter o sistema operacional, os servidores e a virtualização quando a empresa contrata IaaS?",
+      "t": "IaaS",
+      "d": "dificil",
+      "r": "Bloco 2 - Infraestrutura como serviço (IaaS)",
+      "x": "No IaaS o hardware é alugado e o controle é máximo: cabe ao cliente gerenciar o que roda sobre essa infraestrutura, enquanto o provedor responde pela infraestrutura física da nuvem (modelo de responsabilidade compartilhada).",
+      "a": ["Somente o provedor, que entrega tudo pronto", "O cliente, que tem o máximo de controle sobre o que roda na infraestrutura alugada", "Nenhum dos dois, pois o IaaS não exige gestão", "Apenas o fabricante do software de CRM"],
+      "c": 1
+    },
+    {
+      "e": "Uma empresa opera apenas com datacenter on-premises e, em um pico de acessos na Black Friday, seu site ficou fora do ar. Como uma arquitetura em nuvem evitaria o problema?",
+      "t": "Caso Black Friday",
+      "d": "medio",
+      "r": "Bloco 1 - Situação-problema (datacenter on-premises)",
+      "x": "A nuvem permite escalar recursos sob demanda (escalabilidade/elasticidade) e manter alta disponibilidade, absorvendo picos de acesso sem derrubar a operação.",
+      "a": ["Reduzindo a quantidade de acessos permitidos simultaneamente", "Escalando recursos sob demanda e garantindo alta disponibilidade durante o pico", "Migrando o site para arquivos estáticos sem servidor", "Aumentando o número de usuários por servidor local"],
+      "c": 1
+    }
+  ]
+}

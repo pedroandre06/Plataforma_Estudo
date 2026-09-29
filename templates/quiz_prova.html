@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block titulo %}Prova do módulo{% endblock %}
+{% block conteudo %}
+<div class="quiz-caixa">
+  <div class="cabeca-pagina">
+    <div>
+      <h1 class="titulo-pagina">Prova do módulo</h1>
+      <p class="sub">{{ questoes|length }} questões · correção no final · nota de 0 a 10</p>
+    </div>
+    <div class="linha">
+      {% if restante %}
+        <span class="badge badge-aviso">Tempo: <span class="js-restante" data-segundos="{{ restante }}">{{ restante // 60 }}:{{ '%02d' % (restante % 60) }}</span></span>
+      {% endif %}
+      <span class="badge">{{ resumo['respondidas'] }}/{{ resumo['total'] }} respondidas</span>
+    </div>
+  </div>
+
+  <form method="post" action="{{ url_for('quiz.entregar', tid=tentativa['id']) }}">
+    <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    {% for q in questoes %}
+      <div class="card espaco-topo">
+        <div class="linha" style="justify-content: space-between">
+          <span class="badge badge-info">Questão {{ loop.index }} de {{ questoes|length }}</span>
+          <span class="badge {{ 'badge-ok' if q['pergunta']['dificuldade'] == 'facil' else ('badge-aviso' if q['pergunta']['dificuldade'] == 'medio' else 'badge-erro') }}">
+            {{ DIFICULDADES.get(q['pergunta']['dificuldade'], q['pergunta']['dificuldade']) }}
+          </span>
+        </div>
+        <p class="pergunta-enunciado">{{ q['pergunta']['enunciado'] }}</p>
+        <div class="lista-alternativas">
+          {% for a in q['alternativas'] %}
+            <label class="alternativa {{ 'ativo' if q['escolhida'] == a['id'] }}">
+              <input type="radio" name="p_{{ q['pergunta']['id'] }}" value="{{ a['id'] }}"
+                     {{ 'checked' if q['escolhida'] == a['id'] }}>
+              <span class="letra">{{ 'ABCDE'[loop.index0] }}</span>
+              <span>{{ a['texto'] }}</span>
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    <div class="rodape-quiz">
+      <a class="btn" href="{{ url_for('aula.modulo', slug=questoes[0]['pergunta']['modulo_slug'], aba='praticar') }}">Voltar ao módulo</a>
+      <button class="btn btn-primario" type="submit">Entregar prova e ver nota</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

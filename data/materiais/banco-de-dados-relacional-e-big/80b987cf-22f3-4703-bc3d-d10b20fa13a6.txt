@@ -1,0 +1,421 @@
+
+
+===== PAGINA 1 =====
+WBA0178_v3.0
+Banco de dados relacional e big 
+data
+
+===== PAGINA 2 =====
+Modelagem e Estrutura de Bancos de 
+Dados Relacionais
+Conceitos e princípios
+Bloco 1
+Simone Tatiane do Canto
+
+===== PAGINA 3 =====
+Vamos refletir?
+Você já se perguntou o que garante que seus dados 
+bancários, históricos acadêmicos ou resultados de 
+exames médicos estejam sempre corretos, 
+atualizados e disponíveis?
+Imagine se os dados de uma universidade ou 
+hospital fossem armazenados sem organização, sem 
+vínculos entre tabelas ou com registros duplicados?
+Como isso impactaria nas decisões importantes no 
+seu dia a dia?
+
+===== PAGINA 4 =====
+Objetivos do capítulo
+• Modelar bancos de dados relacionais utilizando o Modelo 
+Entidade-Relacionamento (MER).
+• Implementar e consultar bancos de dados utilizando a 
+linguagem SQL.
+• Compreender conceitos de transações e propriedades 
+ACID.
+• Avaliar o uso de bancos não relacionais e ferramentas de 
+Big Data.
+• Identificar aplicações práticas de armazenamento e análise 
+de grandes volumes de dados.
+
+===== PAGINA 5 =====
+O que são Bancos de Dados?
+Conceito-chave:
+Um banco de dados é uma coleção estruturada de dados 
+relacionados, projetada para ser acessada de forma eficiente 
+por múltiplos usuários e aplicações.
+Importância prática:
+• Utilizados em praticamente todos os sistemas digitais 
+atuais.
+• Presentes em serviços bancários, e-commerce, hospitais, 
+universidades e redes sociais.
+Você sabia?
+Bancos de dados relacionais são os mais utilizados no mundo 
+corporativo por garantirem organização, integridade e rapidez 
+na manipulação de dados (Elmasri; Navathe, 2018).
+
+===== PAGINA 6 =====
+Por que Modelar Dados?
+Objetivo da modelagem:
+Traduzir as regras e necessidades de um sistema real em uma 
+estrutura lógica que possa ser implementada em um banco de 
+dados.
+Benefícios da modelagem:
+• Redução de redundância.
+• Clareza na estrutura dos dados.
+• Suporte à integridade e à escalabilidade.
+Ferramenta principal:
+Modelo Entidade-Relacionamento (MER) – permite 
+representar graficamente entidades, atributos e 
+relacionamentos (modelo proposto por Peter Chen em 1976).
+
+===== PAGINA 7 =====
+O Modelo Relacional
+Definição:
+É o modelo mais adotado para representar dados em forma 
+de tabelas, onde:
+• Linhas = registros (tuplas)
+• Colunas = atributos
+Chaves e integridade:
+• Chave primária: identifica unicamente cada registro.
+• Chave estrangeira: estabelece relações entre tabelas.
+Baseado em:
+Teoria dos conjuntos e lógica de predicados (modelo 
+relacional apresentado por Edgar Codd em 1970).
+
+===== PAGINA 8 =====
+SGBDs e a Estrutura Relacional
+SGBD (Sistema Gerenciador de Banco de Dados):
+Software que permite criar, manipular e consultar dados 
+armazenados em bancos relacionais.
+Principais funções:
+• Definição de esquemas.
+• Manipulação de dados (CRUD).
+• Garantia de integridade e controle de concorrência.
+Exemplos:
+MySQL, PostgreSQL, SQL Server, Oracle Database.
+Curiosidade:
+Esses sistemas utilizam a linguagem SQL para interagir com os 
+dados.
+
+===== PAGINA 9 =====
+Modelagem e Estrutura de Bancos de 
+Dados Relacionais
+Modelo Entidade-Relacionamento (MER)
+Bloco 2
+Simone Tatiane do Canto
+
+===== PAGINA 10 =====
+O que é o Modelo Entidade-Relacionamento 
+(MER)?
+Definição:
+O MER, proposto por Peter Chen em 1976, é uma técnica de 
+modelagem conceitual que permite representar graficamente 
+os elementos e os relacionamentos de um sistema real.
+Para que serve?
+• Facilita o entendimento do domínio de dados.
+• Serve como ponte entre usuários e desenvolvedores.
+• Prepara a base para o modelo relacional.
+Pensar visualmente = projetar melhor!
+
+===== PAGINA 11 =====
+Principais Componentes do MER
+Entidades:
+Representam objetos concretos ou conceituais (ex.: cliente, 
+produto, pedido).
+Atributos:
+Propriedades das entidades (ex.: nome, CPF, data de 
+nascimento).
+Tipos: simples, compostos e multivalorados.
+Relacionamentos:
+Indicam como as entidades estão conectadas.
+Exemplos: “Cliente realiza Pedido”, “Aluno cursa Disciplina”.
+
+===== PAGINA 12 =====
+Cardinalidade e Participação
+Cardinalidade:
+Define o número de ocorrências permitidas entre entidades:
+• 1:1 (um para um).
+• 1:N (um para muitos).
+• N:M (muitos para muitos).
+Participação:
+• Total: todos os registros participam do relacionamento.
+• Parcial: a participação é opcional.
+Essencial para prever integridade referencial!
+
+===== PAGINA 13 =====
+Exemplo de Diagrama ER
+Cenário: sistema de 
+pedidos online.
+Entidades: cliente, pedido, 
+produto, relacionamentos:
+• Cliente faz pedido. 
+• Pedido contém produto.
+Exemplo gráfico:
+Diagrama Entidade-Relacionamento 
+(DER)
+Fonte: elaborado pela autor.
+Destaque: cada relacionamento 
+pode ter seus próprios atributos, 
+como data da compra ou 
+quantidade.
+
+===== PAGINA 14 =====
+Do MER ao Modelo Relacional
+ Transformação prática:
+Cada entidade vira uma tabela.
+Cada relacionamento vira:
+• Uma chave estrangeira (1:N)
+• Uma nova tabela (N:M)
+ Exemplo:
+Entidade Aluno + Entidade Disciplina + Relacionamento Matrícula
+→ Gera uma tabela MATRÍCULA com atributos próprios (data, nota)
+ Frase de impacto:
+“O MER é o mapa. O modelo relacional é a estrada.” – adaptado de 
+Heuser (2009)
+
+===== PAGINA 15 =====
+Modelagem e Estrutura de Bancos de 
+Dados Relacionais
+SGBDs Relacionais: Conceitos e Aplicações
+Bloco 3
+Simone Tatiane do Canto
+
+===== PAGINA 16 =====
+O que é o Modelo Relacional?
+ Conceito-chave:
+O modelo relacional representa dados por meio de tabelas 
+(ou relações), onde:
+• Cada linha = tupla (registro)
+• Cada coluna = atributo (característica)
+ Fundamentação teórica:
+Baseado em teoria dos conjuntos e lógica de predicados de 
+primeira ordem (Codd, 1970).
+ Objetivo:
+Organizar dados de forma estruturada, permitindo 
+flexibilidade, integridade e desempenho nas consultas.
+
+===== PAGINA 17 =====
+Estrutura de uma Tabela Relacional
+ Componentes essenciais:
+• Atributos (colunas): representam os dados de cada 
+entidade.
+• Tuplas (linhas): representam registros únicos.
+• Domínio: define o tipo de dado aceito em um atributo (ex.: 
+inteiro, data, texto).
+ Importante: cada tabela deve ter pelo menos uma chave 
+primária para garantir integridade de entidade.
+
+===== PAGINA 18 =====
+Chaves em Tabelas Relacionais
+ Chave Primária (PK):
+Identifica unicamente cada registro. Não aceita valores nulos 
+nem repetidos.
+ Chave Estrangeira (FK):
+Estabelece vínculo entre tabelas. Deve referenciar uma chave 
+primária válida de outra tabela.
+ Exemplo:
+Tabela Pedido com id_cliente como chave estrangeira 
+referenciando Cliente(id_cliente).
+
+===== PAGINA 19 =====
+Integridade em Bancos Relacionais
+ Integridade de Entidade:
+Toda tabela deve ter uma chave primária.
+ Integridade Referencial:
+Garante que os relacionamentos entre tabelas sejam válidos.
+ Integridade de Domínio:
+Cada valor precisa respeitar o tipo e as restrições definidas 
+(ex.: CPF com 11 dígitos).
+ Implementadas via constraints:
+PRIMARY KEY , FOREIGN KEY , NOT NULL, CHECK, UNIQUE.
+
+===== PAGINA 20 =====
+Exemplo Prático + SQL
+ Tabelas: Cliente e Pedido
+CREATE TABLE Cliente (
+  id_cliente INT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL,
+  cpf CHAR(11) UNIQUE
+);
+CREATE TABLE Pedido (
+  id_pedido INT PRIMARY KEY,
+  data DATE,
+  id_cliente INT,
+  FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
+);
+ Explicando:
+O id_cliente é a chave primária da tabela Cliente e chave estrangeira em Pedido.
+
+===== PAGINA 21 =====
+Prática em ação
+Modelagem e Estrutura de Bancos de 
+Dados Relacionais
+Bloco 4
+Simone Tatiane do Canto
+
+===== PAGINA 22 =====
+Reflita sobre a seguinte situação
+Uma instituição de ensino está desenvolvendo um novo sistema 
+acadêmico para gerenciar alunos, cursos, professores e matrículas. 
+Após uma primeira versão do banco de dados, surgiram os 
+seguintes problemas:
+• Informações duplicadas de alunos aparecendo em diferentes 
+disciplinas.
+• Dificuldade em gerar relatórios por falta de padronização nos 
+dados.
+• Relacionamentos entre entidades gerando erros por ausência de 
+vínculo entre tabelas.
+Pergunta:
+Como o uso de chaves primárias, chaves estrangeiras e a 
+integridade referencial podem ajudar a resolver esses problemas?
+
+===== PAGINA 23 =====
+Proposta de resolução
+Por onde começar? 
+Aplicar a 
+normalização :
+• Reduzir dados 
+duplicados por meio 
+da decomposição 
+em tabelas menores.
+• Eliminar anomalias 
+de inserção, 
+atualização e 
+exclusão.
+Reestruturar com 
+modelo relacional:
+• Definir entidades 
+claras (Aluno, Curso, 
+Disciplina, 
+Matrícula).
+• Estabelecer 
+relacionamentos 
+corretos com 
+cardinalidade 
+adequada (1:N, 
+N:M).
+Definir chaves e 
+integridade 
+referencial:
+• Aplicar chaves 
+primárias para 
+garantir unicidade.
+Utilizar chaves 
+estrangeiras para 
+manter vínculos 
+válidos entre as 
+tabelas.
+• Adicionar índices 
+para acelerar buscas 
+em atributos usados 
+em filtros e junções.
+
+===== PAGINA 24 =====
+Proposta de resolução
+Medidas de controle durante o processo:
+Diagnóstico da 
+estrutura atual do 
+banco de dados
+Definição das 
+entidades e seus 
+atributos
+Identificação das 
+chaves primárias e 
+estrangeiras
+Correção dos 
+relacionamentos e 
+cardinalidades
+Aplicação da 
+normalização
+Otimização das 
+tabelas e 
+definição de 
+índices
+Implementação e 
+consultas SQL
+Ajustes contínuos 
+e monitoramento
+
+===== PAGINA 25 =====
+Proposta de resolução
+Possíveis causas:
+Modelo mal estruturado e falta de normalização das tabelas.
+Uso ineficiente ou ausência de índices e relacionamentos mal definidos entre 
+tabelas.
+Chaves primárias mal escolhidas e ausência de integridade referencial.
+Consultas SQL não otimizadas e redundância de dados.
+Tabelas com dados inconsistentes.
+Falta de alinhamento entre modelo lógico e físico.
+Bons estudos!
+
+===== PAGINA 26 =====
+Consolidando o aprendizado
+Banco de dados relacional e big data
+Bloco 5
+Simone Tatiane do Canto
+
+===== PAGINA 27 =====
+Consolidando o aprendizado
+• Conceitos e tipos de modelos de banco de dados.
+• Estrutura e aplicação do Modelo Entidade-Relacionamento 
+(MER).
+• Normalização: objetivos, formas e benefícios.
+• Papel dos SGBDs na integridade e análise de dados.
+
+===== PAGINA 28 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da sua 
+carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 29 =====
+Indicação de leitura 1
+Este livro apresenta os principais conceitos de banco de 
+dados, abrangendo desde fundamentos até aplicações 
+avançadas. A obra aborda modelos de dados, arquitetura de 
+sistemas, normalização, SQL e aspectos de segurança. É uma 
+leitura essencial para compreender tanto a teoria quanto as 
+práticas adotadas no desenvolvimento, gerenciamento e uso 
+estratégico de bancos de dados.
+Referência
+ELMASRI, R.; NAVATHE, S. B. Sistemas de banco de dados: fundamentos e 
+aplicações. 7. ed. São Paulo: Pearson Education do Brasil, 2018.
+
+===== PAGINA 30 =====
+Indicação de leitura 2
+Este livro é focado em projeto lógico de bancos de dados, 
+oferecendo uma abordagem prática para a modelagem 
+Entidade-Relacionamento, transformação em modelo 
+relacional e normalização. Além disso, a obra traz exemplos 
+reais e exercícios que facilitam a aplicação dos conceitos em 
+ambientes corporativos e acadêmicos.
+Referência
+HEUSER, C. A. Projeto de banco de dados. 6. ed. Porto Alegre: Bookman, 2009.
+
+===== PAGINA 31 =====
+Referências
+CARDOSO, Gisele Cristina; CARDOSO, Virgínia Mara. Linguagem SQL e suas 
+aplicações em bancos de dados modernos. Revista de Tecnologia da Informação, 
+São Paulo, v. 3, p. 22-39, 2017.
+DAMAS, Luis. SQL: Linguagem de Consulta Estruturada . Rio de Janeiro: LTC, 2014.
+ELMASRI, R.; NAVATHE, S.B. Sistemas de banco de dados: fundamentos e 
+aplicações. 7. ed. São Paulo: Pearson Education do Brasil, 2018.
+HEUSER, Carlos Alberto. Projeto de banco de dados. 6. ed. Porto Alegre: Bookman, 
+2009.
+LEBLANC, Patrick. Microsoft SQL Server 2012: Estratégias para Business 
+Intelligence. Revista de Sistemas e Dados, Porto Alegre, v. 1, pág. 101-120, 2013.
+PRICE, Jason. Oracle Database 11G SQL. In: PRICE, J. Oracle Database 11G SQL: 
+Guia Completo. Porto Alegre: Bookman, 2009.
+
+===== PAGINA 32 =====
+Bons estudos!

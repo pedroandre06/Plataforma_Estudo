@@ -1,0 +1,51 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "modelo-relacional-chaves",
+  "perguntas": [
+    {
+      "e": "Quais são funções de um SGBD (Sistema Gerenciador de Banco de Dados)?",
+      "t": "SGBD",
+      "d": "facil",
+      "r": "Bloco 1 - SGBDs e a Estrutura Relacional",
+      "x": "Definição de esquemas, manipulação de dados (CRUD) e garantia de integridade e controle de concorrência.",
+      "a": ["Definição de esquemas, manipulação de dados (CRUD), integridade e controle de concorrência", "Apenas armazenar arquivos de backup", "Apenas exibir relatórios gráficos", "Somente criar usuários e senhas"],
+      "c": 0
+    },
+    {
+      "e": "Qual conjunto de transações/propriedades garante a confiabilidade das operações em bancos relacionais, segundo os objetivos do capítulo?",
+      "t": "Transações e ACID",
+      "d": "medio",
+      "r": "Bloco 1 - Objetivos do capítulo",
+      "x": "O capítulo prevê compreender conceitos de transações e as propriedades ACID (atomicidade, consistência, isolamento e durabilidade).",
+      "a": ["HDFS, YARN e MapReduce", "Transações e propriedades ACID", "EDA, ETL e OLAP", "IaaS, PaaS e SaaS"],
+      "c": 1
+    },
+    {
+      "e": "Além da modelagem relacional, quais outros temas são objetivos do capítulo?",
+      "t": "Objetivos do capítulo",
+      "d": "medio",
+      "r": "Bloco 1 - Objetivos do capítulo",
+      "x": "O capítulo inclui avaliar o uso de bancos não relacionais e ferramentas de Big Data e identificar aplicações práticas de armazenamento e análise de grandes volumes.",
+      "a": ["Apenas normalização e MER", "Avaliar bancos não relacionais e ferramentas de Big Data e aplicações de armazenamento/análise de grandes volumes", "Somente criação de índices e backup", "Apenas linguagem SQL básica"],
+      "c": 1
+    },
+    {
+      "e": "Uma instituição de ensino tem alunos duplicados em disciplinas diferentes, dificuldade para gerar relatórios por falta de padronização e erros de relacionamento entre tabelas. Qual proposta resolve esses problemas?",
+      "t": "Estudo de caso acadêmico",
+      "d": "dificil",
+      "r": "Bloco 4 - Proposta de resolução (instituição de ensino)",
+      "x": "A solução combina normalização (reduzir duplicidade e anomalias), reestruturação do modelo relacional com entidades e cardinalidades corretas, definição de PK/FK com integridade referencial e criação de índices.",
+      "a": ["Migrar tudo para arquivos de texto e planilhas", "Aplicar normalização, reestruturar entidades e relacionamentos com cardinalidade correta e definir chaves e integridade referencial", "Eliminar as tabelas de matrícula", "Repetir os dados de alunos em cada disciplina para facilitar consultas"],
+      "c": 1
+    },
+    {
+      "e": "Entre as causas apontadas para problemas de desempenho e consistência em um banco de dados, estão:",
+      "t": "Estudo de caso acadêmico",
+      "d": "dificil",
+      "r": "Bloco 4 - Possíveis causas",
+      "x": "O material lista modelo mal estruturado e falta de normalização, uso ineficiente de índices, chaves primárias mal escolhidas, ausência de integridade referencial, consultas SQL não otimizadas, redundância, dados inconsistentes e falta de alinhamento entre modelo lógico e físico.",
+      "a": ["Excesso de normalização e muitos índices", "Modelo mal estruturado, falta de normalização, chaves mal escolhidas, ausência de integridade referencial e consultas SQL não otimizadas", "Uso excessivo de chaves estrangeiras", "Adoção de propriedades ACID"],
+      "c": 1
+    }
+  ]
+}

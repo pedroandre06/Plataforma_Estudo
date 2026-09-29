@@ -1,0 +1,35 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "gerenciamento-big-data",
+  "modulo": {
+    "nome": "Gerenciamento de Big Data: coleta, Hadoop, Spark e ML",
+    "descricao": "Processamento batch e streaming, arquitetura Hadoop (HDFS, MapReduce e YARN), Apache Spark, machine learning e técnicas de coleta de dados em larga escala.",
+    "pdf_origem": "c884c82d-8e14-480c-bb03-82a2587a530b.pdf",
+    "ordem": 4,
+    "resumo": [
+      "PROCESSAMENTO DE DADOS: BATCH E STREAMING",
+      "• Processamento de dados: converter dados brutos em informações úteis ou valiosas — os dados são coletados, manipulados e analisados. Com altas volumetrias, o modelo de processamento determina o processo ideal.",
+      "• BATCH: ideal quando não é necessário analisar em tempo real; processa em intervalos regulares, armazenando os dados para processar depois. Menos complexo, porém mais lento. Uso: logs de sistemas, faturamentos e relatórios recorrentes de tarefas não urgentes.",
+      "• STREAMING: necessário para tempo real ou quase real; processamento contínuo conforme os dados são produzidos, com menor latência, porém mais complexo em infraestrutura e manutenção. Uso: monitoramento de redes sociais, detecção de fraudes e sensores IoT.",
+      "• Batch x stream: depende do tipo de uso e podem ser usados em conjunto — o stream quando o tempo é essencial e os dados estão chegando; o batch quando os dados já foram coletados.",
+      "ARQUITETURA HADOOP",
+      "• HDFS: armazena grandes arquivos dividindo-os em blocos e distribuindo-os por vários nós; alta tolerância a falhas, replicando blocos em nós diferentes.",
+      "• MapReduce: processamento distribuído — divide a tarefa enviada pelo usuário em várias subtarefas independentes.",
+      "• YARN: gerenciador de recursos e tarefas do Hadoop; permite que múltiplas aplicações de processamento (não apenas MapReduce) rodem no Hadoop.",
+      "• Hadoop: framework open source da Apache, escalável, tolerante a falhas e distribuído.",
+      "APACHE SPARK",
+      "• Mecanismo de análise unificado para processamento de dados em grande escala, projetado para executar em clusters distribuídos, dividindo as tarefas para processá-las de forma eficiente.",
+      "• Compatível com Hadoop YARN, Apache Mesos e Kubernetes.",
+      "• Benefícios: velocidade, facilidade de uso, generalidade e inovações do framework de código aberto.",
+      "• Estrutura/ecossistema: Spark Core (base do processamento), Spark SQL, Spark Streaming, MLlib (machine learning) e GraphX (grafos), com RDDs e DataFrames como abstrações de dados.",
+      "• Spark x MapReduce: o Spark acelera o processamento usando memória (in-memory); o MapReduce tradicional trabalha com limites rígidos de memória, preferindo operações em disco.",
+      "MACHINE LEARNING E COLETA EM LARGA ESCALA",
+      "• Casos: detecção de fraudes em tempo real, recomendações personalizadas, clusterização/segmentação de clientes e modelos preditivos.",
+      "• Pipeline de streaming: ingestão com Apache Kafka + processamento com Apache Spark Streaming + geração de alertas + visualização em dashboards em tempo real.",
+      "PEGADINHAS DE PROVA",
+      "• Relatórios recorrentes e sem urgência → BATCH. Fraudes e IoT em tempo real → STREAMING.",
+      "• Quem gerencia recursos e permite outras aplicações além do MapReduce → YARN.",
+      "• Spark é indicado para lote E streaming em grandes volumes, distribuindo tarefas entre nós."
+    ]
+  }
+}

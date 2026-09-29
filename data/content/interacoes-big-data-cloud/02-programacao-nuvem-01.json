@@ -1,0 +1,69 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "programacao-nuvem",
+  "perguntas": [
+    {
+      "e": "O que é arquitetura de nuvem?",
+      "t": "Arquitetura de nuvem",
+      "d": "facil",
+      "r": "Bloco 1 - O que é a arquitetura de nuvem?",
+      "x": "É o layout que conecta os componentes e tecnologias necessários para a computação em nuvem — tecnologias que abstraem, agrupam e compartilham recursos escaláveis, com aplicações executadas em plataforma online.",
+      "a": ["Um modelo de banco de dados não relacional", "O layout que conecta componentes e tecnologias necessários para a computação em nuvem", "Um protocolo de rede para transferência de arquivos", "Uma linguagem de programação específica para nuvem"],
+      "c": 1
+    },
+    {
+      "e": "Uma empresa contrata recursos de um provedor de nuvem que atende várias organizações, com acesso pela internet por conexão segura. Esse é o modelo de:",
+      "t": "Nuvem pública",
+      "d": "facil",
+      "r": "Bloco 1 - Arquitetura de nuvem pública",
+      "x": "Nuvem pública pertence ao provedor de serviços de nuvem/hosting e fornece recursos para várias organizações e usuários, acessados via conexão de rede segura.",
+      "a": ["Nuvem privada", "Nuvem pública", "Nuvem híbrida", "Nuvem comunitária on-premises"],
+      "c": 1
+    },
+    {
+      "e": "Quando a própria organização cria o ambiente de nuvem dentro de seu datacenter, sem fornecer acesso a usuários fora da organização, temos:",
+      "t": "Nuvem privada",
+      "d": "facil",
+      "r": "Bloco 1 - Arquiteturas de nuvem privada",
+      "x": "Nuvem privada é o ambiente criado e operado pela própria organização em seu datacenter, sem acesso externo.",
+      "a": ["Nuvem pública", "Nuvem privada", "Nuvem híbrida", "SaaS"],
+      "c": 1
+    },
+    {
+      "e": "O modelo que combina nuvens públicas e privadas, permitindo executar cada aplicação no local mais adequado, é a:",
+      "t": "Nuvem híbrida",
+      "d": "facil",
+      "r": "Bloco 1 - Arquiteturas de nuvem híbrida",
+      "x": "Nuvem híbrida combina nuvens públicas e privadas, o que dá flexibilidade para escolher onde cada aplicação roda.",
+      "a": ["Nuvem privada", "Nuvem híbrida", "Nuvem pública", "Plataforma como Serviço"],
+      "c": 1
+    },
+    {
+      "e": "Quais são os atributos de design destacados para arquitetura de nuvem?",
+      "t": "Design da arquitetura",
+      "d": "facil",
+      "r": "Bloco 1 - Design para arquitetura de nuvem",
+      "x": "Alta disponibilidade, segurança, elasticidade e escalabilidade.",
+      "a": ["Alta disponibilidade, segurança, elasticidade e escalabilidade", "Baixo custo, sigilo, rigidez e centralização", "Redundância, impressão, versionamento e criptografia", "Latência, bloqueio, normalização e particionamento"],
+      "c": 0
+    },
+    {
+      "e": "Quais são os três modelos principais de serviço de nuvem apresentados no material?",
+      "t": "Modelos de serviço",
+      "d": "facil",
+      "r": "Bloco 2 - Modelos de serviço de nuvem",
+      "x": "Infraestrutura como Serviço (IaaS), Plataforma como Serviço (PaaS) e Software como Serviço (SaaS).",
+      "a": ["IaaS, PaaS e SaaS", "HDFS, MapReduce e YARN", "Batch, Stream e Lambda", "Público, privado e híbrido"],
+      "c": 0
+    },
+    {
+      "e": "Qual modelo de serviço oferece o máximo de controle sobre os recursos, funcionando como um aluguel de hardware em um datacenter de nuvem?",
+      "t": "IaaS",
+      "d": "medio",
+      "r": "Bloco 2 - Infraestrutura como serviço (IaaS)",
+      "x": "O IaaS é a categoria mais flexível, pois fornece o máximo de controle: o hardware é alugado e cabe ao cliente decidir o que fazer com ele.",
+      "a": ["SaaS", "PaaS", "IaaS", "Nuvem híbrida"],
+      "c": 2
+    }
+  ]
+}

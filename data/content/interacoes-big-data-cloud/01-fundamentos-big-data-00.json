@@ -1,0 +1,30 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "fundamentos-big-data-cloud",
+  "modulo": {
+    "nome": "Fundamentos de Big Data e Cloud Computing",
+    "descricao": "Os 5 Vs do Big Data (volume, velocidade, variedade, veracidade e valor), infraestrutura e tecnologias subjacentes (Hadoop, NoSQL, Data Warehousing) e o modelo de responsabilidade compartilhada na nuvem.",
+    "pdf_origem": "b9fe15dc-08fc-41af-a3b0-f0d035e2bcd5.pdf",
+    "ordem": 1,
+    "resumo": [
+      "OS 5 Vs DO BIG DATA",
+      "• VOLUME: volume massivo de dados, na casa de petabytes ou exabytes. Exemplos: transações financeiras, preferências de usuários, mídias sociais, streaming de vídeo e música (Netflix e YouTube).",
+      "• VELOCIDADE: rapidez entre geração e coleta/processamento. Envolve análise em tempo real, detecção de fraudes, monitoramento de tráfego, posts em redes sociais e dados de smartwatches.",
+      "• VARIEDADE: diferentes tipos de dados e fontes — redes sociais, e-mails, fotos, áudios, vídeos, transações. Inclui dados estruturados, semiestruturados e não estruturados.",
+      "• VERACIDADE: confiabilidade dos dados coletados. Desafio: garantir fontes confiáveis, validar em cada etapa e lidar com valores ausentes, ruído e ambiguidade.",
+      "• VALOR: transformar dados brutos em processos de negócio, construindo métricas de interesse como comportamento do cliente, desempenho empresarial e tendências numéricas.",
+      "INFRAESTRUTURA E TECNOLOGIAS SUBJACENTES",
+      "• Hadoop: framework de código aberto criado pela Apache Software Foundation; armazena e processa grandes volumes de dados, escala com eficiência, tolera falhas e processa de forma distribuída.",
+      "• Bancos NoSQL: para grandes volumes de dados em tempo real; velocidade de processamento, flexibilidade de armazenamento e suporte a dados distribuídos geograficamente.",
+      "• Data Warehousing: cenários de tomada de decisão com base em grandes volumes, centralizando e organizando dados para análise.",
+      "• Computação em nuvem: entrega de serviços de computação pela Internet, com recursos sob demanda.",
+      "• Azure Synapse Analytics: serviço de análise do Azure que inclui o Apache Spark — plataforma open source de processamento distribuído, com suporte a Python, Scala, Java e SQL, para dados estruturados e não estruturados.",
+      "• Modelo de responsabilidade compartilhada: provedor e cliente dividem responsabilidades de segurança e operação na nuvem.",
+      "PEGADINHAS DE PROVA",
+      "• 'Tempo real, fraudes e monitoramento' → VELOCIDADE.",
+      "• 'Diversidade de formatos e fontes (texto, imagem, vídeo)' → VARIEDADE.",
+      "• 'Dados confiáveis, sem ruído/ambiguidade' → VERACIDADE.",
+      "• Processamento distribuído open source dentro do Azure Synapse Analytics → Apache SPARK."
+    ]
+  }
+}

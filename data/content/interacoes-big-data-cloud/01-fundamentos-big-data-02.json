@@ -1,0 +1,70 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "fundamentos-big-data-cloud",
+  "perguntas": [
+    {
+      "e": "Por que os bancos de dados NoSQL são frequentemente associados a projetos de Big Data?",
+      "t": "NoSQL",
+      "d": "medio",
+      "r": "Bloco 2 - Banco de dados NoSQL",
+      "x": "São altamente indicados para grandes volumes de dados em tempo real, oferecem velocidade de processamento, flexibilidade no armazenamento e suporte a dados distribuídos geograficamente.",
+      "a": ["Porque exigem esquema rígido e normalização em 3FN", "Porque lidam com grandes volumes em tempo real, com flexibilidade e distribuição geográfica", "Porque substituem o Hadoop no processamento em lote", "Porque não permitem replicação de dados"],
+      "c": 1
+    },
+    {
+      "e": "Em cenários de Big Data, o Data Warehousing é indicado quando:",
+      "t": "Data Warehousing",
+      "d": "medio",
+      "r": "Bloco 2 - Como funciona o Data Warehousing",
+      "x": "O Data Warehousing apoia a tomada de decisão com base em grandes volumes de dados, centralizando e organizando as informações para análise.",
+      "a": ["É necessário capturar dados de sensores em milissegundos", "É preciso centralizar grandes volumes de dados para apoiar a tomada de decisão", "O objetivo é apenas armazenar arquivos de vídeo", "Não existe necessidade de histórico de dados"],
+      "c": 1
+    },
+    {
+      "e": "Qual mecanismo de processamento distribuído de código aberto é incluído no Azure Synapse Analytics?",
+      "t": "Azure Synapse",
+      "d": "medio",
+      "r": "Bloco 5 - Quiz do curso",
+      "x": "O Quiz do material indica o Apache Spark, plataforma de software livre para processamento distribuído de dados, usada em análises de larga escala.",
+      "a": ["Apache Hadoop", "Apache Spark", "Apache Storm", "Apache noSQL"],
+      "c": 1
+    },
+    {
+      "e": "Quais linguagens o Apache Spark suporta para programação, segundo o material?",
+      "t": "Apache Spark",
+      "d": "medio",
+      "r": "Bloco 5 - Resolução do Quiz",
+      "x": "O Spark dá suporte a várias linguagens, incluindo Python, Scala, Java e SQL, o que o torna versátil para dados estruturados e não estruturados.",
+      "a": ["Apenas Java e C++", "Python, Scala, Java e SQL", "Somente SQL", "Apenas R e MATLAB"],
+      "c": 1
+    },
+    {
+      "e": "Um e-commerce precisa processar e analisar dados em tempo real para oferecer recomendações personalizadas e, ao mesmo tempo, lidar com textos, imagens e vídeos gerados pelos usuários. Quais Vs do Big Data estão diretamente envolvidos?",
+      "t": "Aplicação dos 5 Vs",
+      "d": "dificil",
+      "r": "Bloco 1 - Situação-problema do e-commerce",
+      "x": "O processamento em tempo real para recomendações envolve VELOCIDADE; a diversidade de formatos (texto, imagem, vídeo) envolve VARIEDADE — e o próprio cenário fala em volume crescente.",
+      "a": ["Somente Volume", "Velocidade e Variedade", "Apenas Veracidade", "Valor e Volume apenas"],
+      "c": 1
+    },
+    {
+      "e": "Big Data se resume a lidar com um grande volume de dados, sendo suficiente aumentar o armazenamento para resolver o problema.",
+      "tp": "vf",
+      "t": "Os 5 Vs",
+      "d": "facil",
+      "r": "Bloco 1 - Características do Big Data",
+      "x": "Falso. O Big Data é caracterizado por cinco dimensões (volume, velocidade, variedade, veracidade e valor); apenas volume não resolve os desafios de processamento e qualidade.",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 1
+    },
+    {
+      "e": "Uma base de dados possui campos ausentes, registros ambíguos e fontes que não são confiáveis. Qual V do Big Data está sendo comprometido?",
+      "t": "Veracidade",
+      "d": "medio",
+      "r": "Bloco 1 - Característica do Big Data: Veracidade",
+      "x": "Veracidade trata da confiabilidade dos dados; valores ausentes, ruído e ambiguidade são exatamente os problemas citados.",
+      "a": ["Velocidade", "Volume", "Veracidade", "Variedade"],
+      "c": 2
+    }
+  ]
+}

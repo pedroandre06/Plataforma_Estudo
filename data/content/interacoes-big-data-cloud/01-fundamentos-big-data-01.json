@@ -1,0 +1,69 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "fundamentos-big-data-cloud",
+  "perguntas": [
+    {
+      "e": "Quais são os 5 Vs do Big Data?",
+      "t": "Os 5 Vs",
+      "d": "facil",
+      "r": "Bloco 1 - Características do Big Data",
+      "x": "Volume, Velocidade, Variedade, Veracidade e Valor são os cinco Vs apresentados no material.",
+      "a": ["Volume, Velocidade, Variedade, Veracidade e Valor", "Volume, Virtualização, Variedade, Verificação e Valor", "Velocidade, Visualização, Versionamento, Valor e Veracidade", "Volume, Velocidade, Verticais, Variedade e Validação"],
+      "c": 0
+    },
+    {
+      "e": "Uma empresa de streaming armazena petabytes de vídeos e músicas, além de transações e preferências de usuários. Qual V do Big Data essa situação ilustra?",
+      "t": "Volume",
+      "d": "facil",
+      "r": "Bloco 1 - Característica do Big Data: Volume",
+      "x": "Volume trata do volume massivo de dados (petabytes ou exabytes), com Netflix e YouTube como exemplos citados.",
+      "a": ["Velocidade", "Variedade", "Volume", "Veracidade"],
+      "c": 2
+    },
+    {
+      "e": "Detecção de fraudes em tempo real e monitoramento de tráfego, considerando a rapidez entre geração e processamento dos dados, relacionam-se ao V:",
+      "t": "Velocidade",
+      "d": "facil",
+      "r": "Bloco 1 - Característica do Big Data: Velocidade",
+      "x": "Velocidade trata da relação entre geração de dados e coleta/processamento, com análise em tempo real, detecção de fraudes e monitoramento de tráfego como exemplos.",
+      "a": ["Volume", "Velocidade", "Valor", "Veracidade"],
+      "c": 1
+    },
+    {
+      "e": "A diversidade de tipos de dados e fontes (redes sociais, e-mails, fotos, áudios, vídeos e transações), incluindo dados estruturados, semiestruturados e não estruturados, refere-se a:",
+      "t": "Variedade",
+      "d": "facil",
+      "r": "Bloco 1 - Característica do Big Data: Variedade",
+      "x": "Variedade é a diversidade de tipos e fontes de dados, cobrindo dados estruturados, semiestruturados e não estruturados.",
+      "a": ["Variedade", "Volume", "Velocidade", "Veracidade"],
+      "c": 0
+    },
+    {
+      "e": "O desafio de garantir que os dados coletados sejam confiáveis, validando-os em cada etapa do processo e tratando valores ausentes, ruído e ambiguidade, refere-se ao V:",
+      "t": "Veracidade",
+      "d": "facil",
+      "r": "Bloco 1 - Característica do Big Data: Veracidade",
+      "x": "Veracidade trata da confiabilidade dos dados coletados e da validação em cada etapa do processo.",
+      "a": ["Volume", "Variedade", "Veracidade", "Velocidade"],
+      "c": 2
+    },
+    {
+      "e": "Transformar dados brutos em métricas de negócio, analisando comportamento do cliente, desempenho e tendências numéricas, corresponde ao V:",
+      "t": "Valor",
+      "d": "facil",
+      "r": "Bloco 1 - Característica do Big Data: Valor",
+      "x": "Valor é a passagem dos dados brutos para processos de negócio, construindo métricas de interesse e identificando tendências.",
+      "a": ["Volume", "Valor", "Velocidade", "Veracidade"],
+      "c": 1
+    },
+    {
+      "e": "Sobre o Hadoop, é correto afirmar:",
+      "t": "Hadoop",
+      "d": "medio",
+      "r": "Bloco 2 - O que é o Hadoop?",
+      "x": "O Hadoop é um framework de código aberto criado pela Apache Software Foundation, capaz de armazenar e processar grandes volumes de dados, escalando com eficiência, tolerando falhas e processando de forma distribuída.",
+      "a": ["É um banco de dados relacional proprietário da Microsoft", "É um framework de código aberto da Apache para armazenar e processar grandes volumes de dados de forma distribuída", "É uma ferramenta de visualização de dados em tempo real", "É um protocolo de comunicação entre APIs RESTful"],
+      "c": 1
+    }
+  ]
+}

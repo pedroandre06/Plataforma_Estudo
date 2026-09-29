@@ -1,0 +1,35 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "arquiteturas-dw",
+  "modulo": {
+    "nome": "Arquiteturas e Estruturas de Data Warehouse",
+    "descricao": "Histórico e evolução dos DWs, Data Marts (dependentes e independentes) e os esquemas de modelagem estrela e floco de neve.",
+    "pdf_origem": "71f7faa4-71eb-461f-83e8-b40533aefb7b.pdf",
+    "ordem": 3,
+    "resumo": [
+      "HISTÓRICO E EVOLUÇÃO DOS DATA WAREHOUSES",
+      "• DW é um sistema projetado para armazenar, organizar e centralizar grandes volumes de dados de diversas fontes.",
+      "• Surgiram na década de 1980, inicialmente para atender à demanda por relatórios analíticos.",
+      "• William H. Inmon é considerado o 'pai do Data Warehouse'.",
+      "• Década de 1990: expansão com a popularização de ferramentas de Business Intelligence; crescimento do armazenamento e do processamento.",
+      "• Anos 2000: integração com tecnologias de Big Data; evolução do conceito de Data Lakes.",
+      "• Hoje: DWs em nuvem, integração com IA/ML e tendência de ambientes mais automatizados e descentralizados.",
+      "• Curiosidades: os primeiros DWs usavam hardware especializado, caro e de difícil manutenção; o Amazon Redshift é um dos maiores DWs em nuvem do mundo.",
+      "DATA MART E SUA INTEGRAÇÃO",
+      "• Data Mart: subdivisão do DW focada em um departamento ou área funcional específica (vendas, marketing, finanças) — foco específico e acesso rápido.",
+      "• Data Mart DEPENDENTE: alimentado diretamente pelo Data Warehouse. Benefícios: consistência de dados e integração centralizada.",
+      "• Data Mart INDEPENDENTE: alimentado diretamente das fontes, sem passar pelo DW. Benefícios: flexibilidade e rapidez na implementação.",
+      "• Benefícios da integração: eficiência na análise (performance de consultas e relatórios), melhor atendimento às necessidades de cada área e manutenção da consistência dos dados.",
+      "• Desafio principal: complexidade de integrar diferentes fontes e processos.",
+      "ESQUEMAS DE MODELAGEM",
+      "• Esquema ESTRELA: uma tabela de fatos central (dados quantitativos: vendas, lucros) cercada por tabelas de dimensões (contexto: tempo, produto, cliente). Simples e otimizado para consultas rápidas.",
+      "• Esquema FLOCO DE NEVE: variação do estrela em que as dimensões são normalizadas em várias tabelas menores. Requer mais joins, mas reduz redundância e pode economizar armazenamento.",
+      "• Quando usar ESTRELA: foco em simplicidade e desempenho em consultas rápidas, com poucos joins.",
+      "• Quando usar FLOCO DE NEVE: quando armazenamento eficiente e eliminação de redundância são cruciais, com muitas dimensões complexas e inter-relacionadas.",
+      "PEGADINHAS DE PROVA",
+      "• Data Mart foca em UM departamento; o DW consolida a empresa inteira.",
+      "• Dependente = passa pelo DW (consistência). Independente = vai direto à fonte (rapidez/flexibilidade).",
+      "• Consultas rápidas e simples com poucos joins → ESTRELA; economia de espaço e muita normalização → FLOCO DE NEVE."
+    ]
+  }
+}

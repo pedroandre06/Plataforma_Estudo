@@ -1,0 +1,411 @@
+
+
+===== PAGINA 1 =====
+WBA0178_v3.0
+Banco de dados relacional e big 
+data
+
+===== PAGINA 2 =====
+Linguagem SQL e Transações
+Conceitos e Princípios
+Bloco 1
+Simone Tatiane do Canto
+
+===== PAGINA 3 =====
+Vamos refletir?
+Você já parou para pensar no que acontece quando duas pessoas 
+tentam atualizar ao mesmo tempo o saldo da mesma conta 
+bancária? Ou quando um pedido online é cancelado enquanto 
+outro setor ainda está processando o pagamento?
+Imagine um sistema que não garanta que as transações sejam 
+completas, consistentes, isoladas e duráveis. Ou que permita 
+múltiplos acessos concorrentes sem qualquer tipo de controle.
+Como garantir que as informações armazenadas estejam sempre 
+corretas, sem erros, duplicações ou registros perdidos?
+E se fosse com você? Como confiar em sistemas que não têm 
+controle sobre a integridade e a segurança dos dados que 
+manipulam?
+
+===== PAGINA 4 =====
+Objetivos do capítulo
+• Compreender os princípios e comandos fundamentais da 
+linguagem SQL.
+• Diferenciar os tipos de instruções: DDL e DML.
+• Aplicar comandos básicos e intermediários para 
+manipulação de dados.
+• Conceituar as transações e as propriedades ACID.
+• Entender o controle de concorrência e sua importância na 
+integridade dos dados.
+
+===== PAGINA 5 =====
+O que é SQL?
+SQL (Structured Query Language) é a linguagem padrão 
+para gerenciamento de bancos de dados relacionais.
+Foi criada nos laboratórios da IBM na década de 1970.
+É utilizada para criar estruturas, manipular dados e 
+realizar consultas.
+Suporta aplicações empresariais, acadêmicas, bancárias e 
+muito mais.
+“SQL é a linguagem que transforma dados em decisões.”
+
+===== PAGINA 6 =====
+Por que aprender SQL?
+Presente em praticamente todos os SGBDs: MySQL, 
+PostgreSQL, Oracle, SQL Server...
+Permite definir tabelas (DDL), inserir e modificar registros 
+(DML) e consultar dados (DQL).
+Indispensável para analistas, cientistas de dados, DBAs e 
+desenvolvedores.
+Garante controle, padronização e integridade das 
+informações.
+
+===== PAGINA 7 =====
+Aplicações reais do SQL
+Hospitais: registro de pacientes, exames e histórico 
+clínico.
+Universidades: gestão de alunos, matrículas, boletins.
+Bancos: transações, saldos e extratos.
+Com o SQL é possível garantir que os dados sejam:
+Corretos.
+Atualizados.
+Disponíveis.
+
+===== PAGINA 8 =====
+Concorrência e segurança com SQL
+Em ambientes com múltiplos usuários, pode haver:
+Conflitos de leitura e escrita.
+Registros corrompidos ou duplicados.
+O SQL, aliado ao SGBD, oferece:
+Transações com propriedades ACID.
+Controle de concorrência com locks e timestamps.
+Isolamento entre transações simultâneas.
+
+===== PAGINA 9 =====
+Linguagem SQL e Transações
+Comandos SQL básicos e intermediários
+Bloco 2
+Simone Tatiane do Canto
+
+===== PAGINA 10 =====
+SQL: linguagem padrão para bancos relacionais
+O SQL (Structured Query Language) é a linguagem 
+universal para trabalhar com bancos de dados relacionais.
+Desenvolvida pela IBM nos anos 1970, ela permite:
+• Criar e estruturar tabelas.
+• Inserir, atualizar e excluir registros.
+• Consultar dados de forma eficiente.
+É uma linguagem declarativa: você diz o que quer, o SGBD 
+cuida do como.
+
+===== PAGINA 11 =====
+Sublinguagens SQL: o que são e para que 
+servem
+O SQL é composto por sublinguagens com funções distintas:
+DDL – Define a estrutura do banco de dados.
+DML – Manipula os dados dentro das tabelas.
+SELECT – Usado para consultar dados (DQL, mas muitas 
+vezes tratado como DML)
+Essas sublinguagens são complementares e fundamentais 
+para operar um SGBD de forma eficaz.
+
+===== PAGINA 12 =====
+DDL: Data Definition Language
+A DDL permite criar e modificar a estrutura do banco:
+• CREATE: cria tabelas, visões, índices.
+• ALTER: altera colunas, restrições, tipos de dados.
+• DROP: remove objetos do banco.
+Atua sobre o esquema do banco de dados, sendo essencial na 
+etapa de modelagem.
+Exemplo:
+CREATE TABLE alunos (
+id INT PRIMARY KEY ,
+nome VARCHAR(100)
+);
+
+===== PAGINA 13 =====
+DML: Data Manipulation Language
+A DML permite interagir com os dados armazenados nas 
+tabelas:
+• INSERT: insere registros.
+• UPDATE: modifica dados existentes.
+• DELETE: exclui dados.
+• SELECT: consulta registros (embora formalmente parte 
+da DQL).
+Usada diariamente por aplicações para processar dados 
+transacionais.
+Exemplo:
+UPDATE alunos SET nome = 'Carla' WHERE id = 1;
+
+===== PAGINA 14 =====
+DDL vs DML: funções distintas e complementares
+Comparativo entre comandos DDL e DML no contexto de bancos de 
+dados relacionais
+Característica DDL DML
+Foco Estrutura do banco 
+(esquema) Conteúdo armazenado
+Comandos CREATE, ALTER, DROP INSERT, UPDATE, 
+DELETE
+Uso Fase de projeto e 
+manutenção
+Rotina de operação do 
+sistema
+Reversão (ROLLBACK) Nem sempre suportada Suporta rollback em 
+transações
+Fonte: adaptado de Silberschatz, Korth e Sudarshan (2011). 
+ Compreender essa distinção é vital para construir 
+sistemas robustos e manipulá-los com segurança.
+
+===== PAGINA 15 =====
+Linguagem SQL e Transações
+Manipulação dos dados 
+Bloco 3
+Simone Tatiane do Canto
+
+===== PAGINA 16 =====
+Comandos SQL: básicos para manipular dados
+ Comandos essenciais da DML para trabalhar com os 
+dados em tabelas:
+• SELECT: consulta registros.
+• INSERT: adiciona novos dados.
+• UPDATE: altera valores já existentes.
+• DELETE: remove registros.
+ São usados no dia a dia de sistemas para garantir que os 
+dados estejam sempre atualizados e coerentes.
+
+===== PAGINA 17 =====
+Comandos intermediários: filtro, junção e 
+agrupamento
+O SQL também permite consultas mais elaboradas com 
+comandos intermediários:
+• WHERE: aplica filtros.
+• ORDER BY: ordena os resultados.
+• GROUP BY: agrupa registros para funções agregadas.
+• HAVING: filtra grupos.
+• JOIN: combina dados de várias tabelas.
+ Permite recuperar informações de forma estruturada e 
+analítica.
+
+===== PAGINA 18 =====
+Exemplo de consulta com SQL intermediário
+Exemplo de consulta com SQL intermediário:
+SELECT departamento, AVG(salario) AS media_salarial
+FROM funcionarios
+WHERE cargo = 'Analista'
+GROUP BY departamento
+HAVING AVG(salario) > 5000
+ORDER BY media_salarial DESC;
+ Filtro por cargo.
+ Agrupamento por departamento.
+ Média salarial e ordenação decrescente.
+
+===== PAGINA 19 =====
+O que é uma transação no banco de dados?
+ Uma transação é um conjunto de operações que deve ser 
+executado por completo ou não ser executado.
+ Garante que o banco permaneça íntegro mesmo após 
+falhas ou acessos simultâneos.
+ Para isso, os SGBDs seguem as propriedades ACID:
+• Atomicidade.
+• Consistência.
+• Isolamento.
+• Durabilidade.
+
+===== PAGINA 20 =====
+Propriedades ACID na prática
+ Exemplo: transferência entre contas bancárias – ou 
+atualiza os dois saldos, ou nenhum!
+Propriedade Função
+Atomicidade Tudo ou nada: executa todas as operações ou desfaz 
+tudo.
+Consistência Garante que o banco passe de um estado válido para 
+outro.
+Isolamento Transações não interferem entre si.
+Durabilidade Após confirmada, a transação não se perde, mesmo 
+com falhas.
+
+===== PAGINA 21 =====
+Prática em ação
+Linguagem SQL e Transações
+Bloco 4
+Simone Tatiane do Canto
+
+===== PAGINA 22 =====
+Reflita sobre a seguinte situação
+Uma plataforma de marketplace está enfrentando sérios problemas 
+com registros de pedidos e pagamentos. Após uma série de 
+inconsistências, a equipe técnica identificou os seguintes sintomas:
+• Pedidos duplicados ou não concluídos sendo cobrados mais de 
+uma vez.
+• Clientes visualizando produtos comprados por outras pessoas.
+• Falhas nas transações que afetam o estoque, sem atualização 
+correta.
+• Relatórios de vendas com valores incoerentes entre as tabelas.
+Pergunta:
+Como o uso adequado de transações SQL, propriedades ACID e 
+controle de concorrência pode resolver essas falhas críticas no 
+sistema?
+
+===== PAGINA 23 =====
+Proposta de resolução
+Por onde começar? 
+Implementar controle 
+transacional:
+• Envolver operações 
+críticas (como pedidos 
+e pagamentos) em 
+transações completas.
+• Usar comandos 
+`BEGIN`, `COMMIT` e 
+`ROLLBACK` para 
+garantir execução 
+atômica.
+• Evitar inconsistências 
+com mecanismos de 
+log e checkpoints no 
+banco.
+Aplicar corretamente as 
+propriedades ACID:
+• Atomicidade: a 
+transação executa 
+tudo ou nada.
+• Consistência: mantém 
+o banco em estado 
+válido antes e depois.
+• Isolamento: impede 
+que transações 
+simultâneas interfiram 
+entre si.
+• Durabilidade: garante 
+que os dados 
+persistam após falhas.
+Estabelecer controle de 
+concorrência:
+• Utilizar bloqueios 
+(locks) para evitar 
+conflitos de escrita.
+• Aplicar controle por 
+timestamp em 
+sistemas com alta 
+concorrência.
+• Evitar anomalias 
+como leituras sujas e 
+atualizações perdidas.
+
+===== PAGINA 24 =====
+Proposta de resolução
+Medidas de controle durante o processo:
+Diagnóstico da 
+estrutura 
+transacional atual 
+Identificação de 
+falhas de 
+atomicidade, 
+consistência e 
+concorrência 
+Redesenho das 
+transações com uso 
+correto de `BEGIN`, 
+`COMMIT`, `ROLLBACK` 
+Implementação de 
+controle de 
+concorrência com locks 
+ou timestamps 
+Aplicação das 
+propriedades ACID 
+Testes de integridade 
+com simulações de 
+falhas e concorrência 
+Implementação no 
+ambiente real com 
+controle de logs 
+Monitoramento e 
+ajustes contínuos
+
+===== PAGINA 25 =====
+Proposta de resolução
+Possíveis causas:
+Modelo mal estruturado e falta de normalização das tabelas. 
+Uso ineficiente ou ausência de índices e relacionamentos mal definidos entre 
+tabelas. 
+Chaves primárias mal escolhidas e ausência de integridade referencial. 
+Consultas SQL não otimizadas e redundância de dados. 
+Tabelas com dados inconsistentes ou corrompidos. 
+Falta de alinhamento entre o modelo lógico e o modelo físico do banco. 
+Bons estudos!
+
+===== PAGINA 26 =====
+Consolidando o aprendizado
+Linguagem SQL e Transações
+Bloco 5
+Simone Tatiane do Canto
+
+===== PAGINA 27 =====
+Consolidando o aprendizado
+• Princípios da linguagem SQL e seus principais comandos.
+• Diferenças e aplicações das linguagens DDL e DML.
+• Uso das propriedades ACID para garantir transações 
+confiáveis.
+• Estratégias de controle de concorrência e integridade em 
+ambiente multiusuário.
+
+===== PAGINA 28 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da 
+sua carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 29 =====
+Indicação de leitura 1
+Este livro oferece uma abordagem técnica e aprofundada 
+sobre SQL e suas aplicações em sistemas transacionais.  
+Esta obra aborda desde os fundamentos da linguagem até 
+práticas de escrita precisa de comandos SQL, tratamento de 
+transações com propriedades ACID e controle de concorrência 
+em ambientes de alto desempenho.  
+É ideal para quem deseja consolidar conhecimento sobre 
+consistência de dados, isolamento transacional e escrita 
+segura de consultas em bancos relacionais.
+Referência 
+DATE, C. J. SQL e Teoria Relacional: Como Escrever Códigos SQL Precisos. 2. ed. São 
+Paulo: Novatec, 2015.
+
+===== PAGINA 30 =====
+Indicação de leitura 2
+Este livro é focado em projeto lógico de bancos de dados, 
+oferecendo uma abordagem prática para a modelagem 
+Entidade-Relacionamento, a transformação em modelo 
+relacional e a normalização. A obra traz exemplos reais e 
+exercícios que facilitam a aplicação dos conceitos em 
+ambientes corporativos e acadêmicos.
+Referência
+HEUSER, C. A. Projeto de banco de dados. 6. ed. Porto Alegre: Bookman, 2009.
+
+===== PAGINA 31 =====
+Referências
+CARDOSO, Gisele Cristina; CARDOSO, Virgínia Mara. Linguagem SQL e suas 
+aplicações em bancos de dados modernos. Revista de Tecnologia da Informação, 
+São Paulo, v. 3, p. 22-39, 2017.
+DAMAS, Luis. SQL: Linguagem de Consulta Estruturada . Rio de Janeiro: LTC, 2014.
+ELMASRI, R.; NAVATHE, S. B. Sistemas de banco de dados: fundamentos e 
+aplicações. 7. ed. São Paulo: Pearson Education do Brasil, 2018.
+HEUSER, Carlos Alberto. Projeto de banco de dados. 6. ed. Porto Alegre: Bookman, 
+2009.
+LEBLANC, Patrick. Microsoft SQL Server 2012: Estratégias para Business 
+Intelligence. Revista de Sistemas e Dados, Porto Alegre, v. 1, pág. 101-120, 2013.
+PRICE, Jason. Oracle Database 11G SQL. In: PRICE, J. Oracle Database 11G SQL: 
+Guia Completo . Porto Alegre: Bookman, 2009.
+SILBERSCHATZ, A.; KORTH, H. F.; SUDARSHAN, S. Sistemas de Banco de Dados. 6. 
+ed. São Paulo: Pearson, 2011.
+
+===== PAGINA 32 =====
+Bons estudos!

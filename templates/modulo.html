@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block titulo %}{{ modulo['nome'] }}{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <p class="item-meta">
+      <a href="{{ url_for('geral.dashboard') }}">Painel</a> /
+      <a href="{{ url_for('geral.materia', slug=modulo['materia_slug']) }}">{{ modulo['materia_nome'] }}</a> / módulo
+    </p>
+    <h1 class="titulo-pagina">{{ modulo['nome'] }}</h1>
+    <p class="sub">{{ modulo['descricao'] }}</p>
+  </div>
+  <div class="linha">
+    <span class="badge">{{ n_perguntas }} questões</span>
+    {% if n_flashcards %}<span class="badge badge-livre">{{ n_flashcards }} flashcards</span>{% endif %}
+    {% if progresso and progresso['melhor_nota'] is not none %}
+      <span class="badge badge-info">melhor nota {{ fmt_nota(progresso['melhor_nota']) }}</span>
+    {% endif %}
+    {% if progresso and progresso['status'] == 'concluido' %}<span class="badge badge-ok">concluído</span>{% endif %}
+  </div>
+</div>
+
+<div class="tabs">
+  <a class="tab {{ 'ativa' if aba == 'resumo' }}" href="{{ url_for('aula.modulo', slug=modulo['slug'], aba='resumo') }}">Resumo</a>
+  <a class="tab {{ 'ativa' if aba == 'praticar' }}" href="{{ url_for('aula.modulo', slug=modulo['slug'], aba='praticar') }}">Praticar</a>
+  {% if n_flashcards %}
+    <a class="tab" href="{{ url_for('extra.flashcards', slug=modulo['slug']) }}">Flashcards</a>
+  {% endif %}
+  {% if tem_pdf %}
+    <a class="tab {{ 'ativa' if aba == 'material' }}" href="{{ url_for('aula.modulo', slug=modulo['slug'], aba='material') }}">Material original (PDF)</a>
+  {% endif %}
+</div>
+
+{% if aba == 'material' %}
+  <div class="pdf-caixa">
+    <iframe src="{{ url_for('aula.material', modulo_id=modulo['id']) }}" title="PDF do módulo"></iframe>
+  </div>
+  <p class="item-meta espaco-topo">
+    Se o PDF não aparecer aqui, <a href="{{ url_for('aula.material', modulo_id=modulo['id']) }}" target="_blank">abra em nova aba</a>.
+  </p>
+{% elif aba == 'praticar' %}
+  {% include "_modulo_praticar.html" %}
+{% else %}
+  {% include "_modulo_resumo.html" %}
+{% endif %}
+{% endblock %}

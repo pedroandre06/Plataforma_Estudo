@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block titulo %}Criar simulado{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">Criar simulado personalizado</h1>
+    <p class="sub">Monte o simulado como uma prova: escolha escopo, quantidade, tempo e regras.</p>
+  </div>
+  <a class="btn" href="{{ url_for('simulados.lista') }}">Voltar</a>
+</div>
+
+<form method="post" class="grid grid-2">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+
+  <div class="card">
+    <h2>1. Escopo</h2>
+    <h3 class="espaco-topo">Matérias</h3>
+    <div class="lista espaco-topo">
+      {% for m in materias %}
+        <label class="check">
+          <input type="checkbox" name="materias" value="{{ m['id'] }}">
+          {{ m['nome'] }} <span class="item-meta">({{ m['n_perguntas'] }} questões)</span>
+        </label>
+      {% endfor %}
+    </div>
+    <h3 class="espaco-topo">Ou módulos específicos</h3>
+    <div class="lista espaco-topo">
+      {% for mo in modulos %}
+        <label class="check">
+          <input type="checkbox" name="modulos" value="{{ mo['id'] }}">
+          {{ mo['materia_nome'] }} · {{ mo['nome'] }} <span class="item-meta">({{ mo['n'] }})</span>
+        </label>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>2. Regras</h2>
+    <div class="form espaco-topo">
+      <label class="campo"><span>Nome do simulado</span>
+        <input type="text" name="nome" value="Meu simulado" maxlength="80">
+      </label>
+      <div class="dupla">
+        <label class="campo"><span>Questões</span>
+          <input type="number" name="n_questoes" min="5" max="60" value="20">
+        </label>
+        <label class="campo"><span>Tempo (min)</span>
+          <input type="number" name="tempo_min" min="0" max="240" value="40">
+        </label>
+      </div>
+      <div class="dupla">
+        <label class="campo"><span>Nota de corte</span>
+          <input type="number" name="nota_corte" step="0.5" min="0" max="10" value="6">
+        </label>
+        <label class="campo"><span>Dificuldade</span>
+          <select name="dificuldade">
+            <option value="todas">Todas</option>
+            <option value="facil">Somente fáceis</option>
+            <option value="medio">Somente médias</option>
+            <option value="dificil">Somente difíceis</option>
+          </select>
+        </label>
+      </div>
+      <label class="campo"><span>Mostrar gabarito</span>
+        <select name="mostrar_gabarito">
+          <option value="fim">Somente no final</option>
+          <option value="nunca">Nunca mostrar</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" name="embaralhar" value="1" checked>
+        Embaralhar questões e alternativas</label>
+      <button class="btn btn-primario btn-largo" type="submit">Gerar simulado e começar</button>
+      <p class="item-meta">Se você marcar módulos, eles têm prioridade sobre as matérias selecionadas.</p>
+    </div>
+  </div>
+</form>
+{% endblock %}

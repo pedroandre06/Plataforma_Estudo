@@ -1,0 +1,23 @@
+[
+  {
+    "slug": "data-warehouse",
+    "nome": "Data Warehouse",
+    "descricao": "Fundamentos, modelagem dimensional, mineração de dados, arquiteturas (estrela e floco de neve), Data Marts, ETL, OLAP e boas práticas de DW.",
+    "cor": "#4f9cf9",
+    "ordem": 1
+  },
+  {
+    "slug": "interacoes-big-data-cloud",
+    "nome": "Interações entre Big Data e Cloud Computing",
+    "descricao": "Fundamentos de Big Data (5 Vs), arquiteturas e programação em nuvem, ciência de dados aplicada ao negócio e gerenciamento de Big Data com Machine Learning.",
+    "cor": "#a06bff",
+    "ordem": 2
+  },
+  {
+    "slug": "banco-de-dados-relacional-e-big-data",
+    "nome": "Banco de Dados Relacional e Big Data",
+    "descricao": "Modelagem e estrutura de bancos relacionais: MER, modelo relacional, chaves, SGBD, normalização (1FN a 3FN), SQL, transações/ACID e a ponte com NoSQL e Big Data.",
+    "cor": "#35c98a",
+    "ordem": 3
+  }
+]

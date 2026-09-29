@@ -1,0 +1,61 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "modelagem-mer",
+  "perguntas": [
+    {
+      "e": "Na transformação do MER para o modelo relacional, cada entidade se torna:",
+      "t": "MER para relacional",
+      "d": "facil",
+      "r": "Bloco 2 - Do MER ao Modelo Relacional",
+      "x": "Cada entidade vira uma tabela; cada relacionamento vira uma chave estrangeira (1:N) ou uma nova tabela (N:M).",
+      "a": ["Um índice", "Uma tabela", "Uma chave estrangeira", "Um domínio"],
+      "c": 1
+    },
+    {
+      "e": "Como um relacionamento 1:N é implementado no modelo relacional?",
+      "t": "MER para relacional",
+      "d": "medio",
+      "r": "Bloco 2 - Do MER ao Modelo Relacional",
+      "x": "Relacionamentos 1:N são resolvidos com uma chave estrangeira; relacionamentos N:M exigem uma nova tabela.",
+      "a": ["Com uma nova tabela associativa", "Com uma chave estrangeira", "Com um atributo multivalorado", "Com um índice composto"],
+      "c": 1
+    },
+    {
+      "e": "No exemplo do material, as entidades Aluno e Disciplina com o relacionamento Matrícula geram:",
+      "t": "MER para relacional",
+      "d": "medio",
+      "r": "Bloco 2 - Do MER ao Modelo Relacional",
+      "x": "Geram uma tabela MATRÍCULA com atributos próprios do relacionamento, como data e nota.",
+      "a": ["Apenas duas tabelas, sem tabela intermediária", "Uma tabela MATRÍCULA com atributos próprios (data, nota)", "Um índice para cada entidade", "Uma chave primária composta apenas por Aluno"],
+      "c": 1
+    },
+    {
+      "e": "No sistema de pedidos online usado como exemplo, qual é o conjunto correto de entidades e relacionamentos?",
+      "t": "Diagrama ER",
+      "d": "medio",
+      "r": "Bloco 2 - Exemplo de Diagrama ER",
+      "x": "Entidades: cliente, pedido e produto. Relacionamentos: 'Cliente faz pedido' e 'Pedido contém produto'.",
+      "a": ["Entidades: cliente e produto; relacionamento: 'cliente contém produto'", "Entidades: cliente, pedido e produto; relacionamentos: 'Cliente faz pedido' e 'Pedido contém produto'", "Entidades: pedido e nota fiscal, sem relacionamentos", "Entidades: cliente e pedido apenas"],
+      "c": 1
+    },
+    {
+      "e": "O MER é a representação conceitual do sistema, enquanto o modelo relacional é a sua implementação em tabelas e chaves.",
+      "tp": "vf",
+      "t": "MER x relacional",
+      "d": "facil",
+      "r": "Bloco 2 - Do MER ao Modelo Relacional",
+      "x": "Verdadeiro. O material resume com a frase: 'O MER é o mapa. O modelo relacional é a estrada.'",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 0
+    },
+    {
+      "e": "Uma biblioteca precisa registrar quais livros cada usuário emprestou, com data de empréstimo e data de devolução, e um livro pode ser emprestado para vários usuários ao longo do tempo, assim como um usuário pode pegar vários livros. Como isso se modela?",
+      "t": "MER para relacional",
+      "d": "dificil",
+      "r": "Bloco 2 - Do MER ao Modelo Relacional",
+      "x": "É um relacionamento N:M entre Usuário e Livro, implementado por uma nova tabela (Empréstimo) que carrega os atributos próprios do relacionamento (data de empréstimo e devolução).",
+      "a": ["Colocando a data de empréstimo como atributo da entidade Livro", "Modelando um relacionamento N:M resolvido por uma tabela Empréstimo com as datas", "Criando uma chave estrangeira em Usuário apontando para Livro", "Criando um índice composto em Livro"],
+      "c": 1
+    }
+  ]
+}

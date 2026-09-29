@@ -1,0 +1,445 @@
+
+
+===== PAGINA 1 =====
+WB0748_v2.0
+Modelagem e arquitetura 
+do DW (Data Warehouse)
+
+===== PAGINA 2 =====
+Arquiteturas e Estruturas de Data 
+Warehouse
+Histórico e curiosidades dos Data Warehouse
+Bloco 1
+Anderson Emidio de Macedo Gonçalves
+
+===== PAGINA 3 =====
+Vamos refletir?
+Data Marts e Data Warehouses são componentes fundamentais na 
+arquitetura de dados de uma empresa, atuando de maneira 
+integrada para fornecer informações essenciais para a análise e 
+tomada de decisões. Enquanto o Data Mart concentra dados 
+específicos para áreas de negócio, o Data Warehouse centraliza um 
+volume maior de dados, organizando e padronizando informações 
+de diversas fontes. Juntos, eles viabilizam a análise de dados com 
+esquemas que otimizam o desempenho de consultas e permitem 
+uma análise detalhada e eficiente dos dados.
+A partir deste contexto, reflita: como a implementação de uma 
+arquitetura de Data Warehouse integrada à Data Marts pode 
+otimizar a forma como sua organização realiza análises de dados e 
+toma decisões estratégicas?
+
+===== PAGINA 4 =====
+Histórico e curiosidades dos Data Warehouses
+Um Data Warehouse 
+(DW) é um sistema 
+projetado para 
+armazenar, organizar 
+e centralizar grandes 
+volumes de dados 
+provenientes de 
+diversas fontes.
+Data Warehouse
+Fonte: https://www.astera.com/wp-
+content/uploads/2019/06/data-warehouse-layout.png
+
+===== PAGINA 5 =====
+Surgimento dos Data Warehouses
+Origem dos DWs
+Fonte: https://cdn.pixabay.com/photo/2016/
+09/13/13/16/big-data-1667212_1280.png
+Surgiram na década 
+de 1980.
+Inicialmente 
+desenvolvidos para 
+atender à crescente 
+demanda por 
+relatórios analíticos.
+William H. Inmon é 
+considerado o "pai do 
+Data Warehouse“.
+Empresas precisavam centralizar dados de 
+diversas fontes para facilitar a análise.
+
+===== PAGINA 6 =====
+Evolução ao longo do tempo
+Data Lake• Década de 1990: Expansão 
+dos DWs com a 
+popularização de 
+ferramentas de Business 
+Intelligence.
+• Crescimento da capacidade 
+de armazenamento e 
+processamento de dados.
+• Integração com tecnologias 
+de Big Data nos anos 2000.
+• A evolução do conceito de 
+Data Lakes e o avanço para 
+DWs em nuvem (cloud).
+Fonte: https://i0.wp.com/www.cien
+ciaedados.com/wp-
+content/uploads/2018/06/Data-
+Lake-A-Evoluc%CC%A7a%CC%83o-
+do-Processamento-de-Dados-
+1.png?fit=600%2C315&ssl=1
+
+===== PAGINA 7 =====
+Curiosidades interessantes
+Data Warehouse
+Fonte: https://addepto.com/wp-
+content/uploads/2022/06/2-2.png
+• Os primeiros DWs eram 
+construídos com 
+hardware especializado, 
+muito caro e de difícil 
+manutenção.
+• O Data Warehouse da 
+Amazon, Redshift, é um 
+dos maiores DWs em 
+nuvem do mundo.
+• A combinação de DW 
+com Big Data permite 
+análises preditivas e 
+avançadas.
+
+===== PAGINA 8 =====
+Impacto Atual e Futuro
+• Os DWs são essenciais para a tomada de 
+decisões baseadas em dados.
+• Integração crescente com Inteligência 
+Artificial e Machine Learning.
+• O futuro inclui DWs cada vez mais 
+automatizados e descentralizados, 
+aproveitando a nuvem.
+
+===== PAGINA 9 =====
+Arquiteturas e Estruturas de Data 
+Warehouse
+Data Mart e sua integração para Data Warehouse
+Bloco 2
+Anderson Emidio de Macedo Gonçalves
+
+===== PAGINA 10 =====
+Data Mart e sua integração com data warehouse
+Objetivo: compreender o conceito de Data Mart e 
+como ele se integra ao Data Warehouse (DW).
+Pontos principais:
+Definição de Data Mart. 
+Importância da integração com o Data 
+Warehouse.
+Visão geral dos benefícios e desafios.
+
+===== PAGINA 11 =====
+O que é um Data Mart?
+Definição: um Data Mart é uma subdivisão do Data 
+Warehouse focada em um departamento específico ou 
+área funcional, como vendas, marketing, ou finanças.
+Foco Específico 
+Acesso Rápido
+
+===== PAGINA 12 =====
+Tipo de Data Marts
+Data Mart Dependente:
+• Descrição: alimentado diretamente pelo Data 
+Warehouse.
+• Benefícios: consistência de dados e integração 
+centralizada.
+Data Mart Independente:
+• Descrição: alimentado diretamente das fontes 
+de dados, sem passar pelo DW.
+• Benefícios: flexibilidade e rapidez na 
+implementação.
+
+===== PAGINA 13 =====
+Data Mart Dependente x Independente
+Fonte: https://panoply.io/uploads/versions/diagram8
+-1---x----750-376x---.jpg
+
+===== PAGINA 14 =====
+Benefícios e desafios da integração
+Eficiência na Análise: melhoria na performance de consultas 
+e relatórios.
+Melhor Atendimento às Necessidades: soluções 
+específicas para diferentes áreas.
+Manutenção de Consistência: garantir que os dados 
+estejam sincronizados.
+Complexidade de Integração: gerenciar diferentes fontes e 
+processos.
+
+===== PAGINA 15 =====
+Esquemas de Modelagem: Esquema Estrela e 
+Esquema Floco de Neve
+Bloco 3
+Anderson Emidio de Macedo Gonçalves
+Arquiteturas e Estruturas de Data 
+Warehouse
+
+===== PAGINA 16 =====
+Esquemas de modelagem
+Objetivo: introduzir os dois principais esquemas de 
+modelagem de dados usados em Data Warehouses: 
+Esquema Estrela e Esquema Floco de Neve.
+Pontos principais:
+Definição de cada esquema.
+Comparação entre os dois.
+
+===== PAGINA 17 =====
+Esquema Estrela
+• Definição: o Esquema Estrela é 
+uma abordagem de 
+modelagem de dados onde os 
+dados são organizados em uma 
+tabela de fatos central, cercada 
+por tabelas de dimensões.
+• Características:
+• Tabela de Fatos: contém os 
+dados quantitativos (e.g., 
+vendas, lucros).
+• Tabelas de Dimensões: contêm 
+informações contextuais (e.g., 
+tempo, produto, cliente).
+• Simplicidade: fácil de entender 
+e otimizado para consultas 
+rápidas.
+Star-Schema
+Fonte: 
+https://miro.medium.com/v2/resize:fit:720/for
+mat:webp/1*coqIMV-JfCqCUYoFwAg0XQ.png
+
+===== PAGINA 18 =====
+Esquema Floco de Neve
+• Definição: o Esquema Floco de Neve é uma variação do 
+Esquema Estrela, onde as tabelas de dimensões são 
+normalizadas em múltiplas tabelas menores.
+• Características:
+• Normalização: as tabelas de dimensões são divididas 
+para eliminar redundância.
+• Mais Complexo: requer mais joins entre tabelas nas 
+consultas, mas reduz duplicação de dados.
+• Menor Espaço: pode economizar armazenamento, 
+especialmente em grandes DWs.
+
+===== PAGINA 19 =====
+Esquema Floco de Neve
+Fonte: https://miro.medium.com/v2/resize:fit:720/format:webp/1*UqLu8sgcXqhPitlme_FW2g.jpeg
+
+===== PAGINA 20 =====
+Quando usar esquema estrela e esquema 
+floco de neve?
+Cenário Ideal: Quando o foco é a simplicidade e o desempenho 
+em consultas rápidas.
+Exemplo: Análise de dados de vendas simples, com poucos 
+joins.
+Esquema Estrela:
+Esquema Floco de Neve:
+Cenário Ideal: Quando o armazenamento eficiente e a eliminação 
+de redundância são cruciais.
+Exemplo: Grandes organizações com muitas dimensões 
+complexas e dados inter-relacionados.
+
+===== PAGINA 21 =====
+Teoria em prática
+Bloco 4
+Anderson Emidio de Macedo Gonçalves
+Arquiteturas e Estruturas de Data 
+Warehouse
+
+===== PAGINA 22 =====
+Reflita sobre a seguinte situação
+Você é um analista de dados contratado por uma rede de supermercados que 
+deseja melhorar a gestão de seus estoques e otimizar as vendas em suas diferentes 
+lojas. A rede possui diversas unidades espalhadas em várias cidades, e a gestão 
+central deseja utilizar dados históricos para identificar padrões de compra, 
+melhorar o abastecimento de mercadorias e aumentar a satisfação dos clientes.
+Conjunto de dados disponível: registros de vendas diárias por loja, produto e 
+categoria. Informações sobre o estoque de cada loja. Dados demográficos dos 
+clientes (cidade, idade, faixa de renda).
+Desafios:
+•Padrões de Compra: identificar os produtos mais vendidos por loja e por 
+categoria, correlacionando esses padrões com datas específicas, como feriados e 
+finais de semana.
+•Gestão de Estoque: analisar o histórico de vendas e o nível de estoque para prever 
+rupturas de produtos em cada loja e sugerir reposições de estoque mais eficientes.
+•Comparação entre Lojas: comparar o desempenho das lojas em termos de vendas 
+e estoque, sugerindo quais unidades precisam de ajustes em seu abastecimento ou 
+na reposição de mercadorias.
+
+===== PAGINA 23 =====
+Norte para a resolução
+Por onde começar? 
+Passo 1: Entendimento 
+dos Dados
+• Analise os dados 
+fornecidos (vendas, 
+estoque, clientes) 
+para identificar os 
+principais fatores que 
+impactam a gestão 
+de estoques e o 
+desempenho das 
+lojas.
+Passo 2: Escolha do 
+Esquema
+• Decida entre o 
+Esquema Estrela 
+(para consultas 
+rápidas e 
+simplicidade) ou o 
+Esquema Floco de 
+Neve (para maior 
+normalização e 
+economia de 
+espaço), com base 
+nos requisitos de 
+desempenho e 
+complexidade.
+Passo 3: Modelagem 
+de Dados do DW
+• Organize os dados 
+em tabelas de fatos 
+(vendas, estoque) e 
+dimensões (lojas, 
+clientes, produtos), 
+seguindo o esquema 
+escolhido.
+Passo 4: Análise e 
+Otimização
+• Use o Data 
+Warehouse 
+modelado para gerar 
+relatórios que 
+identifiquem padrões 
+de vendas, previsões 
+de estoque e 
+comparações entre 
+lojas, melhorando a 
+tomada de decisão.
+
+===== PAGINA 24 =====
+Norte para a resolução
+Entendimento dos 
+Dados
+Escolha do 
+Esquema (Schema) Modelagem do DW
+Análise e 
+OtimizaçãoDesafios
+
+===== PAGINA 25 =====
+Norte para a resolução
+Desafios que poderão surgir:
+Integração de Dados: unificar dados de diversas fontes de 
+forma consistente.
+Desempenho de Consultas: garantir consultas rápidas, 
+especialmente com grandes volumes de dados.
+Atualização do DW: manter o Data Warehouse atualizado 
+sem comprometer a performance.
+
+===== PAGINA 26 =====
+Consolidando o aprendizado
+Bloco 5
+Anderson Emidio de Macedo Gonçalves
+Arquiteturas e Estruturas de Data 
+Warehouse
+
+===== PAGINA 27 =====
+Consolidando o aprendizado
+Durante este conteúdo programático, abordamos os 
+seguintes assuntos:
+• Histórico e curiosidades dos Data Warehouse.
+• Data Mart e sua integração para Data Warehouse.
+• Esquemas de Modelagem: Esquema Estrela e 
+Esquema Floco de Neve.
+• Situação-problema: melhorar a gestão de 
+estoques e as vendas de um supermercado.
+
+===== PAGINA 28 =====
+Quiz
+A B
+C D
+Você é um analista de dados contratado por uma universidade que deseja analisar o 
+desempenho acadêmico dos alunos. O objetivo é identificar padrões de notas e 
+frequência em diferentes disciplinas ao longo dos semestres, além de correlacionar 
+esses dados com a satisfação dos alunos com as aulas. A universidade precisa de um 
+Data Warehouse para consolidar essas informações e facilitar a análise.
+Qual esquema de modelagem de dados seria mais indicado para essa universidade, 
+considerando a necessidade de consultas rápidas e uma estrutura de dados simples?
+Esquema Floco de Neve. Esquema Estrela.
+Esquema Hierárquico. Esquema Relacional.
+
+===== PAGINA 29 =====
+Quiz
+A B
+C D
+Você é um analista de dados contratado por uma universidade que deseja analisar o 
+desempenho acadêmico dos alunos. O objetivo é identificar padrões de notas e 
+frequência em diferentes disciplinas ao longo dos semestres, além de correlacionar 
+esses dados com a satisfação dos alunos com as aulas. A universidade precisa de um 
+Data Warehouse para consolidar essas informações e facilitar a análise.
+Qual esquema de modelagem de dados seria mais indicado para essa universidade, 
+considerando a necessidade de consultas rápidas e uma estrutura de dados simples?
+Esquema Floco de Neve. Esquema Estrela.
+Esquema Hierárquico. Esquema Relacional.
+
+===== PAGINA 30 =====
+Quiz – Resolução
+B) Esquema Estrela.
+O Esquema Estrela é ideal para consultas rápidas e 
+simples, como aquelas que envolvem o 
+desempenho acadêmico, frequência e satisfação 
+dos alunos. Sua estrutura facilita a análise ao 
+centralizar os dados em uma tabela de fatos e 
+permitir acessos diretos a dimensões como aluno, 
+disciplina e semestre, sem a complexidade de 
+junções que o Esquema Floco de Neve exige.
+
+===== PAGINA 31 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da sua 
+carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 32 =====
+Indicação de leitura 1
+Esta obra aborda conteúdos interessantes sobre o 
+processo de preparação dos dados e a integração 
+dos dados. O capítulo "Manutenção de data 
+warehouses" apresenta esses conceitos falando da 
+extração, transporte, limpeza e auditoria dos 
+dados. 
+Referência:
+VIDA, Edinilson da S. et al. Data warehouse. Porto Alegre: 
+Grupo A, 2021.
+
+===== PAGINA 33 =====
+Indicação de leitura 2
+A base de conhecimento da UFLA traz uma série de 
+conteúdos e definições de assuntos sobre Banco de 
+Dados e o Data Warehouse. O portal apresenta muito 
+conteúdo de fácil acesso. 
+Referência
+Livros. ([s.d.]). Ufla.br. Disponível em: https://kb.ufla.br/books. 
+Acesso em: 12 nov. 2024.
+
+===== PAGINA 34 =====
+Referências
+INMON, W. H. Como construir o Data Warehouse. Rio de Janeiro: Campus, 
+1997. 
+MACHADO, F. N. Tecnologia e Projeto de Data Warehouse: uma visão 
+multidimensional. São Paulo: Érica, 2004. 
+RASLAN, D. A.; CALAZANS, A. T. S. Data Warehouse: Conceitos e 
+Aplicações. Brasília, DF, Abril de 2014. 
+SHARDA, Ramesh; DELEN, Dursun; TURBAN, Efraim. Business intelligence 
+e análise de dados para gestão do negócio. Porto Alegre: Grupo A, 2019.
+VIDA, Edinilson da S. et al. Data warehouse. Porto Alegre: Grupo A, 2021.
+
+===== PAGINA 35 =====
+Bons estudos!

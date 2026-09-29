@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block titulo %}{{ simulado['nome'] if simulado else 'Simulado' }}{% endblock %}
+{% block conteudo %}
+<div id="execucao" data-tid="{{ tentativa['id'] }}" data-restante="{{ restante or 0 }}">
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">{{ simulado['nome'] if simulado else 'Simulado' }}</h1>
+    <p class="sub">
+      {{ questoes|length }} questões · nota de corte {{ fmt_nota(tentativa['nota_corte']) }}
+      · respostas salvas automaticamente
+    </p>
+  </div>
+  <div class="linha">
+    {% if restante %}
+      <div class="card">
+        <div class="stat-rotulo">Tempo restante</div>
+        <div class="temporizador js-restante">{{ restante // 60 }}:{{ '%02d' % (restante % 60) }}</div>
+      </div>
+    {% else %}
+      <span class="badge badge-info">sem limite de tempo</span>
+    {% endif %}
+  </div>
+</div>
+
+<div class="exec-grid">
+  <form id="form-simulado" method="post" action="{{ url_for('simulado_exec.entregar', tid=tentativa['id']) }}">
+    <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+    <input type="hidden" name="tempo_seg" id="tempo_seg" value="">
+    {% for q in questoes %}
+      <div class="card espaco-topo" id="q-{{ loop.index }}">
+        <div class="linha" style="justify-content: space-between">
+          <span class="badge badge-info">Questão {{ loop.index }} de {{ questoes|length }}</span>
+          <span class="linha">
+            <span class="badge {{ 'badge-ok' if q['pergunta']['dificuldade'] == 'facil' else ('badge-aviso' if q['pergunta']['dificuldade'] == 'medio' else 'badge-erro') }}">
+              {{ DIFICULDADES.get(q['pergunta']['dificuldade'], q['pergunta']['dificuldade']) }}
+            </span>
+            <button type="button" class="btn btn-mini js-marcar"
+                    data-pergunta="{{ q['pergunta']['id'] }}" data-marcada="{{ 1 if q['marcada'] else 0 }}">
+              {{ '★ Marcada para revisar' if q['marcada'] else '☆ Marcar para revisar' }}
+            </button>
+          </span>
+        </div>
+        {% if tentativa['modo'] in ('simulado', 'oficial', 'reforco') %}
+          <p class="item-meta">{{ q['pergunta']['materia_nome'] }} · {{ q['pergunta']['modulo_nome'] }}
+            {% if tentativa['simulado_id'] is none %} · {{ q['pergunta']['topico'] }}{% endif %}</p>
+        {% else %}
+          <p class="item-meta">{{ q['pergunta']['topico'] }}</p>
+        {% endif %}
+        <p class="pergunta-enunciado">{{ q['pergunta']['enunciado'] }}</p>
+        <div class="lista-alternativas">
+          {% for a in q['alternativas'] %}
+            <label class="alternativa {{ 'ativo' if q['escolhida'] == a['id'] }}">
+              <input type="radio" name="p_{{ q['pergunta']['id'] }}" value="{{ a['id'] }}"
+                     {{ 'checked' if q['escolhida'] == a['id'] }}>
+              <span class="letra">{{ 'ABCDE'[loop.index0] }}</span>
+              <span>{{ a['texto'] }}</span>
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </form>
+
+  <aside class="painel-lateral">
+    <div class="card">
+      <h3>Questões</h3>
+      <p class="contador"><span class="js-total">{{ resumo['respondidas'] }}</span> de {{ resumo['total'] }} respondidas</p>
+      <div class="grade-questoes espaco-topo">
+        {% for q in questoes %}
+          <button type="button" data-alvo="q-{{ loop.index }}" data-pergunta="{{ q['pergunta']['id'] }}"
+                  class="{{ 'respondida' if q['escolhida'] }}{{ ' marcada' if q['marcada'] }}">{{ loop.index }}</button>
+        {% endfor %}
+      </div>
+      <p class="item-meta espaco-topo">Cinza = não respondida · Azul = respondida · Amarelo = marcada para revisar</p>
+    </div>
+    <div class="card">
+      <button type="button" class="btn btn-primario btn-largo js-entrega">Entregar simulado</button>
+      {% if restante %}
+        <p class="item-meta espaco-topo">Ao esgotar o tempo, o simulado é entregue automaticamente.</p>
+      {% endif %}
+      <form method="post" action="{{ url_for('resultado.abandonar', tid=tentativa['id']) }}" class="espaco-topo">
+        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+        <button class="btn btn-perigo btn-mini btn-largo" type="submit">Descartar tentativa</button>
+      </form>
+    </div>
+    {% if simulado and simulado['descricao'] %}
+      <div class="card"><h4>Sobre este simulado</h4><p class="sub">{{ simulado['descricao'] }}</p></div>
+    {% endif %}
+  </aside>
+</div>
+</div>
+{% endblock %}

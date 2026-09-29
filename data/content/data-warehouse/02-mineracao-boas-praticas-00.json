@@ -1,0 +1,43 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "mineracao-boas-praticas",
+  "modulo": {
+    "nome": "Mineração de Dados e Boas Práticas em DW",
+    "descricao": "História e definições do Data Mining, técnicas aplicadas a Data Warehouses, associação multinível e boas práticas de construção, segurança e governança.",
+    "pdf_origem": "638f2fa4-c917-4685-9126-838b3eee9812.pdf",
+    "ordem": 2,
+    "resumo": [
+      "HISTÓRIA E DEFINIÇÕES DO DATA MINING",
+      "• Raízes nas décadas de 1960 e 1970, com o surgimento do aprendizado de máquina e da inteligência artificial.",
+      "• Na década de 1980, bancos relacionais e sistemas de apoio à decisão prepararam o terreno.",
+      "• O termo 'mineração de dados' ganhou popularidade na década de 1990, com o aumento do poder computacional e do armazenamento.",
+      "• Definição: processo de descoberta de padrões, relacionamentos e insights em grandes conjuntos de dados, combinando estatística, aprendizado de máquina e sistemas de banco de dados.",
+      "• Impacto: finanças, marketing, saúde e varejo — segmentação de clientes, detecção de fraudes e otimização de processos.",
+      "TERMINOLOGIAS E TÉCNICAS",
+      "• Terminologias: pré-processamento de dados, seleção de recursos, avaliação de modelo e visualização de dados.",
+      "• Técnicas comuns: classificação, regressão, clustering, mineração de regras de associação e detecção de anomalias.",
+      "• Associação: descobre correlações entre itens (ex.: cesta de compras).",
+      "• Associação multinível: explora associações em diferentes hierarquias/categorias (ex.: níveis de curso).",
+      "• Clusterização: agrupa registros semelhantes (ex.: segmentação de clientes).",
+      "• Séries temporais: analisa dados ao longo do tempo para prever tendências.",
+      "• Redes neurais: aprendem padrões complexos para previsões avançadas.",
+      "• Detecção de anomalias: identifica desvios e padrões incomuns (ex.: fraudes).",
+      "• Análise de sentimento: interpreta opiniões e feedbacks em textos.",
+      "• Visualização: dashboards e gráficos que tornam os insights acessíveis (ex.: KPIs em tempo real).",
+      "BOAS PRÁTICAS NA CONSTRUÇÃO E MANUTENÇÃO DE DW",
+      "• Planejamento estratégico: objetivos e requisitos de negócio claros; modelagem com esquema estrela ou floco de neve.",
+      "• ETL eficiente: integração e transformação precisas, consistentes e dentro dos padrões.",
+      "• Qualidade dos dados: limpeza e validação contínuas para remover inconsistências, duplicatas e lacunas.",
+      "• Performance: índices e particionamento de tabelas para reduzir tempo de resposta.",
+      "• Escalabilidade: planejar a infraestrutura para o crescimento do volume sem perder desempenho.",
+      "• Segurança: controle de acesso, criptografia e auditoria, em conformidade com leis e regulamentos.",
+      "• Governança: metadados padronizados e políticas de ciclo de vida dos dados.",
+      "• Monitoramento: auditorias periódicas, monitoramento de performance e atualizações regulares.",
+      "• Automação: automatizar cargas de dados e manutenção de índices, reduzindo erros manuais.",
+      "PEGADINHAS DE PROVA",
+      "• Data Mining NÃO é o mesmo que Data Warehouse: o DW armazena/organiza; a mineração descobre padrões.",
+      "• Para padrões entre NÍVEIS hierárquicos diferentes, a resposta é associação MULTINÍVEL.",
+      "• Qualidade de dados e governança aparecem sempre como pré-requisito de insights confiáveis."
+    ]
+  }
+}

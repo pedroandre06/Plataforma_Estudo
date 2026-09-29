@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block titulo %}{{ 'Editar questão' if pergunta else 'Nova questão' }}{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">{{ 'Editar questão #' ~ pergunta['id'] if pergunta else 'Nova questão' }}</h1>
+    <p class="sub">Marque a alternativa correta. Para V/F use “Verdadeiro/Falso” como as duas alternativas.</p>
+  </div>
+  <a class="btn" href="{{ url_for('admin_q.perguntas') }}">Voltar</a>
+</div>
+
+<form method="post" class="card">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <div class="form">
+    <label class="campo"><span>Módulo</span>
+      <select name="modulo_id" required>
+        {% for mo in modulos %}
+          <option value="{{ mo['id'] }}" {{ 'selected' if pergunta and pergunta['modulo_id'] == mo['id'] }}>
+            {{ mo['materia_nome'] }} · {{ mo['nome'] }}
+          </option>
+        {% endfor %}
+      </select>
+    </label>
+    <label class="campo"><span>Enunciado</span>
+      <textarea name="enunciado" required>{{ pergunta['enunciado'] if pergunta else '' }}</textarea>
+    </label>
+    <div class="grid grid-3">
+      <label class="campo"><span>Tipo</span>
+        <select name="tipo">
+          <option value="multipla" {{ 'selected' if pergunta and pergunta['tipo'] == 'multipla' }}>Múltipla escolha</option>
+          <option value="vf" {{ 'selected' if pergunta and pergunta['tipo'] == 'vf' }}>Verdadeiro/Falso</option>
+        </select>
+      </label>
+      <label class="campo"><span>Dificuldade</span>
+        <select name="dificuldade">
+          {% for chave, rotulo in DIFICULDADES.items() %}
+            <option value="{{ chave }}" {{ 'selected' if pergunta and pergunta['dificuldade'] == chave }}>{{ rotulo }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label class="campo"><span>Tópico</span>
+        <input type="text" name="topico" value="{{ pergunta['topico'] or '' if pergunta else '' }}" placeholder="ex.: Esquema Estrela">
+      </label>
+    </div>
+
+    <h3 class="espaco-topo">Alternativas</h3>
+    {% set letras = ['A', 'B', 'C', 'D', 'E'] %}
+    {% for i in range(5) %}
+      {% set alt = alternativas[i] if alternativas|length > i else None %}
+      <div class="linha">
+        <label class="check" style="min-width: 90px">
+          <input type="radio" name="correta" value="{{ i }}" {{ 'checked' if alt and alt['correta'] }}
+                 {{ 'checked' if not pergunta and i == 0 }}>
+          Correta {{ letras[i] }}
+        </label>
+        <input type="text" name="alternativa" value="{{ alt['texto'] if alt else '' }}"
+               placeholder="Texto da alternativa {{ letras[i] }}">
+      </div>
+    {% endfor %}
+
+    <label class="campo espaco-topo"><span>Explicação (aparece na correção)</span>
+      <textarea name="explicacao">{{ pergunta['explicacao'] or '' if pergunta else '' }}</textarea>
+    </label>
+    <label class="campo"><span>Referência (bloco/página do material)</span>
+      <input type="text" name="referencia" value="{{ pergunta['referencia'] or '' if pergunta else '' }}"
+             placeholder="ex.: Bloco 3 - Esquema Estrela">
+    </label>
+    <div class="linha">
+      <button class="btn btn-primario" type="submit">Salvar questão</button>
+      <a class="btn" href="{{ url_for('admin_q.perguntas') }}">Cancelar</a>
+    </div>
+  </div>
+</form>
+{% endblock %}

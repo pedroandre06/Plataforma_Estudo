@@ -1,0 +1,69 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "arquiteturas-dw",
+  "perguntas": [
+    {
+      "e": "Qual é a principal vantagem de um Data Mart independente?",
+      "t": "Tipos de Data Mart",
+      "d": "medio",
+      "r": "Bloco 2 - Tipo de Data Marts",
+      "x": "O Data Mart independente é alimentado direto das fontes, sem passar pelo DW, oferecendo flexibilidade e rapidez na implementação.",
+      "a": ["Garantir consistência total com o DW corporativo", "Flexibilidade e rapidez na implementação", "Eliminar a necessidade de ETL", "Reduzir o número de dimensões do DW"],
+      "c": 1
+    },
+    {
+      "e": "Entre os benefícios da integração entre Data Marts e Data Warehouse, destacam-se:",
+      "t": "Integração DW/Data Mart",
+      "d": "medio",
+      "r": "Bloco 2 - Benefícios e desafios da integração",
+      "x": "O material destaca eficiência na análise (performance de consultas e relatórios), melhor atendimento às necessidades das áreas e manutenção da consistência.",
+      "a": ["Aumento da redundância e maior custo de hardware", "Eficiência na análise, atendimento das necessidades das áreas e consistência dos dados", "Eliminação das ferramentas de BI", "Fim da necessidade de governança"],
+      "c": 1
+    },
+    {
+      "e": "Qual é o principal desafio apontado na integração de Data Marts com o Data Warehouse?",
+      "t": "Integração DW/Data Mart",
+      "d": "medio",
+      "r": "Bloco 2 - Benefícios e desafios da integração",
+      "x": "A complexidade de integrar diferentes fontes e processos, mantendo os dados sincronizados.",
+      "a": ["A falta de linguagem SQL", "A complexidade de gerenciar diferentes fontes e processos", "A impossibilidade de usar esquema estrela", "A ausência de dados históricos"],
+      "c": 1
+    },
+    {
+      "e": "No Esquema Estrela, como os dados estão organizados?",
+      "t": "Esquema Estrela",
+      "d": "facil",
+      "r": "Bloco 3 - Esquema Estrela",
+      "x": "O estrela organiza os dados em uma tabela de fatos central, cercada por tabelas de dimensões, o que o torna simples e otimizado para consultas rápidas.",
+      "a": ["Em tabelas normalizadas ligadas por várias junções em cadeia", "Em uma tabela de fatos central cercada por tabelas de dimensões", "Em documentos JSON aninhados", "Em um único arquivo CSV desnormalizado"],
+      "c": 1
+    },
+    {
+      "e": "No Esquema Estrela, o que a tabela de fatos contém?",
+      "t": "Esquema Estrela",
+      "d": "facil",
+      "r": "Bloco 3 - Esquema Estrela",
+      "x": "A tabela de fatos guarda os dados quantitativos (vendas, lucros); as dimensões trazem o contexto (tempo, produto, cliente).",
+      "a": ["Informações contextuais como tempo, produto e cliente", "Os dados quantitativos, como vendas e lucros", "Somente metadados do ETL", "Apenas descrições textuais"],
+      "c": 1
+    },
+    {
+      "e": "Qual característica define o Esquema Floco de Neve?",
+      "t": "Esquema Floco de Neve",
+      "d": "medio",
+      "r": "Bloco 3 - Esquema Floco de Neve",
+      "x": "É uma variação do estrela em que as tabelas de dimensões são normalizadas em múltiplas tabelas menores, exigindo mais joins, mas reduzindo redundância.",
+      "a": ["Usa uma única tabela de fatos sem dimensões", "Normaliza as tabelas de dimensões em várias tabelas menores", "Elimina a necessidade de chaves estrangeiras", "Impede o uso de cubos OLAP"],
+      "c": 1
+    },
+    {
+      "e": "Em comparação ao Esquema Estrela, o Esquema Floco de Neve:",
+      "t": "Comparação de esquemas",
+      "d": "medio",
+      "r": "Bloco 3 - Esquema Floco de Neve",
+      "x": "O floco de neve exige mais junções nas consultas, porém reduz a duplicação de dados e pode economizar armazenamento, especialmente em grandes DWs.",
+      "a": ["Exige menos joins e ocupa mais espaço", "Exige mais joins, mas reduz duplicação e economiza armazenamento", "Tem exatamente o mesmo desempenho do estrela", "Não permite dimensões compartilhadas"],
+      "c": 1
+    }
+  ]
+}

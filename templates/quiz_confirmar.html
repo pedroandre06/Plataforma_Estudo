@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block titulo %}Encerrar tentativa{% endblock %}
+{% block conteudo %}
+<div class="quiz-caixa">
+  <div class="card">
+    <h1 class="titulo-pagina">Encerrar e corrigir</h1>
+    <p class="sub">
+      Você respondeu <strong>{{ resumo['respondidas'] }} de {{ resumo['total'] }}</strong> questões.
+      {% if resumo['respondidas'] < resumo['total'] %}
+        As questões em branco contam como erro.
+      {% endif %}
+    </p>
+    <div class="barra espaco-topo"><span style="width: {{ (100 * resumo['respondidas'] / resumo['total']) | round(0, 'floor') }}%"></span></div>
+    <div class="rodape-quiz">
+      <a class="btn" href="{{ url_for('quiz.executar', tid=tentativa['id']) }}">Voltar e responder mais</a>
+      <form method="post" action="{{ url_for('quiz.entregar', tid=tentativa['id']) }}">
+        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+        <button class="btn btn-primario" type="submit">Corrigir e ver a nota</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="card espaco-topo">
+    <h3>Situação das questões</h3>
+    <div class="grade-questoes espaco-topo">
+      {% for q in questoes %}
+        <button type="button" disabled class="{{ 'respondida' if q['escolhida'] }}">{{ loop.index }}</button>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

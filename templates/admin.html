@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block titulo %}Administração{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">Administração</h1>
+    <p class="sub">Conteúdo, usuários, importação/exportação e provas oficiais.</p>
+  </div>
+  <div class="linha">
+    <a class="btn" href="{{ url_for('admin_q.perguntas') }}">Questões</a>
+    <a class="btn" href="{{ url_for('admin_q.pergunta_nova') }}">Nova questão</a>
+    <a class="btn" href="{{ url_for('admin_io.importar') }}">Importar</a>
+    <a class="btn" href="{{ url_for('admin_exp.exportar', formato='json') }}">Exportar JSON</a>
+    <a class="btn" href="{{ url_for('admin_exp.exportar', formato='csv') }}">Exportar CSV</a>
+    <a class="btn btn-primario" href="{{ url_for('admin_prova.prova_nova') }}">Montar prova oficial</a>
+  </div>
+</div>
+
+<div class="grid grid-4">
+  <div class="stat"><div class="stat-valor">{{ stats['usuarios'] }}</div><div class="stat-rotulo">Usuários ({{ stats['ativos'] }} ativos)</div></div>
+  <div class="stat"><div class="stat-valor">{{ stats['perguntas'] }}</div><div class="stat-rotulo">Questões ativas</div></div>
+  <div class="stat"><div class="stat-valor">{{ stats['modulos'] }}</div><div class="stat-rotulo">Módulos</div></div>
+  <div class="stat"><div class="stat-valor">{{ stats['tentativas'] }}</div><div class="stat-rotulo">Tentativas corrigidas</div></div>
+</div>
+
+<div class="grid grid-2 espaco-topo-2">
+  <div class="card">
+    <h2>Conteúdo por matéria</h2>
+    <div class="rolagem espaco-topo">
+      <table class="tabela">
+        <thead><tr><th>Matéria</th><th>Módulos</th><th>Questões</th><th>Média</th></tr></thead>
+        <tbody>
+          {% for m in por_materia %}
+            <tr>
+              <td><span class="badge" style="border-color: {{ m['cor'] }}">{{ m['nome'] }}</span></td>
+              <td>{{ m['modulos'] }}</td>
+              <td>{{ m['perguntas'] }}</td>
+              <td>{{ fmt_nota(m['media']) }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Como testar o fluxo</h2>
+    <ul class="lista-check espaco-topo">
+      <li>Crie questões novas ou importe um JSON/CSV de lote.</li>
+      <li>Monte uma <strong>prova oficial</strong> com questões fixas e limite de tentativas.</li>
+      <li>Confira o desempenho da turma na tabela de usuários abaixo.</li>
+      <li>Reative questões desativadas em vez de apagar o histórico.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card espaco-topo-2">
+  <h2>Usuários</h2>
+  <div class="rolagem espaco-topo">
+    <table class="tabela">
+      <thead><tr><th>Usuário</th><th>Nome</th><th>Papel</th><th>Tentativas</th><th>Média</th><th>Último acesso</th><th>Ações</th></tr></thead>
+      <tbody>
+        {% for u in usuarios %}
+          <tr>
+            <td>{{ u['usuario'] }}{% if not u['ativo'] %} <span class="badge badge-erro">inativo</span>{% endif %}</td>
+            <td>{{ u['nome'] }}</td>
+            <td><span class="badge {{ 'badge-info' if u['papel'] == 'admin' }}">{{ u['papel'] }}</span></td>
+            <td>{{ u['tentativas'] }}</td>
+            <td>{{ fmt_nota(u['media']) }}</td>
+            <td>{{ (u['ultimo_login_em'] or '-')[:16] }}</td>
+            <td>
+              <div class="linha">
+                <form method="post" action="{{ url_for('admin.usuario_acao', uid=u['id']) }}">
+                  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                  <input type="hidden" name="acao" value="alternar_ativo">
+                  <button class="btn btn-mini" type="submit">{{ 'Desativar' if u['ativo'] else 'Ativar' }}</button>
+                </form>
+                <form method="post" action="{{ url_for('admin.usuario_acao', uid=u['id']) }}">
+                  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                  <input type="hidden" name="acao" value="{{ 'tornar_aluno' if u['papel'] == 'admin' else 'tornar_admin' }}">
+                  <button class="btn btn-mini" type="submit">{{ 'Rebaixar' if u['papel'] == 'admin' else 'Promover' }}</button>
+                </form>
+                <form method="post" action="{{ url_for('admin.usuario_acao', uid=u['id']) }}" class="linha">
+                  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                  <input type="hidden" name="acao" value="resetar_senha">
+                  <input type="text" name="nova_senha" placeholder="nova senha" style="width:120px">
+                  <button class="btn btn-mini btn-aviso" type="submit">Redefinir</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

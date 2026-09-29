@@ -1,0 +1,69 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "gerenciamento-big-data",
+  "perguntas": [
+    {
+      "e": "O que é processamento de dados, segundo o material?",
+      "t": "Processamento de dados",
+      "d": "facil",
+      "r": "Bloco 1 - O que é processamento de dados?",
+      "x": "É converter dados brutos em informações úteis ou valiosas; nesse processo as informações são coletadas, manipuladas e analisadas para se tornarem úteis.",
+      "a": ["Armazenar dados em fitas magnéticas", "Converter dados brutos em informações úteis ou valiosas, coletando, manipulando e analisando", "Criptografar dados sensíveis em repouso", "Excluir dados antigos para liberar espaço"],
+      "c": 1
+    },
+    {
+      "e": "Qual característica descreve corretamente o processamento em BATCH?",
+      "t": "Batch",
+      "d": "facil",
+      "r": "Bloco 1 - Como funciona o batch?",
+      "x": "O batch processa informações em intervalos regulares, armazenando os dados para processar posteriormente; é menos complexo, porém mais lento.",
+      "a": ["Processa continuamente, no momento em que os dados chegam", "Processa em intervalos regulares, armazenando os dados para depois; menos complexo e mais lento", "Exige latência mínima e infraestrutura complexa", "Só funciona com dados não estruturados em tempo real"],
+      "c": 1
+    },
+    {
+      "e": "Qual característica descreve corretamente o processamento em STREAMING?",
+      "t": "Streaming",
+      "d": "facil",
+      "r": "Bloco 1 - Como funciona o streaming?",
+      "x": "O streaming processa de forma contínua conforme os dados são produzidos, com menor latência, mas é mais complexo em infraestrutura e manutenção.",
+      "a": ["Processa em lotes ao final do dia", "Processa continuamente conforme os dados são produzidos, com menor latência", "É mais simples que o batch e sempre mais barato", "Não serve para detecção de fraudes"],
+      "c": 1
+    },
+    {
+      "e": "Sobre a escolha entre batch e streaming, o material afirma que:",
+      "t": "Batch x Streaming",
+      "d": "medio",
+      "r": "Bloco 1 - Batch versus stream, qual é o melhor?",
+      "x": "Depende do tipo de uso e os dois podem ser usados em conjunto: stream quando o tempo é essencial e os dados estão chegando; batch quando os dados já foram coletados.",
+      "a": ["O streaming sempre substitui o batch", "Depende do uso e podem ser usados em conjunto", "O batch é sempre obrigatório antes do streaming", "Nenhum dos dois serve para grandes volumes"],
+      "c": 1
+    },
+    {
+      "e": "Qual cenário é o mais adequado para processamento em BATCH?",
+      "t": "Batch",
+      "d": "facil",
+      "r": "Bloco 1 - Como funciona o batch?",
+      "x": "O material cita logs de sistemas, faturamentos e relatórios recorrentes de tarefas não urgentes como usos típicos de batch.",
+      "a": ["Detecção de fraude em tempo real em cada transação", "Processamento de logs de sistemas e relatórios recorrentes não urgentes", "Monitoramento contínuo de sensores IoT", "Alertas instantâneos de vendas em promoções"],
+      "c": 1
+    },
+    {
+      "e": "Qual cenário é o mais adequado para processamento em STREAMING?",
+      "t": "Streaming",
+      "d": "facil",
+      "r": "Bloco 1 - Como funciona o streaming?",
+      "x": "O material cita monitoramento de redes sociais, detecção de fraudes e processamento de sensores IoT como usos típicos de streaming.",
+      "a": ["Fechamento contábil mensal", "Detecção de fraudes e processamento de sensores IoT em tempo real", "Geração de relatórios trimestrais", "Carga noturna do Data Warehouse"],
+      "c": 1
+    },
+    {
+      "e": "Qual é o principal trade-off do streaming em relação ao batch?",
+      "t": "Batch x Streaming",
+      "d": "medio",
+      "r": "Bloco 1 - Como funciona o streaming?",
+      "x": "O streaming oferece menor latência, porém é mais complexo em termos de infraestrutura ou manutenção quando comparado ao batch.",
+      "a": ["Tem maior latência e menor complexidade", "Tem menor latência, mas maior complexidade de infraestrutura e manutenção", "É sempre mais simples e mais barato", "Não permite trabalhar com grandes volumes"],
+      "c": 1
+    }
+  ]
+}

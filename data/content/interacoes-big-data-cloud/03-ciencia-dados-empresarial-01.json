@@ -1,0 +1,69 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "ciencia-dados-empresarial",
+  "perguntas": [
+    {
+      "e": "Qual é o principal objetivo da análise exploratória de dados (EDA)?",
+      "t": "EDA",
+      "d": "facil",
+      "r": "Bloco 2 - Quiz do curso (EDA)",
+      "x": "O Quiz do material indica: explorar os dados para entender suas características, identificar padrões e detectar anomalias.",
+      "a": ["Aplicar algoritmos de Machine Learning para fazer previsões automáticas", "Coletar dados de diversas fontes para armazená-los em um banco de dados", "Explorar os dados para entender suas características, identificar padrões e detectar anomalias", "Implementar visualizações avançadas para publicação direta de relatórios finais"],
+      "c": 2
+    },
+    {
+      "e": "Como a EDA se relaciona com o machine learning?",
+      "t": "EDA",
+      "d": "medio",
+      "r": "Bloco 2 - O que é a EDA e por que ela é útil?",
+      "x": "A EDA ajuda a determinar a preparação dos dados e pode influenciar quais algoritmos serão escolhidos para treinar modelos de machine learning.",
+      "a": ["A EDA substitui o treinamento de modelos", "A EDA pode influenciar quais algoritmos serão aplicados para treinar modelos de ML", "A EDA só é usada depois do modelo em produção", "A EDA não tem relação com a preparação dos dados"],
+      "c": 1
+    },
+    {
+      "e": "Quais são benefícios do uso da ciência de dados pelas empresas, segundo o material?",
+      "t": "Benefícios da ciência de dados",
+      "d": "facil",
+      "r": "Bloco 1 - Benefícios do uso da Ciência de Dados pelas empresas",
+      "x": "Coleta e organização dos dados, identificação de oportunidades e desafios, uso de modelos preditivos e prescritivos, democratização da ciência de dados e apoio à decisão baseada em dados.",
+      "a": ["Coleta e organização de dados, identificação de oportunidades, modelos preditivos/prescritivos, democratização e apoio à decisão", "Aumento da intuição e redução do uso de dados", "Eliminação da necessidade de infraestrutura", "Centralização das decisões apenas na diretoria"],
+      "c": 0
+    },
+    {
+      "e": "O que significa 'democratização da ciência de dados' nas empresas?",
+      "t": "Democratização",
+      "d": "medio",
+      "r": "Bloco 1 - Benefícios do uso da Ciência de Dados pelas empresas",
+      "x": "É tornar o acesso e o uso de dados/insights mais amplos na organização, permitindo que mais áreas e pessoas tomem decisões baseadas em dados.",
+      "a": ["Restringir os dados ao time de TI", "Ampliar o acesso e o uso de dados e insights para mais pessoas na organização", "Substituir analistas por algoritmos", "Publicar todos os dados abertamente na internet"],
+      "c": 1
+    },
+    {
+      "e": "Para que a ciência de dados gere inovação e diferencial competitivo, o material aponta a combinação de:",
+      "t": "Estratégia",
+      "d": "medio",
+      "r": "Bloco 1 - Conclusão",
+      "x": "É preciso investir em infraestrutura sólida e promover a cultura de tomada de decisão baseada em dados, alinhando as análises aos objetivos corporativos.",
+      "a": ["Ferramentas caras e equipes grandes", "Infraestrutura sólida e cultura de decisão baseada em dados", "Somente modelos de IA sem apoio de negócio", "Delegação total das decisões às ferramentas"],
+      "c": 1
+    },
+    {
+      "e": "Qual linguagem é destacada para EDA pelo seu grande ecossistema de bibliotecas de manipulação, processamento e visualização de dados?",
+      "t": "Ferramentas de EDA",
+      "d": "facil",
+      "r": "Bloco 2 - Ferramentas de análise de dados exploratória",
+      "x": "Python é amplamente utilizado para EDA pela flexibilidade e pelo rico ecossistema de bibliotecas.",
+      "a": ["Python", "SQL", "Java", "Cobol"],
+      "c": 0
+    },
+    {
+      "e": "Qual linguagem é destacada para EDA em projetos com forte ênfase em estatística, oferecendo pacotes de manipulação e limpeza de dados?",
+      "t": "Ferramentas de EDA",
+      "d": "facil",
+      "r": "Bloco 2 - Ferramentas de análise de dados exploratória",
+      "x": "R é muito utilizada para EDA, especialmente em projetos com forte ênfase estatística.",
+      "a": ["R", "Python", "JavaScript", "Scala"],
+      "c": 0
+    }
+  ]
+}

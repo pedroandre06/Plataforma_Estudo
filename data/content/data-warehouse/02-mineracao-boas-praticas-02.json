@@ -1,0 +1,69 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "mineracao-boas-praticas",
+  "perguntas": [
+    {
+      "e": "Segundo o material, em que período o termo 'mineração de dados' ganhou popularidade?",
+      "t": "História do Data Mining",
+      "d": "facil",
+      "r": "Bloco 1 - História da mineração de dados",
+      "x": "As técnicas têm raízes nos anos 1960-1970 (aprendizado de máquina e IA), mas o termo se popularizou na década de 1990, com o aumento do poder computacional e do armazenamento.",
+      "a": ["Década de 1950", "Década de 1970", "Década de 1990", "Década de 2010"],
+      "c": 2
+    },
+    {
+      "e": "Qual definição melhor descreve a mineração de dados?",
+      "t": "Definição",
+      "d": "facil",
+      "r": "Bloco 1 - Noções básicas sobre mineração de dados",
+      "x": "Data mining é o processo de descoberta de padrões, relacionamentos e insights em grandes conjuntos de dados, combinando estatística, aprendizado de máquina e bancos de dados.",
+      "a": ["O armazenamento centralizado de dados históricos para relatórios", "O processo de descobrir padrões e insights em grandes conjuntos de dados", "A padronização de formatos de arquivos CSV", "A modelagem física de tabelas em um SGBD"],
+      "c": 1
+    },
+    {
+      "e": "Quais itens fazem parte das terminologias principais da mineração de dados?",
+      "t": "Terminologias",
+      "d": "medio",
+      "r": "Bloco 1 - Principais terminologias e técnicas",
+      "x": "O material lista pré-processamento de dados, seleção de recursos, avaliação de modelo e visualização de dados como terminologias centrais.",
+      "a": ["Pré-processamento, seleção de recursos, avaliação de modelo e visualização", "Chave primária, chave estrangeira, índice e trigger", "Drill-down, roll-up, slice e dice", "Carga inicial, incremental, full e delta"],
+      "c": 0
+    },
+    {
+      "e": "Qual conjunto reúne apenas técnicas comuns de mineração de dados citadas no material?",
+      "t": "Técnicas",
+      "d": "facil",
+      "r": "Bloco 1 - Principais terminologias e técnicas",
+      "x": "Classificação, regressão, clustering, mineração de regras de associação e detecção de anomalias são as técnicas citadas.",
+      "a": ["Normalização, particionamento e indexação", "Classificação, regressão, clustering, associação e detecção de anomalias", "ETL, OLAP e Data Mart", "MER, modelo relacional e álgebra relacional"],
+      "c": 1
+    },
+    {
+      "e": "No contexto de Data Warehouses, qual técnica de mineração de dados é mais adequada para identificar padrões de compra de livros entre diferentes níveis de cursos em uma universidade?",
+      "t": "Associação multinível",
+      "d": "medio",
+      "r": "Bloco 5 - Quiz do curso (associação multinível)",
+      "x": "A associação multinível explora associações em diferentes hierarquias de dados, como níveis de curso (graduação e pós-graduação).",
+      "a": ["Classificação", "Clusterização", "Associação multinível", "Regressão linear"],
+      "c": 2
+    },
+    {
+      "e": "A análise de cesta de compras em um supermercado, que busca produtos frequentemente comprados juntos, é exemplo clássico de:",
+      "t": "Associação",
+      "d": "facil",
+      "r": "Bloco 2 - Análise de Associação",
+      "x": "É o exemplo típico de análise de associação, que descobre correlações entre itens em grandes volumes de dados.",
+      "a": ["Análise de associação", "Detecção de anomalias", "Análise de séries temporais", "Regressão logística"],
+      "c": 0
+    },
+    {
+      "e": "Uma operadora de cartões quer identificar, em tempo quase real, transações fora do padrão de consumo do cliente. Qual técnica é a mais indicada?",
+      "t": "Detecção de anomalias",
+      "d": "medio",
+      "r": "Bloco 2 - Detecção de anomalias",
+      "x": "A detecção de anomalias identifica desvios e padrões incomuns; o exemplo clássico apontado no material é a detecção de fraudes.",
+      "a": ["Clusterização de clientes", "Detecção de anomalias", "Análise de sentimento", "Associação multinível"],
+      "c": 1
+    }
+  ]
+}

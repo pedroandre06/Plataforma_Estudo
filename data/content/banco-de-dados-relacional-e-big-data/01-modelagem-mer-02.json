@@ -1,0 +1,69 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "modelagem-mer",
+  "perguntas": [
+    {
+      "e": "No MER, o que são entidades?",
+      "t": "Entidades",
+      "d": "facil",
+      "r": "Bloco 2 - Principais Componentes do MER",
+      "x": "Entidades representam objetos concretos ou conceituais, como cliente, produto e pedido.",
+      "a": ["Propriedades das tabelas, como nome e CPF", "Objetos concretos ou conceituais, como cliente, produto e pedido", "Regras de negócio documentadas em texto", "Índices criados para acelerar consultas"],
+      "c": 1
+    },
+    {
+      "e": "Nome, CPF e data de nascimento, no contexto do MER, são exemplos de:",
+      "t": "Atributos",
+      "d": "facil",
+      "r": "Bloco 2 - Principais Componentes do MER",
+      "x": "São atributos: propriedades das entidades. Os tipos citados são simples, compostos e multivalorados.",
+      "a": ["Entidades", "Atributos", "Relacionamentos", "Cardinalidades"],
+      "c": 1
+    },
+    {
+      "e": "Quais tipos de atributos são citados no material?",
+      "t": "Atributos",
+      "d": "medio",
+      "r": "Bloco 2 - Principais Componentes do MER",
+      "x": "Simples, compostos e multivalorados.",
+      "a": ["Simples, compostos e multivalorados", "Primários, secundários e terciários", "Públicos, privados e protegidos", "Locais, remotos e híbridos"],
+      "c": 0
+    },
+    {
+      "e": "Relacionamentos no MER indicam:",
+      "t": "Relacionamentos",
+      "d": "facil",
+      "r": "Bloco 2 - Principais Componentes do MER",
+      "x": "Indicam como as entidades estão conectadas, como em 'Cliente realiza Pedido' e 'Aluno cursa Disciplina'.",
+      "a": ["Como as entidades estão conectadas entre si", "O tipo de dado aceito em cada atributo", "O tempo de resposta das consultas", "A ordem de criação das tabelas no banco"],
+      "c": 0
+    },
+    {
+      "e": "Um relacionamento pode ter atributos próprios. Qual exemplo é citado no material?",
+      "t": "Relacionamentos",
+      "d": "medio",
+      "r": "Bloco 2 - Exemplo de Diagrama ER",
+      "x": "No exemplo do sistema de pedidos, o relacionamento pode ter atributos como data da compra e quantidade.",
+      "a": ["Nome do cliente e CPF", "Data da compra e quantidade", "Chave primária da tabela Cliente", "Índice da tabela Produto"],
+      "c": 1
+    },
+    {
+      "e": "Quais são as cardinalidades possíveis entre entidades, segundo o material?",
+      "t": "Cardinalidade",
+      "d": "facil",
+      "r": "Bloco 2 - Cardinalidade e Participação",
+      "x": "As cardinalidades apresentadas são 1:1 (um para um), 1:N (um para muitos) e N:M (muitos para muitos).",
+      "a": ["Baixa, média e alta", "1:1, 1:N e N:M", "Primária, secundária e derivada", "Total, parcial e nula"],
+      "c": 1
+    },
+    {
+      "e": "No MER, a participação TOTAL significa que:",
+      "t": "Participação",
+      "d": "medio",
+      "r": "Bloco 2 - Cardinalidade e Participação",
+      "x": "Participação total: todos os registros participam do relacionamento. Parcial: a participação é opcional. Esse conceito é essencial para prever a integridade referencial.",
+      "a": ["Nenhum registro participa do relacionamento", "Todos os registros participam do relacionamento", "A participação é opcional", "Só existe em relacionamentos N:M"],
+      "c": 1
+    }
+  ]
+}

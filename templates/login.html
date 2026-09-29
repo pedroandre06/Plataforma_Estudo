@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block titulo %}Entrar{% endblock %}
+{% block conteudo %}
+<div class="login-caixa">
+  <div class="card">
+    <h1 class="titulo-pagina">Entrar na plataforma</h1>
+    <p class="sub">Acesse com seu usuário para estudar, treinar e simular provas.</p>
+    <form method="post" class="form">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <label class="campo">
+        <span>Usuário</span>
+        <input type="text" name="usuario" required autofocus autocomplete="username"
+               value="{{ request.form.get('usuario','') }}" placeholder="ex.: pedro.santos">
+      </label>
+      <label class="campo">
+        <span>Senha</span>
+        <input type="password" name="senha" required autocomplete="current-password" placeholder="••••">
+      </label>
+      <label class="check">
+        <input type="checkbox" name="lembrar" value="1" checked> Lembrar-me por 30 dias
+      </label>
+      <button class="btn btn-primario btn-largo" type="submit">Entrar</button>
+    </form>
+    <p class="rodape-form">Não tem conta? <a href="{{ url_for('registro') }}">Criar usuário</a></p>
+  </div>
+  <div class="card dica">
+    <h2>Como funciona</h2>
+    <ul class="lista-check">
+      <li>3 matérias, 10 módulos e 198 questões com explicação.</li>
+      <li>Treino por módulo com correção imediata.</li>
+      <li>Provas de módulo com cronômetro opcional.</li>
+      <li>Simulados por matéria, geral e personalizado.</li>
+      <li>Prova oficial e simulado de reforço dos pontos fracos.</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

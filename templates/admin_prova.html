@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block titulo %}Provas oficiais{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">Montar prova oficial</h1>
+    <p class="sub">Escolha as questões manualmente, defina tempo, corte e limite de tentativas.</p>
+  </div>
+  <a class="btn" href="{{ url_for('admin.painel') }}">Painel</a>
+</div>
+
+<form method="get" class="card">
+  <div class="grid grid-3">
+    <label class="campo"><span>Matéria</span>
+      <select name="materia">
+        <option value="">Todas</option>
+        {% for m in materias %}
+          <option value="{{ m['id'] }}" {{ 'selected' if filtros['materia'] == m['id'] }}>{{ m['nome'] }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label class="campo"><span>Busca no enunciado</span>
+      <input type="search" name="q" value="{{ filtros['q'] }}">
+    </label>
+    <div class="linha" style="align-items:flex-end">
+      <button class="btn btn-primario" type="submit">Filtrar</button>
+      <a class="btn" href="{{ url_for('admin_prova.prova_nova') }}">Limpar</a>
+    </div>
+  </div>
+</form>
+
+<form method="post">
+  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+  <div class="grid grid-2 espaco-topo-2">
+    <div class="card">
+      <h2>1. Regras da prova</h2>
+      <div class="form espaco-topo">
+        <label class="campo"><span>Nome da prova</span>
+          <input type="text" name="nome" value="Prova oficial 1" required>
+        </label>
+        <label class="campo"><span>Descrição</span>
+          <input type="text" name="descricao" placeholder="ex.: Avaliação do módulo 1 da disciplina X">
+        </label>
+        <div class="grid grid-3">
+          <label class="campo"><span>Tempo (min)</span>
+            <input type="number" name="tempo_min" min="5" max="240" value="60">
+          </label>
+          <label class="campo"><span>Nota de corte</span>
+            <input type="number" name="nota_corte" step="0.5" min="0" max="10" value="6">
+          </label>
+          <label class="campo"><span>Máx. tentativas</span>
+            <input type="number" name="max_tentativas" min="1" max="10" value="1">
+          </label>
+        </div>
+        <label class="campo"><span>Mostrar gabarito</span>
+          <select name="mostrar_gabarito">
+            <option value="fim">Somente no final</option>
+            <option value="nunca">Nunca</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" name="embaralhar" value="1" checked> Embaralhar alternativas</label>
+        <button class="btn btn-primario btn-largo" type="submit">Criar prova oficial</button>
+        <p class="item-meta">A prova fica disponível na área “Simulados e provas” de todos os alunos.</p>
+      </div>
+
+      {% if provas %}
+        <h3 class="espaco-topo-2">Provas oficiais cadastradas</h3>
+        <ul class="lista espaco-topo">
+          {% for p in provas %}
+            <li class="item">
+              <div class="item-principal"><div>
+                <div class="item-titulo">{{ p['nome'] }}</div>
+                <div class="item-meta">{{ p['n_fixas'] }} questões · {{ p['tempo_min'] }} min ·
+                  corte {{ fmt_nota(p['nota_corte']) }} · {{ p['max_tentativas'] }} tentativa(s)</div>
+              </div></div>
+              <form method="post" action="{{ url_for('admin_prova.prova_excluir', sid=p['id']) }}">
+                <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+                <button class="btn btn-perigo btn-mini" type="submit">Excluir</button>
+              </form>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <div class="card">
+      <h2>2. Selecionar questões ({{ perguntas|length }} disponíveis)</h2>
+      <p class="sub">Marque as questões que farão parte da prova.</p>
+      <div style="max-height: 70vh; overflow-y: auto" class="espaco-topo">
+        {% for p in perguntas %}
+          <label class="check" style="align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--linha)">
+            <input type="checkbox" name="pergunta_id" value="{{ p['id'] }}">
+            <span>
+              {{ p['enunciado'] }}
+              <span class="item-meta">
+                <span class="badge" style="border-color: {{ p['materia_cor'] }}">{{ p['materia_nome'] }}</span>
+                {{ p['modulo_nome'] }} · {{ p['topico'] or '-' }} · {{ DIFICULDADES.get(p['dificuldade'], p['dificuldade']) }}
+              </span>
+            </span>
+          </label>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

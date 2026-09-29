@@ -1,0 +1,60 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "modelo-relacional-chaves",
+  "perguntas": [
+    {
+      "e": "As regras de integridade em bancos relacionais são implementadas por meio de quais constraints?",
+      "t": "Constraints",
+      "d": "medio",
+      "r": "Bloco 3 - Integridade em Bancos Relacionais",
+      "x": "PRIMARY KEY, FOREIGN KEY, NOT NULL, CHECK e UNIQUE são as constraints citadas.",
+      "a": ["PRIMARY KEY, FOREIGN KEY, NOT NULL, CHECK e UNIQUE", "SELECT, INSERT, UPDATE, DELETE e MERGE", "MER, DER, 1FN e 3FN", "HDFS, YARN, Kafka e Spark"],
+      "c": 0
+    },
+    {
+      "e": "No exemplo SQL do material, a coluna id_cliente aparece como chave primária em Cliente e como chave estrangeira em Pedido. Isso significa que:",
+      "t": "SQL",
+      "d": "medio",
+      "r": "Bloco 3 - Exemplo Prático + SQL",
+      "x": "A FK em Pedido referencia a PK de Cliente, garantindo que todo pedido esteja associado a um cliente existente (integridade referencial).",
+      "a": ["A tabela Pedido não pode ter chave primária", "Todo pedido deve estar associado a um cliente existente na tabela Cliente", "O CPF passa a ser a chave do pedido", "Os dois campos podem conter valores nulos"],
+      "c": 1
+    },
+    {
+      "e": "Qual é o objetivo principal da normalização de um banco de dados?",
+      "t": "Normalização",
+      "d": "facil",
+      "r": "Bloco 4 - Proposta de resolução",
+      "x": "Reduzir dados duplicados por meio da decomposição em tabelas menores e eliminar anomalias de inserção, atualização e exclusão.",
+      "a": ["Aumentar a redundância para facilitar consultas", "Reduzir dados duplicados e eliminar anomalias de inserção, atualização e exclusão", "Eliminar o uso de chaves estrangeiras", "Converter o banco em NoSQL"],
+      "c": 1
+    },
+    {
+      "e": "Quais anomalias a normalização busca eliminar?",
+      "t": "Normalização",
+      "d": "medio",
+      "r": "Bloco 4 - Proposta de resolução",
+      "x": "Anomalias de inserção, de atualização e de exclusão.",
+      "a": ["Anomalias de inserção, atualização e exclusão", "Anomalias de leitura, escrita e exclusão de índices", "Anomalias de rede, disco e memória", "Anomalias de cardinalidade e domínio"],
+      "c": 0
+    },
+    {
+      "e": "Sobre as formas de normalização, o material destaca que elas trazem:",
+      "t": "Normalização",
+      "d": "medio",
+      "r": "Bloco 5 - Consolidando o aprendizado",
+      "x": "O material elenca 'Normalização: objetivos, formas e benefícios' como conteúdo-chave, com ganho de organização, integridade e consistência dos dados.",
+      "a": ["Apenas ganho de espaço em disco, com perda de integridade", "Objetivos, formas e benefícios, com mais organização e consistência dos dados", "Eliminação de todas as chaves do banco", "Redução obrigatória do número de tabelas"],
+      "c": 1
+    },
+    {
+      "e": "Um sistema demora muito para responder a consultas que filtram clientes por CPF e cruzam clientes com pedidos. Qual recurso é indicado para acelerar essas operações?",
+      "t": "Índices e desempenho",
+      "d": "medio",
+      "r": "Bloco 4 - Proposta de resolução",
+      "x": "O material recomenda adicionar índices para acelerar buscas em atributos usados em filtros e junções.",
+      "a": ["Adicionar índices nos atributos usados em filtros e junções", "Remover as chaves estrangeiras", "Duplicar a tabela de pedidos", "Converter as datas para texto"],
+      "c": 0
+    }
+  ]
+}

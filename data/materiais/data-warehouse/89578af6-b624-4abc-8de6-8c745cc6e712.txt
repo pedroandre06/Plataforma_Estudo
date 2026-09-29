@@ -1,0 +1,495 @@
+
+
+===== PAGINA 1 =====
+WBA0748_v2.0
+Modelagem e arquitetura do DW 
+(Data Warehouse)
+
+===== PAGINA 2 =====
+Ferramentas e Tecnologias para Data 
+Warehouse
+Fontes de Dados de um Data Warehouse
+Bloco 1
+Anderson Emidio de Macedo Gonçalves
+
+===== PAGINA 3 =====
+Vamos refletir?
+O sucesso de um Data Warehouse depende diretamente das 
+ferramentas e tecnologias que o suportam. Ferramentas de ETL 
+garantem a integração e transformação de dados de diversas 
+fontes, enquanto as tecnologias de OLAP e Data Mining 
+permitem análises profundas e detalhadas. Já as ferramentas de 
+visualização tornam os dados acessíveis e fáceis de interpretar, 
+oferecendo suporte essencial para decisões estratégicas.
+A partir deste contexto, reflita: como essas ferramentas podem 
+ser usadas para transformar dados em inovações estratégicas, 
+agregando valor ao negócio?
+
+===== PAGINA 4 =====
+Fontes de dados em DWs: Uma visão geral
+Três tipos de fontes de 
+dados de um Data 
+Warehouse:
+• Banco de Dados 
+Relacionais (ex.: 
+MySQL).
+• Arquivos CSV.
+• APIs e Web 
+Services.
+Fonte: https://www.cetax.com.br/wp-
+content/uploads/2018/04/data-warehouse.gif
+Fontes de Dados para DWs
+
+===== PAGINA 5 =====
+Banco de dados relacionais
+Tabela do Banco de Dados
+Fonte: elabora pelo autor, por meio da 
+ferramenta MySQL Workbench.
+Descrição: Bancos de 
+dados como MySQL, 
+PostgreSQL e Oracle que 
+armazenam dados em 
+tabelas estruturadas.
+Características:
+• Dados organizados 
+em linhas e colunas.
+• Utilização de SQL para 
+consultas.
+• Integridade 
+referencial por meio 
+de chaves primárias e 
+estrangeiras.
+
+===== PAGINA 6 =====
+Arquivos CSV (Comma-Separated Values)
+Imp. E Exp. de Dados• O que são: arquivos de texto 
+simples onde os dados são 
+separados por vírgulas.
+• Uso Comum: exportações de 
+sistemas legados ou 
+exportações manuais de 
+dados.
+• Desafios: dados não 
+estruturados, possibilidade de 
+duplicações e inconsistências.
+• Exemplo Prático: importação 
+de dados de vendas de um 
+sistema antigo para um DW.
+Fonte: https://cdn.pixabay.com/photo
+/2016/12/24/01/23/database-
+1928236_1280.png.
+
+===== PAGINA 7 =====
+APIs e Web Services
+Consumo de APIs
+Fonte: https://cdn.pixabay.com/photo/2018/05
+/18/15/30/web-design-3411373_1280.jpg.
+• O que são: interfaces que 
+permitem a comunicação 
+entre sistemas para acessar 
+dados em tempo real.
+• Formatos Comuns: JSON, 
+XML.
+• Integração: utilização de 
+APIs RESTful e SOAP para 
+obter dados externos.
+• Exemplo prático: coleta de 
+dados de marketing digital 
+via API do Google Analytics 
+para análise de 
+performance.
+
+===== PAGINA 8 =====
+Importância da diversidade de fonte de dados
+Por que ter múltiplas fontes: diferentes sistemas trazem 
+diferentes perspectivas de dados (operacionais, 
+históricos, em tempo real).
+Benefícios:
+Conclusão: Um Data Warehouse eficaz deve integrar 
+fontes heterogêneas de forma coesa e escalável.
+Melhora a qualidade da análise.
+Permite uma visão holística do negócio.
+
+===== PAGINA 9 =====
+Ferramentas e Tecnologias para Data 
+Warehouse
+Ferramentas de ETL (Extração, Transformação e 
+Carga)
+Bloco 2
+Anderson Emidio de Macedo Gonçalves
+
+===== PAGINA 10 =====
+O que é ETL (Extract, Transform e Load )
+Definição: ETL é o processo de extração de dados de 
+diversas fontes, transformação desses dados para um 
+formato adequado, e carregamento em um Data 
+Warehouse.
+Importância: essencial para garantir que os dados 
+sejam consolidados e organizados para análise.
+Objetivo: facilitar o uso de dados consistentes e 
+confiáveis para tomada de decisões estratégicas.
+
+===== PAGINA 11 =====
+Fase de extração de dados (extract)
+As principais fases da extração de dados são:
+• Definição: Processo de coletar dados de diversas fontes, como bancos 
+de dados, APIs, arquivos CSV, entre outros.
+• Desafios: Dados fragmentados, formatos diferentes, e possíveis falhas 
+de conectividade.
+• Exemplo Prático: Extração de dados transacionais de um sistema ERP e 
+informações de marketing via API de uma plataforma digital.
+Definição
+Desafios
+Exemplo Prático
+
+===== PAGINA 12 =====
+Fase de transformação de dados (transform)
+• Definição: Processamento dos 
+dados para padronizá-los, corrigir 
+inconsistências, e aplicar regras de 
+negócio.
+• Tarefas Comuns:
+• Limpeza de dados (remoção de 
+duplicatas, preenchimento de 
+dados ausentes).
+• Conversão de formatos de dados.
+• Aplicação de cálculos e 
+agregações.
+• Exemplo Prático: Transformar 
+datas de diferentes formatos 
+(dd/mm/yyyy, mm-dd-yyyy) em 
+um formato padrão.
+Fonte: adaptado de 
+https://cdn.pixabay.com/photo/2018/05/18
+/15/30/web-design-3411373_1280.jpg.
+Processo de Transform
+
+===== PAGINA 13 =====
+Fase de carga
+Definição: carregamento dos dados transformados no Data Warehouse ou 
+Data Mart.
+Tipos de Carga:
+- Carga Inicial: importação de grandes volumes de dados pela 
+primeira vez.
+- Carga Incremental: atualização com dados novos ou modificados 
+desde a última carga.
+Exemplo Prático: carga diária de vendas para atualizar o Data Warehouse.
+
+===== PAGINA 14 =====
+Principais ferramentas de ET
+Ferramentas Populares:
+• Talend: ferramenta open-source com suporte a múltiplas 
+fontes de dados.
+• Informatica PowerCenter: ferramenta robusta para grandes 
+empresas.
+• Apache Nifi: ferramenta para automação e integração de fluxo 
+de dados.
+Critérios de Escolha:
+• Facilidade de uso.
+• Escalabilidade e performance.
+• Suporte a diferentes fontes de dados.
+Exemplo Prático: escolha de uma ferramenta ETL para integrar 
+dados de diferentes plataformas, como MySQL e APIs.
+
+===== PAGINA 15 =====
+Ferramentas de OLAP (Online Analytical 
+Processing) e Data Mining
+Bloco 3
+Anderson Emidio de Macedo Gonçalves
+Ferramentas e Tecnologias para Data 
+Warehouse
+
+===== PAGINA 16 =====
+O que são OLAP e Data Mining?
+• OLAP: ferramentas e 
+tecnologias que permitem 
+análise multidimensional de 
+grandes volumes de dados.
+• Data Mining: técnicas e 
+ferramentas utilizadas para 
+identificar padrões, 
+correlações e tendências 
+ocultas nos dados.
+• Objetivo: facilitar a análise 
+de dados complexos e 
+ajudar na tomada de 
+decisões baseadas em 
+insights extraídos de 
+grandes volumes de dados.
+Princípios do Data Warehouse
+Fonte: https://www.researchgate.net/figure/Figura-
+22-Representacao-e-processo-para-a-construcao-de-
+um-data-warehouse-Fonte-Betas_fig3_306308448
+
+===== PAGINA 17 =====
+Características e benefícios do OLAP
+Análise Multidimensional: OLAP permite criar "cubos" de dados 
+para analisar diferentes dimensões (ex.: tempo, produto, região).
+Operações OLAP:
+Benefícios: respostas rápidas a consultas complexas, suporte à 
+análise histórica e visão clara das interações entre dados.
+Exemplo Prático: análise de vendas por produto e região ao 
+longo do tempo.
+Drill-down
+Roll-up
+Slice e Dice:
+
+===== PAGINA 18 =====
+Ferramentas OLAP
+Ferramentas Populares:
+• Microsoft SQL Server Analysis 
+Services (SSAS): Amplamente usado 
+em ambientes corporativos.
+• Pentaho BI: solução open-source com 
+suporte a OLAP e integração com 
+outras ferramentas de BI.
+• Oracle OLAP: plataforma OLAP 
+robusta integrada ao banco de dados 
+Oracle.
+Aplicação: ferramentas OLAP são usadas 
+para construir cubos de dados, 
+permitindo a análise multidimensional 
+em ambientes de Data Warehouse.
+Exemplo Prático: uso de Microsoft SSAS 
+para criar cubos OLAP e realizar análise 
+de lucro por categoria de produto.
+Pentaho Data Integration
+Fonte: https://i.sstatic.net/1vn3N.png
+
+===== PAGINA 19 =====
+Data mining - extração de padrões
+Definição: processo de mineração 
+de dados para descobrir padrões 
+ocultos e tendências significativas.
+Técnicas Comuns:
+Classificação
+Regressão
+Clusterização
+Análise de associação
+Atividades do KDD
+Fonte: 
+https://www.revistaespacios.com/a16v37n0
+5/16370523.html.
+
+===== PAGINA 20 =====
+Ferramentas de data mining
+RapidMiner: ferramenta de mineração de dados com 
+interface amigável e suporte a fluxos de trabalho analíticos.
+Weka: ferramenta open-source focada em aprendizado 
+de máquina e mineração de dados.
+SAS Data Mining: plataforma poderosa com suporte 
+avançado a análises preditivas.
+
+===== PAGINA 21 =====
+Teoria em prática
+Bloco 4
+Anderson Emidio de Macedo Gonçalves
+Ferramentas e Tecnologias para Data 
+Warehouse
+
+===== PAGINA 22 =====
+Reflita sobre a seguinte situação
+Você é um analista de dados contratado por uma rede de autocenters que deseja otimizar a 
+gestão de serviços e aumentar a eficiência operacional. A rede possui várias unidades em 
+diferentes cidades e utiliza dados históricos de atendimentos e vendas de peças para melhorar 
+a alocação de recursos e a satisfação dos clientes.
+Você recebeu um conjunto de dados provenientes de diversas fontes, como:
+• Registros de atendimentos (tipo de serviço, tempo de atendimento, etc.).
+• Vendas de peças e serviços.
+• Histórico de manutenção de veículos.
+• Condições climáticas (temperatura, chuva, etc.).
+Desafios:
+•Prever a demanda por serviços: usar regressão linear para identificar como fatores como o 
+tipo de veículo e clima afetam a procura por serviços.
+•Alocar técnicos de forma eficiente: analisar o volume de atendimentos e ajustar a 
+disponibilidade de técnicos para reduzir o tempo de espera.
+•Otimizar a reposição de peças: prever a demanda por peças e ajustar a reposição para evitar 
+falta de estoque e melhorar o atendimento.
+
+===== PAGINA 23 =====
+Norte para a resolução
+Por onde começar? 
+Passo 1: Coleta e 
+Limpeza de Dados:
+• Reúna e organize 
+os dados históricos 
+(atendimentos, 
+vendas, clima, 
+feedback) e faça a 
+limpeza para 
+remover valores 
+inconsistentes ou 
+ausentes.
+Passo 2: Análise 
+Exploratória:
+• Identifique 
+variáveis-chave, 
+como tipo de 
+serviço, tempo de 
+espera e condições 
+climáticas, que 
+podem influenciar 
+a demanda por 
+serviços e peças.
+Passo 3: Aplicação de 
+Regressão Linear:
+• Utilize a regressão 
+linear para modelar 
+a relação entre as 
+variáveis, focando 
+em prever 
+demanda e otimizar 
+a alocação de 
+técnicos e 
+reposição de peças.
+Passo 4: Validação e 
+Ajustes:
+• Valide o modelo 
+com dados 
+recentes, ajuste 
+parâmetros e 
+aplique as 
+previsões para 
+sugerir estratégias 
+de melhoria nas 
+operações.
+
+===== PAGINA 24 =====
+Norte para a resolução
+Coleta e Limpeza 
+de Dados
+Análise 
+Exploratória
+Aplicação de 
+Regressão Linear
+Validação e 
+AjustesDesafios
+
+===== PAGINA 25 =====
+Norte para a resolução
+Desafios que poderão surgir:
+Qualidade dos Dados: dados incompletos ou inconsistentes 
+podem dificultar a análise precisa.
+Multicolinearidade: variáveis correlacionadas podem 
+reduzir a precisão do modelo de regressão.
+Variações na Demanda: mudanças sazonais ou externas 
+podem alterar os padrões de consumo, exigindo ajustes no 
+modelo.
+Integração de Dados: combinar dados de diferentes fontes pode 
+ser difícil devido a formatos e tempos de atualização distintos.
+
+===== PAGINA 26 =====
+Consolidando o aprendizado
+Bloco 5
+Anderson Emidio de Macedo Gonçalves
+Ferramentas e Tecnologias para Data 
+Warehouse
+
+===== PAGINA 27 =====
+Consolidando o aprendizado
+Durante este conteúdo programático, abordamos os 
+seguintes assuntos:
+• Fontes de Dados de um Data Warehouse.
+• Ferramentas de ETL (Extração, Transformação e Carga).
+• Ferramentas de OLAP (Online Analytical Processing) e 
+Data Mining.
+• Data Mining com Regressão linear.
+• Situação-problema: gestão de serviços em uma rede de 
+autocenters.
+
+===== PAGINA 28 =====
+Quiz
+A B
+C D
+As ferramentas de ETL (Extração, Transformação e Carga) desempenham um 
+papel fundamental no processo de transferência de dados de múltiplas 
+fontes para um Data Warehouse.
+Qual é o principal objetivo do processo de transformação em uma 
+ferramenta de ETL? Assinale a alternativa correta.
+Armazenar dados em um Data 
+Warehouse.
+Transferir dados de uma fonte para 
+outra.
+Modificar e formatar dados para 
+análise. Excluir dados redundantes.
+
+===== PAGINA 29 =====
+Quiz
+A B
+C D
+As ferramentas de ETL (Extração, Transformação e Carga) desempenham um 
+papel fundamental no processo de transferência de dados de múltiplas 
+fontes para um Data Warehouse.
+Qual é o principal objetivo do processo de transformação em uma 
+ferramenta de ETL? Assinale a alternativa correta.
+Armazenar dados em um Data 
+Warehouse.
+Transferir dados de uma fonte para 
+outra.
+Modificar e formatar dados para 
+análise. Excluir dados redundantes.
+
+===== PAGINA 30 =====
+Quiz – Resolução
+C) Modificar e formatar dados para a análise.
+No processo de ETL, a transformação tem como 
+principal objetivo modificar, padronizar e formatar os 
+dados, garantindo que eles estejam prontos para serem 
+analisados no Data Warehouse. Isso inclui operações 
+como agregação, limpeza e conversão de formatos.
+
+===== PAGINA 31 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da sua 
+carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 32 =====
+Indicação de leitura 1
+Leia o capítulo "OLAP“ que apresenta os modelos de 
+dados multidimensionais, a representação das 
+dimensões em cubos de dados e como representar as 
+medidas em cubos de dados. Não deixe de conferir e 
+aprender um pouco mais por meio desta indicação de 
+leitura.
+Referência:
+VIDA, Edinilson da S. et al. Data warehouse. Porto Alegre: Grupo A, 
+2021.
+
+===== PAGINA 33 =====
+Indicação de leitura 2
+Este livro apresenta vários conceitos sobre a área 
+de negócio envolvendo análise de dados e gestão 
+de negócios. O capítulo 4 - "Análise de dados 
+preditiva I: processo, métodos e algoritmos de 
+mineração de dados“ explica com exemplos esses 
+conteúdos abordados. 
+Referência:
+SHARDA, Ramesh; DELEN, Dursun; TURBAN, Efraim. Business 
+intelligence e análise de dados para gestão do negócio. Porto 
+Alegre: Grupo A, 2019.
+
+===== PAGINA 34 =====
+Referências
+INMON, W. H. Como construir o Data Warehouse. Rio de Janeiro: Campus, 
+1997. 
+MACHADO, F. N. Tecnologia e Projeto de Data Warehouse: uma visão 
+multidimensional. São Paulo: Érica, 2004. 
+RASLAN, D. A.; CALAZANS, Angélica Toffano Seidel. Data Warehouse: 
+Conceitos e Aplicações. Brasília, DF, Abril de 2014. 
+SHARDA, Ramesh; DELEN, Dursun; TURBAN, Efraim. Business intelligence e 
+análise de dados para gestão do negócio. Porto Alegre: Grupo A, 2019.
+VIDA, Edinilson da S. et al. Data warehouse. Porto Alegre: Grupo A, 2021.
+
+===== PAGINA 35 =====
+Bons estudos!

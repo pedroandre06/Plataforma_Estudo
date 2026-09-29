@@ -1,0 +1,38 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "ferramentas-tecnologias-dw",
+  "modulo": {
+    "nome": "Ferramentas e Tecnologias para DW",
+    "descricao": "Fontes de dados de um DW, processo ETL e suas ferramentas, OLAP com cubos multidimensionais e Data Mining com regressão linear.",
+    "pdf_origem": "89578af6-b624-4abc-8de6-8c745cc6e712.pdf",
+    "ordem": 4,
+    "resumo": [
+      "FONTES DE DADOS DE UM DATA WAREHOUSE",
+      "• Três tipos principais: bancos de dados relacionais, arquivos CSV e APIs/Web Services.",
+      "• Bancos relacionais (MySQL, PostgreSQL, Oracle): dados em tabelas, consultas em SQL e integridade referencial por chaves primárias e estrangeiras.",
+      "• Arquivos CSV: texto simples separado por vírgulas, muito usado em exportações de sistemas legados; desafios: dados não estruturados, duplicações e inconsistências.",
+      "• APIs e Web Services: comunicação entre sistemas para acessar dados em tempo real, em JSON e XML, via RESTful e SOAP (ex.: API do Google Analytics).",
+      "• Diversidade de fontes: cada sistema traz uma perspectiva (operacional, histórica, tempo real); melhora a qualidade da análise e dá visão holística do negócio.",
+      "• Conclusão: um DW eficaz integra fontes heterogêneas de forma coesa e escalável.",
+      "PROCESSO ETL (EXTRACT, TRANSFORM, LOAD)",
+      "• Definição: extração de dados de diversas fontes, transformação para um formato adequado e carga no Data Warehouse/Data Mart.",
+      "• Extract: coleta de dados de bancos, APIs e CSVs. Desafios: dados fragmentados, formatos diferentes e falhas de conectividade.",
+      "• Transform: padronizar, corrigir inconsistências e aplicar regras de negócio — limpeza (duplicatas e ausentes), conversão de formatos, cálculos e agregações. Ex.: unificar dd/mm/yyyy e mm-dd-yyyy.",
+      "• Load: carga inicial (grande volume na primeira vez) e carga incremental (somente dados novos ou modificados desde a última carga).",
+      "• Ferramentas de ETL: Talend (open-source, múltiplas fontes), Informatica PowerCenter (robusta, grandes empresas) e Apache NiFi (automação de fluxos).",
+      "• Critérios de escolha: facilidade de uso, escalabilidade/performance e suporte a diferentes fontes.",
+      "OLAP E DATA MINING",
+      "• OLAP: análise multidimensional de grandes volumes, criando cubos de dados por dimensões (tempo, produto, região).",
+      "• Operações OLAP: drill-down (detalhar), roll-up (agregar/resumir), slice e dice (recortar fatias e subconjuntos).",
+      "• Benefícios: respostas rápidas a consultas complexas, suporte à análise histórica e visão clara das interações entre dados.",
+      "• Ferramentas OLAP: Microsoft SSAS, Pentaho BI (open-source) e Oracle OLAP.",
+      "• Data Mining: descoberta de padrões ocultos e tendências; técnicas: classificação, regressão, clusterização e análise de associação (atividades do KDD).",
+      "• Ferramentas de Data Mining: RapidMiner, Weka (open-source) e SAS Data Mining.",
+      "• Regressão linear: prever demanda a partir de variáveis relacionadas (ex.: tipo de veículo e clima x procura por serviços).",
+      "PEGADINHAS DE PROVA",
+      "• O objetivo da transformação é MODIFICAR/PADRONIZAR os dados para análise — não armazenar nem apenas transferir.",
+      "• Carga inicial = primeiro volume grande; incremental = só o que mudou desde a última carga.",
+      "• Drill-down DESCE ao detalhe; roll-up SOBE para o resumo."
+    ]
+  }
+}

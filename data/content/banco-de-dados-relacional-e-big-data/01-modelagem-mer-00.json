@@ -1,0 +1,36 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "modelagem-mer",
+  "modulo": {
+    "nome": "Modelagem de Dados e MER",
+    "descricao": "Conceitos de banco de dados, importância da modelagem e Modelo Entidade-Relacionamento (entidades, atributos, relacionamentos, cardinalidade e participação) até a transformação para o modelo relacional.",
+    "pdf_origem": "80b987cf-22f3-4703-bc3d-d10b20fa13a6.pdf",
+    "ordem": 1,
+    "resumo": [
+      "O QUE SÃO BANCOS DE DADOS",
+      "• Banco de dados: coleção estruturada de dados relacionados, projetada para ser acessada de forma eficiente por múltiplos usuários e aplicações.",
+      "• Estão presentes em praticamente todos os sistemas digitais: bancos, e-commerce, hospitais, universidades e redes sociais.",
+      "• Bancos relacionais são os mais utilizados no mundo corporativo por garantirem organização, integridade e rapidez (Elmasri; Navathe, 2018).",
+      "POR QUE MODELAR DADOS?",
+      "• Objetivo: traduzir as regras e necessidades de um sistema real em uma estrutura lógica implementável em banco de dados.",
+      "• Benefícios: redução de redundância, clareza na estrutura dos dados, suporte à integridade e à escalabilidade.",
+      "• Ferramenta principal: Modelo Entidade-Relacionamento (MER), proposto por Peter Chen em 1976.",
+      "MODELO ENTIDADE-RELACIONAMENTO (MER)",
+      "• Definição: técnica de modelagem conceitual que representa graficamente os elementos e relacionamentos de um sistema real.",
+      "• Para que serve: facilita o entendimento do domínio de dados, serve de ponte entre usuários e desenvolvedores e prepara a base para o modelo relacional.",
+      "• ENTIDADES: objetos concretos ou conceituais (cliente, produto, pedido).",
+      "• ATRIBUTOS: propriedades das entidades (nome, CPF, data de nascimento). Tipos: simples, compostos e multivalorados.",
+      "• RELACIONAMENTOS: indicam como as entidades se conectam (ex.: 'Cliente realiza Pedido', 'Aluno cursa Disciplina'). Cada relacionamento pode ter atributos próprios (data da compra, quantidade).",
+      "• CARDINALIDADE: número de ocorrências permitidas entre entidades — 1:1 (um para um), 1:N (um para muitos) e N:M (muitos para muitos).",
+      "• PARTICIPAÇÃO: total (todos os registros participam) ou parcial (participação opcional). Essencial para prever a integridade referencial.",
+      "DO MER AO MODELO RELACIONAL",
+      "• Cada entidade vira uma tabela.",
+      "• Cada relacionamento vira uma chave estrangeira (1:N) ou uma nova tabela (N:M).",
+      "• Exemplo: Aluno + Disciplina + relacionamento Matrícula geram a tabela MATRÍCULA com atributos próprios (data, nota).",
+      "• 'O MER é o mapa. O modelo relacional é a estrada.' (adaptado de Heuser, 2009).",
+      "PEGADINHAS DE PROVA",
+      "• MER é MODELAGEM CONCEITUAL (Chen, 1976); o modelo relacional é a implementação (Codd, 1970).",
+      "• Relacionamento N:M SEMPRE gera tabela associativa; 1:N é resolvido com chave estrangeira."
+    ]
+  }
+}

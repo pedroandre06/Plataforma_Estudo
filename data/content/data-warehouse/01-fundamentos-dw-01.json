@@ -1,0 +1,69 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "fundamentos-dw",
+  "perguntas": [
+    {
+      "e": "Uma empresa precisa registrar, em tempo real, cada pedido, pagamento e atualização de cadastro dos clientes. Qual característica descreve corretamente esse banco de dados?",
+      "t": "OLTP x OLAP",
+      "d": "medio",
+      "r": "Bloco 2 - Diferenças entre Banco de Dados Transacionais e Analíticos",
+      "x": "Bancos transacionais (OLTP) têm alta frequência de leitura e escrita, estrutura normalizada e suportam muitas transações simultâneas.",
+      "a": ["Estrutura desnormalizada, focada em agregações históricas", "Alta frequência de leitura e escrita, com estrutura normalizada", "Somente leitura, com foco em consultas multidimensionais", "Armazenamento de dados históricos para análise longitudinal"],
+      "c": 1
+    },
+    {
+      "e": "Sobre a estrutura de dados em OLTP e OLAP, é correto afirmar:",
+      "t": "OLTP x OLAP",
+      "d": "facil",
+      "r": "Bloco 2 - Principais diferenças entre OLTP e OLAP",
+      "x": "OLTP usa estrutura normalizada (evita redundância); OLAP usa estrutura desnormalizada para acelerar consultas complexas e agregações.",
+      "a": ["Ambos usam estrutura normalizada", "OLTP é desnormalizado e OLAP é normalizado", "OLTP é normalizado e OLAP é desnormalizado", "A estrutura é idêntica; muda apenas o volume de dados"],
+      "c": 2
+    },
+    {
+      "e": "Um supermercado que usa o banco de dados para rastrear produtos, preços e vendas do dia a dia está utilizando um sistema tipicamente:",
+      "t": "OLTP x OLAP",
+      "d": "facil",
+      "r": "Bloco 2 - Diferenças entre Banco de Dados Transacionais e Analíticos",
+      "x": "Esse é o exemplo prático de OLTP citado no material: operações do dia a dia, não análise histórica.",
+      "a": ["OLAP, pois gera relatórios gerenciais", "OLTP, pois realiza operações transacionais do dia a dia", "Data Warehouse, pois consolida dados de várias fontes", "Data Mart, pois é focado em um departamento"],
+      "c": 1
+    },
+    {
+      "e": "Qual princípio do Data Warehouse permite analisar a evolução dos indicadores ao longo do tempo (análise longitudinal)?",
+      "t": "Princípios do DW",
+      "d": "facil",
+      "r": "Bloco 3 - Princípios básicos",
+      "x": "O armazenamento histórico mantém os dados de diferentes períodos, permitindo análise longitudinal e comparação temporal.",
+      "a": ["Separação de processos", "Armazenamento histórico", "Consolidação de fontes", "Desnormalização das dimensões"],
+      "c": 1
+    },
+    {
+      "e": "Qual característica técnica é típica de um banco de dados analítico (OLAP)?",
+      "t": "OLTP x OLAP",
+      "d": "medio",
+      "r": "Bloco 2 - Características do banco de dados analítico (OLAP)",
+      "x": "OLAP tem leitura alta e escrita baixa, estrutura desnormalizada e foco em agregação e consultas multidimensionais.",
+      "a": ["Baixa frequência de leitura e alta de escrita", "Estrutura normalizada para evitar redundância", "Leitura alta, escrita baixa e foco em agregação de dados", "Suporte exclusivo a operações de exclusão de registros"],
+      "c": 2
+    },
+    {
+      "e": "Qual é o principal objetivo da modelagem de dados em um Data Warehouse?",
+      "t": "Modelagem de dados",
+      "d": "facil",
+      "r": "Bloco 3 - Modelagem de dados para Data Warehouse (Quiz do curso)",
+      "x": "A modelagem do DW organiza os dados para facilitar análise e consulta de dados históricos — o oposto de otimizar transações em tempo real ou operações CRUD.",
+      "a": ["Otimizar transações em tempo real", "Facilitar a análise e consulta de dados históricos", "Garantir a integridade dos dados durante a escrita", "Reduzir o tempo de resposta das operações CRUD"],
+      "c": 1
+    },
+    {
+      "e": "Na modelagem dimensional, a tabela de fatos e as tabelas de dimensões guardam, respectivamente:",
+      "t": "Modelagem dimensional",
+      "d": "medio",
+      "r": "Bloco 3 - Modelagem de dados para Data Warehouse",
+      "x": "A tabela de fatos contém as medidas quantitativas (vendas, lucros) e as dimensões fornecem o contexto (tempo, produto, cliente, local).",
+      "a": ["Medidas quantitativas e o contexto de análise", "O contexto de análise e as medidas quantitativas", "Somente chaves estrangeiras e somente chaves primárias", "Metadados e dados brutos das fontes"],
+      "c": 0
+    }
+  ]
+}

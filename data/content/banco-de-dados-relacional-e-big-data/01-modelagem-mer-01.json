@@ -1,0 +1,69 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "modelagem-mer",
+  "perguntas": [
+    {
+      "e": "O que é um banco de dados, segundo o material?",
+      "t": "Conceitos de banco de dados",
+      "d": "facil",
+      "r": "Bloco 1 - O que são Bancos de Dados?",
+      "x": "É uma coleção estruturada de dados relacionados, projetada para ser acessada de forma eficiente por múltiplos usuários e aplicações.",
+      "a": ["Um arquivo de texto com dados separados por vírgulas", "Uma coleção estruturada de dados relacionados, acessada eficientemente por múltiplos usuários e aplicações", "Um programa de planilhas eletrônicas", "Um servidor de arquivos compartilhado"],
+      "c": 1
+    },
+    {
+      "e": "Por que os bancos de dados relacionais são os mais utilizados no mundo corporativo?",
+      "t": "Bancos relacionais",
+      "d": "facil",
+      "r": "Bloco 1 - O que são Bancos de Dados?",
+      "x": "Porque garantem organização, integridade e rapidez na manipulação dos dados (Elmasri; Navathe, 2018).",
+      "a": ["Porque são gratuitos e não exigem modelagem", "Porque garantem organização, integridade e rapidez na manipulação dos dados", "Porque dispensam o uso de SQL", "Porque só funcionam em nuvem"],
+      "c": 1
+    },
+    {
+      "e": "Qual é o objetivo principal da modelagem de dados?",
+      "t": "Modelagem de dados",
+      "d": "facil",
+      "r": "Bloco 1 - Por que Modelar Dados?",
+      "x": "Traduzir as regras e necessidades de um sistema real em uma estrutura lógica que possa ser implementada em um banco de dados.",
+      "a": ["Aumentar a redundância para garantir cópias de segurança", "Traduzir as regras e necessidades do sistema real em uma estrutura lógica implementável", "Escolher o fornecedor de servidores", "Definir a linguagem de programação da aplicação"],
+      "c": 1
+    },
+    {
+      "e": "Quais são benefícios diretos da modelagem de dados?",
+      "t": "Modelagem de dados",
+      "d": "facil",
+      "r": "Bloco 1 - Por que Modelar Dados?",
+      "x": "A modelagem reduz a redundância, traz clareza à estrutura dos dados e dá suporte à integridade e à escalabilidade.",
+      "a": ["Redução de redundância, clareza na estrutura, suporte à integridade e escalabilidade", "Aumento do custo de armazenamento", "Eliminação da necessidade de chaves", "Substituição do SGBD por planilhas"],
+      "c": 0
+    },
+    {
+      "e": "Quem propôs o Modelo Entidade-Relacionamento e em que ano?",
+      "t": "MER",
+      "d": "facil",
+      "r": "Bloco 1 e 2 - Modelo Entidade-Relacionamento",
+      "x": "O MER foi proposto por Peter Chen em 1976. Edgar Codd (1970) propôs o modelo relacional.",
+      "a": ["Edgar Codd, em 1970", "Peter Chen, em 1976", "William Inmon, em 1990", "Ralph Kimball, em 1996"],
+      "c": 1
+    },
+    {
+      "e": "O MER é uma técnica de modelagem:",
+      "t": "MER",
+      "d": "medio",
+      "r": "Bloco 2 - O que é o Modelo Entidade-Relacionamento (MER)?",
+      "x": "O MER é uma técnica de modelagem conceitual, que representa graficamente os elementos e relacionamentos de um sistema real.",
+      "a": ["Física, voltada à escolha de discos e índices", "Conceitual, representando graficamente elementos e relacionamentos do sistema real", "Lógica, restrita à criação de triggers", "Estatística, usada para prever tendências"],
+      "c": 1
+    },
+    {
+      "e": "Para que serve o MER, segundo o material?",
+      "t": "MER",
+      "d": "facil",
+      "r": "Bloco 2 - O que é o Modelo Entidade-Relacionamento (MER)?",
+      "x": "Facilita o entendimento do domínio de dados, serve como ponte entre usuários e desenvolvedores e prepara a base para o modelo relacional.",
+      "a": ["Facilitar o entendimento do domínio, servir de ponte entre usuários e desenvolvedores e preparar a base para o modelo relacional", "Substituir o SGBD", "Eliminar a necessidade de normalização", "Gerar automaticamente relatórios gerenciais"],
+      "c": 0
+    }
+  ]
+}

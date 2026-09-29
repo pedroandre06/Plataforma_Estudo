@@ -1,0 +1,61 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "ferramentas-tecnologias-dw",
+  "perguntas": [
+    {
+      "e": "Qual das opções abaixo é uma ferramenta OLAP citada no material?",
+      "t": "Ferramentas OLAP",
+      "d": "medio",
+      "r": "Bloco 3 - Ferramentas OLAP",
+      "x": "Microsoft SQL Server Analysis Services (SSAS), Pentaho BI e Oracle OLAP são as ferramentas OLAP citadas.",
+      "a": ["Microsoft SQL Server Analysis Services (SSAS)", "Apache NiFi", "Weka", "RapidMiner"],
+      "c": 0
+    },
+    {
+      "e": "As operações de slice e dice em um cubo OLAP servem para:",
+      "t": "Operações OLAP",
+      "d": "dificil",
+      "r": "Bloco 3 - Características e benefícios do OLAP",
+      "x": "Slice e dice recortam fatias e subconjuntos do cubo, permitindo analisar partes específicas dos dados sem percorrer todo o volume.",
+      "a": ["Criptografar as dimensões sensíveis", "Recortar fatias e subconjuntos específicos do cubo", "Normalizar a tabela de fatos", "Criar chaves estrangeiras nas dimensões"],
+      "c": 1
+    },
+    {
+      "e": "Qual ferramenta de mineração de dados é descrita como open-source, focada em aprendizado de máquina e mineração?",
+      "t": "Ferramentas de Data Mining",
+      "d": "medio",
+      "r": "Bloco 3 - Ferramentas de data mining",
+      "x": "Weka é a ferramenta open-source citada; RapidMiner tem interface amigável e SAS Data Mining é a plataforma de análises preditivas avançadas.",
+      "a": ["RapidMiner", "Weka", "Talend", "PowerCenter"],
+      "c": 1
+    },
+    {
+      "e": "No caso da rede de autocenters, o material sugere o uso de regressão linear para:",
+      "t": "Regressão linear",
+      "d": "medio",
+      "r": "Bloco 4 - Teoria em prática (autocenters)",
+      "x": "A regressão linear foi indicada para prever a demanda por serviços, considerando fatores como tipo de veículo e clima, e assim alocar técnicos e otimizar a reposição de peças.",
+      "a": ["Criptografar os dados de atendimento", "Prever a demanda por serviços e apoiar a alocação de técnicos e peças", "Normalizar o cadastro de clientes", "Criar o cubo OLAP de vendas"],
+      "c": 1
+    },
+    {
+      "e": "Qual problema pode reduzir a precisão de um modelo de regressão linear, segundo os desafios apontados no material?",
+      "t": "Regressão linear",
+      "d": "dificil",
+      "r": "Bloco 4 - Desafios que poderão surgir",
+      "x": "A multicolinearidade — variáveis correlacionadas entre si — pode reduzir a precisão do modelo. Também são citados qualidade dos dados, variações sazonais e integração de fontes.",
+      "a": ["Uso de índices nas consultas", "Multicolinearidade entre as variáveis", "Particionamento da tabela de fatos", "Adoção de segmentação de clientes"],
+      "c": 1
+    },
+    {
+      "e": "No processo ETL, a fase de transformação pode incluir limpeza de dados, conversão de formatos, cálculos e agregações.",
+      "tp": "vf",
+      "t": "ETL - Transform",
+      "d": "facil",
+      "r": "Bloco 2 - Fase de transformação de dados",
+      "x": "Verdadeiro. O material lista exatamente essas tarefas comuns: limpeza (duplicatas e dados ausentes), conversão de formatos e aplicação de cálculos e agregações.",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 0
+    }
+  ]
+}

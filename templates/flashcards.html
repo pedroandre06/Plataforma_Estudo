@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titulo %}Flashcards · {{ modulo['nome'] }}{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <p class="item-meta"><a href="{{ url_for('aula.modulo', slug=modulo['slug']) }}">{{ modulo['nome'] }}</a> / flashcards</p>
+    <h1 class="titulo-pagina">Flashcards</h1>
+    <p class="sub">Clique no cartão para virar. {{ flashcards|length }} cartões neste módulo.</p>
+  </div>
+  <a class="btn" href="{{ url_for('aula.modulo', slug=modulo['slug'], aba='praticar') }}">Ir para os exercícios</a>
+</div>
+{% if flashcards %}
+  <div class="grid grid-3">
+    {% for f in flashcards %}
+      <div class="flashcard">
+        <div class="flashcard-interno">
+          <div class="flashcard-face">{{ f['frente'] }}</div>
+          <div class="flashcard-face flashcard-verso">{{ f['verso'] }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="vazio">Nenhum flashcard cadastrado para este módulo ainda.</p>
+{% endif %}
+{% endblock %}

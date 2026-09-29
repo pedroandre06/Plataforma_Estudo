@@ -1,0 +1,61 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "gerenciamento-big-data",
+  "perguntas": [
+    {
+      "e": "Em quais situações o Apache Spark é indicado como a melhor solução para processamento de dados?",
+      "t": "Aplicação do Spark",
+      "d": "medio",
+      "r": "Bloco 5 - Quiz do curso",
+      "x": "O Quiz indica: quando se precisa realizar processamento em lote e em tempo real (streaming) de grandes volumes, distribuindo tarefas de forma eficiente entre vários nós. Spark não é para pequenos volumes/baixa latência transacional, nem processamento sequencial, nem sistemas que preferem disco à memória.",
+      "a": ["Para processar pequenos volumes com baixa latência, como consultas transacionais", "Para processamento em lote e em tempo real (streaming) de grandes volumes, distribuindo tarefas entre vários nós", "Para processamento exclusivamente sequencial, com foco em simplicidade", "Para grandes volumes com limites rígidos de memória, preferindo disco à memória"],
+      "c": 1
+    },
+    {
+      "e": "Qual é a principal diferença de desempenho entre o Spark e o modelo tradicional de MapReduce?",
+      "t": "Spark x MapReduce",
+      "d": "dificil",
+      "r": "Bloco 5 - Resolução do Quiz",
+      "x": "O Spark acelera o processamento mantendo dados em memória, enquanto abordagens tradicionais trabalham com limites rígidos de memória e preferem operações em disco.",
+      "a": ["O Spark só processa dados em disco, e o MapReduce usa memória", "O Spark processa dados em memória, acelerando as análises, enquanto o MapReduce tradicional prefere operações em disco", "Ambos processam exclusivamente de forma sequencial", "O Spark não suporta processamento distribuído"],
+      "c": 1
+    },
+    {
+      "e": "No caso de uma empresa que precisa monitorar em tempo real o comportamento dos usuários, foi proposta a combinação de:",
+      "t": "Estudo de caso (streaming)",
+      "d": "dificil",
+      "r": "Bloco 4 - Norte para a resolução",
+      "x": "O material propõe o Apache Kafka para ingerir os dados em tempo real e o Apache Spark Streaming para processá-los, gerando alertas (ex.: 1000 unidades vendidas) e visualizando os resultados em dashboards.",
+      "a": ["Excel e Power BI", "Apache Kafka para ingestão e Apache Spark Streaming para processamento, com geração de alertas e visualização em dashboard", "HDFS e MapReduce em modo batch noturno", "Um banco relacional com triggers"],
+      "c": 1
+    },
+    {
+      "e": "Quais são exemplos de aplicação de Machine Learning no gerenciamento de Big Data citados no material?",
+      "t": "Machine Learning",
+      "d": "medio",
+      "r": "Bloco 3 - Machine Learning",
+      "x": "São citados casos como detecção de fraudes em tempo real, recomendações personalizadas, segmentação (clusterização) de clientes e modelos preditivos a partir de padrões de compra.",
+      "a": ["Detecção de fraudes, recomendações personalizadas e segmentação de clientes", "Apenas a geração de relatórios financeiros", "Somente a normalização de tabelas", "Apenas a criptografia de arquivos"],
+      "c": 0
+    },
+    {
+      "e": "Qual biblioteca do ecossistema Spark é voltada para Machine Learning?",
+      "t": "MLlib",
+      "d": "medio",
+      "r": "Bloco 2 - Estrutura do Apache Spark",
+      "x": "MLlib é a biblioteca de machine learning do Spark; Spark Streaming cuida de fluxos em tempo real e GraphX de grafos.",
+      "a": ["Spark SQL", "Spark Streaming", "MLlib", "GraphX"],
+      "c": 2
+    },
+    {
+      "e": "O processamento em streaming costuma ser mais simples de operar do que o processamento em batch.",
+      "tp": "vf",
+      "t": "Batch x Streaming",
+      "d": "facil",
+      "r": "Bloco 1 - Como funciona o streaming?",
+      "x": "Falso. O streaming tem menor latência, mas é mais complexo em termos de infraestrutura ou manutenção; o batch é menos complexo, porém mais lento.",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 1
+    }
+  ]
+}

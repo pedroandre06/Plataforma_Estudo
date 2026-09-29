@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block titulo %}Criar usuário{% endblock %}
+{% block conteudo %}
+<div class="login-caixa">
+  <div class="card">
+    <h1 class="titulo-pagina">Criar usuário</h1>
+    <p class="sub">Sua conta guarda progresso, notas e histórico de tentativas.</p>
+    <form method="post" class="form">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <label class="campo">
+        <span>Usuário</span>
+        <input type="text" name="usuario" required autocomplete="username"
+               value="{{ dados.get('usuario','') }}" placeholder="sem espaços, ex.: maria.silva">
+      </label>
+      <label class="campo">
+        <span>Nome</span>
+        <input type="text" name="nome" required value="{{ dados.get('nome','') }}" placeholder="Seu nome">
+      </label>
+      <label class="campo">
+        <span>E-mail <em>(opcional)</em></span>
+        <input type="email" name="email" value="{{ dados.get('email','') }}" placeholder="voce@exemplo.com">
+      </label>
+      <div class="dupla">
+        <label class="campo">
+          <span>Senha</span>
+          <input type="password" name="senha" required autocomplete="new-password">
+        </label>
+        <label class="campo">
+          <span>Confirmar senha</span>
+          <input type="password" name="confirma" required autocomplete="new-password">
+        </label>
+      </div>
+      <button class="btn btn-primario btn-largo" type="submit">Criar conta</button>
+    </form>
+    <p class="rodape-form">Já tem conta? <a href="{{ url_for('login') }}">Entrar</a></p>
+  </div>
+</div>
+{% endblock %}

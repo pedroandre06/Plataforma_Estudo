@@ -1,0 +1,69 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "ciencia-dados-empresarial",
+  "perguntas": [
+    {
+      "e": "Qual ferramenta é descrita como plataforma de BI da Microsoft, similar ao Tableau, voltada à visualização interativa e à criação de dashboards dinâmicos?",
+      "t": "Ferramentas de visualização",
+      "d": "medio",
+      "r": "Bloco 2 - Ferramentas de análise de dados exploratória",
+      "x": "O Power BI é a plataforma de BI da Microsoft com foco em visualização interativa e dashboards dinâmicos, integrada ao ecossistema Microsoft.",
+      "a": ["Power BI", "Apache Spark", "RapidMiner", "Apache Kafka"],
+      "c": 0
+    },
+    {
+      "e": "Segundo o material, a escolha da ferramenta de análise depende de quais fatores?",
+      "t": "Escolha de ferramenta",
+      "d": "medio",
+      "r": "Bloco 2 - Ferramentas de análise de dados exploratória",
+      "x": "Depende do contexto do projeto, do volume de dados, da necessidade de visualizações e das habilidades técnicas disponíveis na equipe.",
+      "a": ["Somente o preço da licença", "Contexto do projeto, volume de dados, necessidade de visualizações e habilidades técnicas disponíveis", "Apenas a linguagem de programação preferida do gestor", "Somente o sistema operacional utilizado"],
+      "c": 1
+    },
+    {
+      "e": "Para mostrar tendências ao longo do tempo ou comparações entre categorias, quais gráficos o material recomenda?",
+      "t": "Visualização de dados",
+      "d": "facil",
+      "r": "Bloco 3 - Visualização de dados",
+      "x": "Gráficos de barras e de linhas são indicados para tendências ao longo do tempo e comparações entre categorias.",
+      "a": ["Gráficos de barras e de linhas", "Mapas de calor", "Infográficos", "Diagramas de entidade-relacionamento"],
+      "c": 0
+    },
+    {
+      "e": "Para demonstrar a relação entre duas variáveis, o gráfico mais adequado é o de:",
+      "t": "Visualização de dados",
+      "d": "facil",
+      "r": "Bloco 3 - Visualização de dados",
+      "x": "Gráficos de dispersão (scatter plot) são úteis para demonstrar relações entre duas variáveis.",
+      "a": ["Setores (pizza)", "Dispersão", "Colunas empilhadas", "Linhas do tempo"],
+      "c": 1
+    },
+    {
+      "e": "Qual recurso visual é indicado para mostrar correlações e padrões de forma intuitiva?",
+      "t": "Visualização de dados",
+      "d": "medio",
+      "r": "Bloco 3 - Visualização de dados",
+      "x": "Mapas de calor (heatmaps) mostram correlações e padrões de forma intuitiva.",
+      "a": ["Mapas de calor", "Gráficos de dispersão", "Infográficos", "Tabelas dinâmicas"],
+      "c": 0
+    },
+    {
+      "e": "O que caracteriza um infográfico, segundo o material?",
+      "t": "Visualização de dados",
+      "d": "medio",
+      "r": "Bloco 3 - Visualização de dados",
+      "x": "Infográficos combinam imagens, gráficos e texto para contar uma história visualmente.",
+      "a": ["Uma tabela com todos os dados brutos", "A combinação de imagens, gráficos e texto para contar uma história visualmente", "Um relatório apenas com texto corrido", "Um modelo de machine learning"],
+      "c": 1
+    },
+    {
+      "e": "Quais bibliotecas Python são citadas como ferramentas para criar visualizações interativas e intuitivas?",
+      "t": "Ferramentas de visualização",
+      "d": "medio",
+      "r": "Bloco 3 - Visualização de dados",
+      "x": "O material cita Python com Matplotlib, Seaborn e Plotly, além de Tableau, Power BI e Excel.",
+      "a": ["Matplotlib, Seaborn e Plotly", "HDFS, YARN e MapReduce", "Kafka, Spark e NiFi", "Django, Flask e FastAPI"],
+      "c": 0
+    }
+  ]
+}

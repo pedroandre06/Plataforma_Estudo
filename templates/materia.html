@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block titulo %}{{ materia['nome'] }}{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <p class="item-meta"><a href="{{ url_for('geral.dashboard') }}">Painel</a> / matéria</p>
+    <h1 class="titulo-pagina" style="color: {{ materia['cor'] }}">{{ materia['nome'] }}</h1>
+    <p class="sub">{{ materia['descricao'] }}</p>
+  </div>
+  <div class="linha">
+    <span class="badge badge-info">{{ modulos|length }} módulos</span>
+    <span class="badge">{{ total_perguntas }} questões</span>
+    <span class="badge badge-ok">{{ concluidos }} concluídos</span>
+  </div>
+</div>
+
+<div class="grid grid-2">
+  <div>
+    <h2>Módulos</h2>
+    <ul class="lista espaco-topo">
+      {% for mo in modulos %}
+        {% set st = mo['status'] or 'nao_iniciado' %}
+        <li class="item">
+          <div class="item-principal">
+            <span class="item-num">{{ loop.index }}</span>
+            <div>
+              <div class="item-titulo">{{ mo['nome'] }}</div>
+              <div class="item-meta">
+                {{ mo['n_perguntas'] }} questões
+                {% if mo['n_flashcards'] %} · {{ mo['n_flashcards'] }} flashcards{% endif %}
+                {% if mo['melhor_nota'] is not none %} · melhor nota {{ fmt_nota(mo['melhor_nota']) }}{% endif %}
+                {% if mo['tentativas'] %} · {{ mo['tentativas'] }} tentativa(s){% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="item-acoes">
+            {% if st == 'concluido' %}<span class="badge badge-ok">concluído</span>
+            {% elif st == 'em_andamento' %}<span class="badge badge-aviso">em andamento</span>
+            {% else %}<span class="badge">não iniciado</span>{% endif %}
+            <a class="btn btn-mini" href="{{ url_for('aula.modulo', slug=mo['slug']) }}">Estudar</a>
+            <a class="btn btn-primario btn-mini" href="{{ url_for('aula.modulo', slug=mo['slug'], aba='praticar') }}">Praticar</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div>
+    <h2>Simulados e provas desta matéria</h2>
+    <ul class="lista espaco-topo">
+      {% for s in simulados %}
+        <li class="item">
+          <div class="item-principal">
+            <div>
+              <div class="item-titulo">{{ s['nome'] }}</div>
+              <div class="item-meta">
+                {{ MODOS_SIMULADO.get(s['tipo'], s['tipo']) }} · {{ s['n_fixas'] or s['n_questoes'] }} questões
+                · {{ s['tempo_min'] }} min · corte {{ fmt_nota(s['nota_corte']) }}
+              </div>
+            </div>
+          </div>
+          <form method="post" action="{{ url_for('simulados.iniciar', simulado_id=s['id']) }}">
+            <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+            <button class="btn btn-primario btn-mini" type="submit">Iniciar</button>
+          </form>
+        </li>
+      {% else %}
+        <li class="vazio">Nenhum simulado disponível para esta matéria.</li>
+      {% endfor %}
+    </ul>
+    <div class="card espaco-topo">
+      <h3>Montar do zero</h3>
+      <p class="sub">Escolha matérias, módulos, dificuldade e tempo — ou gere um simulado de reforço a partir dos seus erros.</p>
+      <div class="linha espaco-topo">
+        <a class="btn" href="{{ url_for('sim_cfg.novo') }}">Simulado personalizado</a>
+        <form method="post" action="{{ url_for('simulados.reforco') }}">
+          <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+          <button class="btn" type="submit">⚡ Reforço dos pontos fracos</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

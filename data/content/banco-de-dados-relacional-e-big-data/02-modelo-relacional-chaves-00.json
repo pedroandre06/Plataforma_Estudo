@@ -1,0 +1,39 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "modelo-relacional-chaves",
+  "modulo": {
+    "nome": "Modelo Relacional, Chaves, Integridade e SQL",
+    "descricao": "Modelo relacional (tabelas, tuplas, atributos e domínios), chaves primária e estrangeira, tipos de integridade, constraints, SQL, normalização e o papel dos SGBDs.",
+    "pdf_origem": "128f1052-394a-42aa-85cf-e61a4ac8d66b.pdf",
+    "ordem": 2,
+    "resumo": [
+      "MODELO RELACIONAL",
+      "• Representa dados por meio de tabelas (relações), onde cada LINHA é uma tupla (registro) e cada COLUNA é um atributo (característica).",
+      "• Fundamentação: teoria dos conjuntos e lógica de predicados de primeira ordem (Codd, 1970).",
+      "• Objetivo: organizar dados de forma estruturada, com flexibilidade, integridade e desempenho nas consultas.",
+      "• Estrutura da tabela: atributos (colunas), tuplas (linhas) e domínio (tipo de dado aceito, ex.: inteiro, data, texto). Toda tabela deve ter pelo menos uma chave primária.",
+      "CHAVES",
+      "• Chave Primária (PK): identifica unicamente cada registro; não aceita valores nulos nem repetidos.",
+      "• Chave Estrangeira (FK): estabelece vínculo entre tabelas e deve referenciar uma chave primária válida de outra tabela.",
+      "• Exemplo: tabela Pedido com id_cliente como chave estrangeira referenciando Cliente(id_cliente).",
+      "INTEGRIDADE",
+      "• Integridade de ENTIDADE: toda tabela deve ter uma chave primária.",
+      "• Integridade REFERENCIAL: garante que os relacionamentos entre tabelas sejam válidos.",
+      "• Integridade de DOMÍNIO: cada valor precisa respeitar o tipo e as restrições definidas (ex.: CPF com 11 dígitos).",
+      "• Implementadas via constraints: PRIMARY KEY, FOREIGN KEY, NOT NULL, CHECK e UNIQUE.",
+      "SQL E SGBDs",
+      "• DDL de exemplo do material: CREATE TABLE Cliente (id_cliente INT PRIMARY KEY, nome VARCHAR(100) NOT NULL, cpf CHAR(11) UNIQUE); e CREATE TABLE Pedido (... FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)).",
+      "• SGBD (Sistema Gerenciador de Banco de Dados): software para criar, manipular e consultar dados. Funções: definição de esquemas, manipulação (CRUD), garantia de integridade e controle de concorrência. Exemplos: MySQL, PostgreSQL, SQL Server, Oracle.",
+      "• Transações e propriedades ACID garantem confiabilidade das operações.",
+      "NORMALIZAÇÃO E DESEMPENHO",
+      "• Objetivo: reduzir dados duplicados por decomposição em tabelas menores e eliminar anomalias de inserção, atualização e exclusão.",
+      "• Formas/benefícios: organização das tabelas (1FN, 2FN, 3FN), com ganho de integridade e consistência.",
+      "• Índices: aceleram buscas em atributos usados em filtros e junções.",
+      "• Medidas de controle do projeto: diagnosticar a estrutura atual → definir entidades e atributos → identificar PK/FK → corrigir relacionamentos e cardinalidades → aplicar normalização → otimizar tabelas e índices → implementar/consultar em SQL → ajustar e monitorar.",
+      "PEGADINHAS DE PROVA",
+      "• PK não aceita NULL nem repetição; FK referencia uma PK válida.",
+      "• Sem normalização e com chaves mal escolhidas surgem duplicidades, inconsistências e erros de relacionamento.",
+      "• Modelo mal estruturado + falta de alinhamento entre modelo lógico e físico estão entre as causas de problemas de desempenho."
+    ]
+  }
+}

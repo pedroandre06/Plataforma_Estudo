@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% block titulo %}Resultado do simulado{% endblock %}
+{% block conteudo %}
+<div class="card">
+  <div class="linha" style="justify-content: space-between">
+    <h1 class="titulo-pagina">{{ simulado['nome'] if simulado else 'Simulado' }}</h1>
+    {% if tentativa['status'] == 'expirada' %}<span class="badge badge-aviso">entregue por tempo esgotado</span>{% endif %}
+  </div>
+  <div class="nota-caixa espaco-topo">
+    <div>
+      <div class="stat-rotulo">Nota</div>
+      <div class="nota-grande">{{ fmt_nota(tentativa['nota']) }}</div>
+      <div class="item-meta">corte {{ fmt_nota(tentativa['nota_corte']) }} · {{ tentativa['total'] }} questões ·
+        tempo {{ (tentativa['tempo_seg'] or 0) // 60 }}min{{ '%02d' % ((tentativa['tempo_seg'] or 0) % 60) }}s</div>
+    </div>
+    <div class="selo {{ 'selo-aprovado' if tentativa['aprovado'] else 'selo-reprovado' }}">
+      {{ 'APROVADO' if tentativa['aprovado'] else 'REPROVADO' }}
+    </div>
+    <div style="margin-left:auto">
+      <div class="linha">
+        <span class="badge badge-ok">{{ tentativa['acertos'] }} acertos</span>
+        <span class="badge badge-erro">{{ tentativa['erros'] }} erros</span>
+        <span class="badge">{{ tentativa['brancos'] }} em branco</span>
+      </div>
+      {% if anteriores %}
+        <p class="item-meta espaco-topo">Tentativas anteriores:
+          {% for a in anteriores %}{{ fmt_nota(a['nota']) }}{{ ' · ' if not loop.last }}{% endfor %}
+        </p>
+      {% endif %}
+    </div>
+  </div>
+  {% if mostrar %}
+    <p class="item-meta espaco-topo">
+      Gabarito comentado disponível
+      {% if regras.get('mostrar_gabarito') == 'fim' %}abaixo{% endif %}.
+    </p>
+  {% endif %}
+  <div class="linha espaco-topo">
+    <form method="post" action="{{ url_for('simulados.reforco') }}">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <button class="btn btn-primario" type="submit">⚡ Gerar simulado de reforço</button>
+    </form>
+    {% if erradas %}
+      <form method="post" action="{{ url_for('resultado.refazer_erradas', tid=tentativa['id']) }}">
+        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+        <button class="btn" type="submit">Refazer só as erradas ({{ erradas|length }})</button>
+      </form>
+    {% endif %}
+    <a class="btn" href="{{ url_for('simulados.lista') }}">Voltar aos simulados</a>
+    <a class="btn" href="{{ url_for('extra.historico') }}">Histórico</a>
+  </div>
+</div>
+
+<div class="grid grid-3 espaco-topo-2">
+  {% for chave, titulo in [('materia', 'Por matéria'), ('modulo', 'Por módulo'), ('dificuldade', 'Por dificuldade')] %}
+    <div class="card">
+      <h3>{{ titulo }}</h3>
+      <div class="grupo-analise espaco-topo">
+        {% for item in analise['grupos'][chave] %}
+          <div class="linha-analise">
+            <div class="rotulo"><span>{{ item['nome'] }}</span><span>{{ item['acertos'] }}/{{ item['total'] }} ({{ item['pct'] }}%)</span></div>
+            <div class="barra barra-fina"><span style="width: {{ item['pct'] }}%"></span></div>
+          </div>
+        {% else %}
+          <p class="sub">Sem dados.</p>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% if analise['grupos']['topico'] %}
+  <div class="card espaco-topo-2">
+    <h3>Mapa de calor por tópico</h3>
+    <div class="pill-lista espaco-topo">
+      {% for item in analise['grupos']['topico'] %}
+        <span class="badge {{ 'badge-ok' if item['pct'] >= 80 else ('badge-aviso' if item['pct'] >= 50 else 'badge-erro') }}">
+          {{ item['nome'] }} · {{ item['pct'] }}%
+        </span>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{% if mostrar %}
+  <h2 class="espaco-topo-2">Gabarito comentado</h2>
+  <div class="espaco-topo">
+    {% for q in questoes %}
+      <div class="revisao-item">
+        <div class="linha" style="justify-content: space-between">
+          <span class="badge">{{ loop.index }} · {{ q['pergunta']['materia_nome'] }} · {{ q['pergunta']['modulo_nome'] }}</span>
+          <span class="badge {{ 'badge-ok' if q['correta'] == 1 else 'badge-erro' }}">
+            {{ 'acertou' if q['correta'] == 1 else ('em branco' if not q['escolhida'] else 'errou') }}
+          </span>
+        </div>
+        <p class="pergunta-enunciado">{{ q['pergunta']['enunciado'] }}</p>
+        <div class="lista-alternativas">
+          {% for a in q['alternativas'] %}
+            {% set marcada = q['escolhida'] == a['id'] %}
+            <div class="alternativa {{ 'correta' if a['correta'] else ('errada' if marcada else '') }}">
+              <span class="letra">{{ 'ABCDE'[loop.index0] }}</span>
+              <span>{{ a['texto'] }}{% if marcada %} <em class="item-meta">← sua resposta</em>{% endif %}</span>
+            </div>
+          {% endfor %}
+        </div>
+        {% if q['pergunta']['explicacao'] %}
+          <div class="explicacao"><strong>Explicação:</strong> {{ q['pergunta']['explicacao'] }}
+            {% if q['pergunta']['referencia'] %}<p class="item-meta">Base: {{ q['pergunta']['referencia'] }}</p>{% endif %}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="vazio espaco-topo-2">O gabarito deste simulado não é exibido (regra definida em “mostrar gabarito: nunca”).</p>
+{% endif %}
+{% endblock %}

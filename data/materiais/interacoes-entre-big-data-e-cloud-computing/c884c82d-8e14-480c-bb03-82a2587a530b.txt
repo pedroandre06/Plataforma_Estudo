@@ -1,0 +1,394 @@
+
+
+===== PAGINA 1 =====
+WBA0736_v2.0
+Interações entre Big Data e 
+Cloud Computing
+
+===== PAGINA 2 =====
+Gerenciamento de Big Data: técnicas, 
+ferramentas e Machine Learning 
+Técnicas de coleta de dados em larga escala
+Bloco 1
+Valéria Baptista
+
+===== PAGINA 3 =====
+Vamos refletir?
+Imagine que você trabalha como cientista de dados em uma 
+empresa de e-commerce que opera globalmente. A 
+empresa está enfrentando um grande desafio de análise de 
+dados no monitoramento de fraudes em tempo real. A 
+empresa precisa detectar e agir rapidamente em transações 
+suspeitas para evitar fraudes. 
+Cada minuto conta, pois as transações fraudulentas podem 
+custar milhões. 
+Que tipo de solução você indicaria para resolver este caso?
+
+===== PAGINA 4 =====
+O que é processamento de dados?
+Converter dados brutos em informações úteis ou valiosas.
+Neste processo as informações são coletadas, manipuladas 
+e analisadas para se tornarem úteis.
+Como estamos falando de altas volumetrias, o modelo de 
+processamento irá determinar o processo ideal.
+
+===== PAGINA 5 =====
+Como funciona o batch?
+• Ideal para cenários em que não é necessário realizar 
+análises em tempo real.
+• Processa as informações em intervalos regulares.
+• Armazena os dados e os processa posteriormente.
+• Menos complexo, porém mais lento.
+• Usado geralmente em logs de sistemas, faturamentos 
+ou relatórios recorrentes de tarefas não urgentes.
+
+===== PAGINA 6 =====
+Como funciona o streaming?
+• Necessário em casos de processamento em tempo real 
+ou quase real.
+• Processamento contínuo conforme os dados são 
+produzidos.
+• Menor latência.
+• Mais complexo em termos de infraestrutura ou 
+manutenção.
+• Usado em monitoramento de redes sociais, detecção 
+de fraudes ou processamento de sensores IoT.
+
+===== PAGINA 7 =====
+Batch versus stream, qual é o melhor?
+Depende do tipo de uso. Além disso, eles podem ser 
+usados em conjunto.
+O stream é mais indicado para uso quando o tempo é 
+essencial e no momento em que os dados estão sendo 
+recebidos.
+Quando eles já foram coletados, podemos usar o batch em 
+outros modelos de análises.
+
+===== PAGINA 8 =====
+Gerenciamento de Big Data: técnicas, 
+ferramentas e Machine Learning 
+Ferramentas para armazenamento e análise de 
+Big Data
+Bloco 2
+Valéria Baptista
+
+===== PAGINA 9 =====
+Arquitetura Hadoop
+HDFS MapReduce YARN
+Armazena grandes 
+arquivos dividindo-os em 
+blocos e distribuindo-os 
+por vários nós.
+Alta tolerância a falhas, 
+replicando blocos de 
+dados em diferentes nós. 
+Funciona no princípio do 
+processamento 
+distribuído. 
+Divide a tarefa enviada 
+pelo usuário em várias 
+subtarefas 
+independentes.
+Gerenciador de recursos e 
+tarefas no Hadoop. Ele 
+permite que múltiplas 
+aplicações de 
+processamento (não 
+apenas MapReduce) 
+rodem no Hadoop.
+
+===== PAGINA 10 =====
+Como funciona o Apache Spark? 
+• Mecanismo de análise unificado para processamento 
+de dados em grande escala.
+• Projetado para executar em clusters distribuídos.
+• Divide as tarefas e processa os dados de forma 
+eficiente.
+• Compatível com Hadoop YARN, Apache Mesos, 
+Kubernetes, entre outros.
+
+===== PAGINA 11 =====
+Quais são os benefícios do Apache Spark?
+Velocidade Facilidade de uso
+Generalidade
+Inovações do 
+framework de 
+código aberto
+
+===== PAGINA 12 =====
+Estrutura do Apache Spark consiste em
+• Spark Core como base para a plataforma.
+• Spark SQL para consultas interativas.
+• Spark Streaming para análises em tempo real.
+• Spark MLlib para Machine Learning.
+• Spark GraphX para processamento de gráficos.
+
+===== PAGINA 13 =====
+Apache Spark versus Apache Hadoop, qual é 
+o melhor?
+Depende do tipo de processamento, infraestrutura e 
+natureza das informações.
+O Spark é muito mais rápido do que o Hadoop, 
+especialmente para workloads que exigem repetição, 
+processamento iterativo ou interativo. Hadoop é mais 
+lento, mas pode ser mais adequado para grandes 
+operações de batch que não requerem velocidade.
+
+===== PAGINA 14 =====
+Gerenciamento de Big Data: técnicas, 
+ferramentas e Machine Learning 
+Algoritmos de aprendizado de máquina para 
+análise de dados
+Bloco 3
+Valéria Baptista
+
+===== PAGINA 15 =====
+Como funciona o aprendizado de máquina?
+O aprendizado de máquina é uma subárea da IA que 
+permite que os sistemas possam aprender com base nos 
+dados consultados. 
+Eles conseguem identificar tendências nas informações 
+por meio de padrões.
+Suas três categorias principais são: regressão, 
+classificação e clustering.
+
+===== PAGINA 16 =====
+Regressão
+Usada para prever valores numéricos contínuos com base 
+em conjuntos de dados de entrada.
+Exemplo: podemos prever o valor de uma casa com base 
+em suas características, como: tamanho, localização, 
+número de quartos, tamanho do pátio etc. Todos eles são 
+dados de entrada.
+Cenários de uso:
+• Previsão de preços (imóveis, ações e produtos).
+• Estimativa de vendas futuras.
+• Previsão de temperatura ou condições climáticas.
+
+===== PAGINA 17 =====
+Classificação
+Usada para prever categorias ou rótulos a partir de dados 
+nos quais o objetivo é atribuir a entrada a uma das 
+classes predefinidas.
+Exemplo: classificar e-mails como “spam” baseado em 
+características como remetente, texto ou conteúdo.
+Cenários de uso:
+• Detecção de fraudes.
+• Classificação de e-mails.
+• Classificação de imagens e reconhecimento facial.
+
+===== PAGINA 18 =====
+Clustering
+Consiste em um tipo de aprendizado não supervisionado em 
+que são agrupados dados similares sem rótulos e 
+predefinidos.
+Exemplo:
+Segmentar clientes de uma loja em grupos com base no 
+comportamento de compra (tipo de produto, frequência, 
+valor e forma de pagamento).
+Cenários de uso:
+• Segmentação de clientes.
+• Detecção de anomalias em redes de sensores.
+
+===== PAGINA 19 =====
+Teoria em prática
+Gerenciamento de Big Data: técnicas, 
+ferramentas e Machine Learning 
+Bloco 4
+Valéria Baptista
+
+===== PAGINA 20 =====
+Reflita sobre a seguinte situação
+Uma empresa de comércio eletrônico está enfrentando 
+dificuldades para monitorar as atividades em seu site, 
+como o comportamento dos usuários, compras e tráfego 
+geral, em tempo real. 
+Eles atualmente utilizam um sistema de batch que 
+processa os dados das transações e atividades dos 
+usuários apenas ao final do dia. 
+No entanto, a equipe de marketing quer tomar decisões 
+mais rápidas para ajustar promoções em tempo real, 
+especialmente durante eventos de alta demanda como a 
+Black Friday, em que cada segundo conta.
+
+===== PAGINA 21 =====
+Reflita sobre a seguinte situação
+A empresa quer implementar um sistema de processamento 
+de dados em tempo real usando streaming para:
+• Identificar picos de acessos e ações dos usuários em tempo 
+real.
+• Analisar o comportamento do usuário e as vendas no 
+momento em que ocorrem.
+• Gerar alertas instantâneos quando uma promoção atinge 
+um número de vendas específico.
+• Eles decidiram usar a plataforma Apache Kafka para ingerir 
+os dados em tempo real e o Apache Spark Streaming para 
+processá-los.
+
+===== PAGINA 22 =====
+Norte para a resolução
+Por onde começar? 
+Crie um pipeline de processamento de dados em streaming que 
+seja capaz de:
+• Capturar os dados de navegação e transações dos usuários em tempo 
+real.
+• Processar esses dados continuamente para calcular:
+• O número de usuários ativos no site a cada minuto.
+• A quantidade de vendas de um produto específico em tempo real.
+• Gerar um alerta quando o número de vendas atingir um limite predefinido 
+(ex.: 1000 unidades vendidas).
+• Fornecer uma solução para visualizar os resultados em tempo real, 
+utilizando algum painel ou dashboard.
+
+===== PAGINA 23 =====
+Norte para a resolução
+Não se esqueça de:
+Configuração do Apache Kafka.
+Processamento com Apache Spark Streaming.
+Geração de alertas.
+Visualização dos resultados.
+Com o sistema de processamento em streaming implementado, a empresa 
+conseguirá monitorar em tempo real o comportamento dos usuários e ajustar 
+suas campanhas de marketing de forma dinâmica, reagindo de forma mais ágil a 
+picos de demanda e otimizando suas promoções.
+
+===== PAGINA 24 =====
+Consolidando o aprendizado
+Gerenciamento de Big Data: técnicas, 
+ferramentas e Machine Learning 
+Bloco 5
+Valéria Baptista
+
+===== PAGINA 25 =====
+Quiz
+A B
+C D
+O Apache Spark é uma poderosa ferramenta de processamento de dados 
+em larga escala, conhecida por sua velocidade, facilidade de uso e 
+capacidade de realizar análises avançadas. Ele é amplamente utilizado em 
+diversos setores para processar grandes volumes de dados de maneira 
+eficiente. Em quais das seguintes situações o Apache Spark é indicado 
+como a melhor solução para processamento de dados?
+Quando se deseja processar 
+pequenos volumes de dados em 
+sistemas com baixa latência, como 
+consultas em bancos de dados 
+transacionais.
+Quando se precisa realizar 
+processamento em lote e em 
+tempo real (streaming) de grandes 
+volumes de dados, distribuindo as 
+tarefas de forma eficiente entre 
+vários nós de computação.
+Quando se exige processamento de 
+dados exclusivamente sequencial, 
+em que o foco é a simplicidade e o 
+menor uso de recursos 
+computacionais.
+Quando o objetivo principal é 
+processar grandes conjuntos de 
+dados com limites rígidos de 
+memória, preferindo operações em 
+disco ao invés de memória.
+
+===== PAGINA 26 =====
+Quiz
+A B
+C D
+Quando se deseja processar 
+pequenos volumes de dados em 
+sistemas com baixa latência, como 
+consultas em bancos de dados 
+transacionais.
+Quando se precisa realizar 
+processamento em lote e em 
+tempo real (streaming) de grandes 
+volumes de dados, distribuindo as 
+tarefas de forma eficiente entre 
+vários nós de computação.
+Quando se exige processamento de 
+dados exclusivamente sequencial, 
+em que o foco é a simplicidade e o 
+menor uso de recursos 
+computacionais.
+Quando o objetivo principal é 
+processar grandes conjuntos de 
+dados com limites rígidos de 
+memória, preferindo operações em 
+disco ao invés de memória.
+O Apache Spark é uma poderosa ferramenta de processamento de dados 
+em larga escala, conhecida por sua velocidade, facilidade de uso e 
+capacidade de realizar análises avançadas. Ele é amplamente utilizado em 
+diversos setores para processar grandes volumes de dados de maneira 
+eficiente. Em quais das seguintes situações o Apache Spark é indicado 
+como a melhor solução para processamento de dados?
+
+===== PAGINA 27 =====
+Quiz – Resolução
+B) Quando se precisa realizar processamento em lote e em tempo real 
+(streaming) de grandes volumes de dados, distribuindo as tarefas de 
+forma eficiente entre vários nós de computação.
+O Apache Spark é ideal para processar grandes volumes de dados, tanto 
+em lote quanto em tempo real, usando paralelismo.
+A) Incorreta: Apache Spark é otimizado para grandes volumes de dados, 
+não pequenos volumes, e não é focado em baixa latência para consultas 
+transacionais.
+C) Incorreta: Spark é projetado para processamento distribuído 
+paralelo, e não exclusivamente sequencial.
+D) Incorreta: Spark trabalha melhor quando tem dados em memória 
+para acelerar o processamento, diferentemente de sistemas baseados 
+em disco.
+
+===== PAGINA 28 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da sua 
+carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 29 =====
+Indicação de leitura 1
+Este conteúdo traz os fundamentos dos bancos de dados 
+e como realizar uma modelagem eficaz. Você conhecerá 
+e realizará os relacionamentos entre entidades de um 
+banco de dados, possibilitando aplicar no projeto de 
+novos softwares e criar soluções arrojadas para os 
+clientes. 
+Referência:
+WERLICH, Claudia. Modelagem de dados. Londrina: 
+Educacional, 2018.
+
+===== PAGINA 30 =====
+Indicação de leitura 2
+O livro Banco de Dados II é uma sequência de Banco de 
+Dados I, em que estudamos os conceitos de um SGBD, a 
+técnica de modelagem de dados Modelo Entidade 
+Relacionamento (MER), com a construção do Diagrama 
+Entidade Relacionamento (DER) e os conceitos básicos do 
+padrão Structure Query Language (SQL). 
+Referência:
+NISHIMURA, Roberto Yukio. Banco de dados II. Londrina: 
+Educacional, 2019.
+
+===== PAGINA 31 =====
+Referências
+AWS. Amazon Web Services. O que é Apache Spark?. [s.d.]. Disponível em: 
+https://aws.amazon.com/pt/what-is/apache-spark/. Acesso em: 24 de set. de 
+2024.
+NISHIMURA, Roberto Yukio. Banco de dados II. Londrina: Educacional, 2019.
+RAY , Amit. Hadoop Architecture in Big Data: YARN, HDFS and MapReduce. Amit 
+Ray, 3 abr. 2021. Disponível em: https://amitray.com/hadoop-architecture-in-
+big-data-yarn-hdfs-and-mapreduce/. Acesso em: 26 de set. de 2024.
+WERLICH, Claudia. Modelagem de dados. Londrina: Educacional, 2018.
+
+===== PAGINA 32 =====
+Bons estudos!

@@ -1,0 +1,69 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "gerenciamento-big-data",
+  "perguntas": [
+    {
+      "e": "Qual componente do Hadoop é responsável por armazenar grandes arquivos, dividindo-os em blocos distribuídos por vários nós e replicando-os para tolerância a falhas?",
+      "t": "HDFS",
+      "d": "facil",
+      "r": "Bloco 2 - Arquitetura Hadoop",
+      "x": "O HDFS (Hadoop Distributed File System) divide os arquivos em blocos, distribui pelos nós e replica os blocos em diferentes nós, garantindo alta tolerância a falhas.",
+      "a": ["YARN", "HDFS", "MapReduce", "Spark SQL"],
+      "c": 1
+    },
+    {
+      "e": "Qual componente do Hadoop funciona no princípio do processamento distribuído, dividindo a tarefa do usuário em várias subtarefas independentes?",
+      "t": "MapReduce",
+      "d": "facil",
+      "r": "Bloco 2 - Arquitetura Hadoop",
+      "x": "O MapReduce divide a tarefa enviada pelo usuário em várias subtarefas independentes, executadas de forma distribuída.",
+      "a": ["HDFS", "MapReduce", "YARN", "MLlib"],
+      "c": 1
+    },
+    {
+      "e": "Qual componente do Hadoop gerencia recursos e tarefas, permitindo que múltiplas aplicações de processamento (não apenas MapReduce) rodem no cluster?",
+      "t": "YARN",
+      "d": "medio",
+      "r": "Bloco 2 - Arquitetura Hadoop",
+      "x": "O YARN é o gerenciador de recursos e tarefas do Hadoop e permite que várias aplicações de processamento, além do MapReduce, sejam executadas.",
+      "a": ["HDFS", "YARN", "Spark Streaming", "Kafka"],
+      "c": 1
+    },
+    {
+      "e": "O que é o Apache Spark?",
+      "t": "Apache Spark",
+      "d": "facil",
+      "r": "Bloco 2 - Como funciona o Apache Spark?",
+      "x": "É um mecanismo de análise unificado para processamento de dados em grande escala, projetado para executar em clusters distribuídos e dividir as tarefas para processá-las eficientemente.",
+      "a": ["Um banco de dados NoSQL orientado a documentos", "Um mecanismo de análise unificado para processamento de dados em grande escala em clusters distribuídos", "Uma ferramenta de visualização de dashboards", "Um protocolo de ingestão de mensagens"],
+      "c": 1
+    },
+    {
+      "e": "Quais são os benefícios do Apache Spark apontados no material?",
+      "t": "Apache Spark",
+      "d": "medio",
+      "r": "Bloco 2 - Quais são os benefícios do Apache Spark?",
+      "x": "Velocidade, facilidade de uso, generalidade e inovações do framework de código aberto.",
+      "a": ["Velocidade, facilidade de uso, generalidade e inovações do framework open source", "Baixo custo de hardware e gratuidade das licenças", "Criptografia de ponta a ponta e auditoria", "Normalização automática dos dados"],
+      "c": 0
+    },
+    {
+      "e": "Com quais gerenciadores de cluster o Apache Spark é compatível?",
+      "t": "Apache Spark",
+      "d": "medio",
+      "r": "Bloco 2 - Como funciona o Apache Spark?",
+      "x": "O Spark é compatível com Hadoop YARN, Apache Mesos e Kubernetes, entre outros.",
+      "a": ["Apenas com o HDFS", "Hadoop YARN, Apache Mesos e Kubernetes", "Somente com mainframes IBM", "Apenas com bancos relacionais"],
+      "c": 1
+    },
+    {
+      "e": "Quais módulos compõem a estrutura/ecossistema do Apache Spark?",
+      "t": "Estrutura do Spark",
+      "d": "dificil",
+      "r": "Bloco 2 - Estrutura do Apache Spark",
+      "x": "O ecossistema do Spark inclui Spark Core, Spark SQL, Spark Streaming, MLlib (machine learning) e GraphX (grafos), com RDDs e DataFrames como abstrações de dados.",
+      "a": ["Spark Core, Spark SQL, Spark Streaming, MLlib e GraphX", "HDFS, YARN, MapReduce e Hive", "Kafka, Zookeeper, NiFi e Airflow", "IaaS, PaaS, SaaS e IaC"],
+      "c": 0
+    }
+  ]
+}

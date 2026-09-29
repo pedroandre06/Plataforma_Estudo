@@ -1,0 +1,60 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "mineracao-boas-praticas",
+  "perguntas": [
+    {
+      "e": "Sobre a segurança de um Data Warehouse, qual conjunto de práticas é recomendado?",
+      "t": "Segurança",
+      "d": "medio",
+      "r": "Bloco 3 - Data mining e boas práticas (segurança)",
+      "x": "Controle de acesso, criptografia e auditoria protegem informações sensíveis e garantem conformidade com leis e regulamentos.",
+      "a": ["Controle de acesso, criptografia de dados e auditoria", "Apenas senhas compartilhadas entre a equipe", "Desativar logs para ganhar performance", "Publicar os dados abertos para todos os usuários"],
+      "c": 0
+    },
+    {
+      "e": "Metadados padronizados e políticas de ciclo de vida dos dados são elementos de:",
+      "t": "Governança",
+      "d": "medio",
+      "r": "Bloco 3 - Governança",
+      "x": "Governança de dados estabelece procedimentos claros de manutenção e uso, com metadados padronizados e gestão do ciclo de vida.",
+      "a": ["Governança de dados", "Modelagem dimensional", "Análise de sentimento", "Particionamento de tabelas"],
+      "c": 0
+    },
+    {
+      "e": "Qual prática reduz erros manuais e aumenta a eficiência da operação de um Data Warehouse?",
+      "t": "Automação e monitoramento",
+      "d": "facil",
+      "r": "Bloco 3 - Monitoramento e atualizações",
+      "x": "A automação de tarefas rotineiras, como carregamento de dados e manutenção de índices, reduz erros manuais e aumenta a eficiência.",
+      "a": ["Executar todas as cargas manualmente", "Automatizar cargas de dados e manutenção de índices", "Eliminar auditorias periódicas", "Reduzir a frequência de atualização do sistema"],
+      "c": 1
+    },
+    {
+      "e": "A escalabilidade, no contexto de boas práticas de DW, significa:",
+      "t": "Escalabilidade",
+      "d": "medio",
+      "r": "Bloco 3 - Performance e escalabilidade",
+      "x": "Escalabilidade é planejar a infraestrutura para que o DW cresça conforme a demanda e novos dados sejam incorporados, sem perder performance.",
+      "a": ["Reduzir o número de usuários simultâneos", "Planejar a infraestrutura para crescer com a demanda sem perder performance", "Manter o volume de dados congelado", "Guardar tudo em um único servidor físico"],
+      "c": 1
+    },
+    {
+      "e": "No caso da universidade apresentado no material, qual foi a ordem dos passos sugeridos para resolver os desafios com Data Mining?",
+      "t": "Estudo de caso",
+      "d": "dificil",
+      "r": "Bloco 4 - Norte para a resolução",
+      "x": "Passo 1 coletar e integrar os dados no DW; Passo 2 aplicar técnicas de data mining (associação multinível); Passo 3 analisar e segmentar os alunos; Passo 4 planejar ações e monitorar resultados.",
+      "a": ["Segmentar alunos, coletar dados, aplicar algoritmos e depois integrar", "Coletar/integrar dados, aplicar técnicas de data mining, segmentar alunos e planejar/monitorar ações", "Aplicar algoritmos, criar dashboards, integrar dados e monitorar", "Planejar ações, coletar dados, aplicar mineração e segmentar"],
+      "c": 1
+    },
+    {
+      "e": "Entre os desafios citados para a aplicação de regras de associação multinível em um DW acadêmico, estão:",
+      "t": "Estudo de caso",
+      "d": "dificil",
+      "r": "Bloco 4 - Desafios que poderão surgir",
+      "x": "O material lista qualidade/integridade dos dados, integração de múltiplas fontes, configuração dos algoritmos para níveis hierárquicos e adaptação da infraestrutura tecnológica.",
+      "a": ["Excesso de índices e falta de dashboards", "Qualidade dos dados, integração de múltiplas fontes, configuração dos algoritmos e infraestrutura escalável", "Falta de linguagem SQL e de chaves estrangeiras", "Ausência de criptografia e de metadados"],
+      "c": 1
+    }
+  ]
+}

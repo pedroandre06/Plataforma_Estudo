@@ -1,0 +1,69 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "modelo-relacional-chaves",
+  "perguntas": [
+    {
+      "e": "No modelo relacional, cada linha e cada coluna de uma tabela são chamadas, respectivamente, de:",
+      "t": "Modelo relacional",
+      "d": "facil",
+      "r": "Bloco 3 - O que é o Modelo Relacional?",
+      "x": "Cada linha é uma tupla (registro) e cada coluna é um atributo (característica).",
+      "a": ["Atributo e tupla", "Tupla e atributo", "Domínio e índice", "Chave e relacionamento"],
+      "c": 1
+    },
+    {
+      "e": "Em que fundamentos teóricos o modelo relacional se baseia?",
+      "t": "Modelo relacional",
+      "d": "medio",
+      "r": "Bloco 3 - O que é o Modelo Relacional?",
+      "x": "Baseia-se em teoria dos conjuntos e lógica de predicados de primeira ordem (Codd, 1970).",
+      "a": ["Teoria dos conjuntos e lógica de predicados de primeira ordem", "Apenas estatística descritiva", "Programação orientada a objetos", "Teoria das filas e grafos"],
+      "c": 0
+    },
+    {
+      "e": "Qual definição corresponde ao DOMÍNIO de um atributo?",
+      "t": "Estrutura da tabela",
+      "d": "medio",
+      "r": "Bloco 3 - Estrutura de uma Tabela Relacional",
+      "x": "Domínio define o tipo de dado aceito em um atributo (ex.: inteiro, data, texto).",
+      "a": ["O conjunto de tabelas do banco", "O tipo de dado aceito em um atributo (ex.: inteiro, data, texto)", "A chave que identifica registros", "A quantidade máxima de linhas da tabela"],
+      "c": 1
+    },
+    {
+      "e": "Sobre a chave primária (PK), é correto afirmar:",
+      "t": "Chave primária",
+      "d": "facil",
+      "r": "Bloco 3 - Chaves em Tabelas Relacionais",
+      "x": "A PK identifica unicamente cada registro e não aceita valores nulos nem repetidos.",
+      "a": ["Pode repetir valores quando necessário", "Aceita valores nulos como padrão", "Identifica unicamente cada registro, sem valores nulos ou repetidos", "Serve apenas para criar índices"],
+      "c": 2
+    },
+    {
+      "e": "Qual é a função da chave estrangeira (FK)?",
+      "t": "Chave estrangeira",
+      "d": "facil",
+      "r": "Bloco 3 - Chaves em Tabelas Relacionais",
+      "x": "A FK estabelece vínculo entre tabelas e deve referenciar uma chave primária válida de outra tabela.",
+      "a": ["Identificar unicamente cada registro da própria tabela", "Estabelecer vínculo entre tabelas, referenciando uma chave primária válida", "Definir o tipo de dado de uma coluna", "Ordenar automaticamente as linhas"],
+      "c": 1
+    },
+    {
+      "e": "A exigência de que toda tabela possua uma chave primária corresponde à:",
+      "t": "Integridade",
+      "d": "medio",
+      "r": "Bloco 3 - Integridade em Bancos Relacionais",
+      "x": "É a integridade de entidade: toda tabela deve ter uma chave primária.",
+      "a": ["Integridade referencial", "Integridade de entidade", "Integridade de domínio", "Integridade transacional"],
+      "c": 1
+    },
+    {
+      "e": "Uma coluna de CPF que só aceita exatamente 11 dígitos é um exemplo de:",
+      "t": "Integridade",
+      "d": "medio",
+      "r": "Bloco 3 - Integridade em Bancos Relacionais",
+      "x": "Integridade de domínio: cada valor precisa respeitar o tipo e as restrições definidas para o atributo.",
+      "a": ["Integridade de domínio", "Integridade referencial", "Integridade de entidade", "Normalização em 3FN"],
+      "c": 0
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "ciencia-dados-empresarial",
+  "modulo": {
+    "nome": "Aplicações Empresariais da Ciência de Dados",
+    "descricao": "Implementação estratégica da ciência de dados nas empresas, análise exploratória de dados (EDA), ferramentas de análise e formas de comunicar resultados.",
+    "pdf_origem": "7686a338-0216-4363-b44b-ca7fe4c03ed0.pdf",
+    "ordem": 3,
+    "resumo": [
+      "IMPLEMENTAÇÃO ESTRATÉGICA DA CIÊNCIA DE DADOS",
+      "• A ciência de dados é constante na tomada de decisões: analisar grandes volumes e gerar insights direciona o planejamento e a execução de estratégias, aumentando a competitividade.",
+      "• Benefícios: coleta e organização dos dados; identificação de oportunidades e desafios; utilização de modelos preditivos e prescritivos; democratização da ciência de dados; apoio à decisão baseada em dados.",
+      "• Conclusão: combinar infraestrutura sólida com uma cultura de decisão baseada em dados gera inovação, crescimento e diferencial competitivo.",
+      "ANÁLISE EXPLORATÓRIA DE DADOS (EDA)",
+      "• Definição: métodos para explorar conjuntos de dados, resumindo suas características principais e identificando problemas nos dados.",
+      "• Objetivo: entender as características dos dados, identificar padrões e detectar anomalias (outliers).",
+      "• Como é feita: métodos estatísticos e visualizações, para avaliar a preparação dos dados e decidir quais técnicas de tratamento aplicar.",
+      "• Importante: a EDA pode influenciar quais algoritmos serão escolhidos para treinar modelos de machine learning.",
+      "• Ferramentas: Python (grande ecossistema de bibliotecas), R (forte ênfase estatística), Power BI e Tableau (visualização interativa e dashboards) e Excel.",
+      "• A escolha da ferramenta depende do contexto do projeto, do volume de dados, da necessidade de visualizações e das habilidades técnicas disponíveis.",
+      "COMUNICAÇÃO DOS RESULTADOS",
+      "• Visualização: gráficos de barras e linhas (tendências ao longo do tempo e comparações entre categorias), gráficos de dispersão (relação entre duas variáveis), mapas de calor (correlações e padrões) e infográficos (linguagem visual com imagens, gráficos e texto).",
+      "• Ferramentas de visualização: Tableau, Power BI, Python (Matplotlib, Seaborn, Plotly) e Excel.",
+      "• Relatórios escritos devem conter: resumo executivo, contexto (problema de negócio e dados analisados), método e abordagens, resultados, conclusões e recomendações práticas.",
+      "• Formatos: documentos de texto (Word, PDF) e apresentações com apoio de visualizações gráficas.",
+      "PEGADINHAS DE PROVA",
+      "• Objetivo da EDA: explorar para entender características, identificar padrões e detectar anomalias — NÃO é treinar modelos nem implementar dashboards finais.",
+      "• Python é lembrado pelo ecossistema de bibliotecas; R, pela estatística; Power BI/Tableau, por dashboards interativos.",
+      "• Sem comunicação clara, mesmo a análise mais robusta perde valor."
+    ]
+  }
+}

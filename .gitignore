@@ -1,0 +1,14 @@
+# venv e caches
+.venv/
+__pycache__/
+*.pyc
+
+# banco e segredos locais
+data/platform.db
+data/qa_e2e.db
+data/platform_bkp*.db
+data/.secret_key
+
+# logs e arquivos temporários
+*.log
+tmp_*.txt

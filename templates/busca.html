@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block titulo %}Busca por questões{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">Buscar questões e tópicos</h1>
+    <p class="sub">Encontre rapidamente um assunto para revisar (o conteúdo é o mesmo do banco de questões).</p>
+  </div>
+</div>
+<form method="get" class="linha">
+  <input type="search" name="q" value="{{ termo }}" placeholder="ex.: floco de neve, Spark, ACID, cardinalidade" autofocus>
+  <button class="btn btn-primario" type="submit">Buscar</button>
+</form>
+
+{% if termo %}
+  <p class="item-meta espaco-topo">{{ resultados|length }} resultado(s) para “{{ termo }}”.</p>
+  <ul class="lista espaco-topo">
+    {% for r in resultados %}
+      <li class="item">
+        <div class="item-principal"><div>
+          <div class="item-titulo">{{ r['enunciado'] }}</div>
+          <div class="item-meta">
+            <span class="badge" style="border-color: {{ r['materia_cor'] }}">{{ r['materia_nome'] }}</span>
+            {{ r['modulo_nome'] }} · {{ r['topico'] or 'Geral' }} ·
+            {{ DIFICULDADES.get(r['dificuldade'], r['dificuldade']) }}
+          </div>
+        </div></div>
+        <a class="btn btn-mini" href="{{ url_for('aula.modulo', slug=r['modulo_slug'], aba='praticar') }}">Treinar módulo</a>
+      </li>
+    {% else %}
+      <li class="vazio">Nada encontrado. Tente outro termo.</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+{% endblock %}

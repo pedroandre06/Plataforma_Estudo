@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block titulo %}Importar questões{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">Importar questões</h1>
+    <p class="sub">Aceita JSON (formato compacto) e CSV separado por ponto e vírgula.</p>
+  </div>
+  <a class="btn" href="{{ url_for('admin_q.perguntas') }}">Ver questões</a>
+</div>
+
+<div class="grid grid-2">
+  <div class="card">
+    <h2>Enviar arquivo</h2>
+    <form method="post" enctype="multipart/form-data" class="form espaco-topo">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <label class="campo"><span>Arquivo .json ou .csv</span>
+        <input type="file" name="arquivo" accept=".json,.csv" required>
+      </label>
+      <button class="btn btn-primario" type="submit">Importar</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Formatos aceitos</h2>
+    <h3 class="espaco-topo">JSON (formato compacto)</h3>
+<pre class="explicacao">[{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "arquiteturas-dw",
+  "perguntas": [
+    { "e": "Enunciado da questão?",
+      "a": ["Alternativa A", "Alternativa B", "Alternativa C", "Alternativa D"],
+      "c": 2,
+      "d": "medio",
+      "t": "Esquema Estrela",
+      "x": "Explicação da resposta correta.",
+      "r": "Bloco 3 - Esquema Estrela",
+      "tp": "multipla" }
+  ]
+}]</pre>
+    <p class="item-meta">Também é aceito <code>"modulo_id": 5</code> no lugar dos slugs.</p>
+    <h3 class="espaco-topo">CSV (separador ;)</h3>
+<pre class="explicacao">materia_slug;modulo_slug;enunciado;tipo;dificuldade;topico;explicacao;referencia;alternativa_1;alternativa_2;alternativa_3;alternativa_4;correta
+data-warehouse;arquiteturas-dw;Pergunta?;multipla;medio;Estrela;Porque sim.;Bloco 3;A;B;C;D;1</pre>
+    <p class="item-meta">“correta” é o índice (0 = primeira alternativa). Exporte o banco atual para usar como modelo.</p>
+  </div>
+</div>
+
+<div class="card espaco-topo-2">
+  <h2>Módulos disponíveis (use estes slugs)</h2>
+  <div class="rolagem espaco-topo">
+    <table class="tabela">
+      <thead><tr><th>Matéria (slug)</th><th>Módulo (slug)</th><th>Nome</th></tr></thead>
+      <tbody>
+        {% for mo in modulos %}
+          <tr>
+            <td><code>{{ mo['materia_slug'] }}</code><div class="item-meta">{{ mo['materia_nome'] }}</div></td>
+            <td><code>{{ mo['modulo_slug'] }}</code></td>
+            <td>{{ mo['nome'] }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

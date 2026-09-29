@@ -1,0 +1,69 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "ferramentas-tecnologias-dw",
+  "perguntas": [
+    {
+      "e": "Quais desafios são típicos da fase de EXTRAÇÃO (extract) de um processo ETL?",
+      "t": "ETL - Extract",
+      "d": "medio",
+      "r": "Bloco 2 - Fase de extração de dados",
+      "x": "Dados fragmentados em vários sistemas, formatos diferentes e possíveis falhas de conectividade com as fontes.",
+      "a": ["Aplicação de regras de negócio e cálculos complexos", "Dados fragmentados, formatos diferentes e falhas de conectividade", "Escolha do esquema estrela ou floco de neve", "Criação de cubos OLAP e dashboards"],
+      "c": 1
+    },
+    {
+      "e": "Um DW recebe todos os dias apenas os pedidos criados ou alterados desde o dia anterior. Esse tipo de carga é chamado de:",
+      "t": "ETL - Load",
+      "d": "facil",
+      "r": "Bloco 2 - Fase de carga",
+      "x": "A carga incremental atualiza o DW com os dados novos ou modificados desde a última carga; a carga inicial é a importação do primeiro grande volume.",
+      "a": ["Carga inicial", "Carga incremental", "Carga full refresh", "Carga manual"],
+      "c": 1
+    },
+    {
+      "e": "Qual ferramenta de ETL é descrita como open-source com suporte a múltiplas fontes de dados?",
+      "t": "Ferramentas de ETL",
+      "d": "medio",
+      "r": "Bloco 2 - Principais ferramentas de ETL",
+      "x": "Talend é a ferramenta open-source citada; Informatica PowerCenter é a robusta para grandes empresas e Apache NiFi foca automação de fluxo de dados.",
+      "a": ["Informatica PowerCenter", "Talend", "Microsoft SSAS", "SAS Data Mining"],
+      "c": 1
+    },
+    {
+      "e": "Uma equipe precisa automatizar e integrar fluxos de dados entre vários sistemas. Qual ferramenta do material se encaixa melhor nesse objetivo?",
+      "t": "Ferramentas de ETL",
+      "d": "medio",
+      "r": "Bloco 2 - Principais ferramentas de ETL",
+      "x": "O Apache NiFi é apresentado como ferramenta para automação e integração de fluxo de dados.",
+      "a": ["Apache NiFi", "Weka", "Oracle OLAP", "RapidMiner"],
+      "c": 0
+    },
+    {
+      "e": "Quais critérios devem ser considerados na escolha de uma ferramenta de ETL?",
+      "t": "Ferramentas de ETL",
+      "d": "facil",
+      "r": "Bloco 2 - Critérios de escolha",
+      "x": "Facilidade de uso, escalabilidade/performance e suporte a diferentes fontes de dados.",
+      "a": ["Somente o preço da licença", "Facilidade de uso, escalabilidade/performance e suporte a diferentes fontes", "Apenas a linguagem de programação da ferramenta", "Somente o tamanho da equipe de TI"],
+      "c": 1
+    },
+    {
+      "e": "O que o OLAP permite fazer com os dados de um Data Warehouse?",
+      "t": "OLAP",
+      "d": "facil",
+      "r": "Bloco 3 - O que são OLAP e Data Mining?",
+      "x": "O OLAP permite análise multidimensional de grandes volumes de dados, criando cubos organizados por dimensões como tempo, produto e região.",
+      "a": ["Executar exclusões em massa nos dados operacionais", "Realizar análise multidimensional, criando cubos por dimensões", "Substituir o ETL na integração de fontes", "Normalizar as tabelas de dimensões"],
+      "c": 1
+    },
+    {
+      "e": "Um analista que, a partir de um total anual de vendas, pede o detalhamento por mês e depois por dia está executando qual operação OLAP?",
+      "t": "Operações OLAP",
+      "d": "medio",
+      "r": "Bloco 3 - Características e benefícios do OLAP",
+      "x": "Drill-down é a operação que desce do nível agregado para o detalhado; roll-up faz o caminho inverso (agrega/resume).",
+      "a": ["Roll-up", "Drill-down", "Slice", "Dice"],
+      "c": 1
+    }
+  ]
+}

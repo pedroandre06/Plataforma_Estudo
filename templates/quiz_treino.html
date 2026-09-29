@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block titulo %}Treino · {{ questao['pergunta']['modulo_nome'] }}{% endblock %}
+{% block conteudo %}
+<div class="quiz-caixa">
+  <div class="linha" style="justify-content: space-between">
+    <span class="badge badge-info">{{ MODOS_QUIZ.get(tentativa['modo'], tentativa['modo']) }}</span>
+    <span class="contador">Questão {{ indice + 1 }} de {{ total }} · {{ respondidas }} respondidas</span>
+  </div>
+  <div class="barra espaco-topo"><span style="width: {{ (100 * respondidas / total) | round(0, 'floor') }}%"></span></div>
+
+  <div class="card espaco-topo">
+    <div class="linha" style="justify-content: space-between">
+      <span class="badge" style="border-color: {{ questao['pergunta']['materia_cor'] }}">{{ questao['pergunta']['topico'] or 'Geral' }}</span>
+      <span class="badge {{ 'badge-ok' if questao['pergunta']['dificuldade'] == 'facil' else ('badge-aviso' if questao['pergunta']['dificuldade'] == 'medio' else 'badge-erro') }}">
+        {{ DIFICULDADES.get(questao['pergunta']['dificuldade'], questao['pergunta']['dificuldade']) }}
+      </span>
+    </div>
+    <p class="pergunta-enunciado">{{ questao['pergunta']['enunciado'] }}</p>
+
+    {% if feedback %}
+      <div class="lista-alternativas">
+        {% for a in questao['alternativas'] %}
+          {% set certa = a['correta'] %}
+          {% set marcada = questao['escolhida'] == a['id'] %}
+          <div class="alternativa {{ 'correta' if certa else ('errada' if marcada else '') }}">
+            <span class="letra">{{ 'ABCDE'[loop.index0] }}</span>
+            <span>{{ a['texto'] }}{% if marcada %} <em class="item-meta">← sua resposta</em>{% endif %}</span>
+          </div>
+        {% endfor %}
+      </div>
+      {% set acertou = questao['correta'] == 1 %}
+      <div class="explicacao {{ 'feedback-ok' if acertou else 'feedback-erro' }}">
+        <strong>{{ 'Você acertou!' if acertou else ('Resposta correta destacada em verde.' if questao['escolhida'] else 'Você deixou em branco.') }}</strong>
+        {% if questao['pergunta']['explicacao'] %}
+          <p class="espaco-topo"><strong>Explicação:</strong> {{ questao['pergunta']['explicacao'] }}</p>
+        {% endif %}
+        {% if questao['pergunta']['referencia'] %}<p class="item-meta">Base: {{ questao['pergunta']['referencia'] }}</p>{% endif %}
+      </div>
+      <div class="rodape-quiz">
+        <a class="btn" href="{{ url_for('quiz.executar', tid=tentativa['id']) }}">Próxima questão →</a>
+        <a class="btn btn-primario" href="{{ url_for('resultado.confirmar', tid=tentativa['id']) }}">Encerrar e ver nota</a>
+      </div>
+    {% else %}
+      <form method="post" action="{{ url_for('quiz.responder', tid=tentativa['id']) }}" class="js-quiz">
+        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+        <input type="hidden" name="pergunta_id" value="{{ questao['pergunta']['id'] }}">
+        <div class="lista-alternativas">
+          {% for a in questao['alternativas'] %}
+            <label class="alternativa js-opcao">
+              <input type="radio" name="alternativa_id" value="{{ a['id'] }}" required>
+              <span class="letra">{{ 'ABCDE'[loop.index0] }}</span>
+              <span>{{ a['texto'] }}</span>
+            </label>
+          {% endfor %}
+        </div>
+        <div class="rodape-quiz">
+          <span class="item-meta">Atalhos: 1-5 escolhem a alternativa · Enter confirma</span>
+          <button class="btn btn-primario" type="submit">Responder</button>
+        </div>
+      </form>
+    {% endif %}
+  </div>
+
+  <div class="linha espaco-topo" style="justify-content: space-between">
+    <a class="btn btn-mini" href="{{ url_for('aula.modulo', slug=questao['pergunta']['modulo_slug'], aba='praticar') }}">Sair do treino (o progresso é salvo)</a>
+    <form method="post" action="{{ url_for('resultado.abandonar', tid=tentativa['id']) }}">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <button class="btn btn-perigo btn-mini" type="submit">Descartar tentativa</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

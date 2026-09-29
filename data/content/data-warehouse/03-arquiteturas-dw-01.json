@@ -1,0 +1,69 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "arquiteturas-dw",
+  "perguntas": [
+    {
+      "e": "Em qual década surgiram os Data Warehouses e qual era a demanda inicial que atendiam?",
+      "t": "Histórico do DW",
+      "d": "facil",
+      "r": "Bloco 1 - Surgimento dos Data Warehouses",
+      "x": "Surgiram na década de 1980 para atender à crescente demanda por relatórios analíticos, centralizando dados de diversas fontes.",
+      "a": ["Década de 1960, para reservas de voos", "Década de 1980, para relatórios analíticos", "Década de 2000, para redes sociais", "Década de 2010, para machine learning"],
+      "c": 1
+    },
+    {
+      "e": "Quem é considerado o 'pai do Data Warehouse'?",
+      "t": "Histórico do DW",
+      "d": "facil",
+      "r": "Bloco 1 - Surgimento dos Data Warehouses",
+      "x": "William H. Inmon é considerado o pai do Data Warehouse (Edgar Codd é do modelo relacional e Peter Chen do MER).",
+      "a": ["Edgar Codd", "William H. Inmon", "Peter Chen", "Ralph Kimball"],
+      "c": 1
+    },
+    {
+      "e": "O que marcou a evolução dos Data Warehouses a partir dos anos 2000?",
+      "t": "Evolução do DW",
+      "d": "medio",
+      "r": "Bloco 1 - Evolução ao longo do tempo",
+      "x": "Nos anos 2000 houve a integração com tecnologias de Big Data, a evolução do conceito de Data Lakes e o avanço para DWs em nuvem.",
+      "a": ["O abandono das ferramentas de BI", "A integração com Big Data e a evolução para Data Lakes e DWs em nuvem", "A volta ao uso exclusivo de mainframes", "A proibição de dados históricos"],
+      "c": 1
+    },
+    {
+      "e": "Qual é um dos maiores Data Warehouses em nuvem do mundo, citado como curiosidade no material?",
+      "t": "Curiosidades",
+      "d": "medio",
+      "r": "Bloco 1 - Curiosidades interessantes",
+      "x": "O material cita o Amazon Redshift como um dos maiores DWs em nuvem do mundo.",
+      "a": ["MySQL Workbench", "Amazon Redshift", "Microsoft Excel", "Apache NiFi"],
+      "c": 1
+    },
+    {
+      "e": "Sobre o impacto atual e futuro dos Data Warehouses, é correto afirmar:",
+      "t": "Tendências",
+      "d": "facil",
+      "r": "Bloco 1 - Impacto Atual e Futuro",
+      "x": "A tendência é de integração crescente com IA e machine learning, com DWs cada vez mais automatizados e descentralizados, aproveitando a nuvem.",
+      "a": ["Os DWs estão sendo descontinuados em favor de planilhas", "Há integração crescente com IA/ML e ambientes mais automatizados e em nuvem", "Os DWs só funcionam em hardware especializado e caro", "Os DWs deixaram de apoiar decisões baseadas em dados"],
+      "c": 1
+    },
+    {
+      "e": "O que é um Data Mart?",
+      "t": "Data Mart",
+      "d": "facil",
+      "r": "Bloco 2 - O que é um Data Mart?",
+      "x": "É uma subdivisão do Data Warehouse focada em um departamento específico ou área funcional (vendas, marketing, finanças), com foco específico e acesso rápido.",
+      "a": ["Um banco operacional que registra as transações do dia a dia", "Uma subdivisão do DW focada em um departamento ou área funcional", "Um tipo de arquivo CSV usado para carga inicial", "Uma ferramenta de ETL open-source"],
+      "c": 1
+    },
+    {
+      "e": "Um Data Mart alimentado diretamente pelo Data Warehouse é classificado como:",
+      "t": "Tipos de Data Mart",
+      "d": "medio",
+      "r": "Bloco 2 - Tipo de Data Marts",
+      "x": "O Data Mart dependente é alimentado pelo DW, o que garante consistência de dados e integração centralizada.",
+      "a": ["Data Mart independente, por ser mais flexível", "Data Mart dependente, com consistência e integração centralizada", "Data Mart virtual, sem armazenamento próprio", "Data Lake dependente"],
+      "c": 1
+    }
+  ]
+}

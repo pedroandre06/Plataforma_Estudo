@@ -1,0 +1,112 @@
+[
+  {
+    "materia": "Banco de dados relacional e big",
+    "materia_slug": "banco-de-dados-relacional-e-big",
+    "raiz": "Pós dados",
+    "pdf": "C:\\Users\\Pedro André Ferreira\\OneDrive\\Pós dados\\Banco de dados relacional e big\\128f1052-394a-42aa-85cf-e61a4ac8d66b.pdf",
+    "pdf_nome": "128f1052-394a-42aa-85cf-e61a4ac8d66b.pdf",
+    "texto": "C:\\Users\\Pedro André Ferreira\\Documents\\plat estudo\\data\\materiais\\banco-de-dados-relacional-e-big\\128f1052-394a-42aa-85cf-e61a4ac8d66b.txt",
+    "paginas": 32,
+    "caracteres": 12827,
+    "amostra": "===== PAGINA 1 ===== WBA0178_v3.0 Banco de dados relacional e big data ===== PAGINA 2 ===== Linguagem SQL e Transações Conceitos e Princípios Bloco 1 Simone Tatiane do Canto ===== PAGINA 3 ===== Vamos refletir? Você já parou para pensar no que acontece quando duas pessoas tentam atualizar ao mesmo tempo o saldo da mesma conta bancária? Ou quando um pedido online é cancelado enquanto outro setor ai"
+  },
+  {
+    "materia": "Banco de dados relacional e big",
+    "materia_slug": "banco-de-dados-relacional-e-big",
+    "raiz": "Pós dados",
+    "pdf": "C:\\Users\\Pedro André Ferreira\\OneDrive\\Pós dados\\Banco de dados relacional e big\\80b987cf-22f3-4703-bc3d-d10b20fa13a6.pdf",
+    "pdf_nome": "80b987cf-22f3-4703-bc3d-d10b20fa13a6.pdf",
+    "texto": "C:\\Users\\Pedro André Ferreira\\Documents\\plat estudo\\data\\materiais\\banco-de-dados-relacional-e-big\\80b987cf-22f3-4703-bc3d-d10b20fa13a6.txt",
+    "paginas": 32,
+    "caracteres": 12670,
+    "amostra": "===== PAGINA 1 ===== WBA0178_v3.0 Banco de dados relacional e big data ===== PAGINA 2 ===== Modelagem e Estrutura de Bancos de Dados Relacionais Conceitos e princípios Bloco 1 Simone Tatiane do Canto ===== PAGINA 3 ===== Vamos refletir? Você já se perguntou o que garante que seus dados bancários, históricos acadêmicos ou resultados de exames médicos estejam sempre corretos, atualizados e disponíve"
+  },
+  {
+    "materia": "DATA WAREHOUSE",
+    "materia_slug": "data-warehouse",
+    "raiz": "Pós dados",
+    "pdf": "C:\\Users\\Pedro André Ferreira\\OneDrive\\Pós dados\\DATA WAREHOUSE\\638f2fa4-c917-4685-9126-838b3eee9812.pdf",
+    "pdf_nome": "638f2fa4-c917-4685-9126-838b3eee9812.pdf",
+    "texto": "C:\\Users\\Pedro André Ferreira\\Documents\\plat estudo\\data\\materiais\\data-warehouse\\638f2fa4-c917-4685-9126-838b3eee9812.txt",
+    "paginas": 35,
+    "caracteres": 14869,
+    "amostra": "===== PAGINA 1 ===== WBA0748_v2.0 Modelagem e Arquitetura do DW (Data Warehouse) ===== PAGINA 2 ===== Mineração de Dados e Boas Práticas em Data Warehouse Histórico, definições e curiosidades do Data Mining Bloco 1 Anderson Emidio de Macedo Gonçalves ===== PAGINA 3 ===== Vamos refletir? A aplicação de técnicas de mineração de dados em Data Warehouses possibilita a extração de padrões e tendências "
+  },
+  {
+    "materia": "DATA WAREHOUSE",
+    "materia_slug": "data-warehouse",
+    "raiz": "Pós dados",
+    "pdf": "C:\\Users\\Pedro André Ferreira\\OneDrive\\Pós dados\\DATA WAREHOUSE\\71f7faa4-71eb-461f-83e8-b40533aefb7b.pdf",
+    "pdf_nome": "71f7faa4-71eb-461f-83e8-b40533aefb7b.pdf",
+    "texto": "C:\\Users\\Pedro André Ferreira\\Documents\\plat estudo\\data\\materiais\\data-warehouse\\71f7faa4-71eb-461f-83e8-b40533aefb7b.txt",
+    "paginas": 35,
+    "caracteres": 13619,
+    "amostra": "===== PAGINA 1 ===== WB0748_v2.0 Modelagem e arquitetura do DW (Data Warehouse) ===== PAGINA 2 ===== Arquiteturas e Estruturas de Data Warehouse Histórico e curiosidades dos Data Warehouse Bloco 1 Anderson Emidio de Macedo Gonçalves ===== PAGINA 3 ===== Vamos refletir? Data Marts e Data Warehouses são componentes fundamentais na arquitetura de dados de uma empresa, atuando de maneira integrada par"
+  },
+  {
+    "materia": "DATA WAREHOUSE",
+    "materia_slug": "data-warehouse",
+    "raiz": "Pós dados",
+    "pdf": "C:\\Users\\Pedro André Ferreira\\OneDrive\\Pós dados\\DATA WAREHOUSE\\89578af6-b624-4abc-8de6-8c745cc6e712.pdf",
+    "pdf_nome": "89578af6-b624-4abc-8de6-8c745cc6e712.pdf",
+    "texto": "C:\\Users\\Pedro André Ferreira\\Documents\\plat estudo\\data\\materiais\\data-warehouse\\89578af6-b624-4abc-8de6-8c745cc6e712.txt",
+    "paginas": 35,
+    "caracteres": 14775,
+    "amostra": "===== PAGINA 1 ===== WBA0748_v2.0 Modelagem e arquitetura do DW (Data Warehouse) ===== PAGINA 2 ===== Ferramentas e Tecnologias para Data Warehouse Fontes de Dados de um Data Warehouse Bloco 1 Anderson Emidio de Macedo Gonçalves ===== PAGINA 3 ===== Vamos refletir? O sucesso de um Data Warehouse depende diretamente das ferramentas e tecnologias que o suportam. Ferramentas de ETL garantem a integra"
+  },
+  {
+    "materia": "DATA WAREHOUSE",
+    "materia_slug": "data-warehouse",
+    "raiz": "Pós dados",
+    "pdf": "C:\\Users\\Pedro André Ferreira\\OneDrive\\Pós dados\\DATA WAREHOUSE\\Data warehouse.pdf",
+    "pdf_nome": "Data warehouse.pdf",
+    "texto": "C:\\Users\\Pedro André Ferreira\\Documents\\plat estudo\\data\\materiais\\data-warehouse\\data-warehouse.txt",
+    "paginas": 35,
+    "caracteres": 15459,
+    "amostra": "===== PAGINA 1 ===== WBA0748_v2.0 Modelagem e arquitetura do DW (Data Warehouse) ===== PAGINA 2 ===== Fundamentos de Data Warehouse e Modelagem de Dados Fundamentos e curiosidades sobre Banco de Dados Bloco 1 Anderson Emidio de Macedo Gonçalves ===== PAGINA 3 ===== Vamos refletir? Um Data Warehouse é uma solução essencial para empresas que buscam consolidar, organizar e analisar grandes volumes de"
+  },
+  {
+    "materia": "Interações entre big data e cloud computing",
+    "materia_slug": "interacoes-entre-big-data-e-cloud-computing",
+    "raiz": "Pós dados",
+    "pdf": "C:\\Users\\Pedro André Ferreira\\OneDrive\\Pós dados\\Interações entre big data e cloud computing\\7686a338-0216-4363-b44b-ca7fe4c03ed0.pdf",
+    "pdf_nome": "7686a338-0216-4363-b44b-ca7fe4c03ed0.pdf",
+    "texto": "C:\\Users\\Pedro André Ferreira\\Documents\\plat estudo\\data\\materiais\\interacoes-entre-big-data-e-cloud-computing\\7686a338-0216-4363-b44b-ca7fe4c03ed0.txt",
+    "paginas": 34,
+    "caracteres": 12506,
+    "amostra": "===== PAGINA 1 ===== WBA0736_v2.0 Interações entre Big Data e Cloud Computing ===== PAGINA 2 ===== Aplicações empresariais da Ciência de Dados Fundamentos da Ciência de Dados em empresas Bloco 1 Valéria Baptista ===== PAGINA 3 ===== Vamos refletir? Sabemos que a ciência de dados, quando aplicada de forma estratégica, transforma grandes volumes de dados em insights valiosos, ajudando empresas a tom"
+  },
+  {
+    "materia": "Interações entre big data e cloud computing",
+    "materia_slug": "interacoes-entre-big-data-e-cloud-computing",
+    "raiz": "Pós dados",
+    "pdf": "C:\\Users\\Pedro André Ferreira\\OneDrive\\Pós dados\\Interações entre big data e cloud computing\\87aa92a7-35af-4dd1-b6c3-c28eb9dfac95.pdf",
+    "pdf_nome": "87aa92a7-35af-4dd1-b6c3-c28eb9dfac95.pdf",
+    "texto": "C:\\Users\\Pedro André Ferreira\\Documents\\plat estudo\\data\\materiais\\interacoes-entre-big-data-e-cloud-computing\\87aa92a7-35af-4dd1-b6c3-c28eb9dfac95.txt",
+    "paginas": 32,
+    "caracteres": 9433,
+    "amostra": "===== PAGINA 1 ===== WBA0736_v2.0 Interações entre Big Data e Cloud Computing ===== PAGINA 2 ===== Estruturas de Programação em Nuvem Conceitos e a importância das arquiteturas de nuvem Bloco 1 Valéria Baptista ===== PAGINA 3 ===== Vamos refletir? Uma empresa que opera apenas com um datacenter onpremises lançou diversas promoções no seu site durante a Black Friday, porém, o número de acessos foi t"
+  },
+  {
+    "materia": "Interações entre big data e cloud computing",
+    "materia_slug": "interacoes-entre-big-data-e-cloud-computing",
+    "raiz": "Pós dados",
+    "pdf": "C:\\Users\\Pedro André Ferreira\\OneDrive\\Pós dados\\Interações entre big data e cloud computing\\b9fe15dc-08fc-41af-a3b0-f0d035e2bcd5.pdf",
+    "pdf_nome": "b9fe15dc-08fc-41af-a3b0-f0d035e2bcd5.pdf",
+    "texto": "C:\\Users\\Pedro André Ferreira\\Documents\\plat estudo\\data\\materiais\\interacoes-entre-big-data-e-cloud-computing\\b9fe15dc-08fc-41af-a3b0-f0d035e2bcd5.txt",
+    "paginas": 36,
+    "caracteres": 11707,
+    "amostra": "===== PAGINA 1 ===== WBA0736_v2.0 Interações entre Big Data e Cloud Computing ===== PAGINA 2 ===== Fundamentos de Big Data e Cloud Computing Conceitos e Características de Big Data Bloco 1 Valéria Baptista ===== PAGINA 3 ===== Vamos refletir? Uma empresa de e-commerce está enfrentando dificuldades para gerenciar o crescente volume de dados gerados diariamente pelas suas operações e precisa encontr"
+  },
+  {
+    "materia": "Interações entre big data e cloud computing",
+    "materia_slug": "interacoes-entre-big-data-e-cloud-computing",
+    "raiz": "Pós dados",
+    "pdf": "C:\\Users\\Pedro André Ferreira\\OneDrive\\Pós dados\\Interações entre big data e cloud computing\\c884c82d-8e14-480c-bb03-82a2587a530b.pdf",
+    "pdf_nome": "c884c82d-8e14-480c-bb03-82a2587a530b.pdf",
+    "texto": "C:\\Users\\Pedro André Ferreira\\Documents\\plat estudo\\data\\materiais\\interacoes-entre-big-data-e-cloud-computing\\c884c82d-8e14-480c-bb03-82a2587a530b.txt",
+    "paginas": 32,
+    "caracteres": 13189,
+    "amostra": "===== PAGINA 1 ===== WBA0736_v2.0 Interações entre Big Data e Cloud Computing ===== PAGINA 2 ===== Gerenciamento de Big Data: técnicas, ferramentas e Machine Learning Técnicas de coleta de dados em larga escala Bloco 1 Valéria Baptista ===== PAGINA 3 ===== Vamos refletir? Imagine que você trabalha como cientista de dados em uma empresa de e-commerce que opera globalmente. A empresa está enfrentand"
+  }
+]

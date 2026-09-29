@@ -1,0 +1,92 @@
+<div class="grid grid-2">
+  <div class="card">
+    <h2>Treino</h2>
+    <p class="sub">Correção na hora, com explicação de cada questão. Ideal para aprender.</p>
+    <form method="post" action="{{ url_for('quiz.iniciar', slug=modulo['slug']) }}" class="form espaco-topo">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <input type="hidden" name="modo" value="treino">
+      <label class="campo"><span>Quantidade de questões</span>
+        <select name="n">
+          <option value="10">10 questões</option>
+          <option value="15">15 questões</option>
+          <option value="20">20 questões</option>
+          <option value="{{ n_perguntas }}">todas ({{ n_perguntas }})</option>
+        </select>
+      </label>
+      <button class="btn btn-primario" type="submit">Começar treino</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Prova do módulo</h2>
+    <p class="sub">Todas as questões de uma vez, correção no final e nota de 0 a 10.</p>
+    <form method="post" action="{{ url_for('quiz.iniciar', slug=modulo['slug']) }}" class="form espaco-topo">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <input type="hidden" name="modo" value="prova">
+      <div class="dupla">
+        <label class="campo"><span>Quantidade</span>
+          <select name="n">
+            <option value="10">10 questões</option>
+            <option value="15">15 questões</option>
+            <option value="20" selected>20 questões</option>
+            <option value="{{ n_perguntas }}">todas ({{ n_perguntas }})</option>
+          </select>
+        </label>
+        <label class="campo"><span>Tempo (min · 0 = sem limite)</span>
+          <input type="number" name="tempo" min="0" max="180" value="0">
+        </label>
+      </div>
+      <button class="btn" type="submit">Iniciar prova</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Revisão</h2>
+    <p class="sub">Somente as questões que você já errou neste módulo (repetição espaçada).</p>
+    <form method="post" action="{{ url_for('quiz.iniciar', slug=modulo['slug']) }}" class="espaco-topo">
+      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <input type="hidden" name="modo" value="revisao">
+      <button class="btn" type="submit">Revisar meus erros</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Tópicos do módulo</h2>
+    <p class="sub">Os tópicos em que você mais erra aparecem primeiro.</p>
+    <div class="rolagem espaco-topo">
+      <table class="tabela">
+        <thead><tr><th>Tópico</th><th>Questões</th><th>Seus erros</th></tr></thead>
+        <tbody>
+          {% for t in topicos %}
+            <tr>
+              <td>{{ t['topico'] }}</td>
+              <td>{{ t['n'] }}</td>
+              <td>{% if t['erros'] %}<span class="badge badge-erro">{{ t['erros'] }}</span>
+                  {% else %}<span class="badge badge-ok">0</span>{% endif %}</td>
+            </tr>
+          {% else %}
+            <tr><td colspan="3" class="sub">Sem tópicos registrados.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% if tentativas %}
+  <h3 class="espaco-topo-2">Suas últimas tentativas neste módulo</h3>
+  <ul class="lista espaco-topo">
+    {% for t in tentativas %}
+      <li class="item">
+        <div class="item-principal"><div>
+          <div class="item-titulo">{{ MODOS_QUIZ.get(t['modo'], t['modo']) }}</div>
+          <div class="item-meta">{{ t['acertos'] }}/{{ t['total'] }} acertos · {{ t['fim_em'][:16] }} · {{ (t['tempo_seg'] or 0) // 60 }} min</div>
+        </div></div>
+        <div class="item-acoes">
+          <span class="badge {{ 'badge-ok' if t['aprovado'] else 'badge-erro' }}">{{ fmt_nota(t['nota']) }}</span>
+          <a class="btn btn-mini" href="{{ url_for('resultado.resultado', tid=t['id']) }}">Revisar</a>
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

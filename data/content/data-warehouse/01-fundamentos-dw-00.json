@@ -1,0 +1,86 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "fundamentos-dw",
+  "modulo": {
+    "nome": "Fundamentos de DW e Modelagem de Dados",
+    "descricao": "Bancos de dados e suas gerações, OLTP x OLAP, princípios do Data Warehouse e modelagem dimensional (fatos e dimensões).",
+    "pdf_origem": "Data warehouse.pdf",
+    "ordem": 1,
+    "resumo": [
+      "BANCOS DE DADOS: ORIGEM E MODELOS",
+      "• Banco de dados: sistema estruturado para armazenar e gerenciar grandes volumes de informações.",
+      "• O primeiro banco de dados digital surge na década de 1960 para gerenciar reservas de voos.",
+      "• Estruturas: tabelas, índices, visões. Modelos: relacional, NoSQL e orientado a objetos.",
+      "• SQL: criada na IBM nos anos 1970, continua sendo o padrão de consulta em bancos relacionais.",
+      "• Modelo relacional: proposto por Edgar Codd (1970) — tabelas com chaves primárias e estrangeiras.",
+      "• SGBDs relacionais: MySQL, PostgreSQL, Oracle Database, SQL Server.",
+      "• NoSQL: para volumes massivos e dados não estruturados. Tipos: documentos (MongoDB), chave-valor (Redis), colunas (Cassandra).",
+      "OLTP X OLAP",
+      "• OLTP (transacional): operações do dia a dia (insert/update/delete), alta frequência de leitura e escrita, estrutura NORMALIZADA, muitas transações simultâneas. Ex.: sistemas bancários, e-commerce, ERPs.",
+      "• OLAP (analítico): dados históricos e apoio à decisão, leitura alta e escrita baixa, estrutura DESNORMALIZADA, foco em agregação e consultas multidimensionais. Ex.: Data Warehouse, BI, análise de tendências.",
+      "• Resumo das diferenças: objetivo (transação x análise estratégica), estrutura (normalizada x desnormalizada) e operações (CRUD x consultas complexas).",
+      "PRINCÍPIOS E FUNÇÃO DO DATA WAREHOUSE",
+      "• Armazenamento centralizado de dados para análise, relatórios e decisão estratégica.",
+      "• Consolidação: integra dados de múltiplas fontes em uma visão única.",
+      "• Armazenamento histórico: permite análise longitudinal (séries de tempo).",
+      "• Separação de processos: análise (OLAP) separada das transações diárias (OLTP).",
+      "• Componentes: fontes de dados → ETL → Data Warehouse → ferramentas de BI/visualização.",
+      "MODELAGEM DE DADOS PARA DW",
+      "• Objetivo: organizar os dados para facilitar análise e consulta — e NÃO otimizar CRUD em tempo real.",
+      "• Modelagem dimensional: técnica central, com tabela de fatos (medidas quantitativas) cercada por tabelas de dimensões (contexto: tempo, produto, cliente, local).",
+      "• Tendências: integração com IA/ML, bancos distribuídos, mais segurança e processamento em nuvem.",
+      "PEGADINHAS DE PROVA",
+      "• O Data Warehouse prioriza LEITURA/consulta histórica; quem prioriza escrita é o OLTP.",
+      "• Desnormalizar no OLAP é intencional: reduz joins e acelera agregações.",
+      "• Não confunda o modelo de CHEN (MER, 1976) com o modelo relacional de CODD (1970)."
+    ]
+  },
+  "perguntas": [
+    {
+      "e": "Em que década foi criado o primeiro banco de dados digital e com qual finalidade?",
+      "t": "História dos bancos de dados",
+      "d": "facil",
+      "r": "Bloco 1 - Fundamentos e curiosidades sobre Banco de Dados",
+      "x": "O texto do curso cita que o primeiro banco de dados digital foi criado na década de 1960 para gerenciar reservas de voos.",
+      "a": ["Década de 1950, para controle de folha de pagamento", "Década de 1960, para gerenciar reservas de voos", "Década de 1980, para relatórios analíticos", "Década de 1990, para redes sociais"],
+      "c": 1
+    },
+    {
+      "e": "Quem é o autor do modelo relacional, apresentado em 1970 e base para a maioria dos bancos de dados corporativos?",
+      "t": "Modelo relacional",
+      "d": "facil",
+      "r": "Bloco 1 - Fundamentos e curiosidades sobre Banco de Dados",
+      "x": "Edgar Codd introduziu o modelo relacional em 1970. Peter Chen (1976) é o autor do MER, e William Inmon é o 'pai do Data Warehouse'.",
+      "a": ["Peter Chen", "William H. Inmon", "Edgar Codd", "Ralph Kimball"],
+      "c": 2
+    },
+    {
+      "e": "A linguagem SQL, usada em bancos de dados relacionais, foi desenvolvida na IBM na década de 1970 e continua sendo amplamente utilizada.",
+      "tp": "vf",
+      "t": "SQL",
+      "d": "facil",
+      "r": "Bloco 1 - Fundamentos e curiosidades sobre Banco de Dados",
+      "x": "Verdadeiro. A curiosidade apresentada no material é exatamente essa: SQL nasceu na IBM nos anos 1970 e permanece como padrão de consulta.",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 0
+    },
+    {
+      "e": "Qual das opções abaixo NÃO é um SGBD relacional?",
+      "t": "Modelos de banco de dados",
+      "d": "facil",
+      "r": "Bloco 1 - Fundamentos e curiosidades sobre Banco de Dados",
+      "x": "MongoDB é um banco NoSQL orientado a documentos. MySQL, PostgreSQL e Oracle Database são SGBDs relacionais.",
+      "a": ["MySQL", "PostgreSQL", "MongoDB", "Oracle Database"],
+      "c": 2
+    },
+    {
+      "e": "O Redis é um exemplo de banco de dados NoSQL do tipo:",
+      "t": "NoSQL",
+      "d": "medio",
+      "r": "Bloco 1 - Além do relacional: o mundo NoSQL",
+      "x": "Redis é chave-valor, MongoDB é baseado em documentos e Cassandra é orientado a colunas.",
+      "a": ["Documentos", "Chave-valor", "Colunas (famílias de colunas)", "Grafo"],
+      "c": 1
+    }
+  ]
+}

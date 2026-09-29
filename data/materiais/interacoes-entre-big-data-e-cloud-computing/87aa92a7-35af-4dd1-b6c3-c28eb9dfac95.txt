@@ -1,0 +1,304 @@
+
+
+===== PAGINA 1 =====
+WBA0736_v2.0
+Interações entre Big Data e 
+Cloud Computing
+
+===== PAGINA 2 =====
+Estruturas de Programação em Nuvem
+Conceitos e a importância das arquiteturas de 
+nuvem
+Bloco 1
+Valéria Baptista
+
+===== PAGINA 3 =====
+Vamos refletir?
+Uma empresa que opera apenas com um datacenter 
+onpremises lançou diversas promoções no seu site 
+durante a Black Friday, porém, o número de acessos 
+foi tão grande que o site acabou por ficar fora do ar.
+Como o uso de uma arquitetura na nuvem poderia ter 
+ajudado neste caso e mantido a operação no ar?
+
+===== PAGINA 4 =====
+O que é a arquitetura de nuvem?
+• O termo se refere ao layout e conecta os 
+componentes e tecnologias necessárias para 
+a computação em nuvem.
+• São tecnologias que abstraem, agrupam e 
+compartilham recursos escaláveis.
+• As aplicações são executadas por meio de 
+uma plataforma online.
+
+===== PAGINA 5 =====
+Arquitetura de nuvem pública
+• Pertencente a serviços de nuvem ou provedor de hosting.
+• Fornece recursos e serviços a várias organizações e usuários.
+• Acessada via conexão de rede segura (geralmente pela internet).
+Nuvem pública
+Fonte: elaborada pela autora.
+
+===== PAGINA 6 =====
+Arquiteturas de nuvem privada
+• As organizações criam um 
+ambiente em nuvem em 
+seu datacenter.
+• As organizações são 
+responsáveis por operar 
+os serviços que fornecem.
+• Não fornece acesso aos 
+usuários fora da 
+organização.
+Nuvem privada
+Fonte: elaborada pela autora.
+
+===== PAGINA 7 =====
+Arquiteturas de nuvem híbrida
+Combina nuvens públicas e privadas para permitir que os 
+aplicativos sejam executados no local mais adequado.
+Nuvem híbrida
+Fonte: elaborada pela autora.
+
+===== PAGINA 8 =====
+Design para arquitetura de nuvem
+Alta disponibilidade
+Segurança
+Elasticidade
+Escalabilidade
+
+===== PAGINA 9 =====
+Estruturas de Programação em Nuvem
+Entendendo a diferença dos modelos de serviço 
+IaaS, PaaS e SaaS
+Bloco 2
+Valéria Baptista
+
+===== PAGINA 10 =====
+Modelos de serviço de nuvem
+Na arquitetura de nuvem os componentes funcionam 
+juntos criando uma plataforma de computação que oferece 
+aos usuários acesso e recursos sob demanda.
+Os tipos de serviços disponíveis para uso variam de acordo 
+com o modelo de entrega ou do serviço escolhido. Dentre 
+eles temos três serviços principais, são eles:
+• Infraestrutura como serviço (IaaS).
+• Plataforma como serviço (PaaS).
+• Software como serviço (SaaS).
+
+===== PAGINA 11 =====
+Infraestrutura como serviço (IaaS)
+É a categoria mais flexível de serviços de nuvem, pois oferece o 
+máximo de controle sobre os recursos de nuvem. Com o IaaS, 
+basicamente o hardware é alugado em um datacenter de nuvem, 
+mas cabe a você decidir o que fazer com ele. 
+Modelo IaaS
+Fonte: Microsoft.com.
+
+===== PAGINA 12 =====
+Plataforma como serviço (PaaS)
+Fornece um ambiente para criação, teste e implantação de 
+aplicativos de software. 
+Fornece um ambiente de desenvolvimento completo sem a 
+preocupação de manter toda a infraestrutura de desenvolvimento.
+Modelo PaaS
+Fonte: Microsoft.com.
+
+===== PAGINA 13 =====
+Software como serviço (SaaS)
+Modelo de serviço de nuvem mais completo do ponto de vista do produto. 
+Você está essencialmente alugando ou usando um aplicativo totalmente 
+desenvolvido.
+Embora o modelo de SaaS possa ser o menos flexível, ele também é o mais 
+fácil de colocar em funcionamento.
+Modelo SaaS
+Fonte: Microsoft.com.
+
+===== PAGINA 14 =====
+Estruturas de Programação em Nuvem
+Gerenciamento automatizado por meio de IaC
+Bloco 3
+Valéria Baptista
+
+===== PAGINA 15 =====
+O que é Infraestrutura como Código (IaC)?
+O conceito de IaC se refere ao provisionamento de 
+recursos na nuvem por meio de automações por linha 
+de comando sem a necessidade de iteração com o 
+painel pela internet.
+Usa a metodologia de DevOps e o controle de versão 
+com um modelo descritivo para definir e implantar a 
+infraestrutura, como redes, máquinas virtuais, 
+balanceadores de carga e topologias de conexão. Assim 
+como o mesmo código-fonte sempre gera o mesmo 
+binário, um modelo IaC gera o mesmo ambiente 
+sempre que ele é implantado.
+
+===== PAGINA 16 =====
+Benefícios da IaC
+AUTOMAÇÃO E EFICIÊNCIA
+PADRONIZAÇÃO E 
+CONSISTÊNCIA
+CONTROLE DE VERSÃO
+
+===== PAGINA 17 =====
+Principais Ferramentas e IaC
+
+===== PAGINA 18 =====
+Infraestrutura como Código
+A Infraestrutura como Código (IaC) proporciona agilidade, 
+controle, eficiência e segurança no gerenciamento da 
+infraestrutura na nuvem, contribuindo para um ambiente 
+mais escalável e resiliente.
+Isso significa que as principais práticas recomendadas de 
+DevOps, como controle de versão, testes virtualizados e 
+monitoramento contínuo, são aplicadas ao código 
+subjacente que rege a criação e o gerenciamento de sua 
+infraestrutura.
+Em outras palavras, sua infraestrutura é tratada da mesma 
+forma que qualquer outro código.
+
+===== PAGINA 19 =====
+Teoria em prática
+Estruturas de Programação em Nuvem
+Bloco 4
+Valéria Baptista
+
+===== PAGINA 20 =====
+Reflita sobre a seguinte situação
+Você foi contratado para trabalhar em uma 
+empresa que teve problemas de segurança ao 
+migrar para a nuvem.
+Foram identificadas falhas no monitoramento 
+e inexistência de aplicações nativas ou de 
+terceiros no ambiente tendo em vista que 
+muitos pensavam que a segurança seria 
+responsabilidade da Microsoft.
+Qual a sua ação com relação a esse problema?
+
+===== PAGINA 21 =====
+Norte para a resolução
+Por onde começar? 
+• Identificar os componentes de arquitetura do ambiente.
+• Somos uma empresa multicloud?
+• Temos alguma proteção atual nos dispositivos?
+• Qual o nível de investimento esperado?
+
+===== PAGINA 22 =====
+Norte para a resolução
+Possíveis passos para a resolução:
+Habilitar o Defender for Cloud na assinatura.
+Habilitar o Defender for Cloud em outros dispositivos 
+fora do Azure.
+Implementar o monitoramento e ação do Sentinel.
+Acompanhar dados coletados e encaminhar ao SOC.
+
+===== PAGINA 23 =====
+Consolidando o aprendizado
+Estruturas de Programação em Nuvem
+Bloco 5
+Valéria Baptista
+
+===== PAGINA 24 =====
+Consolidando o aprendizado
+• Você aprendeu sobre os conceitos e a 
+importância das arquiteturas de nuvem.
+• Aprendeu a diferenciar os modelos de 
+serviço (IaaS, PaaS, SaaS). 
+• Conheceu as práticas de DevOps e 
+Infraestrutura como Código (IaC).
+
+===== PAGINA 25 =====
+Quiz
+A B
+C D
+O que é a computação em nuvem? 
+Entrega de serviços de computação 
+pela Internet.
+Entrega de serviços de 
+armazenamento pela Internet.
+Disponibilização de sites acessíveis 
+pela Internet.
+Entrega de serviços de banco de 
+dados pela Internet.
+
+===== PAGINA 26 =====
+Quiz
+A B
+C D
+O que é a computação em nuvem? 
+Entrega de serviços de computação 
+pela Internet.
+Entrega de serviços de 
+armazenamento pela Internet.
+Disponibilização de sites acessíveis 
+pela Internet.
+Entrega de serviços de banco de 
+dados pela Internet.
+
+===== PAGINA 27 =====
+Quiz – Resolução
+A) A computação em nuvem é a entrega de 
+serviços de computação pela Internet.
+Ao utilizar a nuvem, que nada mais é do que um 
+conjunto de computadores e sistemas acessíveis de 
+qualquer lugar, as organizações podem acessar 
+recursos sob demanda, reduzir custos operacionais 
+e acelerar a inovação, adaptando suas 
+infraestruturas conforme necessário.
+
+===== PAGINA 28 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da sua 
+carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 29 =====
+Indicação de leitura 1
+Este livro vai além dos conceitos básicos e discute as 
+mudanças de paradigma introduzidas com o conceito 
+de computação em nuvem. Antes, era muito difícil 
+garantir a escalabilidade das aplicações, mas com a 
+computação em nuvem, a capacidade computacional 
+pode ser dinamicamente ampliada para atender um 
+eventual crescimento de demanda.
+Referência:
+MALHEIROS, Neumar Costa. Computação em nuvem. Londrina: 
+Editora e Distribuidora Educacional S.A., 2019.
+
+===== PAGINA 30 =====
+Indicação de leitura 2
+Entenda melhor o potencial da revolução DevOps e 
+como as organizações de alto desempenho ampliam 
+as chances de exceder metas de lucratividade, 
+participação de mercado e produtividade.
+Referência:
+KIM, Gene. Manual de DevOps: Como Obter Agilidade, 
+Confiabilidade e Segurança em Organizações Tecnológicas. Alta 
+Books, 2018.
+
+===== PAGINA 31 =====
+Referências
+RED HAT. O que é infraestrutura como código (IaC)?. Disponível 
+em: https://www.redhat.com/pt-br/topics/automation/what-
+is-infrastructure-as-code-iac Acesso em: 22 nov. 2024.
+GOOGLE CLOUD. O que é a arquitetura de nuvem? Disponível 
+em: https://cloud.google.com/learn/what-is-cloud-
+architecture?hl=pt-BR. Acesso em: 22 nov. 2024.
+MICROSOFT. Infraestrutura como código. Disponível em: 
+https://learn.microsoft.com/pt-br/dotnet/architecture/cloud-
+native/infrastructure-as-code#azure-resource-manager-
+templates. Acesso em: 22 nov. 2024.
+
+===== PAGINA 32 =====
+Bons estudos!

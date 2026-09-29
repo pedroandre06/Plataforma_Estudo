@@ -1,0 +1,38 @@
+<div class="grid grid-2">
+  <div class="resumo">
+    {% for linha in (modulo['resumo'] or 'Resumo em breve.').split('\n') %}
+      {% set limpa = linha.strip() %}
+      {% if not limpa %}
+      {% elif limpa.startswith('•') %}
+        <p class="linha-resumo topico">{{ limpa }}</p>
+      {% elif limpa == limpa.upper() and limpa|length > 3 %}
+        <p class="secao">{{ limpa }}</p>
+      {% else %}
+        <p class="linha-resumo">{{ limpa }}</p>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div>
+    <div class="card">
+      <h3>Praticar agora</h3>
+      <p class="sub">{{ n_perguntas }} questões disponíveis neste módulo, cada uma com explicação da resposta.</p>
+      <div class="linha espaco-topo">
+        <a class="btn btn-primario" href="{{ url_for('aula.modulo', slug=modulo['slug'], aba='praticar') }}">Ir para os exercícios</a>
+        {% if tem_pdf %}
+          <a class="btn" href="{{ url_for('aula.modulo', slug=modulo['slug'], aba='material') }}">Ver PDF da aula</a>
+        {% endif %}
+      </div>
+      <p class="item-meta espaco-topo">Material de origem: {{ modulo['pdf_origem'].split('\\')[-1] if modulo['pdf_origem'] else 'não mapeado' }}</p>
+    </div>
+    <div class="card espaco-topo">
+      <h3>Minhas anotações</h3>
+      <form method="post" action="{{ url_for('aula.salvar_anotacao', slug=modulo['slug']) }}" class="form espaco-topo">
+        <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+        <label class="campo"><span>Anotações privadas deste módulo</span>
+          <textarea name="texto" placeholder="Dúvidas, mnemônicos, pontos que preciso revisar...">{{ anotacao['texto'] if anotacao else '' }}</textarea>
+        </label>
+        <button class="btn" type="submit">Salvar anotação</button>
+      </form>
+    </div>
+  </div>
+</div>

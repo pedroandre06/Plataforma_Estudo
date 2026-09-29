@@ -1,0 +1,61 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "arquiteturas-dw",
+  "perguntas": [
+    {
+      "e": "Você é analista de dados de uma universidade que precisa de um DW com consultas rápidas e estrutura simples para analisar desempenho acadêmico. Qual esquema é o mais indicado?",
+      "t": "Escolha do esquema",
+      "d": "medio",
+      "r": "Bloco 5 - Quiz do curso (Esquema Estrela)",
+      "x": "O Quiz do material indica o Esquema Estrela: sua estrutura centralizada em fatos e dimensões diretas facilita consultas rápidas e simples, sem a complexidade de junções do floco de neve.",
+      "a": ["Esquema Floco de Neve", "Esquema Estrela", "Esquema Hierárquico", "Esquema Relacional"],
+      "c": 1
+    },
+    {
+      "e": "Em que cenário o Esquema Floco de Neve é mais indicado?",
+      "t": "Escolha do esquema",
+      "d": "dificil",
+      "r": "Bloco 3 - Quando usar esquema estrela e esquema floco de neve?",
+      "x": "O floco de neve é ideal quando o armazenamento eficiente e a eliminação de redundância são cruciais, em grandes organizações com muitas dimensões complexas e inter-relacionadas.",
+      "a": ["Quando se busca simplicidade e o mínimo de junções", "Quando armazenamento eficiente e eliminação de redundância são cruciais", "Quando não existem dimensões no modelo", "Quando os dados são exclusivamente não estruturados"],
+      "c": 1
+    },
+    {
+      "e": "Um Data Mart é maior e mais abrangente que o Data Warehouse corporativo.",
+      "tp": "vf",
+      "t": "Data Mart",
+      "d": "facil",
+      "r": "Bloco 2 - O que é um Data Mart?",
+      "x": "Falso. O Data Warehouse centraliza um volume maior de dados de diversas fontes, enquanto o Data Mart é uma subdivisão focada em um departamento ou área funcional.",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 1
+    },
+    {
+      "e": "No caso do supermercado apresentado no material, qual foi o primeiro passo sugerido para estruturar as análises?",
+      "t": "Estudo de caso",
+      "d": "medio",
+      "r": "Bloco 4 - Norte para a resolução (supermercado)",
+      "x": "Passo 1: entendimento dos dados (vendas, estoque, clientes) para identificar os fatores que impactam a gestão de estoques e o desempenho das lojas.",
+      "a": ["Escolher o esquema de modelagem", "Entender os dados disponíveis e os fatores que impactam o negócio", "Modelar as tabelas de fatos e dimensões", "Gerar dashboards finais"],
+      "c": 1
+    },
+    {
+      "e": "Ainda no estudo de caso do supermercado, como o material orienta a decisão entre Esquema Estrela e Floco de Neve?",
+      "t": "Estudo de caso",
+      "d": "dificil",
+      "r": "Bloco 4 - Norte para a resolução (passo 2)",
+      "x": "A escolha deve considerar os requisitos: estrela para consultas rápidas e simplicidade; floco de neve para maior normalização e economia de espaço.",
+      "a": ["Sempre usar floco de neve, independentemente do requisito", "Estrela para consultas rápidas e simplicidade; floco de neve para normalização e economia de espaço", "Sortear o esquema aleatoriamente", "Usar esquema relacional puro (3FN) no DW"],
+      "c": 1
+    },
+    {
+      "e": "Quais desafios o material aponta como prováveis na implementação de um DW em uma rede de supermercados?",
+      "t": "Estudo de caso",
+      "d": "medio",
+      "r": "Bloco 4 - Desafios que poderão surgir",
+      "x": "Integração de dados de diversas fontes de forma consistente, desempenho das consultas com grandes volumes e manutenção da atualização do DW sem comprometer a performance.",
+      "a": ["Falta de computadores e de internet", "Integração de dados, desempenho das consultas e manutenção da atualização do DW", "Ausência de dados históricos e de chaves primárias", "Excesso de ferramentas de visualização"],
+      "c": 1
+    }
+  ]
+}

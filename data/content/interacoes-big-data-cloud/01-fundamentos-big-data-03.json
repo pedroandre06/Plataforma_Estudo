@@ -1,0 +1,61 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "fundamentos-big-data-cloud",
+  "perguntas": [
+    {
+      "e": "O que significa o modelo de responsabilidade compartilhada na computação em nuvem?",
+      "t": "Responsabilidade compartilhada",
+      "d": "medio",
+      "r": "Bloco 4 - Modelo de responsabilidade compartilhada",
+      "x": "No modelo de responsabilidade compartilhada, o provedor de nuvem e o cliente dividem responsabilidades — o provedor cuida da infraestrutura/segurança da nuvem e o cliente das suas configurações, dados e acessos.",
+      "a": ["O cliente é o único responsável por toda a segurança", "Provedor e cliente compartilham responsabilidades de segurança e operação", "O provedor assume toda a responsabilidade, inclusive pelos dados do cliente", "Não existe divisão de responsabilidades em nuvem"],
+      "c": 1
+    },
+    {
+      "e": "Quais características do Hadoop o tornam adequado para Big Data?",
+      "t": "Hadoop",
+      "d": "medio",
+      "r": "Bloco 2 - O que é o Hadoop?",
+      "x": "O Hadoop é capaz de escalar de forma eficiente, tolerar falhas e processar informações de forma distribuída.",
+      "a": ["Esquema rígido, transações ACID e baixa latência", "Escalabilidade eficiente, tolerância a falhas e processamento distribuído", "Interface gráfica amigável e instalação em um único servidor", "Criptografia de ponta a ponta e versionamento de dados"],
+      "c": 1
+    },
+    {
+      "e": "Segundo o material, quais tecnologias compõem a infraestrutura subjacente para Big Data?",
+      "t": "Infraestrutura",
+      "d": "facil",
+      "r": "Bloco 2 - Infraestrutura e Tecnologias Subjacentes",
+      "x": "O material apresenta Hadoop, bancos NoSQL e Data Warehousing como as tecnologias de infraestrutura para Big Data.",
+      "a": ["Planilhas, e-mails e ERPs", "Hadoop, bancos NoSQL e Data Warehousing", "Apenas serviços de e-mail e mensageria", "Frameworks de front-end como React e Vue"],
+      "c": 1
+    },
+    {
+      "e": "Como o V 'Valor' se materializa em um projeto de Big Data?",
+      "t": "Valor",
+      "d": "medio",
+      "r": "Bloco 1 - Característica do Big Data: Valor",
+      "x": "O valor aparece quando os dados brutos alimentam processos de negócio e métricas úteis, como comportamento do cliente, desempenho empresarial e tendências numéricas.",
+      "a": ["Aumentando o volume de dados armazenados", "Gerando métricas e insights úteis ao negócio a partir dos dados brutos", "Reduzindo a variedade de fontes de dados", "Eliminando a necessidade de governança"],
+      "c": 1
+    },
+    {
+      "e": "Uma empresa de e-commerce tem dificuldade para gerenciar o volume crescente de dados diários e precisa de processamento em tempo real com escalabilidade. Qual conjunto de soluções é coerente com o material?",
+      "t": "Arquitetura Big Data",
+      "d": "dificil",
+      "r": "Bloco 1 e 2 - Situação-problema e tecnologias",
+      "x": "Uma solução coerente combina um framework distribuído e escalável (Hadoop/Spark) com armazenamento NoSQL e serviços de nuvem para elasticidade, atendendo volume e velocidade.",
+      "a": ["Migrar tudo para planilhas e processar manualmente", "Adotar processamento distribuído (Hadoop/Spark) com armazenamento NoSQL e escalabilidade em nuvem", "Usar apenas um banco relacional em um único servidor on-premises", "Eliminar as recomendações personalizadas e reduzir a coleta de dados"],
+      "c": 1
+    },
+    {
+      "e": "A veracidade dos dados exige validação apenas na etapa final do processo de análise.",
+      "tp": "vf",
+      "t": "Veracidade",
+      "d": "medio",
+      "r": "Bloco 1 - Característica do Big Data: Veracidade",
+      "x": "Falso. O material destaca a necessidade de validar os dados a cada etapa do processo, e não somente ao final.",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 1
+    }
+  ]
+}

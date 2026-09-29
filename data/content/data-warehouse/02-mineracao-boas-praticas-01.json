@@ -1,0 +1,69 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "mineracao-boas-praticas",
+  "perguntas": [
+    {
+      "e": "Para segmentar clientes com comportamentos de compra semelhantes, sem usar rótulos previamente definidos, qual técnica de mineração é adequada?",
+      "t": "Clusterização",
+      "d": "facil",
+      "r": "Bloco 2 - Análise de dados e data mining",
+      "x": "A clusterização identifica grupos semelhantes dentro dos dados, sendo o exemplo típico a segmentação de clientes.",
+      "a": ["Clusterização", "Classificação supervisionada", "Regressão linear", "Associação multinível"],
+      "c": 0
+    },
+    {
+      "e": "O monitoramento do desempenho ao longo do tempo, com o objetivo de prever tendências futuras, é uma aplicação de:",
+      "t": "Séries temporais",
+      "d": "medio",
+      "r": "Bloco 2 - Análise de dados e data mining",
+      "x": "Séries temporais analisam dados ao longo do tempo para prever tendências, como monitoramento de desempenho.",
+      "a": ["Análise de associação", "Séries temporais", "Regras de associação multinível", "Análise de sentimento"],
+      "c": 1
+    },
+    {
+      "e": "Modelos que aprendem e identificam padrões complexos, usados em previsões avançadas como o reconhecimento de padrões de consumo, são:",
+      "t": "Redes neurais",
+      "d": "medio",
+      "r": "Bloco 2 - Análise de dados e data mining",
+      "x": "As redes neurais são citadas como modelos que aprendem padrões complexos para previsões avançadas.",
+      "a": ["Árvores de decisão simples", "Redes neurais", "Regras de associação Apriori", "Índices compostos"],
+      "c": 1
+    },
+    {
+      "e": "Uma empresa deseja analisar automaticamente os comentários deixados por clientes em redes sociais para medir satisfação. A técnica indicada é:",
+      "t": "Análise de sentimento",
+      "d": "medio",
+      "r": "Bloco 2 - Detecção de anomalias",
+      "x": "A análise de sentimento analisa opiniões e sentimentos em textos, sendo o exemplo citado o monitoramento de feedback de clientes.",
+      "a": ["Detecção de anomalias", "Regressão linear", "Análise de sentimento", "Clusterização"],
+      "c": 2
+    },
+    {
+      "e": "Sobre a relação entre Data Mining e Data Warehouse, é correto afirmar:",
+      "t": "Data Mining no DW",
+      "d": "medio",
+      "r": "Bloco 2 - Introdução às técnicas de mineração de dados",
+      "x": "O Data Warehouse organiza e integra os dados históricos; o Data Mining aplica algoritmos para descobrir padrões nesses dados.",
+      "a": ["São sinônimos: o DW executa os algoritmos de mineração automaticamente", "O DW organiza e integra dados históricos, que servem de base para a mineração", "O Data Mining substitui o ETL", "O Data Mining só funciona com dados não estruturados"],
+      "c": 1
+    },
+    {
+      "e": "Segundo as boas práticas, qual é a recomendação para a etapa de planejamento na construção de um DW?",
+      "t": "Planejamento",
+      "d": "medio",
+      "r": "Bloco 3 - Planejamento e estruturação",
+      "x": "Deve-se definir objetivos claros e requisitos de negócio, além de escolher esquemas adequados (estrela ou floco de neve) para otimizar consultas.",
+      "a": ["Começar pelas ferramentas de visualização e depois definir os dados", "Definir objetivos claros e requisitos de negócio antes de modelar", "Modelar apenas com esquema hierárquico", "Priorizar o armazenamento antes dos requisitos de análise"],
+      "c": 1
+    },
+    {
+      "e": "Um DW está com consultas lentas e com muitos dados inconsistentes. Quais boas práticas atacam diretamente esses dois problemas?",
+      "t": "Performance e qualidade",
+      "d": "dificil",
+      "r": "Bloco 3 - Integração, Qualidade dos Dados e Performance",
+      "x": "Índices e particionamento reduzem o tempo de resposta das consultas, enquanto processos contínuos de limpeza e validação eliminam inconsistências, duplicatas e lacunas.",
+      "a": ["Criptografia e auditoria", "Índices/particionamento e processos contínuos de limpeza e validação", "Aumentar o número de Data Marts independentes", "Migrar o DW para arquivos CSV"],
+      "c": 1
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "programacao-nuvem",
+  "modulo": {
+    "nome": "Estruturas de Programação em Nuvem",
+    "descricao": "Arquiteturas de nuvem (pública, privada e híbrida), atributos de design, modelos de serviço IaaS, PaaS e SaaS, DevOps e Infraestrutura como Código (IaC).",
+    "pdf_origem": "87aa92a7-35af-4dd1-b6c3-c28eb9dfac95.pdf",
+    "ordem": 2,
+    "resumo": [
+      "ARQUITETURA DE NUVEM",
+      "• Arquitetura de nuvem: layout que conecta os componentes e tecnologias necessários para a computação em nuvem; tecnologias que abstraem, agrupam e compartilham recursos escaláveis, com aplicações executadas por meio de uma plataforma online.",
+      "• Nuvem PÚBLICA: pertence a um provedor de serviços de nuvem/hosting; fornece recursos a várias organizações e usuários, acessados por conexão de rede segura (geralmente a internet).",
+      "• Nuvem PRIVADA: a organização cria o ambiente em nuvem no próprio datacenter, opera os serviços e não fornece acesso a usuários externos.",
+      "• Nuvem HÍBRIDA: combina nuvens públicas e privadas, permitindo executar cada aplicação no local mais adequado.",
+      "• Atributos de design de nuvem: alta disponibilidade, segurança, elasticidade e escalabilidade.",
+      "MODELOS DE SERVIÇO (IaaS, PaaS, SaaS)",
+      "• IaaS (Infraestrutura como Serviço): categoria mais flexível, com o máximo de controle sobre os recursos; basicamente o hardware é alugado em um datacenter de nuvem e o cliente decide o que fazer com ele.",
+      "• PaaS (Plataforma como Serviço): fornece um ambiente completo para criação, teste e implantação de aplicações, sem a preocupação de manter toda a infraestrutura de desenvolvimento.",
+      "• SaaS (Software como Serviço): modelo mais completo do ponto de vista de produto — o usuário aluga/usa um aplicativo totalmente desenvolvido. É o menos flexível, porém o mais fácil de colocar em funcionamento.",
+      "• Computação em nuvem: entrega de serviços de computação pela Internet; permite acesso a recursos sob demanda, redução de custos operacionais e aceleração da inovação.",
+      "DEVOPS E INFRAESTRUTURA COMO CÓDIGO",
+      "• DevOps: práticas de integração entre desenvolvimento e operações para entregas mais ágeis, confiáveis e seguras.",
+      "• IaC (Infrastructure as Code): provisionar e gerenciar a infraestrutura por meio de código/configuração versionada, tornando o ambiente repetível e automatizado.",
+      "PEGADINHAS DE PROVA",
+      "• Máximo controle sobre o hardware alugado → IaaS (mais flexível).",
+      "• Aplicativo pronto, pronto para usar (ex.: webmail, CRM SaaS) → SaaS (menos flexível, mais fácil).",
+      "• Ambiente de desenvolvimento sem gerenciar servidores → PaaS.",
+      "• Pico de acessos (Black Friday) → escalabilidade/elasticidade + alta disponibilidade em nuvem."
+    ]
+  }
+}

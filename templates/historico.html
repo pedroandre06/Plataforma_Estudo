@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block titulo %}Histórico{% endblock %}
+{% block conteudo %}
+<div class="cabeca-pagina">
+  <div>
+    <h1 class="titulo-pagina">Histórico e evolução</h1>
+    <p class="sub">Todas as tentativas entregues, com nota, tempo e situação.</p>
+  </div>
+  <div class="linha">
+    <a class="btn {{ 'btn-primario' if filtro == 'todos' }}" href="{{ url_for('extra.historico', modo='todos') }}">Todos</a>
+    <a class="btn {{ 'btn-primario' if filtro == 'treino' }}" href="{{ url_for('extra.historico', modo='treino') }}">Treino</a>
+    <a class="btn {{ 'btn-primario' if filtro == 'prova' }}" href="{{ url_for('extra.historico', modo='prova') }}">Provas</a>
+    <a class="btn {{ 'btn-primario' if filtro == 'simulado' }}" href="{{ url_for('extra.historico', modo='simulado') }}">Simulados</a>
+    <a class="btn {{ 'btn-primario' if filtro == 'oficial' }}" href="{{ url_for('extra.historico', modo='oficial') }}">Oficiais</a>
+  </div>
+</div>
+
+<div class="grid grid-4">
+  <div class="stat"><div class="stat-valor">{{ resumo['n'] or 0 }}</div><div class="stat-rotulo">Tentativas</div></div>
+  <div class="stat"><div class="stat-valor">{{ fmt_nota(resumo['media']) }}</div><div class="stat-rotulo">Média</div></div>
+  <div class="stat"><div class="stat-valor">{{ fmt_nota(resumo['melhor']) }}</div><div class="stat-rotulo">Melhor nota</div></div>
+  <div class="stat"><div class="stat-valor">{{ resumo['aprovadas'] or 0 }}</div><div class="stat-rotulo">Acima do corte</div></div>
+</div>
+
+{% if evolucao %}
+  <div class="card espaco-topo-2">
+    <h2>Evolução das notas</h2>
+    <div class="grafico espaco-topo">
+      {% for e in evolucao %}
+        <div class="coluna" title="Nota {{ fmt_nota(e['nota']) }}">
+          <i style="height: {{ (e['nota'] * 10) | round(0, 'floor') }}%"></i>
+          <span>{{ fmt_nota(e['nota']) }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+<div class="rolagem espaco-topo-2">
+  <table class="tabela">
+    <thead><tr><th>#</th><th>Data</th><th>O que</th><th>Modo</th><th>Acertos</th><th>Nota</th><th>Tempo</th><th></th></tr></thead>
+    <tbody>
+      {% for t in tentativas %}
+        <tr>
+          <td>{{ t['id'] }}</td>
+          <td>{{ (t['fim_em'] or t['inicio_em'])[:16] }}</td>
+          <td>{{ t['simulado_nome'] or t['modulo_nome'] or '-' }}{% if t['materia_nome'] %} <span class="item-meta">· {{ t['materia_nome'] }}</span>{% endif %}</td>
+          <td><span class="badge">{{ MODOS_SIMULADO.get(t['modo'], MODOS_QUIZ.get(t['modo'], t['modo'])) }}</span></td>
+          <td>{{ t['acertos'] }}/{{ t['total'] }}</td>
+          <td>
+            {% if t['status'] == 'em_andamento' %}<span class="badge badge-aviso">em andamento</span>
+            {% else %}<strong>{{ fmt_nota(t['nota']) }}</strong>{% endif %}
+          </td>
+          <td>{{ (t['tempo_seg'] or 0) // 60 }} min</td>
+          <td>
+            {% if t['status'] == 'em_andamento' %}
+              {% if t['simulado_id'] %}
+                <a class="btn btn-mini" href="{{ url_for('simulado_exec.executar', tid=t['id']) }}">Retomar</a>
+              {% else %}
+                <a class="btn btn-mini" href="{{ url_for('quiz.executar', tid=t['id']) }}">Retomar</a>
+              {% endif %}
+            {% elif t['simulado_id'] %}
+              <a class="btn btn-mini" href="{{ url_for('simulado_exec.resultado', tid=t['id']) }}">Revisar</a>
+            {% else %}
+              <a class="btn btn-mini" href="{{ url_for('resultado.resultado', tid=t['id']) }}">Revisar</a>
+            {% endif %}
+          </td>
+        </tr>
+      {% else %}
+        <tr><td colspan="8" class="sub">Nenhuma tentativa registrada ainda. Comece por um treino ou simulado!</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

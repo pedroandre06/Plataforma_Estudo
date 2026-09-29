@@ -1,0 +1,485 @@
+
+
+===== PAGINA 1 =====
+WBA0748_v2.0
+Modelagem e Arquitetura do 
+DW (Data Warehouse)
+
+===== PAGINA 2 =====
+Mineração de Dados e Boas Práticas em 
+Data Warehouse
+Histórico, definições e curiosidades do Data 
+Mining
+Bloco 1
+Anderson Emidio de Macedo Gonçalves
+
+===== PAGINA 3 =====
+Vamos refletir?
+A aplicação de técnicas de mineração de dados em Data Warehouses 
+possibilita a extração de padrões e tendências valiosas, essenciais 
+para a tomada de decisões estratégicas. Essas técnicas, quando 
+combinadas com boas práticas na construção e manutenção do Data 
+Warehouse, como a organização eficiente dos dados e a garantia de 
+qualidade e segurança, formam a base para análises precisas e 
+confiáveis.
+Além disso, a implementação de estudos de caso e a aplicação real 
+dessas tecnologias em organizações demonstram como novas ideias 
+são geradas e podem transformar e impulsionar operações.
+A partir deste contexto, reflita: de que maneira a integração entre 
+mineração de dados e boas práticas no gerenciamento de Data 
+Warehouses pode otimizar processos e criar vantagem competitiva 
+nas organizações?
+
+===== PAGINA 4 =====
+História da mineração de dados
+A mineração de dados 
+tem suas raízes nas 
+décadas de 1960 e 1970, 
+com o surgimento do 
+aprendizado de máquina 
+e da inteligência artificial. 
+O termo "mineração de 
+dados" ganhou 
+popularidade na década 
+de 1990, à medida que o 
+poder computacional e 
+os recursos de 
+armazenamento de 
+dados aumentaram.
+Fonte: https://www.icloud.com.br/15884/c
+omo-verificar-se-um-disco-rigido-e-hdd-ou-
+ssd-no-windows
+Fontes de Dados para Mineração
+
+===== PAGINA 5 =====
+Impacto nas indústrias e campos
+Áreas do DataMining
+Fonte: https://media.geeksforgeeks.org/wp-
+content/uploads/20210603232955/Applicati
+onsofDataMining.png
+A mineração de dados 
+revolucionou vários 
+setores, incluindo 
+finanças, marketing, 
+saúde e varejo. Ele 
+permitiu que as 
+organizações tomassem 
+decisões baseadas em 
+dados, melhorassem a 
+segmentação de 
+clientes, detectassem 
+fraudes e otimizassem 
+processos de negócios.
+
+===== PAGINA 6 =====
+Origens e evolução
+Funções do Data Mining
+Na década de 1980, bancos de dados relacionais e sistemas de 
+suporte à decisão lançaram as bases para a mineração de 
+dados. A década de 1990 viu avanços no armazenamento de 
+dados e no desenvolvimento de algoritmos de classificação e 
+mineração de regras de associação.
+Fonte: https://miro.medium.com/v2/resize:fit:4800/format:webp/1*oyN
+L925xGqM-JPq4qEvwkQ.png
+
+===== PAGINA 7 =====
+Noções básicas sobre mineração de dados
+Data Mining
+Fonte: https://cdn-
+idnhn.nitrocdn.com/pGZJrsaaNAeqFgzcqIWGRFXLaV
+NbxMer/assets/images/optimized/rev-
+805033d/netsmartz.com/wp-
+content/uploads/2023/06/10-Real-World-
+Applications-of-Data-Mining.jpg
+A mineração de dados é 
+o processo de 
+descoberta de padrões, 
+relacionamentos e 
+insights de grandes 
+conjuntos de dados. Ele 
+combina técnicas de 
+estatística, aprendizado 
+de máquina e sistemas 
+de banco de dados para 
+extrair conhecimento 
+valioso.
+
+===== PAGINA 8 =====
+Principais terminologias e técnicas
+As principais terminologias na mineração de dados incluem: 
+• Pré-processamento de dados.
+• Seleção de recursos.
+• Avaliação de modelo.
+• Visualização de dados.
+As técnicas comuns de mineração de dados incluem:
+•  Classificação.
+• Regressão.
+• Clustering.
+• Mineração de regras de associação.
+• Detecção de anomalias.
+
+===== PAGINA 9 =====
+Mineração de Dados e Boas Práticas em 
+Data Warehouse
+Técnicas de Mineração de Dados aplicadas em 
+Data Warehouse
+Bloco 2
+Anderson Emidio de Macedo Gonçalves
+
+===== PAGINA 10 =====
+Introdução às técnicas de mineração de dados
+Mineração de Dados: Processo de 
+descobrir padrões e ideias a partir de 
+grandes volumes de dados.
+Aplicação em Data Warehouse: Otimiza 
+a análise de dados históricos e integra 
+informações de diversas fontes.
+
+===== PAGINA 11 =====
+Técnicas utilizadas no data mining
+Algumas técnicas do data mining estão incluídas:
+Associação
+Classificação
+Clusterização
+Regressão
+
+===== PAGINA 12 =====
+Análise de Associação
+• Descobre correlações entre itens em grandes 
+volumes de dados.
+• Exemplo: Cesta de compras em 
+supermercados — quais produtos são 
+frequentemente comprados juntos?
+Fonte: https://www.devmedia.com.br/imagens/sqlmag
+azine/17-10-2007pic06.JPG
+Associação Multinível
+
+===== PAGINA 13 =====
+Análise de dados e data mining
+Cluster: identifica grupos semelhantes dentro dos 
+dados (ex.: segmentação de clientes).
+Séries Temporais: analisa dados ao longo do tempo 
+para prever tendências (ex.: monitoramento de 
+desempenho).
+Redes Neurais: modelos que aprendem e identificam 
+padrões complexos, utilizados para previsões avançadas 
+(ex.: reconhecimento de padrões de consumo).
+
+===== PAGINA 14 =====
+Detecção de anomalias
+Ferramentas populares:
+• Anomalias: identifica desvios e padrões incomuns (ex.: 
+detecção de fraudes).
+• Sentimento: analisa opiniões e sentimentos em textos 
+(ex.: monitoramento de feedback de clientes).
+• Visualização de Dados: utiliza gráficos e dashboards 
+para apresentar insights de forma clara e acessível (ex.: 
+análise de KPIs em tempo real).
+
+===== PAGINA 15 =====
+Boas práticas na construção e manutenção de 
+Data Warehouses
+Bloco 3
+Anderson Emidio de Macedo Gonçalves
+Mineração de Dados e Boas Práticas em 
+Data Warehouse
+
+===== PAGINA 16 =====
+Planejamento e estruturação
+• Planejamento 
+Estratégico: defina 
+objetivos claros e 
+requisitos de negócio para 
+garantir que o Data 
+Warehouse suporte 
+decisões estratégicas e 
+operacionais.
+• Modelagem de Dados: 
+utilize esquemas 
+apropriados (estrela/floco 
+de neve) para organizar e 
+relacionar os dados, 
+otimizando consultas e 
+facilitando a análise.
+Princípios do Data Warehouse
+Fonte: https://www.researchgate.net/figure/Figura-
+22-Representacao-e-processo-para-a-construcao-de-
+um-data-warehouse-Fonte-Betas_fig3_306308448
+
+===== PAGINA 17 =====
+Integração e Qualidade dos Dados
+ETL Eficiente: garanta a integração e transformação 
+precisa de dados de diversas fontes. Utilize ferramentas 
+de ETL robustas para assegurar a consistência e a 
+conformidade com os padrões.
+Qualidade dos Dados: implemente processos contínuos 
+de limpeza e validação para remover inconsistências, 
+duplicatas e preencher lacunas, garantindo que os dados 
+sejam precisos e confiáveis.
+ETL Eficiente
+Qualidade dos Dados
+
+===== PAGINA 18 =====
+Performance e escalabilidade
+Índices e Particionamento: 
+utilize técnicas como a 
+criação de índices e o 
+particionamento de tabelas 
+para otimizar a performance 
+das consultas, reduzindo o 
+tempo de resposta e 
+aumentando a eficiência do 
+sistema.
+Escalabilidade: planeje a 
+infraestrutura para que o 
+Data Warehouse possa 
+crescer conforme a demanda 
+e novos dados forem 
+incorporados, evitando perda 
+de performance.
+Otimização de um DW
+Fonte: gerada por Inteligência Artificial.
+
+===== PAGINA 19 =====
+Data mining - extração de padrões
+Segurança: implemente 
+políticas de controle de 
+acesso, criptografia de 
+dados e auditoria para 
+proteger informações 
+sensíveis e garantir a 
+conformidade com leis e 
+regulamentos.
+Governança: estabeleça 
+procedimentos claros para a 
+manutenção e uso dos 
+dados, como metadados 
+padronizados e políticas de 
+gerenciamento de ciclo de 
+vida dos dados, 
+assegurando o uso 
+responsável e consistente.
+Criptografia
+Fonte: 
+https://cdn.pixabay.com/photo/2024/08/28/
+19/51/cybersecurity-9004978_1280.jpg
+
+===== PAGINA 20 =====
+Monitoramento e atualizações
+Auditoria de Dados: realize auditorias periódicas para garantir a integridade e 
+qualidade dos dados armazenados, identificando inconsistências ou falhas.
+Monitoramento de Performance: use ferramentas de monitoramento 
+para avaliar continuamente a performance do Data Warehouse, 
+ajustando quando necessário para manter alta eficiência.
+Atualizações Regulares: mantenha o sistema e as tecnologias do Data 
+Warehouse atualizados, garantindo segurança, compatibilidade e 
+performance com novos recursos.
+Automatização de Processos: implemente automações para tarefas rotineiras, 
+como carregamento de dados e manutenção de índices, reduzindo erros 
+manuais e aumentando a eficiência.
+
+===== PAGINA 21 =====
+Teoria em prática
+Bloco 4
+Anderson Emidio de Macedo Gonçalves
+Mineração de Dados e Boas Práticas em 
+Data Warehouse
+
+===== PAGINA 22 =====
+Reflita sobre a seguinte situação
+Você é um analista de dados contratado por uma universidade que deseja otimizar a gestão 
+de cursos e melhorar a alocação de recursos acadêmicos. A universidade possui vários 
+campus em diferentes cidades e utiliza dados históricos de matrículas, desempenho 
+acadêmico e avaliações de cursos para entender melhor os padrões de escolha e satisfação 
+dos estudantes.
+A universidade coleta dados de diversas fontes, tais como:
+• Registros de matrículas (cursos, número de alunos, carga horária etc.).
+• Histórico acadêmico dos estudantes (disciplinas cursadas, notas, frequência).
+• Informações sobre avaliações de cursos (satisfação, feedbacks).
+Desafios:
+•Usar Regras de Associação multinível para descobrir quais disciplinas os alunos 
+frequentemente cursam juntas, considerando diferentes classificações e categorias de 
+cursos.
+•Planejar horários e turmas com base nas associações encontradas, garantindo que 
+disciplinas de alta demanda sejam oferecidas em horários estratégicos.
+•Segmentar alunos e sugerir disciplinas e atividades complementares conforme o histórico 
+de matrícula, visando aumentar a adesão e satisfação.
+
+===== PAGINA 23 =====
+Norte para a resolução
+Por onde começar? 
+Passo 1: Coletar e 
+integrar dados:
+• Reunir e integrar 
+dados de matrículas, 
+histórico acadêmico 
+e avaliações de 
+cursos em um Data 
+Warehouse.
+Passo 2: Aplicar 
+Técnicas de Data 
+Mining:
+• Utilizar algoritmos de 
+associação multinível 
+para identificar 
+padrões de 
+disciplinas que 
+frequentemente são 
+cursadas juntas.
+Passo 3: Analisar e 
+Segmentar os Alunos:
+• Segmentar os alunos 
+com base nos 
+padrões 
+identificados, 
+categorizando perfis 
+e comportamentos 
+de matrícula.
+Passo 4: Planejar Ações 
+e Monitorar 
+Resultados:
+• Ajustar a oferta de 
+disciplinas e horários 
+conforme os padrões 
+encontrados e 
+monitorar a 
+eficiência das 
+mudanças 
+implementadas.
+
+===== PAGINA 24 =====
+Norte para a resolução
+Coleta e 
+Integração dos 
+Dados
+Aplicar Técnicas 
+de Data Mining                                                                   
+Analisar e 
+Segmentar os 
+Alunos
+Planejar Ações e 
+Monitorar 
+Resultados
+Desafios
+
+===== PAGINA 25 =====
+Norte para a resolução
+Desafios que poderão surgir:
+Qualidade e Integridade dos Dados: garantir que os dados coletados sejam 
+precisos, completos e consistentes para gerar insights confiáveis.
+Integração de Dados de Múltiplas Fontes: unificar informações 
+provenientes de diferentes sistemas acadêmicos e administrativos de 
+forma eficiente.
+Configuração dos Algoritmos de Associação: ajustar os algoritmos 
+para considerar níveis hierárquicos e garantir que os padrões 
+identificados sejam significativos e úteis.
+Adaptação da Infraestrutura Tecnológica: assegurar que a universidade 
+possua infraestrutura adequada para processar e armazenar grandes 
+volumes de dados de forma escalável.
+
+===== PAGINA 26 =====
+Consolidando o aprendizado
+Bloco 5
+Anderson Emidio de Macedo Gonçalves
+Mineração de Dados e Boas Práticas em 
+Data Warehouse
+
+===== PAGINA 27 =====
+Consolidando o aprendizado
+Durante este conteúdo programático, abordamos os 
+seguintes assuntos:
+• Histórico, definições e curiosidades do Data Mining.
+• Técnicas de Mineração de Dados aplicadas em Data 
+Warehouse.
+• Boas práticas na construção e manutenção de Data 
+Warehouses.
+• Regras de Associação multinível.
+• Situação-problema: otimizar a gestão de cursos e 
+alocação de recursos acadêmicos de uma 
+Universidade.
+
+===== PAGINA 28 =====
+Quiz
+A B
+C D
+No contexto de Data Warehouses, qual das técnicas de mineração de dados 
+é mais adequada para identificar padrões de compra de livros entre 
+diferentes níveis de cursos em uma universidade? Assinale a alternativa 
+correta.
+Classificação. Clusterização.
+Associação multinível. Regressão linear.
+
+===== PAGINA 29 =====
+Quiz
+A B
+C D
+No contexto de Data Warehouses, qual das técnicas de mineração de dados 
+é mais adequada para identificar padrões de compra de livros entre 
+diferentes níveis de cursos em uma universidade? Assinale a alternativa 
+correta.
+Classificação. Clusterização.
+Associação multinível. Regressão linear.
+
+===== PAGINA 30 =====
+Quiz – Resolução
+C) Associação multinível.
+A técnica de associação multinível é ideal para identificar 
+padrões em diferentes hierarquias de dados, como os tipos 
+de cursos e as preferências de compra de livros. Ela permite 
+explorar as associações em níveis distintos, o que é essencial 
+quando há várias categorias envolvidas, como cursos de 
+graduação e pós-graduação.
+
+===== PAGINA 31 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da sua 
+carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 32 =====
+Indicação de leitura 1
+Leia o capítulo "Análise de Dados“ que 
+apresenta a Mineração de Dados e técnicas 
+utilizadas no Data Mining. Não deixe de 
+conferir e aprender um pouco mais por meio 
+desta indicação de leitura.
+Referência:
+SILBERSCHATZ, Abraham. Sistema de Banco de Dados. 7th ed. 
+Rio de Janeiro: GEN LTC, 2020.
+
+===== PAGINA 33 =====
+Indicação de leitura 2
+Este livro apresenta vários conceitos sobre a área de 
+dados envolvendo a análise de dados. O capítulo 2 
+"Processo de KDD: Conceitos Básicos“ detalha as etapas 
+operacionais do processo de KDD. 
+Referência:
+GOLDSCHMIDT, Ronaldo. Data Mining. 2nd ed. Rio de Janeiro: 
+GEN LTC, 2015.
+
+===== PAGINA 34 =====
+Referências
+GOLDSCHMIDT, Ronaldo. Data Mining. 2nd ed. Rio de Janeiro: GEN LTC, 
+2015.  
+INMON, W. H. Como construir o Data Warehouse. Rio de Janeiro: 
+Campus, 1997. 
+MACHADO, F. N. Tecnologia e Projeto de Data Warehouse: uma visão 
+multidimensional. São Paulo: Érica, 2004. 
+RASLAN, D. A.; CALAZANS, Angélica Toffano Seidel. Data Warehouse: 
+Conceitos e Aplicações. Brasília, DF, Abril de 2014.
+SILBERSCHATZ, Abraham. Sistema de Banco de Dados. 7th ed. Rio de 
+Janeiro: GEN LTC, 2020.
+VIDA, Edinilson da S. et al. Data warehouse. Porto Alegre: Grupo A, 2021.
+
+===== PAGINA 35 =====
+Bons estudos!

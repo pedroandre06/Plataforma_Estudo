@@ -1,0 +1,476 @@
+
+
+===== PAGINA 1 =====
+WBA0748_v2.0
+Modelagem e arquitetura 
+do DW (Data Warehouse)
+
+===== PAGINA 2 =====
+Fundamentos de Data Warehouse e 
+Modelagem de Dados
+Fundamentos e curiosidades sobre Banco de 
+Dados
+Bloco 1
+Anderson Emidio de Macedo Gonçalves
+
+===== PAGINA 3 =====
+Vamos refletir?
+Um Data Warehouse é uma solução essencial para empresas que 
+buscam consolidar, organizar e analisar grandes volumes de dados 
+provenientes de diversas fontes. Ao centralizar os dados, ele permite 
+uma visão abrangente e histórica das operações, facilitando a 
+tomada de decisões estratégicas com base em informações precisas 
+e integradas. Além de melhorar a eficiência das consultas, um Data 
+Warehouse é projetado para suportar análises complexas e 
+detalhadas, ajudando as organizações a identificar padrões, 
+tendências e oportunidades de negócios. 
+A partir deste contexto, reflita: como a implementação de um Data 
+Warehouse pode transformar a maneira como sua organização utiliza 
+os dados para tomada de decisões estratégicas?
+
+===== PAGINA 4 =====
+A base da era digital
+Bancos de Dados são 
+sistemas estruturados 
+para armazenar e 
+gerenciar grandes 
+volumes de 
+informações. O 
+primeiro banco de 
+dados digital foi 
+criado na década de 
+1960 para gerenciar 
+reservas de voos.
+Fonte: https://cdn.pixabay.com/photo/2017/1
+0/29/14/48/data-2899902_1280.jpg.
+Banco conectado a vários dispositivos
+
+===== PAGINA 5 =====
+Como os dados são armazenados?
+Tabela do Banco de Dados
+Fonte: elabora pelo autor, por meio da 
+ferramenta MySQL Workbench.
+Tipos e Estruturas: 
+Tabelas, índices etc.
+Modelos de Banco 
+de Dados: Relacional, 
+NoSQL, Orientado a 
+Objetos.
+Curiosidade: A linguagem SQL, usada em bancos de 
+dados relacionais, foi desenvolvida na IBM nos anos 
+1970 e ainda é amplamente utilizada.
+
+===== PAGINA 6 =====
+Banco de dados relacionais
+Modelagem de Dados• Características: Baseado em 
+tabelas, utiliza chaves 
+primárias e estrangeiras 
+para relacionamentos.
+• Bancos: MySQL, PostgreSQL, 
+Oracle Database.
+• Curiosidade: Introduzido por 
+Edgar Codd em 1970, 
+revolucionando a forma 
+como dados são 
+armazenados e acessados.
+Fonte: elabora pelo autor, por 
+meio da ferramenta MySQL 
+Workbench.
+
+===== PAGINA 7 =====
+Além do relacional: o mundo NoSQL
+Banco de Dados NoSQL
+Fonte: https://images.datacamp.com/image/up
+load/v1656083462/No_SQL_Databases_Explain
+ed_1_ace7d34fdf.png.
+• O que é NoSQL?: Bancos de 
+dados que não seguem o 
+modelo relacional tradicional, 
+ideal para grandes volumes de 
+dados não estruturados.
+• Tipos de NoSQL: Documentos 
+(MongoDB), Chave-Valor (Redis), 
+Colunas (Cassandra).
+• Curiosidade: Empresas como 
+Facebook e Google usam bancos 
+de dados NoSQL para lidar com 
+petabytes de dados de usuários.
+
+===== PAGINA 8 =====
+O futuro dos bancos de dados
+Tendências: maior integração com IA e machine learning, 
+bancos de dados distribuídos, aumento da segurança de dados.
+Empresas que pagaram por capacidade 
+de processamento em nuvem
+Fonte:  https://convergenciadigital.com.br/mercado/uma-em-cada-tres-
+empresas-no-brasil-ja-usa-processamento-em-nuvem/.
+
+===== PAGINA 9 =====
+Fundamentos de Data Warehouse e 
+Modelagem de Dados
+Diferenças entre Banco de Dados Transacionais e 
+Banco de Dados Analíticos
+Bloco 2
+Anderson Emidio de Macedo Gonçalves
+
+===== PAGINA 10 =====
+Diferenças entre OLTP e OLAP
+A visualização de dados em uma organização é fundamental 
+por diversos fatores. Entre eles, se encontram:
+Exemplo Prático (OLTP): Um supermercado utilizando um banco 
+de dados para rastrear seus produtos, preços e vendas.
+Bancos de Dados Transacionais (OLTP): Focados em operações 
+do dia a dia, como inserções, atualizações e exclusões de 
+dados.
+Bancos de Dados Analíticos (OLAP): Voltados para análises de 
+dados históricos e suporte à tomada de decisões estratégicas.
+
+===== PAGINA 11 =====
+Características do banco de dados transacional 
+(OLTP)
+Algumas características se destacam entre os bancos de 
+dados transacionais:
+Características Técnicas:
+• Alta frequência de leitura e escrita.
+• Estrutura normalizada para evitar redundância.
+• Suporte a um grande número de transações 
+simultâneas.
+Finalidade: Suporte a transações diárias.
+Sistemas bancários, e-commerce, ERPs.
+
+===== PAGINA 12 =====
+Características do banco de dados analítico (OLAP)
+Algumas características se destacam entre os bancos de dados 
+analíticos:
+Características Técnicas:
+•  Frequência de leitura alta, baixa frequência de escrita.
+•  Estrutura desnormalizada para otimizar consultas 
+complexas.
+• Foco na agregação de dados e em consultas 
+multidimensionais.
+Suporte a Análise de dados históricos e relatórios.
+Data Warehouses, BI, análise de tendências.
+
+===== PAGINA 13 =====
+Principais diferenças entre OLTP e OLAP
+Objetivo:
+• OLTP: Transações operacionais.
+• OLAP: Análise estratégica.
+Estrutura de Dados:
+• OLTP: Normalizada.
+• OLAP: Desnormalizada.
+Operações:
+• OLTP: Inserções, atualizações, exclusões.
+• OLAP: Consultas complexas, agregações.
+
+===== PAGINA 14 =====
+Conclusão e importância para as organizações
+Resumo: Cada tipo de banco de dados atende a diferentes 
+necessidades — OLTP para operações diárias e OLAP para 
+análise de dados e suporte à decisão.
+Importância para as Organizações: Escolher o tipo certo 
+de banco de dados permite otimizar processos 
+operacionais e estratégicos.
+Questão Reflexiva: Como sua organização pode aproveitar as 
+diferenças entre OLTP e OLAP para melhorar a eficiência e a 
+tomada de decisões?
+
+===== PAGINA 15 =====
+Conceitos, princípios básicos e Modelagem de 
+Dados para Data Warehouse
+Bloco 3
+Anderson Emidio de Macedo Gonçalves
+Fundamentos de Data Warehouse e 
+Modelagem de Dados
+
+===== PAGINA 16 =====
+Conceitos e princípios do data warehouse
+O objetivo do Data Warehouse é consolidar e analisar grandes volumes de 
+dados históricos para suporte à decisão estratégica.
+Princípios básicos.
+Função do DW .
+Modelagem de Dados.
+Princípios do Data Warehouse
+Fonte: 
+https://cdn.pixabay.com/photo/2016/11/23/14/37/
+blur-1853262_1280.jpg
+
+===== PAGINA 17 =====
+Princípios básicos
+• Definição: Armazenamento 
+centralizado de dados para 
+análise e relatórios.
+• Consolidação: Integra 
+dados de múltiplas fontes.
+• Armazenamento Histórico: 
+Mantém dados históricos 
+para análise longitudinal.
+• Separação de Processos: 
+Diferencia análise (OLAP) de 
+transações diárias (OLTP).
+Processo do ETL
+Fonte: 
+https://www.sas.com/pt_br/insights/data-
+management/o-que-e-
+etl/_jcr_content/par/styledcontainer_bb5a/pa
+r/styledcontainer_6014/par/image_b840.img.
+png/1533588841097.png
+
+===== PAGINA 18 =====
+Função do data warehouse
+Principais Componentes:
+Fonte de Dados: Sistemas 
+operacionais e outras fontes de 
+dados.
+ETL: Processo de extração, 
+transformação e carga de dados.
+Data Warehouse: Armazenamento 
+centralizado de dados.
+Ferramentas de BI: Ferramentas 
+para análise e visualização.
+Função:
+Integração de Dados: Consolida 
+informações de diferentes fontes.
+Suporte à Decisão: Facilita a 
+criação de relatórios e análises 
+para suportar a tomada de 
+decisões.
+Data Warehouse
+Fonte: https://www.astera.com/wp-
+content/uploads/2019/06/data-warehouse-layout.png
+
+===== PAGINA 19 =====
+Modelagem de dados para data warehouse
+Objetivo da Modelagem: Organizar dados de forma a 
+facilitar a análise e consulta. Técnicas comuns:
+Modelagem Dimensional.
+Tabelas de Fatos.
+Tabelas de Dimensões.
+
+===== PAGINA 20 =====
+Conclusão e aplicações práticas
+Resumo dos Conceitos: o Data Warehouse é crucial para 
+consolidar e analisar grandes volumes de dados, com uma 
+modelagem eficaz que facilita consultas e análises.
+Importância para a Organização: a implementação correta 
+do Data Warehouse pode melhorar a tomada de decisões, 
+otimizar operações e fornecer insights valiosos.
+Questão Reflexiva: como a modelagem eficaz de dados no Data 
+Warehouse pode transformar a maneira como sua organização 
+utiliza informações para estratégias e decisões?
+
+===== PAGINA 21 =====
+Teoria em prática
+Bloco 4
+Anderson Emidio de Macedo Gonçalves
+Fundamentos de Data Warehouse e 
+Modelagem de Dados
+
+===== PAGINA 22 =====
+Reflita sobre a seguinte situação
+Você é um analista de dados contratado por uma rede de hospitais que deseja melhorar 
+a gestão de seus recursos e a qualidade do atendimento aos pacientes. A rede possui 
+diversos hospitais e clínicas distribuídos em diferentes cidades e deseja utilizar seus 
+dados históricos para otimizar a alocação de profissionais de saúde, identificar padrões 
+de utilização dos serviços médicos e melhorar a satisfação dos pacientes.
+Você recebeu um conjunto de dados provenientes de diversas fontes, como registros de 
+atendimentos, prontuários médicos, horários de consultas, taxas de ocupação de leitos, 
+informações financeiras, e feedbacks de pacientes.
+Desafios:
+• Identificar padrões de utilização dos serviços médicos e determinar os períodos de 
+maior e menor demanda por especialidade, local e horário.
+• Comparar o desempenho dos hospitais e clínicas da rede, identificando quais 
+unidades apresentam maior taxa de ocupação, tempo de espera, e satisfação dos 
+pacientes.
+• Avaliar como a alocação de recursos (como médicos e enfermeiros) afeta o tempo 
+de espera e a qualidade do atendimento, sugerindo estratégias de melhoria na 
+distribuição de profissionais.
+• Analisar o feedback dos pacientes para identificar áreas de melhoria nos serviços 
+médicos, correlacionando este feedback com a utilização dos serviços.
+
+===== PAGINA 23 =====
+Norte para a resolução
+Por onde começar? 
+Passo 1: Definição dos 
+Requisitos de Negócio e 
+Identificação das Fontes de 
+Dados
+•Reúna as necessidades de 
+análise e identifique todas as 
+fontes de dados relevantes 
+para o Data Warehouse.
+Passo 2: Extração, 
+Transformação e Carga (ETL) 
+dos Dados
+•Extraia dados das fontes, 
+transforme-os para garantir 
+qualidade e consistência, e 
+carregue-os no Data 
+Warehouse.
+Passo 3: Modelagem de Dados 
+para o Data Warehouse
+• Organize os dados em um 
+modelo dimensional que 
+otimize consultas e suporte 
+análises complexas.
+Passo 4: Desenvolvimento de 
+Ferramentas de Análise e 
+Visualização
+•Crie relatórios e dashboards 
+interativos para facilitar a 
+análise e a tomada de 
+decisão baseada em dados.
+
+===== PAGINA 24 =====
+Norte para a resolução
+Definição dos 
+Requisitos e das 
+Fontes de Dados
+Extração, 
+Transformação e 
+Carga (ETL)
+Modelagem de 
+Dados para o Data 
+Warehouse
+Desenvolvimento 
+de Ferramentas de 
+Análise de dados
+Desafios
+
+===== PAGINA 25 =====
+Norte para a resolução
+Desafios que poderão surgir:
+Integração de Dados: dificuldade em consolidar dados de múltiplas 
+fontes com formatos e padrões diferentes.
+Qualidade dos Dados: necessidade de garantir dados limpos, 
+precisos e consistentes durante o processo de ETL.
+Escalabilidade do Armazenamento: desafio em gerenciar grandes 
+volumes de dados de forma eficiente à medida que o volume 
+cresce.
+Segurança e Privacidade: garantir a proteção de dados sensíveis, 
+especialmente informações médicas e pessoais dos pacientes.
+
+===== PAGINA 26 =====
+Consolidando o aprendizado
+Bloco 5
+Anderson Emidio de Macedo Gonçalves
+Fundamentos de Data Warehouse e 
+Modelagem de Dados
+
+===== PAGINA 27 =====
+Consolidando o aprendizado
+Durante este conteúdo programático, abordamos os 
+seguintes assuntos:
+• Fundamentos e curiosidades sobre Banco de Dados.
+• Diferenças entre Banco de Dados Transacionais e Banco 
+de Dados Analíticos.
+• Conceitos, princípios básicos e Modelagem de Dados 
+para Data Warehouse.
+• Ecossistema do Data Warehouse.
+• Situação-problema: atendimento a pacientes de uma 
+rede de hospitais.
+
+===== PAGINA 28 =====
+Quiz
+A B
+C D
+Um Data Warehouse é um sistema de armazenamento de dados projetado 
+para consolidar grandes volumes de dados.
+Diante deste contexto, qual é o principal objetivo da modelagem de dados 
+em um Data Warehouse? Assinale a alternativa correta.
+Otimizar transações em tempo real. Facilitar a análise e consulta de 
+dados históricos.
+Garantir a integridade dos dados 
+durante a escrita.
+Reduzir o tempo de resposta das 
+operações CRUD (Create, Read, 
+Update, Delete).
+
+===== PAGINA 29 =====
+Quiz
+A B
+C D
+Um Data Warehouse é um sistema de armazenamento de dados projetado 
+para consolidar grandes volumes de dados.
+Diante deste contexto, qual é o principal objetivo da modelagem de dados 
+em um Data Warehouse? Assinale a alternativa correta.
+Otimizar transações em tempo real. Facilitar a análise e consulta de 
+dados históricos.
+Garantir a integridade dos dados 
+durante a escrita.
+Reduzir o tempo de resposta das 
+operações CRUD (Create, Read, 
+Update, Delete).
+
+===== PAGINA 30 =====
+Quiz – Resolução
+B) Facilitar a análise e consulta de dados históricos.
+A modelagem de dados em um Data Warehouse é 
+projetada para organizar dados de forma que facilite 
+consultas complexas e análises de dados históricos. Ao 
+contrário de bancos de dados transacionais, que priorizam 
+a eficiência de operações como inserções e atualizações, o 
+Data Warehouse se concentra em otimizar a leitura de 
+grandes volumes de dados fornecendo informações para a 
+tomada de decisão da empresa nas organizações, 
+permitindo que dados de diferentes períodos e origens 
+sejam facilmente acessados e analisados.
+
+===== PAGINA 31 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da sua 
+carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 32 =====
+Indicação de leitura 1
+Esta obra aborda conteúdos expressivos sobre 
+os Fundamentos do Data Warehouse. O 
+capítulo "Processo ETL" apresenta as principais 
+características desse processo como: conceitos, 
+funções do ET e como ele é desenvolvido. Não 
+deixe de conferir e aprender um pouco mais 
+por meio desta indicação de leitura.
+Referência:
+VIDA, Edinilson da S. et al. Data warehouse. Porto Alegre: 
+Grupo A, 2021.
+
+===== PAGINA 33 =====
+Indicação de leitura 2
+Esta pesquisa objetiva identificar os principais 
+conceitos relacionados à Data warehouse e verificar 
+sua disseminação em algumas empresas brasileiras 
+e as vantagens de sua aplicação. 
+Referência:
+RASLAN, D. A.; CALAZANS, Angélica Toffano Seidel. Data 
+Warehouse: Conceitos e Aplicações. Brasília, DF, Abril de 2014. 
+Disponível em: 
+https://www.publicacoesacademicas.uniceub.br/gti/article/vie
+wFile/2612/2400. Acesso em: 12 nov. 2024.
+
+===== PAGINA 34 =====
+Referências
+INMON, W. H. Como construir o Data Warehouse. Rio de 
+Janeiro: Campus, 1997. 
+Machado, F. N. Tecnologia e Projeto de Data Warehouse: uma 
+visão multidimensional. São Paulo: Érica, 2004. 
+RASLAN, D. A.; CALAZANS, Angélica Toffano Seidel. Data 
+Warehouse: Conceitos e Aplicações. Brasília, DF, Abril de 2014. 
+SHARDA, Ramesh; DELEN, Dursun; TURBAN, Efraim. Business 
+intelligence e análise de dados para gestão do negócio. Porto 
+Alegre: Grupo A, 2019.
+VIDA, Edinilson da S. et al. Data warehouse. Porto Alegre: 
+Grupo A, 2021.
+
+===== PAGINA 35 =====
+Bons estudos!

@@ -1,0 +1,61 @@
+{
+  "materia_slug": "interacoes-big-data-cloud",
+  "modulo_slug": "ciencia-dados-empresarial",
+  "perguntas": [
+    {
+      "e": "Em um relatório escrito de ciência de dados, o que deve conter o 'resumo executivo'?",
+      "t": "Relatórios",
+      "d": "medio",
+      "r": "Bloco 3 - Relatórios e apresentações",
+      "x": "O resumo executivo traz uma visão geral dos principais insights e recomendações, para leitura rápida pela liderança.",
+      "a": ["A descrição técnica de cada biblioteca utilizada", "Uma visão geral dos principais insights e recomendações", "O dicionário completo de dados com todas as colunas", "O código-fonte do modelo de machine learning"],
+      "c": 1
+    },
+    {
+      "e": "Além do resumo executivo e dos resultados, quais seções um relatório de análise deve contemplar?",
+      "t": "Relatórios",
+      "d": "medio",
+      "r": "Bloco 3 - Relatórios e apresentações",
+      "x": "O material indica: contexto (problema de negócio e dados analisados), métodos e abordagens, resultados, conclusões e recomendações.",
+      "a": ["Contexto, métodos e abordagens, e conclusões e recomendações", "Apenas gráficos e tabelas", "Somente o orçamento do projeto", "Lista de fornecedores e contratos"],
+      "c": 0
+    },
+    {
+      "e": "Uma rede de varejo quer conduzir uma EDA no histórico de vendas. Qual deve ser o primeiro passo?",
+      "t": "Estudo de caso (varejo)",
+      "d": "medio",
+      "r": "Bloco 4 - Norte para a resolução",
+      "x": "O primeiro passo é carregar o conjunto de dados em uma ferramenta de análise (ex.: Python com pandas, Excel ou Power BI) e verificar a qualidade dos dados, tratando ausentes, duplicados e inconsistentes.",
+      "a": ["Treinar um modelo de machine learning para prever vendas", "Carregar os dados e verificar a qualidade, tratando valores ausentes, duplicados e inconsistentes", "Publicar o dashboard final para a diretoria", "Definir as cores do relatório executivo"],
+      "c": 1
+    },
+    {
+      "e": "No caso do varejo, a equipe suspeita que existem outliers distorcendo as análises. O que a EDA deve fazer com eles?",
+      "t": "Estudo de caso (varejo)",
+      "d": "dificil",
+      "r": "Bloco 4 - Norte para a resolução",
+      "x": "A EDA deve investigar e detectar anomalias/outliers, avaliando se representam erros de dados ou eventos reais, e tratá-los antes das análises — sem simplesmente ignorá-los.",
+      "a": ["Excluir sempre todos os outliers sem análise", "Investigar e detectar os outliers, avaliando se são erros ou eventos reais, e tratá-los antes de concluir as análises", "Ignorar, pois outliers nunca afetam análises", "Substituir todos os outliers por zero"],
+      "c": 1
+    },
+    {
+      "e": "Por que a comunicação dos resultados é considerada crucial em projetos de ciência de dados?",
+      "t": "Comunicação",
+      "d": "medio",
+      "r": "Bloco 3 - Tomada de decisão com base em informação",
+      "x": "Porque insights só geram valor quando compreendidos e utilizados pelos tomadores de decisão — mesmo análises robustas perdem valor se não forem transmitidas de forma clara e acessível.",
+      "a": ["Porque a comunicação substitui a análise técnica", "Porque mesmo análises robustas perdem valor se não forem compreendidas e usadas pelos decisores", "Porque relatórios longos são sempre mais eficazes", "Porque a diretoria exige todos os códigos-fonte"],
+      "c": 1
+    },
+    {
+      "e": "As principais formas de comunicar resultados em ciência de dados são a visualização de dados e os relatórios/apresentações.",
+      "tp": "vf",
+      "t": "Comunicação",
+      "d": "facil",
+      "r": "Bloco 3 - Comunicar os resultados",
+      "x": "Verdadeiro. O material apresenta a visualização de dados (gráficos, mapas de calor, infográficos) e os relatórios/apresentações como as principais formas de comunicar resultados.",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 0
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "materia_slug": "data-warehouse",
+  "modulo_slug": "fundamentos-dw",
+  "perguntas": [
+    {
+      "e": "Qual sequência representa corretamente o fluxo básico de dados de um Data Warehouse?",
+      "t": "Arquitetura do DW",
+      "d": "medio",
+      "r": "Bloco 3 - Função do data warehouse",
+      "x": "As fontes de dados operacionais passam pelo ETL, são carregadas no Data Warehouse centralizado e consumidas por ferramentas de BI/visualização.",
+      "a": ["Fontes de dados, ETL, Data Warehouse e ferramentas de BI", "Data Warehouse, fontes de dados, BI e ETL", "ETL, fontes de dados, BI e Data Warehouse", "BI, Data Warehouse, ETL e fontes de dados"],
+      "c": 0
+    },
+    {
+      "e": "Por que os bancos analíticos (OLAP) adotam estruturas desnormalizadas?",
+      "t": "OLAP",
+      "d": "medio",
+      "r": "Bloco 2 - Características do banco de dados analítico (OLAP)",
+      "x": "A desnormalização reduz a quantidade de junções necessárias, tornando as consultas complexas e as agregações multidimensionais muito mais rápidas.",
+      "a": ["Para reduzir o espaço em disco ocupado pelos dados", "Para acelerar consultas complexas e agregações, reduzindo junções", "Para garantir as propriedades ACID nas escritas", "Para impedir a duplicação de registros operacionais"],
+      "c": 1
+    },
+    {
+      "e": "Uma universidade tem um sistema OLTP que registra matrículas em tempo real e precisa, agora, de relatórios históricos de desempenho por curso e período. Qual é a melhor solução?",
+      "t": "OLTP x OLAP",
+      "d": "dificil",
+      "r": "Bloco 3 - Separação de processos",
+      "x": "O princípio da separação de processos indica manter o OLTP para as transações e criar um Data Warehouse alimentado por ETL para as análises históricas, sem sobrecarregar o sistema operacional.",
+      "a": ["Migrar o sistema de matrículas para um banco NoSQL", "Manter o OLTP e construir um Data Warehouse alimentado por ETL para as análises", "Executar as análises históricas direto no OLTP, durante o horário de pico", "Substituir o OLTP por um Data Mart independente"],
+      "c": 1
+    },
+    {
+      "e": "A separação de processos em um Data Warehouse significa que a análise (OLAP) é tratada separadamente das transações diárias (OLTP).",
+      "tp": "vf",
+      "t": "Princípios do DW",
+      "d": "medio",
+      "r": "Bloco 3 - Princípios básicos",
+      "x": "Verdadeiro. É justamente esse princípio que evita que as consultas analíticas pesadas comprometam o desempenho do sistema transacional.",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 0
+    },
+    {
+      "e": "O MongoDB é um banco de dados NoSQL muito usado para dados semiestruturados. A que categoria ele pertence?",
+      "t": "NoSQL",
+      "d": "medio",
+      "r": "Bloco 1 - Além do relacional: o mundo NoSQL",
+      "x": "MongoDB é orientado a documentos (JSON/BSON). Chave-valor é o Redis e orientado a colunas é o Cassandra.",
+      "a": ["Chave-valor", "Orientado a colunas", "Orientado a documentos", "Relacional com extensões JSON"],
+      "c": 2
+    },
+    {
+      "e": "Sobre a função de um Data Warehouse em uma organização, assinale a alternativa correta:",
+      "t": "Função do DW",
+      "d": "medio",
+      "r": "Bloco 3 - Conceitos e princípios do data warehouse",
+      "x": "O DW integra dados de fontes distintas e sustenta a criação de relatórios e análises que apoiam a decisão estratégica.",
+      "a": ["Substitui os sistemas transacionais da empresa", "Integra dados de várias fontes e apoia a decisão estratégica", "Serve apenas para armazenar arquivos CSV históricos", "É um banco otimizado para operações de exclusão em massa"],
+      "c": 1
+    },
+    {
+      "e": "Qual afirmação descreve corretamente os bancos NoSQL?",
+      "t": "NoSQL",
+      "d": "dificil",
+      "r": "Bloco 1 - Além do relacional: o mundo NoSQL",
+      "x": "Bancos NoSQL não seguem o modelo relacional tradicional e são indicados para grandes volumes de dados não estruturados ou semiestruturados, como os petabytes tratados por Facebook e Google.",
+      "a": ["Exigem esquema rígido e chaves estrangeiras obrigatórias", "Não seguem o modelo relacional tradicional e lidam bem com dados não estruturados", "São indicados apenas para pequenos volumes de dados", "Substituíram completamente os bancos relacionais no mundo corporativo"],
+      "c": 1
+    },
+    {
+      "e": "Entre as tendências apontadas para o futuro dos bancos de dados, estão:",
+      "t": "Tendências",
+      "d": "facil",
+      "r": "Bloco 1 - O futuro dos bancos de dados",
+      "x": "O material destaca maior integração com IA e machine learning, bancos de dados distribuídos, aumento da segurança e mais processamento em nuvem.",
+      "a": ["Maior integração com IA/ML, bancos distribuídos e mais segurança", "Fim do uso de nuvem e volta aos mainframes", "Redução do uso de SQL e proibição de índices", "Uso exclusivo de arquivos CSV como armazenamento"],
+      "c": 0
+    }
+  ]
+}

@@ -1,0 +1,363 @@
+
+
+===== PAGINA 1 =====
+WBA0736_v2.0
+Interações entre Big Data e 
+Cloud Computing
+
+===== PAGINA 2 =====
+Aplicações empresariais da Ciência de 
+Dados
+Fundamentos da Ciência de Dados em empresas
+Bloco 1
+Valéria Baptista
+
+===== PAGINA 3 =====
+Vamos refletir?
+Sabemos que a ciência de dados, quando aplicada 
+de forma estratégica, transforma grandes volumes 
+de dados em insights valiosos, ajudando empresas a 
+tomarem decisões mais rápidas e assertivas. 
+Na sua opinião, de que maneira sua empresa pode 
+alinhar a ciência de dados com seus objetivos 
+estratégicos para melhorar a tomada de decisões?
+
+===== PAGINA 4 =====
+Implementação estratégica da Ciência de 
+Dados
+O uso da ciência de dados é uma constante no que se 
+refere a tomada de decisões por meio das empresas.
+A necessidade de analisar grandes volumes de dados e 
+com base neles gerar insights valiosos para direcionar o 
+planejamento e execução de estratégias acaba gerando 
+maior competitividade no mercado.
+
+===== PAGINA 5 =====
+Benefícios do uso da Ciência de Dados pelas 
+empresas
+Coleta e organização dos dados
+Identificação de oportunidades e desafios
+Utilização de modelos preditivos e prescritivos
+
+===== PAGINA 6 =====
+Benefícios do uso da Ciência de Dados pelas 
+empresas
+Democratização da Ciência de Dados
+Apoio à tomada de decisão baseada em dados
+
+===== PAGINA 7 =====
+Conclusão
+Quando implementamos a Ciência de Dados de forma 
+estratégica dentro de uma organização, ela se torna um 
+fator importante no contexto de inovação e crescimento.
+Com base nas análises realizadas e nos objetivos 
+corporativos, o fato de se investir em uma infraestrutura 
+sólida e promover a cultura de tomada de decisão baseada 
+em dados torna as empresas aptas a alcançar um 
+diferencial ainda mais competitivo.
+
+===== PAGINA 8 =====
+Aplicações empresariais da Ciência de 
+Dados
+Implementação de soluções de Ciência de Dados
+Bloco 2
+Valéria Baptista
+
+===== PAGINA 9 =====
+O que é a EDA e por que ela é útil?
+A análise exploratória de dados (EDA) inclui métodos para 
+explorar conjuntos de dados para resumir suas 
+características principais e identificar quaisquer problemas 
+com os dados.
+Usando métodos estatísticos e visualizações, você pode 
+aprender sobre um conjunto de dados para determinar sua 
+preparação para análise e informar quais técnicas aplicar 
+para preparação de dados. 
+A EDA também pode influenciar quais algoritmos você 
+escolhe aplicar para treinar modelos de ML.
+
+===== PAGINA 10 =====
+Ferramentas de análise de dados exploratória
+Pyton
+Python é amplamente utilizado para EDA devido à sua 
+flexibilidade e um rico ecossistema de bibliotecas de 
+análise de dados. 
+Essa linguagem possui diversas bibliotecas que ajudam 
+na manipulação, processamento e visualização dessas 
+informações.
+
+===== PAGINA 11 =====
+Ferramentas de análise de dados exploratória
+R
+R é outra linguagem muito utilizada para EDA, 
+especialmente em projetos de Ciência de Dados com 
+forte ênfase em estatística. 
+Ela possui uma vasta gama de pacotes que ajudam com 
+a manipulação e limpeza de dados.
+
+===== PAGINA 12 =====
+Ferramentas de análise de dados exploratória
+Power BI
+Power BI, da Microsoft, é uma plataforma de BI muito 
+similar ao Tableau, com funcionalidades voltadas para 
+visualização interativa de dados, além de permitir a 
+criação de dashboards dinâmicos. 
+É integrada com o ecossistema da Microsoft, o que facilita 
+a conexão com outras ferramentas como Azure e Excel.
+
+===== PAGINA 13 =====
+E qual delas é a correta?
+• Para grandes volumes de dados: Power BI.
+• Para análise e visualização detalhada: Python e R. 
+• Para usuários com menos experiência em codificação: 
+Power BI.
+• Para usuários que preferem programação: Python e R são 
+as escolhas mais comuns.
+Lembrando que a escolha da ferramenta vai depender do 
+contexto do projeto, do volume de dados, da necessidade 
+de visualizações e das habilidades técnicas disponíveis.
+
+===== PAGINA 14 =====
+Aplicações empresariais da Ciência de 
+Dados
+Tomada de decisões estratégicas com base em 
+dados
+Bloco 3
+Valéria Baptista
+
+===== PAGINA 15 =====
+Tomada de decisão com base em 
+informação!
+Comunicar os resultados da Ciência de Dados de forma 
+eficaz é crucial para garantir que os insights gerados sejam 
+compreendidos e utilizados pelos tomadores de decisão.
+Mesmo as análises mais robustas e detalhadas podem 
+perder valor se não forem transmitidas de maneira clara e 
+acessível. 
+Vejamos quais são as principais formas de comunicar esses 
+resultados.
+
+===== PAGINA 16 =====
+Visualização de dados
+A visualização é uma das ferramentas mais poderosas para 
+transformar dados complexos em insights compreensíveis. 
+Alguns exemplos incluem:
+• Gráficos de barras e linhas: usados para mostrar 
+tendências ao longo do tempo ou comparações entre 
+categorias.
+• Gráficos de dispersão: úteis para demonstrar relações 
+entre duas variáveis.
+
+===== PAGINA 17 =====
+Visualização de dados
+• Mapas de calor: mostram correlações e padrões de 
+uma forma intuitiva.
+• Infográficos: combinam imagens, gráficos e texto para 
+contar uma história visualmente.
+Ferramentas como Tableau, Power BI, Python 
+(Matplotlib, Seaborn, Plotly) e Excel são amplamente 
+utilizadas para criar visualizações interativas e intuitivas.
+
+===== PAGINA 18 =====
+Relatórios e apresentações
+Relatórios escritos detalhados são úteis quando é 
+necessário fornecer uma visão abrangente da análise. Eles 
+devem incluir:
+• Resumo executivo: uma visão geral dos principais 
+insights e recomendações.
+• Contexto: explicação sobre o problema de negócio e os 
+dados analisados.
+• Métodos e abordagens: descrição das técnicas de 
+análise e modelos utilizados.
+
+===== PAGINA 19 =====
+Relatórios e apresentações
+• Resultados: os principais achados da análise, 
+apresentados de forma clara e concisa.
+• Conclusões e recomendações: orientações práticas 
+baseadas nos insights obtidos.
+Os relatórios podem ser elaborados em documentos de 
+texto (Word e PDF) ou apresentados em conjunto com 
+visualizações gráficas para facilitar a interpretação.
+
+===== PAGINA 20 =====
+Teoria em prática
+Aplicações empresariais da Ciência de 
+Dados
+Bloco 4
+Valéria Baptista
+
+===== PAGINA 21 =====
+Reflita sobre a seguinte situação
+Uma rede de varejo com lojas físicas e online deseja 
+otimizar suas estratégias de vendas e identificar 
+oportunidades de crescimento. No entanto, a equipe de 
+marketing não tem um entendimento claro sobre quais 
+produtos performam melhor em diferentes canais, quais 
+períodos geram maior volume de vendas ou se existem 
+outliers (pontos fora da curva) que possam estar 
+distorcendo as análises.
+A diretoria quer que você, como analista de dados, conduza 
+uma análise exploratória de dados (EDA) no histórico de 
+vendas da empresa.
+
+===== PAGINA 22 =====
+Norte para a resolução
+Por onde começar? 
+Carregamento e limpeza dos dados:
+O primeiro passo é carregar o conjunto de dados em uma ferramenta 
+de análise (ex.: Python com pandas, Excel ou Power BI). Verifique a 
+qualidade dos dados, procurando por valores ausentes, duplicados ou 
+inconsistentes. Se necessário, execute a limpeza dos dados, como 
+remoção de duplicatas ou tratamento de valores nulos.
+Exploração inicial dos dados:
+Inicie com uma análise descritiva para entender melhor as principais 
+variáveis, como calcular as médias, medianas, contagens e 
+distribuições de cada variável. Este passo é essencial para obter um 
+panorama geral das informações disponíveis.
+
+===== PAGINA 23 =====
+Norte para a resolução
+Por onde começar? 
+Visualizações gráficas:
+Utilize gráficos e visualizações para começar a identificar padrões e 
+tendências. Gráficos de linha para vendas ao longo do tempo, 
+histogramas para distribuição de preços e quantidades vendidas e 
+gráficos de dispersão para identificar a relação entre descontos e 
+volume de vendas.
+
+===== PAGINA 24 =====
+Norte para a resolução
+Passos a serem realizados:
+Carregue os dados na ferramenta escolhida, como o Pyton, por exemplo.
+Calcule as estatísticas descritivas e use essas métricas para 
+identificar comportamentos inesperados.
+Utilize gráficos de linha para visualizar as vendas ao longo do 
+tempo e histogramas para a distribuição de produtos mais 
+vendidos. Identifique picos ou quedas significativas.
+Identifique relações que podem ser exploradas, como se maiores 
+descontos estão de fato gerando mais vendas ou se há outra variável 
+com forte impacto.
+Extrair valor dos dados e formular recomendações.
+
+===== PAGINA 25 =====
+Consolidando o aprendizado
+Aplicações empresariais da Ciência de 
+Dados
+Bloco 5
+Valéria Baptista
+
+===== PAGINA 26 =====
+Consolidando o aprendizado
+• Você aprendeu como implementar soluções de Ciência 
+de Dados em contextos empresariais. 
+• Descobriu como utilizar dados para apoiar a tomada de 
+decisões estratégicas. 
+• Aprendeu como desenvolver habilidades para aplicar 
+técnicas de Ciência de Dados em problemas reais nas 
+empresas.
+
+===== PAGINA 27 =====
+Quiz
+A B
+C D
+Qual é o principal objetivo da análise 
+exploratória de dados (EDA)?
+Aplicar algoritmos de Machine 
+Learning para fazer previsões 
+automáticas.
+Coletar dados de diversas fontes 
+para armazená-los em um banco de 
+dados.
+Explorar os dados para entender 
+suas características, identificar 
+padrões e detectar anomalias.
+Implementar visualizações 
+avançadas para publicação direta 
+de relatórios finais.
+
+===== PAGINA 28 =====
+Quiz
+A B
+C D
+Qual é o principal objetivo da análise exploratória de 
+dados (EDA)?
+Aplicar algoritmos de Machine 
+Learning para fazer previsões 
+automáticas.
+Coletar dados de diversas fontes 
+para armazená-los em um banco de 
+dados.
+Explorar os dados para entender 
+suas características, identificar 
+padrões e detectar anomalias.
+Implementar visualizações 
+avançadas para publicação direta 
+de relatórios finais.
+
+===== PAGINA 29 =====
+Quiz – Resolução
+C) Explorar os dados para entender suas características, 
+identificar padrões e detectar anomalias.
+Utilizando métodos estatísticos e visualizações, a EDA 
+explora os dados, identifica padrões, detecta anomalias e 
+é possível decidir quais técnicas de preparação aplicar. A 
+EDA também pode orientar a escolha de algoritmos para 
+treinar modelos de ML.
+
+===== PAGINA 30 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da sua 
+carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 31 =====
+Indicação de leitura 1
+Este livro aborda situações nas quais existe a necessidade 
+de melhor organização das informações e como criar 
+algoritmos que manipulem os dados de forma eficiente.
+Referência:
+SANTANA, Gisele Alves; SILVA, Nathalia dos Santos; MOZER, 
+Merris. Linguagens de programação e estruturas de dados. 
+Londrina: Educacional, 2018.
+
+===== PAGINA 32 =====
+Indicação de leitura 2
+Este livro livro enfatiza a importância de conhecermos os 
+dados da nossa empresa e como organizar essas 
+informações de forma eficiente.
+Referência:
+SILVA, Nathalia dos Santos; SANTANA, Gisele Alves. 
+Fundamentos de banco de dados. Londrina: Educacional, 
+2018.
+
+===== PAGINA 33 =====
+Referências
+CARVALHO, André C. P . L. F. de; MENEZES, Angelo Garangau; BONIDIA, Robson 
+Parmezan. Ciência de dados: fundamentos e aplicações. 1. ed. Rio de Janeiro: 
+LTC, 2024. 
+DAVENPORT, Thomas H. Big data no trabalho: derrubando mitos e 
+descobrindo oportunidades. Trad. Cristina Yamagami. 1. ed. Rio de Janeiro: 
+Alta Books, 2017. 
+GRUS, Joel. Data Science do Zero. 1. ed. São Paulo: Alta Books, 2019. 
+SANTANA, Gisele Alves; SILVA, Nathalia dos Santos; MOZER, Merris. 
+Linguagens de programação e estruturas de dados. Londrina: Educacional, 
+2018.
+SHARDA, Ramesh; DELEN, Dursun; TURBAN, Efraim. Business intelligence e 
+análise de dados para gestão do negócio. Trad. Ronald Saraiva de Menezes. 4. 
+ed. Porto Alegre: Bookman, 2019.
+SILVA, Nathalia dos Santos; SANTANA, Gisele Alves. Fundamentos de banco de 
+dados. Londrina: Educacional, 2018.
+
+===== PAGINA 34 =====
+Bons estudos!
