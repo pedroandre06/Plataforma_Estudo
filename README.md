@@ -174,6 +174,7 @@ O SQL continua escrito **sempre no dialeto do SQLite** (`?`, `INSERT OR IGNORE`,
 | `DATABASE_URL` (também aceita `POSTGRES_URL` / `DATABASE_POSTGRES`) | **sim** | aponta o Postgres. Sem ela o app tenta abrir o SQLite e, como o disco da Vercel é somente leitura, tudo quebra (a tela de boot avisa disso). O Postgres do Marketplace da Vercel (Neon) já injeta essas variáveis sozinho |
 | `SECRET_KEY` | **sim** | assina o cookie de sessão; sem ela cada deployment derrubava todo mundo do login |
 | `INIT_DB_ON_STARTUP` | não (padrão `1`) | cria/completa as tabelas no primeiro acesso |
+| `SEED_ON_STARTUP` | não (padrão `1`) | no banco vazio, cadastra o admin, o conteúdo das disciplinas e os simulados no primeiro acesso (deixa o deploy pronto sem passo manual) |
 
 No boot o app imprime `config.resumo()` (motor e caminho) e `/healthz` responde
 `{"status": "ok", "motor": "postgres", "banco": "…", "consulta": 1}` — o `consulta` é o
@@ -183,10 +184,26 @@ resultado de um `SELECT 1` real, útil para o monitoramento da Vercel.
 
 1. Crie o banco (Neon/Supabase) e copie a string de conexão.
 2. Settings → Environment Variables: adicione `DATABASE_URL` e `SECRET_KEY`.
-3. Faça o deploy: as tabelas são criadas sozinhas no primeiro acesso, a partir do
-   `schema_pg.sql`.
+3. Faça o deploy: no primeiro acesso as tabelas são criadas (a partir do `schema_pg.sql`)
+   e, se o banco estiver vazio, o admin + o conteúdo + os simulados são cadastrados
+   automaticamente.
 4. `vercel env pull .env.local` para espelhar as variáveis no `app.py` local (o arquivo
    `data/.env.local` já está no `.gitignore` e a Vercel também lê `.env.local`).
+
+### Erro 500 (Internal Server Error) no deploy
+
+O site só mostra um 500 quando **o próprio banco falha na preparação**. As causas mais
+comuns e como conferir:
+
+| causa | como aparece | solução |
+| --- | --- | --- |
+| `DATABASE_URL` ausente | o app cai para o SQLite, mas o disco da Vercel é somente leitura e a abertura do arquivo falha | defina `DATABASE_URL` (Neon/Supabase) nas Environment Variables e faça Redeploy |
+| `DATABASE_URL` apontando para o exemplo (`localhost:55432`) | erro de conexão recusada | troque pela string real do banco hospedado |
+| banco novo e vazio | antigamente logava normal, mas não havia admin/conteúdo | com `SEED_ON_STARTUP=1` (padrão) tudo é criado no primeiro acesso |
+
+Em qualquer falha de banco a aplicação agora responde com uma **página de diagnóstico**
+(HTTP 503) que mostra o motor, o alvo da conexão e o erro técnico — em vez do 500 em
+branco. Para uma conferência rápida, abra `/healthz`:
 
 ### Postgres local para testar (Docker)
 

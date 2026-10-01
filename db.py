@@ -207,8 +207,7 @@ def connect() -> Any:
     """Abre a conexao do motor configurado: Postgres se DATABASE_URL existir, senao SQLite."""
     if config.usar_postgres():
         return conectar_postgres(config.dsn_postgres())
-    config.DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(config.DB_PATH, timeout=15)
+    conn = sqlite3.connect(config.caminho_sqlite(), timeout=15)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
     return conn
@@ -278,7 +277,7 @@ def init_db(verbose: bool = True) -> None:
         conn.executescript(sql)
         migrar(conn, verbose=verbose)
     if verbose:
-        print(f"[db] banco pronto em {config.DB_PATH}")
+        print(f"[db] banco pronto em {config.caminho_sqlite()}")
 
 
 def motor() -> str:
@@ -294,34 +293,64 @@ def resumo() -> str:
 _schema_verificado = False
 
 
-def garantir_schema(verbose: bool = False) -> None:
-    """Aplica o schema uma unica vez, se o banco ainda nao tiver as tabelas.
+def _tabelas_criadas() -> bool:
+    """True quando a tabela 'usuarios' ja existe no banco em uso."""
+    if config.usar_postgres():
+        with abrir() as conn:
+            return q1(conn, "SELECT to_regclass('public.usuarios') AS tabela")["tabela"] is not None
+    conn = connect()
+    try:
+        existe = q1(conn, "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'usuarios' LIMIT 1")
+    finally:
+        conn.close()
+    return existe is not None
 
-    E o que dispensa passo manual no deploy: no primeiro cold start da Vercel o app
-    cria as tabelas no Postgres recem-criado. Depois disso a checagem nao custa nada.
+
+def _provisionar_dados(verbose: bool = False) -> None:
+    """Cadastra admin, conteudo e simulados quando o banco ainda esta vazio.
+
+    E o que faz o deploy na Vercel funcionar sozinho: banco novo -> primeiro acesso
+    popula tudo. Se algo falhar, apenas avisa no log (nunca derruba a requisicao).
+    """
+    try:
+        with abrir() as conn:
+            estado = q1(conn, "SELECT (SELECT COUNT(*) FROM usuarios) AS usuarios,"
+                              " (SELECT COUNT(*) FROM materias) AS materias")
+        if estado["usuarios"] and estado["materias"]:
+            return
+        import seed_conteudo  # import tardio: seed_conteudo importa rotas_admin_io
+        import seed_data
+
+        with abrir() as conn:
+            seed_data.criar_admin(conn)
+            seed_conteudo.importar_conteudo(conn)
+            seed_data.simulados_padrao(conn)
+        print("[db] banco vazio: admin, conteudo e simulados criados automaticamente")
+    except Exception as erro:  # noqa: BLE001 - a semeadura nunca derruba o site
+        print(f"[db] aviso: semeadura automatica ignorada ({erro})", file=sys.stderr)
+
+
+def garantir_schema(verbose: bool = False) -> None:
+    """Prepara o banco uma unica vez por processo.
+
+    No primeiro cold start (Vercel) cria as tabelas se faltarem e, se o banco estiver
+    vazio, cadastra o admin + conteudo + simulados. Isso dispensa o passo manual no
+    deploy e evita o erro 500 do banco recem-criado. A marca so e fixada apos o
+    sucesso: se o banco estiver fora do ar, a proxima requisicao tenta de novo.
     """
     global _schema_verificado
     if _schema_verificado:
         return
-    _schema_verificado = True
-    if config.usar_postgres():
-        with abrir() as conn:
-            falta = q1(conn, "SELECT to_regclass('public.usuarios') AS tabela")["tabela"] is None
-        if falta:
-            init_db(verbose=True)
-        elif verbose:
-            print(f"[db] schema ja aplicado em {config.resumo_dsn()}")
+    if not config.INIT_DB_ON_STARTUP:
+        _schema_verificado = True
         return
-    config.DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-    bruta = sqlite3.connect(config.DB_PATH)
-    try:
-        existe = bruta.execute(
-            "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'usuarios' LIMIT 1"
-        ).fetchone()
-    finally:
-        bruta.close()
-    if not existe:
+    if not _tabelas_criadas():
         init_db(verbose=True)
+    elif verbose:
+        print(f"[db] schema ja aplicado em {config.resumo_dsn()}")
+    if config.SEED_ON_STARTUP:
+        _provisionar_dados(verbose=verbose)
+    _schema_verificado = True
 
 
 # ---------------------------------------------------------------- migracoes

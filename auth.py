@@ -111,3 +111,19 @@ def registrar_erros(app: Flask) -> None:
     def erro_404(e):
         return render_template("erro.html", codigo=404,
                                mensagem=getattr(e, "description", "Página não encontrada.")), 404
+
+    @app.errorhandler(500)
+    def erro_500(e):
+        """Erro interno: mostra o diagnostico (pagina independente do banco)."""
+        erro = getattr(e, "original_exception", None) or e
+        return comum.pagina_de_problema(erro, codigo=500, titulo="Erro interno do servidor")
+
+    @app.errorhandler(Exception)
+    def erro_inesperado(e):
+        """Qualquer excecao nao tratada vira uma pagina de diagnostico, nao um 500 vazio."""
+        from werkzeug.exceptions import HTTPException
+
+        if isinstance(e, HTTPException):
+            # Deixa o Flask usar o handler especifico (400/403/404 etc.).
+            return e.get_response()
+        return comum.pagina_de_problema(e, codigo=500, titulo="Erro interno do servidor")

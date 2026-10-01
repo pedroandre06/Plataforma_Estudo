@@ -101,6 +101,15 @@ small, .sub { color: var(--txt-2); }
 .codigo-erro { font-size: 54px; margin: 0; color: var(--erro); }
 .dica { background: var(--bg-2); }
 
+/* -------------------------------------------------- diagnóstico (deploy) */
+.card-erro ul { text-align: left; display: inline-block; margin: 6px 0; }
+.card-erro ul li { margin: 4px 0; }
+.boot-detalhe {
+  text-align: left; white-space: pre-wrap; word-break: break-word;
+  background: var(--bg-2); border: 1px solid var(--linha); border-radius: 8px;
+  padding: 10px 12px; font-size: 12.5px; margin: 10px 0;
+}
+
 /* --------------------------------------------------------------- botões */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;

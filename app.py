@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from datetime import timedelta
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 import comum
 import config
@@ -39,8 +39,18 @@ def criar_app() -> Flask:
 
     @app.before_request
     def _garantir_banco_pronto():
-        """No primeiro cold start (Vercel) cria as tabelas se o banco estiver vazio."""
-        db.garantir_schema()
+        """No primeiro cold start (Vercel) cria as tabelas e popula o banco se estiver vazio.
+
+        Se o banco nao responder, mostramos uma pagina de diagnostico (503) em vez de
+        deixar a requisicao estourar num 500 sem explicacao.
+        """
+        if request.path.startswith("/static/") or request.path == "/healthz":
+            return None
+        try:
+            db.garantir_schema()
+        except Exception as erro:  # noqa: BLE001 - diagnostico claro no lugar de 500 cru
+            return comum.pagina_de_problema(erro)
+        return None
 
     @app.route("/healthz")
     def healthz():

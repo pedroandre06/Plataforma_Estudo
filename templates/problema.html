@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ titulo }} · Plataforma de Estudos</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main class="container">
+  <div class="card card-erro">
+    <h1 class="codigo-erro">{{ codigo }}</h1>
+    <p class="sub"><strong>{{ titulo }}</strong></p>
+    <p class="sub">{{ mensagem }}</p>
+
+    <p class="sub">
+      Motor de banco: <strong>{{ motor }}</strong><br>
+      Alvo: <code>{{ banco }}</code>
+    </p>
+
+    <p class="sub">Como resolver no deploy (Vercel → Project → Settings → Environment Variables):</p>
+    <ul class="sub">
+      <li><code>DATABASE_URL</code>: string de conexão do PostgreSQL (ex.: Neon). Sem ela o
+        app tenta usar SQLite e, no disco somente leitura da Vercel, o site quebra.</li>
+      <li><code>SECRET_KEY</code>: uma chave aleatória para assinar a sessão.</li>
+    </ul>
+    <p class="sub">Depois de salvar as variáveis, faça um novo deploy (Redeploy). As tabelas e o
+      usuário admin são criados automaticamente no primeiro acesso.</p>
+
+    {% if detalhe %}
+    <p class="sub"><strong>Detalhe técnico:</strong></p>
+    <pre class="boot-detalhe">{{ detalhe }}</pre>
+    {% endif %}
+
+    <a class="btn btn-primario" href="/healthz">Ver /healthz</a>
+    <a class="btn" href="{{ url_for('login') }}">Tentar novamente</a>
+  </div>
+</main>
+</body>
+</html>

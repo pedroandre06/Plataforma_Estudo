@@ -10,6 +10,7 @@ from __future__ import annotations
 import os
 import secrets
 import sys
+import tempfile
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -37,11 +38,57 @@ def usar_postgres() -> bool:
     return bool(dsn_postgres())
 
 
+def pasta_gravavel(pasta: Path) -> bool:
+    """True quando da para criar/gravar arquivos na pasta.
+
+    No deploy da Vercel o disco e somente leitura; detectar isso evita o erro 500
+    (o SQLite nao consegue abrir o arquivo e a requisicao inteira quebra).
+    """
+    try:
+        pasta.mkdir(parents=True, exist_ok=True)
+        teste = pasta / ".escrita_ok"
+        teste.write_text("ok", encoding="utf-8")
+        teste.unlink()
+        return True
+    except OSError:
+        return False
+
+
+_caminho_sqlite_escolhido: dict[str, Path] = {}
+
+
+def caminho_sqlite() -> Path:
+    """Arquivo SQLite em uso.
+
+    Preferencia: data/platform.db. Se o disco for somente leitura (Vercel sem
+    DATABASE_URL), cai para um diretorio temporario gravavel, para o site ao menos
+    nao cair com 500 - ainda que, nesse caso, os dados fiquem efemeros.
+    """
+    chave = str(DB_PATH)
+    escolhido = _caminho_sqlite_escolhido.get(chave)
+    if escolhido is not None:
+        return escolhido
+    if pasta_gravavel(DB_PATH.parent):
+        escolhido = DB_PATH
+    else:
+        try:
+            pasta_temp = Path(tempfile.gettempdir()) / "plataforma-estudos"
+            pasta_temp.mkdir(parents=True, exist_ok=True)
+            escolhido = pasta_temp / "platform.db"
+        except OSError:
+            escolhido = DB_PATH
+        print(f"[config] aviso: {DB_PATH.parent} parece somente leitura; usando SQLite "
+              f"temporario em {escolhido}. Defina DATABASE_URL para dados persistentes.",
+              file=sys.stderr)
+    _caminho_sqlite_escolhido[chave] = escolhido
+    return escolhido
+
+
 def resumo_dsn() -> str:
     """DSN sem a senha, para aparecer em logs e mensagens (nunca imprima a senha)."""
     dsn = dsn_postgres()
     if not dsn:
-        return f"sqlite:///{DB_PATH}"
+        return f"sqlite:///{caminho_sqlite()}"
     esquema, _, resto = dsn.partition("://")
     _, _, sem_senha = resto.rpartition("@")
     return f"{esquema}://{sem_senha}" if sem_senha else f"{esquema}://(senha oculta)"
@@ -88,6 +135,11 @@ MAX_TENTATIVAS_LOGIN = 5
 BLOQUEIO_MINUTOS = 2
 # Cadastro aberto por padrao; PERMITIR_REGISTRO=0 no ambiente fecha a pagina /registro.
 PERMITIR_REGISTRO = (_env("PERMITIR_REGISTRO") or "1").lower() not in ("0", "false", "nao", "off")
+
+# Provisionamento automatico no primeiro acesso (o que faz o deploy da Vercel
+# funcionar sem passo manual). Coloque 0 no ambiente para desligar.
+INIT_DB_ON_STARTUP = (_env("INIT_DB_ON_STARTUP") or "1").lower() not in ("0", "false", "nao", "off")
+SEED_ON_STARTUP = (_env("SEED_ON_STARTUP") or "1").lower() not in ("0", "false", "nao", "off")
 
 # ------------------------------------------------------------------- simulados
 NOTA_CORTE_PADRAO = 6.0
