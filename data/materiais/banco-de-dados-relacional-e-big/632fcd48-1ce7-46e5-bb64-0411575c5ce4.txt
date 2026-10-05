@@ -1,0 +1,451 @@
+
+
+===== PAGINA 1 =====
+WBA0178_v3.0
+Banco de dados relacional e big 
+data
+
+===== PAGINA 2 =====
+Bancos de Dados Não Relacionais 
+(NoSQL)
+Conceitos e Princípios
+Bloco 1
+Simone Tatiane do Canto
+
+===== PAGINA 3 =====
+Vamos refletir?
+Você já parou para pensar no que acontece com os 
+dados de redes sociais, plataformas de streaming ou 
+sistemas de e-commerce quando milhares de 
+usuários acessam ao mesmo tempo?
+E se os dados de preferências, cliques e interações 
+precisassem ser armazenados em tabelas rígidas, 
+com esquemas fixos e pouco flexíveis?
+Como os bancos de dados convencionais dariam 
+conta da velocidade, variedade e volume dessas 
+informações em tempo real?
+
+===== PAGINA 4 =====
+Objetivos do capítulo
+• Compreender os conceitos e fundamentos que embasam o 
+surgimento dos bancos de dados NoSQL.
+• Identificar os diferentes tipos de bancos NoSQL e suas 
+aplicações práticas.
+• Comparar bancos relacionais e não relacionais, destacando 
+suas vantagens e limitações.
+• Aplicar conhecimentos de NoSQL no contexto do Big Data.
+
+===== PAGINA 5 =====
+O que motivou o surgimento do NoSQL?
+Com a ascensão da era digital, empresas começaram a lidar 
+com volumes de dados sem precedentes, além de formatos 
+altamente variados e com alta taxa de atualização. Nesse 
+cenário, os bancos de dados relacionais passaram a enfrentar 
+limitações estruturais e de desempenho. A rigidez dos 
+esquemas, o alto custo de escalabilidade vertical e a 
+dificuldade em lidar com dados semiestruturados 
+impulsionaram o surgimento de alternativas mais flexíveis e 
+escaláveis: os bancos de dados NoSQL.
+
+===== PAGINA 6 =====
+O que significa NoSQL?
+A sigla NoSQL, embora inicialmente interpretada como "Not
+Only SQL", reflete uma filosofia de bancos de dados que não 
+dependem exclusivamente do modelo relacional tradicional. 
+Esses bancos adotam modelos de armazenamento 
+alternativos que permitem maior maleabilidade estrutural, 
+melhor desempenho em ambientes distribuídos e capacidade 
+de lidar com dados heterogêneos — características 
+fundamentais no contexto do Big Data e de sistemas 
+modernos.
+
+===== PAGINA 7 =====
+A diferença começa nos princípios
+Enquanto os bancos relacionais seguem o modelo ACID, 
+garantindo Atomicidade, Consistência, Isolamento e 
+Durabilidade, os bancos NoSQL seguem o modelo BASE: 
+Basicamente Disponível, Estado Flexível (Soft-state) e 
+Consistência Eventual. Essa mudança de paradigma permite 
+que os dados sejam altamente disponíveis, mesmo em 
+situações em que a consistência imediata não seja possível —
+priorizando escalabilidade horizontal e tolerância a falhas.
+
+===== PAGINA 8 =====
+Por que NoSQL é essencial no mundo atual?
+Aplicações como redes sociais, plataformas de vídeo sob 
+demanda, marketplaces globais e sistemas de IoT demandam 
+bancos de dados capazes de processar milhões de transações 
+por segundo, em tempo real e em múltiplas regiões. O NoSQL
+responde a essa demanda ao permitir alta disponibilidade, 
+replicação automática, balanceamento de carga e suporte a 
+dados não estruturados, como JSON, XML ou até grafos 
+complexos de relações entre usuários.
+
+===== PAGINA 9 =====
+Bancos de Dados Não Relacionais 
+(NoSQL)
+Tipos de bancos de dados NoSQL
+Bloco 2
+Simone Tatiane do Canto
+
+===== PAGINA 10 =====
+Tipos de Bancos de Dados NoSQL
+Os bancos de dados NoSQL são classificados em quatro categorias 
+principais:
+• Chave-valor.
+• Documentos.
+• Colunas.
+• Grafos.
+Cada tipo adota uma estrutura própria de armazenamento, sendo 
+mais adequado para contextos em que o modelo relacional 
+tradicional não atende à demanda de escalabilidade ou flexibilidade 
+estrutural. A escolha do tipo depende diretamente da natureza dos 
+dados e do padrão de acesso.
+Exemplo prático: plataformas como Twitter usam bancos chave-
+valor para armazenar sessões e contadores, enquanto LinkedIn
+adota bancos de grafos para modelar conexões entre usuários.
+
+===== PAGINA 11 =====
+Bancos de Dados Orientados a Documentos
+Esses bancos armazenam os dados como documentos (JSON, 
+BSON ou XML), em que cada entrada pode conter campos 
+diferentes e aninhados. Essa estrutura é vantajosa para 
+aplicações com esquemas flexíveis.
+Tecnologias populares: MongoDB, CouchDB.
+Vantagens: consultas ricas por chave e valor, flexibilidade de 
+estrutura e indexação eficiente.
+Exemplo prático: um sistema de gerenciamento de e-
+commerce pode armazenar os dados dos produtos em 
+documentos JSON com campos personalizados por categoria 
+(ex.: roupas, eletrônicos).
+
+===== PAGINA 12 =====
+Bancos Chave-Valor e Orientados a Colunas
+Chave-valor: armazenam pares simples, com acesso direto 
+por chave.
+Exemplo: Redis, usado para armazenar cache e sessões de 
+usuários em aplicações web de alta performance.
+Aplicação: login de usuários, carrinhos de compras, tokens de 
+autenticação.
+Colunar: organizam os dados em famílias de colunas, 
+permitindo leitura rápida e compressão eficiente.
+Exemplo: Apache Cassandra, usado pela Netflix para 
+armazenar eventos de reprodução e recomendações.
+Aplicação: sistemas de monitoramento, logs e análise de 
+séries temporais.
+
+===== PAGINA 13 =====
+Bancos Orientados a Grafos
+Projetados para armazenar entidades e os relacionamentos 
+entre elas, bancos de grafos representam os dados como nós 
+(entidades) e arestas (relacionamentos), permitindo consultas 
+com alta performance em estruturas altamente conectadas.
+Tecnologias populares: Neo4j, ArangoDB, Amazon Neptune.
+Exemplo: o algoritmo de sugestões de amizade do Facebook é 
+implementado sobre grafos, analisando conexões indiretas e 
+interesses em comum.
+Aplicação: recomendação de conteúdo, detecção de fraudes, 
+análise de redes de transporte ou logística.
+
+===== PAGINA 14 =====
+Comparação com Bancos Relacionais
+Os bancos NoSQL não substituem os relacionais, mas os complementam em ambientes 
+que exigem alta escalabilidade, tolerância a falhas e velocidade de resposta.
+Exemplo comparativo:
+• MySQL é ideal para um sistema bancário (transações).
+• MongoDB ou Cassandra são mais indicados para armazenar os dados de sensores 
+em tempo real de uma cidade inteligente.
+Aspecto Banco Relacional Banco NoSQL
+Estrutura Rígida (esquema fixo) Flexível
+Escalabilidade Vertical Horizontal
+Consistência ACID BASE
+Aplicações OLTP , ERP , CRM Big Data, IoT, Redes 
+sociais
+Comparativo entre bancos de dados relacionais e bancos NoSQL
+Fonte: adaptado de Hecht e Jablonski (2011).
+
+===== PAGINA 15 =====
+Bancos de Dados Não Relacionais 
+(NoSQL)
+Aplicações práticas de NoSQL no contexto do Big 
+Data
+Bloco 3
+Simone Tatiane do Canto
+
+===== PAGINA 16 =====
+Visão geral: modelos relacional versus não 
+relacional
+Os bancos relacionais (SQL) são fundamentados em um 
+esquema fixo e utilizam linguagem estruturada (SQL) para 
+consulta e manipulação. Já os bancos não relacionais (NoSQL) 
+priorizam a flexibilidade e a escalabilidade horizontal.
+Modelo SQL (Relacional) NoSQL (Não Relacional)
+Estrutura Tabelas com colunas e 
+chaves
+Documentos, grafos, 
+colunas ou chave-valor
+Esquema Rígido Flexível
+Escalabilidade Vertical Horizontal
+Consistência ACID BASE
+Diferenças estruturais entre bancos de dados relacionais (SQL) 
+e não relacionais (NoSQL)
+Fonte: adaptado de Elmasri e Navathe (2011).
+
+===== PAGINA 17 =====
+Diferenciais técnicos: ACID versus BASE
+• ACID (Atomicidade, Consistência, Isolamento e 
+Durabilidade) assegura a integridade dos dados em 
+transações nos bancos relacionais.
+• BASE (Basicamente Disponível, Estado Flexível, Consistência 
+Eventual) prioriza desempenho e tolerância a falhas em 
+sistemas NoSQL.
+Exemplo comparativo:
+• Um banco tradicional (ACID) garante que uma transação de 
+débito e crédito ocorra integralmente.
+• Um app de redes sociais (BASE) pode exibir um novo post a 
+um usuário antes que ele esteja visível para todos.
+
+===== PAGINA 18 =====
+Escalabilidade: vertical versus horizontal
+• SQL escala verticalmente (melhoria de hardware).
+• NoSQL escala horizontalmente (adição de servidores).
+Exemplo:
+• Um sistema ERP rodando em PostgreSQL precisa de mais 
+CPU e RAM conforme cresce.
+• Um sistema de rastreamento logístico em tempo real, 
+rodando com Apache Cassandra, distribui os dados 
+automaticamente entre vários nós, mantendo alta 
+disponibilidade e baixa latência.
+
+===== PAGINA 19 =====
+Casos de uso: quando escolher SQL ou NoSQL
+SQL é indicado para: aplicações com forte controle 
+transacional, regras de integridade referencial complexas e 
+relatórios estruturados (BI, ERP , CRM).
+NoSQL é indicado para: aplicações com dados 
+semiestruturados ou não estruturados, grandes volumes e 
+acesso em alta concorrência e contextos com constante 
+evolução do esquema.
+Exemplo prático:
+• Bancos e instituições financeiras usam Oracle ou MySQL.
+• Spotify e Airbnb utilizam NoSQL (Cassandra, Redis, 
+MongoDB) para streaming, caching e recomendações.
+
+===== PAGINA 20 =====
+Integração híbrida: o melhor dos dois mundos
+Em arquiteturas modernas, é comum integrar bancos 
+relacionais e não relacionais no mesmo sistema.
+Exemplo de arquitetura híbrida:
+• Banco relacional (PostgreSQL) para armazenar perfis de 
+usuários.
+• NoSQL (MongoDB) para armazenar preferências, interações 
+e dados de navegação em tempo real.
+Essa abordagem garante integridade nos dados críticos e 
+flexibilidade nos dados dinâmicos e volumosos.
+
+===== PAGINA 21 =====
+Prática em ação
+Bancos de Dados Não Relacionais 
+(NoSQL)
+Bloco 4
+Simone Tatiane do Canto
+
+===== PAGINA 22 =====
+Reflita sobre a seguinte situação
+Você já se perguntou como as grandes plataformas de 
+streaming, redes sociais ou sistemas de recomendação 
+conseguem lidar com bilhões de dados em tempo real, 
+mesmo sem seguir os rígidos esquemas de um banco 
+relacional?
+Imagine se um marketplace global tentasse armazenar os 
+dados de seus usuários, produtos e interações em um modelo 
+tradicional, estruturado em tabelas fixas, com todas as regras 
+de integridade aplicadas a cada transação.
+Pergunta:
+Como seria possível escalar esse sistema com rapidez, manter 
+a performance sob picos de acesso e garantir uma boa 
+experiência ao usuário?
+
+===== PAGINA 23 =====
+Proposta de resolução
+Por onde começar? 
+Adotar um modelo de 
+dados flexível com NoSQL:
+•Utilizar bancos orientados 
+a documentos, chave-
+valor, grafos ou colunas, 
+conforme o tipo de dado e 
+a necessidade de 
+leitura/escrita.
+•Eliminar a rigidez de 
+esquemas fixos, 
+permitindo a adaptação 
+ágil do banco às mudanças 
+de requisitos.
+•Exemplos: MongoDB para 
+aplicações web com dados 
+semiestruturados; Redis 
+para cache de sessões de 
+usuário.
+Avaliar a escalabilidade 
+horizontal:
+•Aplicar particionamento 
+(*sharding*) para distribuir 
+dados entre servidores e 
+garantir escalabilidade 
+linear.
+•Aumentar a capacidade de 
+leitura e escrita sem 
+comprometer a 
+disponibilidade do sistema.
+•Exemplos: Cassandra em 
+aplicações de 
+telecomunicações; 
+DynamoDB em 
+plataformas de e-
+commerce.
+Aproveitar a consistência 
+eventual com replicação:
+•Usar réplicas para garantir 
+alta disponibilidade em 
+sistemas críticos e reduzir 
+latência.
+•Garantir consistência dos 
+dados com base no 
+modelo BASE: Basicamente 
+disponível, Estado flexível 
+e Consistência eventual.
+•Exemplos: Couchbase para 
+sistemas com muitas 
+requisições simultâneas; 
+Neo4j para redes sociais 
+com forte volume de 
+leitura distribuída.
+
+===== PAGINA 24 =====
+Proposta de resolução
+Medidas de controle durante o processo:
+Avaliação da 
+estrutura de dados 
+existente
+Escolha do tipo de 
+banco NoSQL 
+adequado
+Modelagem de 
+dados orientada a 
+esquema flexível
+Implementação de 
+escalabilidade 
+horizontal
+Criação de índices 
+otimizados e ajustes 
+de leitura/escrita
+Testes de 
+consistência e 
+integridade 
+eventual
+Ajustes contínuos e 
+monitoramento em 
+tempo real
+
+===== PAGINA 25 =====
+Proposta de resolução
+Possíveis causas:
+Modelo relacional mal adaptado ao volume e variedade dos dados.
+Escolha inadequada do tipo de banco NoSQL.
+Falta de controle de consistência eventual.
+Ausência de particionamento (sharding) e replicação.
+Consultas lentas por falta de índices adequados.
+Desalinhamento entre requisitos da aplicação e o modelo de dados.
+Bons estudos!
+
+===== PAGINA 26 =====
+Consolidando o aprendizado
+Bancos de Dados Não Relacionais 
+(NoSQL)
+Bloco 5
+Simone Tatiane do Canto
+
+===== PAGINA 27 =====
+Consolidando o aprendizado
+• Conceitos fundamentais dos bancos de dados NoSQL e sua 
+relação com os 5 Vs do Big Data.  
+• Princípios BASE e arquitetura distribuída como alternativa 
+ao modelo ACID relacional.  
+• Características e aplicações dos principais tipos de bancos 
+NoSQL: documentos, colunas, chave-valor e grafos.  
+• Comparativo entre modelos relacionais e não relacionais, 
+destacando cenários de uso apropriado para cada 
+abordagem.  
+• Casos práticos e tecnologias emergentes no ecossistema 
+NoSQL, como MongoDB, Cassandra, Redis, Neo4j e sua 
+integração em soluções Big Data.
+
+===== PAGINA 28 =====
+Leitura Fundamental
+Prezado estudante, as indicações a seguir podem estar disponíveis 
+em algum dos parceiros da nossa Biblioteca Virtual (faça o login por 
+meio do seu AVA), e outras podem estar disponíveis em sites 
+acadêmicos (como o SciELO), repositórios de instituições públicas, 
+órgãos públicos, anais de eventos científicos ou periódicos 
+científicos, todos acessíveis pela internet.
+Isso não significa que o protagonismo da sua jornada de 
+autodesenvolvimento deva mudar de foco. Reconhecemos que 
+você é a autoridade máxima da sua própria vida e deve, portanto, 
+assumir uma postura autônoma nos estudos e na construção da sua 
+carreira profissional.
+Por isso, nós o convidamos a explorar todas as possibilidades da 
+nossa Biblioteca Virtual e além! Sucesso!
+
+===== PAGINA 29 =====
+Indicação de leitura 1
+Este livro oferece uma abordagem prática e teórica sobre o 
+universo dos bancos NoSQL, destacando seus fundamentos, 
+tipos e aplicações no contexto do Big Data. A obra explora 
+bancos de documentos, chave-valor, grafos e colunas, além de 
+discutir aspectos de escalabilidade, consistência eventual e 
+tolerância a falhas. É indicado para profissionais e estudantes 
+que desejam compreender como as soluções NoSQL se 
+posicionam diante das demandas de dados massivos e não 
+estruturados.
+Referência
+MONICA, R. MongoDB: Guia do Desenvolvedor. São Paulo: Novatec, 2020.
+
+===== PAGINA 30 =====
+Indicação de leitura 2
+Este livro aborda de maneira aprofundada os conceitos por 
+trás do processamento distribuído com Hadoop, explicando 
+como o framework é utilizado para lidar com grandes volumes 
+de dados em ambientes escaláveis. Além dos fundamentos do 
+MapReduce e do HDFS, o autor discute ferramentas 
+complementares como Hive, Pig e HBase, tornando a leitura 
+ideal para quem busca compreender o papel do Hadoop no 
+ecossistema Big Data.
+Referência
+WHITE, T. Hadoop: The Definitive Guide. 4. ed. Beijing: O’Reilly Media, 2015.
+
+===== PAGINA 31 =====
+Referências
+AMAZON Web Services. AWS Cloud Storage Services Overview. Amazon, 2020.
+DATE, C. J. SQL e Teoria Relacional: Como escrever códigos SQL precisos. São 
+Paulo: Novatec, 2015.
+ELMASRI, R.; NAVATHE, S. B. Sistemas de Banco de Dados. 4. ed. São Paulo: 
+Pearson, 2009.
+GARTNER. Modern Data Management. Gartner Research, 2019.
+HECHT, R.; JABLONSKI, S. NoSQL Evaluation: A Use Case-Oriented Survey. In 
+Proceedings of the International Conference on Cloud and Service Computing 
+(CSC), 2011.
+HEUSER, C. A. Projeto de Bancos de Dados. 6. ed. Porto Alegre: Bookman, 2009.
+MACHADO, F. N. R. Projeto e Implementação de Banco de Dados. São Paulo: Érica, 
+2020.
+MAYER-SCHÖNBERGER, V.; CUKIER, K. Big Data: a revolução que vai transformar 
+como vivemos, trabalhamos e pensamos. Rio de Janeiro: Elsevier, 2013.
+
+===== PAGINA 32 =====
+Referências
+TAURION, C. Big Data: velocidade, volume, variedade, veracidade, valor. Rio de 
+Janeiro: Brasport, 2013.
+WHITE, T. Hadoop: The Definitive Guide. 4. ed. Sebastopol: O’Reilly, 2015.
+
+===== PAGINA 33 =====
+Bons estudos!

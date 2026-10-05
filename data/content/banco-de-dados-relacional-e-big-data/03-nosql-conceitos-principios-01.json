@@ -1,0 +1,70 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "nosql-conceitos-principios",
+  "perguntas": [
+    {
+      "e": "O que motivou o surgimento dos bancos de dados NoSQL?",
+      "t": "Motivação do NoSQL",
+      "d": "facil",
+      "r": "Bloco 1 - O que motivou o surgimento do NoSQL?",
+      "x": "Volumes de dados sem precedentes, formatos altamente variados e alta taxa de atualização expuseram limitações estruturais e de desempenho dos relacionais (rigidez de esquema, custo da escalabilidade vertical e dificuldade com dados semiestruturados).",
+      "a": ["A falta de linguagens de consulta para grandes volumes", "Volumes sem precedentes, formatos variados e alta taxa de atualização, que expuseram as limitações dos relacionais", "A necessidade de substituir o SQL por uma nova linguagem", "O alto custo das licenças de sistemas operacionais"],
+      "c": 1
+    },
+    {
+      "e": "O que significa a sigla NoSQL?",
+      "t": "Significado de NoSQL",
+      "d": "facil",
+      "r": "Bloco 1 - O que significa NoSQL?",
+      "x": "Inicialmente interpretada como 'Not Only SQL', reflete uma filosofia de bancos que não dependem exclusivamente do modelo relacional tradicional.",
+      "a": ["Not Only SQL — bancos que não dependem exclusivamente do modelo relacional", "New Open SQL — uma versão moderna do SQL", "Nenhuma Operação sobre SQL — bancos sem consultas", "Not Only Storage — armazenamento sem discos"],
+      "c": 0
+    },
+    {
+      "e": "Quais são as três siglas do modelo BASE, seguido pelos bancos NoSQL?",
+      "t": "ACID x BASE",
+      "d": "facil",
+      "r": "Bloco 1 - A diferença começa nos princípios",
+      "x": "BASE: Basicamente Disponível, Estado Flexível (Soft-state) e Consistência Eventual — prioriza disponibilidade e escalabilidade horizontal mesmo sem consistência imediata.",
+      "a": ["Basicamente Disponível, Estado Flexível (Soft-state) e Consistência Eventual", "Backup Automático, Segurança e Escalabilidade", "Bulk Access, Sincronização e Exportação", "Basicamente Atomicidade, Segurança e Durabilidade"],
+      "c": 0
+    },
+    {
+      "e": "Enquanto os bancos relacionais seguem o modelo ACID, os bancos NoSQL seguem o modelo BASE. Essa mudança de paradigma permite que os dados sejam altamente disponíveis, mesmo em situações em que a consistência imediata não seja possível.",
+      "tp": "vf",
+      "t": "ACID x BASE",
+      "d": "medio",
+      "r": "Bloco 1 - A diferença começa nos princípios",
+      "x": "Verdadeiro. O material destaca que o BASE prioriza escalabilidade horizontal e tolerância a falhas, aceitando a consistência eventual.",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 0
+    },
+    {
+      "e": "Quais aplicações exigem bancos capazes de processar milhões de transações por segundo, em tempo real e em múltiplas regiões?",
+      "t": "Por que NoSQL é essencial",
+      "d": "medio",
+      "r": "Bloco 1 - Por que NoSQL é essencial no mundo atual?",
+      "x": "Redes sociais, plataformas de vídeo sob demanda, marketplaces globais e sistemas de IoT — cenários em que o NoSQL oferece alta disponibilidade, replicação automática e balanceamento de carga.",
+      "a": ["Sistemas de RH corporativos com poucos usuários", "Redes sociais, streaming, marketplaces globais e IoT", "Planilhas eletrônicas e controles de estoque em papel", "Bancos de dados relacionais transacionais clássicos"],
+      "c": 1
+    },
+    {
+      "e": "Quais dados não estruturados o NoSQL consegue suportar, segundo o material?",
+      "t": "Dados não estruturados",
+      "d": "facil",
+      "r": "Bloco 1 - Por que NoSQL é essencial no mundo atual?",
+      "x": "JSON, XML e até grafos complexos de relações entre usuários — características fundamentais no contexto do Big Data.",
+      "a": ["Somente arquivos CSV de até 1 GB", "Apenas tabelas com esquema fixo", "JSON, XML e grafos complexos de relações", "Exclusivamente imagens e vídeos"],
+      "c": 2
+    },
+    {
+      "e": "Um sistema de débito e crédito bancário garante que a transação ocorra integralmente ou não ocorra em absoluto. Esse é um exemplo de qual modelo?",
+      "t": "ACID x BASE",
+      "d": "dificil",
+      "r": "Bloco 1 - A diferença começa nos princípios",
+      "x": "É o modelo ACID (Atomicidade, Consistência, Isolamento e Durabilidade) dos relacionais; o material o contrasta com um app de redes sociais (BASE) que pode exibir um post antes de estar visível para todos.",
+      "a": ["Modelo BASE, típico de bancos NoSQL", "Modelo ACID, típico de bancos relacionais", "Modelo de consistência eventual", "Modelo de escalabilidade horizontal"],
+      "c": 1
+    }
+  ]
+}

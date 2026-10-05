@@ -41,7 +41,7 @@ Outras portas/hosts (opcional): `set PORT=8080` e/ou `set HOST=0.0.0.0` antes de
 .venv\Scripts\python.exe seed_data.py --reset    :: limpa conteúdo, tentativas e simulados e reimporta
 ```
 
-O seed lê `data/content/**/*.json` (198 questões em 10 módulos / 3 matérias) e cria os
+O seed lê `data/content/**/*.json` (219 questões em 11 módulos / 3 matérias) e cria os
 simulados padrão (um por matéria + o geral). Rodar de novo **não duplica** questões: as que
 já existem no módulo (mesmo enunciado) são puladas. O `--reset` apaga o conteúdo e o seu
 histórico de estudo (tentativas/respostas/progresso/simulados), mas **preserva os usuários**.
@@ -63,7 +63,8 @@ originais **não são copiados nem modificados** — a plataforma lê o arquivo 
 
 | comando | o que valida |
 | ------- | ------------ |
-| `.venv\Scripts\python.exe tools\teste_e2e.py` | 100 verificações de ponta a ponta (login, CSRF, quiz, simulados, provas, admin, permissões) |
+| `.venv\Scripts\python.exe tools\teste_e2e.py` | 102 verificações de ponta a ponta (login, CSRF, quiz, simulados, provas, admin, permissões) |
+| `.venv\Scripts\python.exe tools\teste_correcao_login.py` | 8 verificações da correção de login/CSRF: sessão expirada redireciona para o login (não 400), token errado continua bloqueado, chave de sessão estável sem `SECRET_KEY` e diagnóstico no `/healthz` |
 | `.venv\Scripts\python.exe tools\smoke_login.py` | login e páginas principais contra o **banco real** (só GET, não altera nada) |
 | `.venv\Scripts\python.exe tools\smoke_servidor.py` | sobe o `app.py` de verdade, faz requisições HTTP e encerra o servidor |
 | `.venv\Scripts\python.exe tools\smoke_templates.py` | compila todos os templates-chave do Jinja |
@@ -177,8 +178,25 @@ O SQL continua escrito **sempre no dialeto do SQLite** (`?`, `INSERT OR IGNORE`,
 | `SEED_ON_STARTUP` | não (padrão `1`) | no banco vazio, cadastra o admin, o conteúdo das disciplinas e os simulados no primeiro acesso (deixa o deploy pronto sem passo manual) |
 
 No boot o app imprime `config.resumo()` (motor e caminho) e `/healthz` responde
-`{"status": "ok", "motor": "postgres", "banco": "…", "consulta": 1}` — o `consulta` é o
-resultado de um `SELECT 1` real, útil para o monitoramento da Vercel.
+`{"status": "ok", "motor": "postgres", "banco": "…", "consulta": 1, "sessao": "arquivo"}` — o `consulta` é o
+resultado de um `SELECT 1` real, útil para o monitoramento da Vercel, e `sessao` diz de
+onde veio a chave que assina os cookies (`ambiente`, `arquivo`, `dsn` ou `efemera`).
+
+### Erro de CSRF / "pede login toda hora"
+
+Os dois sintomas têm a mesma causa: **o cookie de sessão não sobrevive entre
+requisições**, então o token CSRF do form não bate com o da sessão (400) e o usuário
+é deslogado em seguida. Causas e solução:
+
+| causa | como aparece | solução |
+| --- | --- | --- |
+| `SECRET_KEY` ausente na Vercel (disco somente leitura, `data/.secret_key` excluído do deploy) | cada instância/lambda assina os cookies com uma chave diferente: logout aleatório + CSRF 400 | defina `SECRET_KEY` nas Environment Variables (ou deixe o app derivá-la do `DATABASE_URL`, fallback automático) e faça Redeploy |
+| `DATABASE_URL` ausente | cada cold start usa um SQLite temporário diferente: a sessão aponta para um usuário que "não existe" | defina `DATABASE_URL` (Neon/Supabase) |
+| página aberta de um form antigo (botão "voltar") | 400 "Token CSRF inválido" pontual | recarregar a página; logado, o POST continua bloqueado (400); sem sessão, agora leva direto ao login |
+| sessão expirada / cookie inválido | — | corrigido: o POST sem sessão redireciona para `/login` com aviso, em vez de um 400 em beco |
+
+Confira rápido com `curl https://<seu-site>/healthz`: se `sessao` vier `efemera`, a
+chave não está persistindo — é essa a origem do logout constante.
 
 ### Deploy na Vercel
 

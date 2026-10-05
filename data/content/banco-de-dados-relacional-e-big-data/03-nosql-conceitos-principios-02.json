@@ -1,0 +1,69 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "nosql-conceitos-principios",
+  "perguntas": [
+    {
+      "e": "Quais são as quatro categorias principais de bancos de dados NoSQL?",
+      "t": "Tipos de NoSQL",
+      "d": "facil",
+      "r": "Bloco 2 - Tipos de Bancos de Dados NoSQL",
+      "x": "Chave-valor, documentos, colunas e grafos — cada tipo adota uma estrutura própria de armazenamento, adequada ao padrão de acesso.",
+      "a": ["Relacional, objeto, hierárquico e rede", "Chave-valor, documentos, colunas e grafos", "Transacional, analítico, estatístico e gráfico", "SQL, OLTP, OLAP e ETL"],
+      "c": 1
+    },
+    {
+      "e": "Os bancos orientados a documentos armazenam dados como documentos nos formatos:",
+      "t": "Bancos de documentos",
+      "d": "facil",
+      "r": "Bloco 2 - Bancos de Dados Orientados a Documentos",
+      "x": "JSON, BSON ou XML; cada entrada pode conter campos diferentes e aninhados, vantajoso para aplicações com esquemas flexíveis. Tecnologias: MongoDB e CouchDB.",
+      "a": ["Apenas CSV com separador de ponto e vírgula", "JSON, BSON ou XML, com campos diferentes e aninhados", "Somente tabelas com colunas fixas", "Arquivos binários proprietários sem índice"],
+      "c": 1
+    },
+    {
+      "e": "Qual tecnologia é citada como exemplo de banco chave-valor e para que aplicações?",
+      "t": "Bancos chave-valor",
+      "d": "facil",
+      "r": "Bloco 2 - Bancos Chave-Valor e Orientados a Colunas",
+      "x": "Redis: armazena cache e sessões de usuários — login, carrinhos de compras e tokens de autenticação em aplicações web de alta performance.",
+      "a": ["MongoDB, para cache de sessões", "Redis, para cache, sessões, carrinhos e tokens", "Neo4j, para logs de auditoria", "Apache Cassandra, para transações bancárias"],
+      "c": 1
+    },
+    {
+      "e": "A tecnologia Apache Cassandra, usada pela Netflix para armazenar eventos de reprodução e recomendações, é um exemplo de banco:",
+      "t": "Bancos colunares",
+      "d": "medio",
+      "r": "Bloco 2 - Bancos Chave-Valor e Orientados a Colunas",
+      "x": "Colunar: organiza os dados em famílias de colunas, permitindo leitura rápida e compressão eficiente — ideal para logs, monitoramento e séries temporais.",
+      "a": ["Orientado a grafos", "Colunar (orientado a colunas)", "Relacional com esquema fixo", "Orientado a documentos"],
+      "c": 1
+    },
+    {
+      "e": "Como os bancos orientados a grafos representam os dados?",
+      "t": "Bancos de grafos",
+      "d": "medio",
+      "r": "Bloco 2 - Bancos Orientados a Grafos",
+      "x": "Como nós (entidades) e arestas (relacionamentos), permitindo consultas de alta performance em estruturas altamente conectadas. Tecnologias: Neo4j, ArangoDB e Amazon Neptune.",
+      "a": ["Como tabelas com chaves primárias e estrangeiras", "Como nós (entidades) e arestas (relacionamentos)", "Como famílias de colunas compressíveis", "Como filas de mensagens ordenadas"],
+      "c": 1
+    },
+    {
+      "e": "O algoritmo de sugestões de amizade do Facebook é implementado sobre qual tipo de banco?",
+      "t": "Bancos de grafos",
+      "d": "facil",
+      "r": "Bloco 2 - Bancos Orientados a Grafos",
+      "x": "Sobre grafos, analisando conexões indiretas e interesses em comum — aplicações incluem recomendação de conteúdo, detecção de fraudes e análise de redes de transporte ou logística.",
+      "a": ["Bancos chave-valor", "Bancos orientados a documentos", "Bancos orientados a grafos", "Bancos colunares"],
+      "c": 2
+    },
+    {
+      "e": "Plataformas como Twitter usam bancos chave-valor para armazenar sessões e contadores, enquanto LinkedIn adota bancos de grafos para modelar conexões entre usuários. Em qual aspecto a escolha do tipo de banco depende?",
+      "t": "Escolha do tipo de banco",
+      "d": "dificil",
+      "r": "Bloco 2 - Tipos de Bancos de Dados NoSQL",
+      "x": "Na natureza dos dados e no padrão de acesso: cada tipo adota uma estrutura própria de armazenamento, mais adequada para contextos em que o modelo relacional não atende à escalabilidade ou flexibilidade estrutural.",
+      "a": ["No custo da licença do fabricante", "Na natureza dos dados e no padrão de acesso", "Na versão do sistema operacional usado", "Na quantidade de administradores de banco"],
+      "c": 1
+    }
+  ]
+}

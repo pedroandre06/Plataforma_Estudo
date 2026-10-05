@@ -60,13 +60,25 @@ def csrf_token() -> str:
 
 
 def proteger_post() -> None:
-    """Valida o token CSRF em toda requisição de escrita (exceto /api/ e login/registro)."""
+    """Valida o token CSRF em toda requisição de escrita (exceto /api/ e login/registro).
+
+    Se a sessao nem existe mais (cookie assinado com outra chave, expirado ou limpo),
+    nao faz sentido devolver 400 - o usuario nao tem nem como "recarregar" o form certo.
+    Nesse caso redireciona para o login com um aviso claro; a escrita NAO acontece.
+    """
     if request.method in ("POST", "PUT", "DELETE") and not request.path.startswith("/api/"):
         if request.path in ("/login", "/registro"):
             return
         enviado = request.form.get("_csrf") or request.headers.get("X-CSRF-Token")
-        if not enviado or enviado != session.get("csrf"):
-            abort(400, description="Token CSRF inválido. Recarregue a página e tente novamente.")
+        if enviado and enviado == session.get("csrf"):
+            return
+        if "usuario_id" not in session:
+            # Sessao invalida/expirada: leva para o login em vez de um beco 400.
+            flash("Sua sessão expirou ou a página ficou desatualizada. "
+                  "Faça login novamente para continuar.", "aviso")
+            return redirect(url_for("login", proximo=request.path))
+        # Logado com form antigo (ex.: botao "voltar"): bloqueia, mas pede recarga.
+        abort(400, description="Token CSRF inválido. Recarregue a página e tente novamente.")
 
 
 # ------------------------------------------------------------- usuários

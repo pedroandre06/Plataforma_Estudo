@@ -60,7 +60,8 @@ def criar_app() -> Flask:
         try:
             linha = db.q1(db.get_db(), "SELECT 1 AS ok")
             return jsonify(status="ok", motor=db.motor(), banco=config.resumo_dsn(),
-                           consulta=linha["ok"] if linha is not None else None)
+                           consulta=linha["ok"] if linha is not None else None,
+                           sessao=config.origem_chave())
         except Exception as erro:  # noqa: BLE001 - o healthz nunca devolve 500 cru
             return jsonify(status="erro", motor=db.motor(), banco=config.resumo_dsn(),
                            detalhe=str(erro)), 500

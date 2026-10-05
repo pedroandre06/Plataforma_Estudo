@@ -1,0 +1,70 @@
+{
+  "materia_slug": "banco-de-dados-relacional-e-big-data",
+  "modulo_slug": "nosql-conceitos-principios",
+  "perguntas": [
+    {
+      "e": "Na comparação entre relacionais e NoSQL, como são classificados esquema, escalabilidade e consistência?",
+      "t": "Relacional x NoSQL",
+      "d": "medio",
+      "r": "Bloco 3 - Visão geral: modelos relacional versus não relacional",
+      "x": "Relacional: esquema rígido, escalabilidade vertical e consistência ACID. NoSQL: esquema flexível, escalabilidade horizontal e consistência BASE.",
+      "a": ["Relacional: flexível, horizontal e BASE; NoSQL: rígido, vertical e ACID", "Relacional: rígido, vertical e ACID; NoSQL: flexível, horizontal e BASE", "Ambos usam esquema flexível e escalabilidade vertical", "Ambos seguem exclusivamente o modelo BASE"],
+      "c": 1
+    },
+    {
+      "e": "Quando o material recomenda escolher um banco SQL (relacional)?",
+      "t": "Casos de uso SQL",
+      "d": "medio",
+      "r": "Bloco 3 - Casos de uso: quando escolher SQL ou NoSQL",
+      "x": "Para aplicações com forte controle transacional, regras de integridade referencial complexas e relatórios estruturados (BI, ERP, CRM) — exemplo: bancos e instituições financeiras com Oracle ou MySQL.",
+      "a": ["Para dados semiestruturados com esquema em constante evolução", "Para forte controle transacional, integridade referencial complexa e relatórios estruturados (BI, ERP, CRM)", "Apenas para armazenamento de cache e sessões", "Somente para dados de sensores em tempo real"],
+      "c": 1
+    },
+    {
+      "e": "Spotify e Airbnb utilizam NoSQL (Cassandra, Redis, MongoDB). Para quais cenários o NoSQL é indicado?",
+      "t": "Casos de uso NoSQL",
+      "d": "facil",
+      "r": "Bloco 3 - Casos de uso: quando escolher SQL ou NoSQL",
+      "x": "Dados semiestruturados ou não estruturados, grandes volumes, acesso em alta concorrência e contextos com constante evolução do esquema — streaming, caching e recomendações.",
+      "a": ["Transações bancárias com forte integridade referencial", "Dados semiestruturados, grandes volumes, alta concorrência e evolução constante do esquema", "Relatórios fiscais estruturados de pequeno volume", "Sistemas ERP on-premises com esquema fixo"],
+      "c": 1
+    },
+    {
+      "e": "Em uma arquitetura híbrida, o material sugere usar PostgreSQL para perfis de usuários e MongoDB para preferências, interações e navegação em tempo real. Qual o benefício dessa abordagem?",
+      "t": "Integração híbrida",
+      "d": "dificil",
+      "r": "Bloco 3 - Integração híbrida: o melhor dos dois mundos",
+      "x": "Garante integridade nos dados críticos (relacional) e flexibilidade nos dados dinâmicos e volumosos (NoSQL), combinando o melhor dos dois modelos no mesmo sistema.",
+      "a": ["Eliminar completamente a necessidade de modelagem", "Reduzir o custo de licenciamento dos dois produtos", "Garantir integridade nos dados críticos e flexibilidade nos dados dinâmicos e volumosos", "Substituir o banco relacional por um único banco NoSQL"],
+      "c": 2
+    },
+    {
+      "e": "NoSQL substitui os bancos relacionais de vez em qualquer cenário.",
+      "tp": "vf",
+      "t": "Relacional x NoSQL",
+      "d": "facil",
+      "r": "Bloco 3 - Comparação com Bancos Relacionais",
+      "x": "Falso. O material afirma que os bancos NoSQL NÃO substituem os relacionais, mas os complementam em ambientes que exigem alta escalabilidade, tolerância a falhas e velocidade de resposta.",
+      "a": ["Verdadeiro", "Falso"],
+      "c": 1
+    },
+    {
+      "e": "O particionamento (sharding), citado na prática em ação, tem qual finalidade?",
+      "t": "Escalabilidade horizontal",
+      "d": "medio",
+      "r": "Bloco 4 - Prática em ação (Proposta de resolução)",
+      "x": "Distribuir dados entre servidores para garantir escalabilidade linear, aumentando a capacidade de leitura e escrita sem comprometer a disponibilidade — exemplos: Cassandra em telecomunicações e DynamoDB em e-commerce.",
+      "a": ["Criar índices para acelerar consultas em uma única máquina", "Distribuir dados entre servidores para escalabilidade linear de leitura e escrita", "Criptografar os dados antes de armazená-los", "Fazer backup automático diário dos dados"],
+      "c": 1
+    },
+    {
+      "e": "Quais são possíveis causas de problemas em um sistema que deveria usar NoSQL, segundo o material?",
+      "t": "Causas de problemas",
+      "d": "dificil",
+      "r": "Bloco 4 - Prática em ação (Possíveis causas)",
+      "x": "Modelo relacional mal adaptado ao volume/variedade dos dados, escolha inadequada do tipo de banco NoSQL, falta de controle de consistência eventual, ausência de sharding e replicação, consultas lentas por falta de índices e desalinhamento entre requisitos e modelo de dados.",
+      "a": ["Excesso de índices e replicação demais", "Falta de normalização em tabelas relacionais", "Modelo relacional mal adaptado, escolha inadequada do tipo NoSQL, ausência de sharding/replicação e falta de índices", "Uso de SQL em vez de uma linguagem de programação"],
+      "c": 2
+    }
+  ]
+}

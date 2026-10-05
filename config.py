@@ -7,6 +7,7 @@ Banco de dados - o mesmo codigo roda em dois motores, sem mudar uma linha de SQL
 """
 from __future__ import annotations
 
+import hashlib
 import os
 import secrets
 import sys
@@ -150,32 +151,63 @@ SIMULADO_GERAL_MINUTOS = 60
 
 
 _CHAVE_EPHEMERA: str | None = None
+_ORIGEM_CHAVE = "desconhecida"
+
+
+def origem_chave() -> str:
+    """De onde veio a chave de sessao: 'ambiente', 'arquivo', 'dsn' ou 'efemera'.
+
+    'efemera' significa que cada instancia/reinicio do servidor assina os cookies
+    com uma chave diferente - todo mundo e deslogado e os tokens CSRF deixam de
+    bater. Use no /healthz para diagnosticar "pede login toda hora".
+    """
+    return _ORIGEM_CHAVE
 
 
 def secret_key() -> str:
     """Chave que assina o cookie de sessao.
 
-    Ordem: variavel SECRET_KEY (obrigatoria na nuvem, onde o disco e somente
-    leitura) -> arquivo data/.secret_key -> chave aleatoria valida so enquanto o
-    processo estiver de pe (sessoes caem a cada reinicio do servidor).
+    Ordem: variavel SECRET_KEY (recomendada na nuvem) -> arquivo data/.secret_key ->
+    chave derivada do DATABASE_URL (disco somente leitura, mas ESTAVEL entre
+    instancias, e' o que faz o deploy da Vercel manter a sessao) -> chave aleatoria
+    valida so enquanto o processo estiver de pe (ultimo recurso; causa logout
+    aleatorio e erro de CSRF, por isso avisa no log).
     """
+    global _CHAVE_EPHEMERA, _ORIGEM_CHAVE
     valor = _env("SECRET_KEY")
     if valor:
+        _ORIGEM_CHAVE = "ambiente"
         return valor
     try:
         SECRET_KEY_FILE.parent.mkdir(parents=True, exist_ok=True)
         if SECRET_KEY_FILE.exists():
             gravada = SECRET_KEY_FILE.read_text(encoding="utf-8").strip()
             if gravada:
+                _ORIGEM_CHAVE = "arquivo"
                 return gravada
         nova = secrets.token_hex(32)
         SECRET_KEY_FILE.write_text(nova, encoding="utf-8")
+        _ORIGEM_CHAVE = "arquivo"
         return nova
     except OSError:  # disco somente leitura (Vercel, container etc.)
-        global _CHAVE_EPHEMERA
+        # Sem SECRET_KEY e sem arquivo, a chave ainda pode ser ESTAVEL se o
+        # DATABASE_URL existir: o Postgres e compartilhado por todas as
+        # instancias, entao derivamos a chave dele (o DSN ja e um segredo do
+        # ambiente; quem tem o DSN tem o banco inteiro). Assim o login persiste
+        # mesmo sem configurar SECRET_KEY.
+        dsn = dsn_postgres()
+        if dsn:
+            _ORIGEM_CHAVE = "dsn"
+            print("[config] aviso: SECRET_KEY ausente e disco somente leitura - derivando "
+                  "a chave de sessao do DATABASE_URL (funciona, mas defina SECRET_KEY "
+                  "explicitamente para trocar a chave sem derrubar as sessoes).",
+                  file=sys.stderr)
+            return hashlib.sha256(("[sessao] " + dsn).encode("utf-8")).hexdigest()
+        _ORIGEM_CHAVE = "efemera"
         if _CHAVE_EPHEMERA is None:
             _CHAVE_EPHEMERA = secrets.token_hex(32)
-            print("[config] aviso: disco somente leitura e SECRET_KEY ausente - usando chave "
-                  "temporaria (defina SECRET_KEY no ambiente para sessoes persistentes).",
+            print("[config] aviso: disco somente leitura, SECRET_KEY e DATABASE_URL ausentes - "
+                  "usando chave temporaria: cada reinicio desloga todo mundo e quebra o CSRF "
+                  "(defina SECRET_KEY no ambiente para sessoes persistentes).",
                   file=sys.stderr)
         return _CHAVE_EPHEMERA
