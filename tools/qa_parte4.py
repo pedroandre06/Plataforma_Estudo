@@ -60,8 +60,8 @@ def executar(cliente, tok: str, contexto: dict) -> None:
     import app as appmod
 
     outro = appmod.app.test_client()
-    outro.post("/registro", data={"usuario": "aluno.teste", "nome": "Aluno Teste", "senha": "1234",
-                                  "confirma": "1234"}, follow_redirects=True)
+    outro.post("/registro", data={"usuario": "aluno.teste", "nome": "Aluno Teste", "senha": "aluno1234",
+                                  "confirma": "aluno1234"}, follow_redirects=True)
     ok(bool(token(outro)), "registro de novo usuário cria sessão")
     ok(outro.get(f"/tentativa/{contexto['prova']['id']}/resultado").status_code == 403,
        "aluno não acessa resultado de tentativa de outro usuário (403)")

@@ -15,7 +15,7 @@ def executar(cliente) -> str:
     cliente.post("/login", data={"usuario": "pedro.santos", "senha": "errada"}, follow_redirects=True)
     ok(True, "login com senha errada tratado sem erro 500")
     tok = entrar(cliente)
-    ok(bool(tok), "login pedro.santos/1234 funciona e gera token CSRF")
+    ok(bool(tok), "login pedro.santos/trocar123 funciona e gera token CSRF")
     ok(cliente.post("/modulo/fundamentos-dw/quiz/iniciar", data={"modo": "treino"}).status_code == 400,
        "POST sem token CSRF é bloqueado (400)")
 

@@ -28,11 +28,25 @@ acionado quando `DATABASE_URL` aponta para um PostgreSQL — sem essa variável 
 
 Abra <http://127.0.0.1:5000> e entre com o usuário administrador criado pelo seed:
 
-| usuário       | senha |
-| ------------- | ----- |
-| `pedro.santos`| `1234`|
+| usuário        | senha padrão |
+| -------------- | ------------ |
+| `pedro.santos` | `trocar123`  |
+
+**Troque a senha no primeiro acesso** (perfil → alterar senha) ou antes de criar o banco:
+
+```bat
+set ADMIN_SENHA=sua-senha-forte-8+ && .venv\Scripts\python.exe seed_data.py
+```
+
+Para trocar depois:
+
+```bat
+.venv\Scripts\python.exe tools\trocar_senha.py pedro.santos
+```
 
 Outras portas/hosts (opcional): `set PORT=8080` e/ou `set HOST=0.0.0.0` antes de rodar.
+Produção local sem auto-reload: `set FLASK_DEBUG=0` (padrão é 1, modo desenvolvimento).
+Servidor WSGI: `.venv\Scripts\gunicorn.exe -w 2 -b 127.0.0.1:5000 app:app`.
 
 ## 3. Preparar/atualizar os dados
 
@@ -42,8 +56,8 @@ Outras portas/hosts (opcional): `set PORT=8080` e/ou `set HOST=0.0.0.0` antes de
 ```
 
 O seed lê `data/content/**/*.json` (219 questões em 11 módulos / 3 matérias) e cria os
-simulados padrão (um por matéria + o geral). Rodar de novo **não duplica** questões: as que
-já existem no módulo (mesmo enunciado) são puladas. O `--reset` apaga o conteúdo e o seu
+simulados padrão (um por matéria + o geral + a **prova oficial padrão**: 30 questões
+fixas, 10 de cada matéria, 90 min, 1 tentativa). Rodar de novo **não duplica** nada. O `--reset` apaga o conteúdo e o seu
 histórico de estudo (tentativas/respostas/progresso/simulados), mas **preserva os usuários**.
 
 Para reconhecer/reimportar os PDFs das disciplinas:
@@ -257,9 +271,9 @@ destino que já tenha dados — migre para um banco vazio.
 
 ## 9. Pontos conhecidos
 
-- **Flashcards**: a tela (`/modulo/<slug>/flashcards`) e a tabela existem e funcionam, mas
-  nenhuma fonte popula `flashcards` ainda — por isso a aba só aparece quando houver cartões
-  para o módulo. Para incluir cartões, insira em `flashcards (modulo_id, frente, verso, ordem)`.
+- **Flashcards**: gerados automaticamente pelo `seed_data.py` (1 por questão:
+  frente = enunciado, verso = resposta correta + explicação). A aba aparece em
+  todos os 11 módulos (219 cartões). O seed é idempotente: não duplica frentes.
 - **Servidor de desenvolvimento**: o `app.py` usa `debug=True` (recarrega ao salvar), adequado
   para uso local. Se um dia precisar expor na rede, ajuste o `HOST`/`PORT` e considere um
   servidor WSGI de produção.

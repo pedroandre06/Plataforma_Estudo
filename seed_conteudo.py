@@ -1,4 +1,9 @@
-"""Importação do conteúdo (matérias, módulos e questões) a partir de data/content."""
+"""Importação do conteúdo (matérias, módulos, questões e flashcards) a partir de data/content.
+
+Flashcards: gerados automaticamente a partir das questões de cada módulo
+(frente = enunciado, verso = resposta correta + explicação). Idempotente:
+cartões com a mesma frente não são duplicados.
+"""
 from __future__ import annotations
 
 import json
@@ -99,4 +104,41 @@ def importar_conteudo(conn) -> int:
         print(f"[seed] {slug}: {inseridas} questões novas"
               + (f" ({puladas} já existiam)" if puladas else ""))
         total += inseridas
+        gerar_flashcards_modulo(conn, materia_id, ids_modulo)
+    return total
+
+
+def gerar_flashcards_modulo(conn, materia_id: int, ids_modulo: dict[str, int]) -> int:
+    """Gera 1 flashcard por questão (frente=enunciado, verso=resposta+explicação).
+
+    Idempotente: pula frentes que já existem no módulo. Retorna nº de novos cartões.
+    """
+    total = 0
+    for modulo_slug, modulo_id in ids_modulo.items():
+        perguntas = db.q(conn, """SELECT p.id, p.enunciado, p.explicacao
+                                  FROM perguntas p WHERE p.modulo_id = ? AND p.ativo = 1
+                                  ORDER BY p.id""", [modulo_id])
+        if not perguntas:
+            continue
+        existentes = {r["frente"] for r in db.q(
+            conn, "SELECT frente FROM flashcards WHERE modulo_id = ?", [modulo_id])}
+        ordem = db.q1(conn, "SELECT COALESCE(MAX(ordem), -1) AS m FROM flashcards WHERE modulo_id = ?",
+                      [modulo_id])["m"] + 1
+        for pg in perguntas:
+            frente = (pg["enunciado"] or "").strip()
+            if not frente or frente in existentes:
+                continue
+            alts = db.q(conn, """SELECT texto FROM alternativas WHERE pergunta_id = ?
+                                 ORDER BY correta DESC, ordem""", [pg["id"]])
+            resposta = (alts[0]["texto"] if alts else "").strip()
+            verso = resposta
+            if pg["explicacao"]:
+                verso = f"{resposta}\n\n{pg['explicacao']}" if resposta else pg["explicacao"]
+            db.run(conn, "INSERT INTO flashcards (modulo_id, frente, verso, ordem) VALUES (?,?,?,?)",
+                   [modulo_id, frente, verso, ordem])
+            ordem += 1
+            existentes.add(frente)
+            total += 1
+    if total:
+        print(f"[seed] flashcards gerados: {total}")
     return total

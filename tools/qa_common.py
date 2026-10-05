@@ -25,7 +25,7 @@ def texto(resposta) -> str:
     return resposta.get_data(as_text=True)
 
 
-def entrar(cliente, usuario="pedro.santos", senha="1234"):
+def entrar(cliente, usuario="pedro.santos", senha="trocar123"):
     cliente.post("/login", data={"usuario": usuario, "senha": senha, "lembrar": "1"},
                  follow_redirects=True)
     return token(cliente)

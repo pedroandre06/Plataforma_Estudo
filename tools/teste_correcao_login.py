@@ -48,7 +48,7 @@ def main() -> int:
        "a pagina de login abre apos o redirect")
 
     titulo("POST logado com token CSRF errado (seguranca preservada)")
-    cliente.post("/login", data={"usuario": "pedro.santos", "senha": "1234", "lembrar": "1"},
+    cliente.post("/login", data={"usuario": "pedro.santos", "senha": "trocar123", "lembrar": "1"},
                  follow_redirects=True)
     resposta = cliente.post("/modulo/fundamentos-dw/quiz/iniciar",
                             data={"modo": "treino", "_csrf": "token_errado"})

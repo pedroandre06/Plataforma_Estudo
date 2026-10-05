@@ -4,7 +4,7 @@
   "functions": {
     "app.py": {
       "maxDuration": 60,
-      "excludeFiles": "{tools/**,.kilo/**,**/__pycache__/**,**/*.pyc,data/*.db,data/*.db-shm,data/*.db-wal,data/.secret_key,*.log,tmp_*}"
+      "excludeFiles": "{tools/**,.kilo/**,**/__pycache__/**,**/*.pyc,data/*.db,data/*.db-shm,data/*.db-wal,data/.secret_key,data/materiais/**,*.log,tmp_*}"
     }
   },
   "headers": [

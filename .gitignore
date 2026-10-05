@@ -5,10 +5,21 @@ __pycache__/
 
 # banco e segredos locais
 data/platform.db
+data/platform.db-shm
+data/platform.db-wal
 data/qa_e2e.db
+data/qa_e2e.db-shm
+data/qa_e2e.db-wal
 data/platform_bkp*.db
 data/.secret_key
+data/servidor_smoke.log
+data/.env.local
+.env
+.env.local
 
 # logs e arquivos temporários
 *.log
 tmp_*.txt
+tmp_*.log
+tmp_*.py
+

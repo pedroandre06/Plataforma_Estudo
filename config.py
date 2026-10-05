@@ -130,7 +130,7 @@ DOCS_DIR = (pastas_de_material() or [Path.home() / "Documents" / "Pós dados"])[
 # ------------------------------------------------------------------- seguranca
 SECRET_KEY_FILE = BASE_DIR / "data" / ".secret_key"
 SESSION_DIAS = 30
-MIN_SENHA = 4
+MIN_SENHA = 8
 MIN_USUARIO = 3
 MAX_TENTATIVAS_LOGIN = 5
 BLOQUEIO_MINUTOS = 2

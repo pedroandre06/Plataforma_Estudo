@@ -98,6 +98,7 @@ if __name__ == "__main__":
     db.init_db(verbose=False)
     host = os.environ.get("HOST", "127.0.0.1")
     port = int(os.environ.get("PORT", "5000"))
+    debug = os.environ.get("FLASK_DEBUG", "1").lower() not in ("0", "false", "nao", "off")
     print(f"Plataforma de Estudos -> http://{host}:{port}")
     print(f"Banco de dados: {db.resumo()}")
-    app.run(host=host, port=port, debug=True)
+    app.run(host=host, port=port, debug=debug)

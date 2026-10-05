@@ -32,7 +32,7 @@ def main() -> int:
     titulo(f"Login no banco real ({config.DB_PATH})")
     ok(cliente.get("/").status_code == 302, "visitante sem sessão é mandado para o login")
     tok = entrar(cliente)
-    ok(bool(tok), "login pedro.santos/1234 funciona (hash preservado) e gera token CSRF")
+    ok(bool(tok), "login pedro.santos/trocar123 funciona (hash preservado) e gera token CSRF")
     painel = cliente.get("/")
     ok(painel.status_code == 200 and "Painel de estudos" in texto(painel),
        "dashboard renderiza com os dados reais")
