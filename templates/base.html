@@ -30,8 +30,13 @@
       </form>
       <div class="topo-usuario">
         <a class="usuario" href="{{ url_for('extra.perfil') }}">{{ u['nome'].split()[0] }}</a>
-        <a class="btn btn-mini" href="{{ url_for('logout') }}">Sair</a>
       </div>
+    {% else %}
+      <nav class="nav">
+        <a href="{{ url_for('geral.dashboard') }}">Painel</a>
+        <a href="{{ url_for('simulados.lista') }}">Simulados e provas</a>
+        <a href="{{ url_for('extra.historico') }}">Histórico</a>
+      </nav>
     {% endif %}
   </div>
 </header>

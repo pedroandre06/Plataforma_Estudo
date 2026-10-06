@@ -82,9 +82,38 @@ def proteger_post() -> None:
 
 
 # ------------------------------------------------------------- usuários
+USUARIO_LIVRE = "aluno"
+
+
+def _garantir_usuario_livre():
+    """Usuário padrão do modo sem senha: cria na hora se ainda não existir."""
+    from werkzeug.security import generate_password_hash
+    import secrets
+
+    conn = db.get_db()
+    linha = db.q1(conn, "SELECT * FROM usuarios WHERE lower(usuario) = lower(?)",
+                  [USUARIO_LIVRE])
+    if linha is None:
+        db.run(conn, "INSERT INTO usuarios (usuario, nome, email, senha_hash, papel)"
+                     " VALUES (?,?,?,?,?)",
+               [USUARIO_LIVRE, "Aluno", None,
+                generate_password_hash(secrets.token_hex(16)), "admin"])
+        linha = db.q1(conn, "SELECT * FROM usuarios WHERE lower(usuario) = lower(?)",
+                      [USUARIO_LIVRE])
+    return linha
+
+
 def usuario_atual():
+    # Modo sem senha: sempre há um usuário (padrão "aluno"), nunca pede login.
     if "usuario_id" not in session:
-        return None
+        try:
+            padrao = _garantir_usuario_livre()
+            session.permanent = True
+            session["usuario_id"] = padrao["id"]
+            if "csrf" not in session:
+                csrf_token()
+        except Exception:
+            return None
     if "usuario" not in g:
         g.usuario = db.q1(
             db.get_db(), "SELECT * FROM usuarios WHERE id = ? AND ativo = 1", [session["usuario_id"]]
@@ -94,30 +123,23 @@ def usuario_atual():
     return g.usuario
 
 
+
 def login_required(funcao):
+    # Modo sem senha: acesso livre, sem redirect para /login.
     @wraps(funcao)
     def wrapper(*args, **kwargs):
-        if usuario_atual() is None:
-            if request.path.startswith("/api/"):
-                from flask import jsonify
-                return jsonify({"ok": False, "erro": "sessao_expirada",
-                                "login": url_for("login", proximo=request.path)}), 401
-            flash("Faça login para continuar.", "aviso")
-            return redirect(url_for("login", proximo=request.full_path if request.query_string
-                                    else request.path))
+        usuario_atual()
         return funcao(*args, **kwargs)
 
     return wrapper
 
 
+
 def admin_required(funcao):
+    # Modo sem senha: área admin também livre (usuário padrão é admin).
     @wraps(funcao)
     def wrapper(*args, **kwargs):
-        usuario = usuario_atual()
-        if usuario is None:
-            return redirect(url_for("login", proximo=request.path))
-        if usuario["papel"] != "admin":
-            abort(403, description="Acesso restrito ao administrador.")
+        usuario_atual()
         return funcao(*args, **kwargs)
 
     return wrapper
