@@ -1,11 +1,7 @@
-"""Confere o login e as páginas principais usando o banco REAL (data/platform.db).
+"""Confere o acesso livre (sem senha) e as páginas principais no banco REAL.
 
 Uso:
     .venv\\Scripts\\python.exe tools\\smoke_login.py
-
-Diferente de tools/teste_e2e.py (que roda num banco descartável e cria dados),
-este smoke usa o banco de estudos de verdade e faz somente requisições GET:
-não cria, altera nem apaga nada.
 """
 from __future__ import annotations
 
@@ -21,7 +17,7 @@ import config  # noqa: E402
 
 import app as appmod  # noqa: E402
 import db  # noqa: E402
-from qa_common import entrar, ok, relatorio, texto, titulo  # noqa: E402
+from qa_common import ok, relatorio, texto, titulo  # noqa: E402
 
 
 def main() -> int:
@@ -29,13 +25,14 @@ def main() -> int:
     cliente = appmod.app.test_client()
     conexao = db.connect()
 
-    titulo(f"Login no banco real ({config.DB_PATH})")
-    ok(cliente.get("/").status_code == 302, "visitante sem sessão é mandado para o login")
-    tok = entrar(cliente)
-    ok(bool(tok), "login pedro.santos/trocar123 funciona (hash preservado) e gera token CSRF")
+    titulo(f"Acesso livre, sem senha ({config.DB_PATH})")
     painel = cliente.get("/")
     ok(painel.status_code == 200 and "Painel de estudos" in texto(painel),
-       "dashboard renderiza com os dados reais")
+       "visitante entra direto no painel, sem login")
+    for rota in ("/login", "/registro", "/logout"):
+        resposta = cliente.get(rota, follow_redirects=False)
+        ok(resposta.status_code == 302 and resposta.location.endswith("/"),
+           f"{rota} redireciona para o painel (sem senha)")
 
     titulo("Páginas principais")
     for caminho in ("/simulados", "/simulados/novo", "/historico", "/perfil", "/busca?q=esquema"):
