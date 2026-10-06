@@ -30,24 +30,5 @@
       <button class="btn btn-primario" type="submit">Salvar dados</button>
     </form>
   </div>
-  <div class="card">
-    <h2>Trocar senha</h2>
-    <form method="post" class="form espaco-topo">
-      <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
-      <label class="campo"><span>Senha atual</span>
-        <input type="password" name="atual" autocomplete="current-password">
-      </label>
-      <div class="dupla">
-        <label class="campo"><span>Nova senha</span>
-          <input type="password" name="nova" autocomplete="new-password">
-        </label>
-        <label class="campo"><span>Confirmar nova senha</span>
-          <input type="password" name="confirma" autocomplete="new-password">
-        </label>
-      </div>
-      <button class="btn" type="submit">Alterar senha</button>
-      <p class="item-meta">Dica de segurança: use uma senha com ao menos 8 caracteres, única para a plataforma.</p>
-    </form>
-  </div>
 </div>
 {% endblock %}

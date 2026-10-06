@@ -1,4 +1,4 @@
-"""Helpers compartilhados dos testes de QA."""
+"""Helpers compartilhados dos testes de QA (modo sem senha)."""
 from __future__ import annotations
 
 FALHAS: list[str] = []
@@ -16,18 +16,18 @@ def titulo(texto: str) -> None:
     PASSOS.append(f"\n== {texto} ==")
 
 
-def token(cliente) -> str:
-    with cliente.session_transaction() as sessao:
-        return sessao.get("csrf")
+def token(_cliente) -> str:
+    # Modo sem senha: sem CSRF de sessão; formulários usam token fixo "livre".
+    return "livre"
 
 
 def texto(resposta) -> str:
     return resposta.get_data(as_text=True)
 
 
-def entrar(cliente, usuario="pedro.santos", senha="trocar123"):
-    cliente.post("/login", data={"usuario": usuario, "senha": senha, "lembrar": "1"},
-                 follow_redirects=True)
+def entrar(cliente, usuario="aluno", senha=""):  # noqa: ARG001
+    # Modo sem senha: só visita o painel (login redireciona para lá).
+    cliente.get("/", follow_redirects=True)
     return token(cliente)
 
 

@@ -1,14 +1,11 @@
-"""Helpers compartilhados: datas, CSRF, autenticação e formatação."""
+"""Helpers compartilhados: datas e formatação (modo sem senha)."""
 from __future__ import annotations
 
 import html
-import random
 import unicodedata
 from datetime import datetime, timedelta
-from functools import wraps
 
-from flask import (abort, flash, g, make_response, redirect, render_template, request,
-                   session, url_for)
+from flask import g, make_response, render_template
 
 import config
 import db
@@ -53,32 +50,10 @@ def fmt_nota(valor) -> str:
 
 
 # ------------------------------------------------------------------ CSRF
+# Modo sem senha: sem sessão e sem CSRF. Token fixo só para os formulários
+# existentes continuarem enviando o campo _csrf sem travar.
 def csrf_token() -> str:
-    if "csrf" not in session:
-        session["csrf"] = random.getrandbits(64).to_bytes(8, "big").hex()
-    return session["csrf"]
-
-
-def proteger_post() -> None:
-    """Valida o token CSRF em toda requisição de escrita (exceto /api/ e login/registro).
-
-    Se a sessao nem existe mais (cookie assinado com outra chave, expirado ou limpo),
-    nao faz sentido devolver 400 - o usuario nao tem nem como "recarregar" o form certo.
-    Nesse caso redireciona para o login com um aviso claro; a escrita NAO acontece.
-    """
-    if request.method in ("POST", "PUT", "DELETE") and not request.path.startswith("/api/"):
-        if request.path in ("/login", "/registro"):
-            return
-        enviado = request.form.get("_csrf") or request.headers.get("X-CSRF-Token")
-        if enviado and enviado == session.get("csrf"):
-            return
-        if "usuario_id" not in session:
-            # Sessao invalida/expirada: leva para o login em vez de um beco 400.
-            flash("Sua sessão expirou ou a página ficou desatualizada. "
-                  "Faça login novamente para continuar.", "aviso")
-            return redirect(url_for("login", proximo=request.path))
-        # Logado com form antigo (ex.: botao "voltar"): bloqueia, mas pede recarga.
-        abort(400, description="Token CSRF inválido. Recarregue a página e tente novamente.")
+    return "livre"
 
 
 # ------------------------------------------------------------- usuários
@@ -104,45 +79,26 @@ def _garantir_usuario_livre():
 
 
 def usuario_atual():
-    # Modo sem senha: sempre há um usuário (padrão "aluno"), nunca pede login.
-    if "usuario_id" not in session:
-        try:
-            padrao = _garantir_usuario_livre()
-            session.permanent = True
-            session["usuario_id"] = padrao["id"]
-            if "csrf" not in session:
-                csrf_token()
-        except Exception:
-            return None
+    # Modo sem senha: usuário fixo do banco, sem depender de cookie/sessão.
+    # Nunca pede login e nunca invalida por chave de sessão diferente.
     if "usuario" not in g:
-        g.usuario = db.q1(
-            db.get_db(), "SELECT * FROM usuarios WHERE id = ? AND ativo = 1", [session["usuario_id"]]
-        )
-        if g.usuario is None:
-            session.clear()
+        try:
+            g.usuario = _garantir_usuario_livre()
+        except Exception:
+            g.usuario = None
     return g.usuario
 
 
 
 def login_required(funcao):
-    # Modo sem senha: acesso livre, sem redirect para /login.
-    @wraps(funcao)
-    def wrapper(*args, **kwargs):
-        usuario_atual()
-        return funcao(*args, **kwargs)
-
-    return wrapper
+    # Modo sem senha: acesso livre (decorador mantido só p/ não mexer nas rotas).
+    return funcao
 
 
 
 def admin_required(funcao):
-    # Modo sem senha: área admin também livre (usuário padrão é admin).
-    @wraps(funcao)
-    def wrapper(*args, **kwargs):
-        usuario_atual()
-        return funcao(*args, **kwargs)
-
-    return wrapper
+    # Modo sem senha: área admin também livre.
+    return funcao
 
 
 def pagina_de_problema(erro: Exception, codigo: int = 503, titulo: str | None = None):
@@ -182,22 +138,10 @@ def pagina_de_problema(erro: Exception, codigo: int = 503, titulo: str | None = 
 
 def registrar_app(app) -> None:
     """Conecta os helpers ao app Flask (globals de template e hooks)."""
-    app.before_request(proteger_post)
-    app.before_request(_renovar_sessao)
+    # Modo sem senha: sem before_request de sessão/CSRF.
     app.jinja_env.globals.update(
         csrf_token=csrf_token,
         fmt_nota=fmt_nota,
         usuario_atual=usuario_atual,
         agora=agora,
     )
-
-
-def _renovar_sessao():
-    """Mantém a sessão ativa enquanto o usuário navega (sliding expiration).
-
-    Sessões antigas criadas como não-permanentes (cookie de navegador) são
-    promovidas a permanentes, para não expirar ao fechar o navegador.
-    Com SESSION_REFRESH_EACH_REQUEST=True, cada resposta renova o cookie.
-    """
-    if "usuario_id" in session:
-        session.permanent = True

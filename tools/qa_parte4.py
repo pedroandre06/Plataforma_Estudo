@@ -1,13 +1,13 @@
-"""Cenário 4: importação, prova oficial, permissões entre usuários e logout."""
+"""Cenário 4: importação e prova oficial (modo sem senha)."""
 from __future__ import annotations
 
 from io import BytesIO
 
 import db
-from qa_common import ok, texto, titulo, token
+from qa_common import ok, texto, titulo
 
 
-def executar(cliente, tok: str, contexto: dict) -> None:
+def executar(cliente, tok: str, contexto: dict) -> None:  # noqa: ARG001
     conexao = db.connect()
 
     titulo("Importação de questões (JSON)")
@@ -55,24 +55,3 @@ def executar(cliente, tok: str, contexto: dict) -> None:
         cliente.post(f"/admin/prova/{prova['id']}/excluir", data={"_csrf": tok})
         ok(db.q1(conexao, "SELECT 1 FROM simulados WHERE id = ?", [prova["id"]]) is None,
            "prova oficial pode ser excluída pelo admin")
-
-    titulo("Isolamento entre usuários e permissões")
-    import app as appmod
-
-    outro = appmod.app.test_client()
-    outro.post("/registro", data={"usuario": "aluno.teste", "nome": "Aluno Teste", "senha": "aluno1234",
-                                  "confirma": "aluno1234"}, follow_redirects=True)
-    ok(bool(token(outro)), "registro de novo usuário cria sessão")
-    ok(outro.get(f"/tentativa/{contexto['prova']['id']}/resultado").status_code == 403,
-       "aluno não acessa resultado de tentativa de outro usuário (403)")
-    ok(outro.get(f"/tentativa/{contexto['prova']['id']}").status_code == 403,
-       "aluno não acessa execução de tentativa alheia (403)")
-    ok(outro.get("/admin").status_code == 403, "aluno não acessa o painel admin (403)")
-    ok(outro.get("/admin/perguntas").status_code == 403, "aluno não acessa o CRUD de questões (403)")
-    ok(outro.get("/simulados").status_code == 200, "novo aluno acessa os simulados")
-    ok(outro.get("/").status_code == 200, "novo aluno tem painel próprio")
-    db.run(conexao, "DELETE FROM usuarios WHERE usuario = 'aluno.teste'")
-
-    titulo("Logout")
-    ok(cliente.get("/logout").status_code == 302, "logout redireciona")
-    ok(cliente.get("/").status_code == 302, "após logout o painel exige login novamente")

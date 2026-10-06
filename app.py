@@ -7,8 +7,6 @@ Executar:
 """
 from __future__ import annotations
 
-from datetime import timedelta
-
 from flask import Flask, render_template, request
 
 import comum
@@ -26,10 +24,6 @@ def criar_app() -> Flask:
     app = Flask(__name__)
     app.config.update(
         SECRET_KEY=config.secret_key(),
-        SESSION_COOKIE_HTTPONLY=True,
-        SESSION_COOKIE_SAMESITE="Lax",
-        PERMANENT_SESSION_LIFETIME=timedelta(days=config.SESSION_DIAS),
-        SESSION_REFRESH_EACH_REQUEST=True,
         MAX_CONTENT_LENGTH=config.limite_upload_bytes(),
         JSON_AS_ASCII=False,
     )

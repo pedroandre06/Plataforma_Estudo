@@ -8,16 +8,12 @@ from qa_common import entrar, ok, texto, titulo
 def executar(cliente) -> str:
     conexao = db.connect()
 
-    titulo("Autenticação")
-    ok(cliente.get("/").status_code == 302, "área logada redireciona visitante para o login")
-    ok(cliente.get("/login").status_code == 200, "página de login abre")
-    ok(cliente.get("/registro").status_code == 200, "página de registro abre")
-    cliente.post("/login", data={"usuario": "pedro.santos", "senha": "errada"}, follow_redirects=True)
-    ok(True, "login com senha errada tratado sem erro 500")
+    titulo("Acesso livre (sem senha)")
+    ok(cliente.get("/").status_code == 200, "painel abre direto, sem login")
+    ok(cliente.get("/login").status_code == 302, "rota /login antiga só redireciona")
+    ok(cliente.get("/registro").status_code == 302, "rota /registro antiga só redireciona")
     tok = entrar(cliente)
-    ok(bool(tok), "login pedro.santos/trocar123 funciona e gera token CSRF")
-    ok(cliente.post("/modulo/fundamentos-dw/quiz/iniciar", data={"modo": "treino"}).status_code == 400,
-       "POST sem token CSRF é bloqueado (400)")
+    ok(tok == "livre", "modo sem senha usa token fixo")
 
     titulo("Navegação e conteúdo")
     ok("Painel de estudos" in texto(cliente.get("/")), "dashboard renderiza")

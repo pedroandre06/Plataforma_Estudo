@@ -71,12 +71,6 @@
         credentials: "same-origin",
         body: JSON.stringify(payload)
       }).then(function (r) {
-        if (r.status === 401) {
-          // Sessão expirou: mantém o rascunho local e leva ao login com retorno.
-          try { guardarRascunho(payload); } catch (e) {}
-          window.location.href = "/login?proximo=" + encodeURIComponent(window.location.pathname);
-          return null;
-        }
         return r.json();
       }).then(function (dados) {
         if (dados) { try { limparRascunho(payload); } catch (e) {} }

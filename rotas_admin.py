@@ -2,11 +2,9 @@
 from __future__ import annotations
 
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
-from werkzeug.security import generate_password_hash
 
 import db
 from comum import admin_required
-import config
 
 bp = Blueprint("admin", __name__)
 
@@ -58,12 +56,4 @@ def usuario_acao(uid):
     elif acao == "tornar_aluno":
         db.run(conn, "UPDATE usuarios SET papel = 'aluno' WHERE id = ?", [uid])
         flash(f"{alvo['usuario']} agora é aluno.", "ok")
-    elif acao == "resetar_senha":
-        nova = (request.form.get("nova_senha") or "").strip()
-        if len(nova) < config.MIN_SENHA:
-            flash(f"A nova senha deve ter ao menos {config.MIN_SENHA} caracteres.", "erro")
-            return redirect(url_for("admin.painel"))
-        db.run(conn, """UPDATE usuarios SET senha_hash = ?, tentativas_falhas = 0, bloqueado_ate = NULL
-                        WHERE id = ?""", [generate_password_hash(nova), uid])
-        flash(f"Senha de {alvo['usuario']} redefinida.", "ok")
     return redirect(url_for("admin.painel"))

@@ -3,8 +3,8 @@
 Uso:
     .venv\\Scripts\\python.exe tools\\smoke_servidor.py
 
-Confirma que a aplicação sobe de verdade (não só o test_client do Flask),
-que o login responde 200 e que páginas protegidas redirecionam visitantes.
+Confirma que a aplicação sobe de verdade (não só o test_client do Flask)
+e que o acesso é livre, sem senha.
 O processo do servidor é encerrado no final (inclusive o reloader do Flask).
 """
 from __future__ import annotations
@@ -46,7 +46,7 @@ def buscar(caminho: str, seguir: bool = True) -> tuple[int, str, str]:
 def aguardar_servidor(limite_seg: int = 30) -> bool:
     inicio = time.time()
     while time.time() - inicio < limite_seg:
-        codigo, _, _ = buscar("/login")
+        codigo, _, _ = buscar("/")
         if codigo == 200:
             return True
         time.sleep(0.5)
@@ -72,17 +72,14 @@ def principal() -> int:
             return 1
         print(f"OK    servidor no ar (python app.py, porta {PORTA})")
 
-        codigo, _, corpo = buscar("/login")
-        conferir(codigo == 200 and "Entrar" in corpo, f"GET /login -> {codigo} com formulário")
+        codigo, _, corpo = buscar("/")
+        conferir(codigo == 200 and "Painel de estudos" in corpo, f"GET / -> {codigo} direto, sem login")
 
-        codigo, local, _ = buscar("/", seguir=False)
-        conferir(codigo in (301, 302) and "/login" in local, f"GET / sem sessão -> {codigo} {local}")
+        codigo, _, _ = buscar("/simulados", seguir=False)
+        conferir(codigo == 200, f"GET /simulados sem sessão -> {codigo} (acesso livre)")
 
-        codigo, local, _ = buscar("/admin", seguir=False)
-        conferir(codigo in (301, 302) and "/login" in local, f"GET /admin sem sessão -> {codigo} {local}")
-
-        codigo, _, _ = buscar("/registro")
-        conferir(codigo == 200, f"GET /registro -> {codigo}")
+        codigo, _, _ = buscar("/admin", seguir=False)
+        conferir(codigo == 200, f"GET /admin sem sessão -> {codigo} (acesso livre)")
 
         codigo, _, _ = buscar("/rota-que-nao-existe-xyz", seguir=False)
         conferir(codigo == 404, f"GET /rota-que-nao-existe-xyz -> {codigo} (404 esperado)")
@@ -98,7 +95,7 @@ def principal() -> int:
     if falhas:
         print(f"\n[FALHOU] {falhas} verificação(ões) do servidor")
         return 1
-    print("\n[OK] servidor sobe, protege as rotas e responde ao público")
+    print("\n[OK] servidor sobe e responde com acesso livre")
     return 0
 
 

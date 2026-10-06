@@ -2,9 +2,7 @@
 from __future__ import annotations
 
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
-from werkzeug.security import check_password_hash, generate_password_hash
 
-import config
 import db
 from comum import login_required, usuario_atual
 
@@ -19,24 +17,10 @@ def perfil():
     if request.method == "POST":
         nome = (request.form.get("nome") or "").strip()
         email = (request.form.get("email") or "").strip() or None
-        atual = request.form.get("atual") or ""
-        nova = request.form.get("nova") or ""
-        confirma = request.form.get("confirma") or ""
         if nome:
             db.run(conn, "UPDATE usuarios SET nome = ?, email = ? WHERE id = ?",
                    [nome, email, usuario["id"]])
             flash("Dados atualizados.", "ok")
-        if nova or atual:
-            if not check_password_hash(usuario["senha_hash"], atual):
-                flash("Senha atual incorreta.", "erro")
-            elif len(nova) < config.MIN_SENHA:
-                flash(f"A nova senha deve ter ao menos {config.MIN_SENHA} caracteres.", "erro")
-            elif nova != confirma:
-                flash("A confirmação não confere com a nova senha.", "erro")
-            else:
-                db.run(conn, "UPDATE usuarios SET senha_hash = ? WHERE id = ?",
-                       [generate_password_hash(nova), usuario["id"]])
-                flash("Senha alterada com sucesso.", "ok")
         return redirect(url_for("extra.perfil"))
     estatisticas = db.q1(conn, """
         SELECT (SELECT COUNT(*) FROM tentativas WHERE usuario_id = ?) AS tentativas,

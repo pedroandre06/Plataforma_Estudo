@@ -70,21 +70,10 @@
             <td>{{ (u['ultimo_login_em'] or '-')[:16] }}</td>
             <td>
               <div class="linha">
-                <form method="post" action="{{ url_for('admin.usuario_acao', uid=u['id']) }}">
+                <form method="post" action="{{ url_for('admin.usuario_acao', uid=u['id']) }}" class="linha">
                   <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
                   <input type="hidden" name="acao" value="alternar_ativo">
                   <button class="btn btn-mini" type="submit">{{ 'Desativar' if u['ativo'] else 'Ativar' }}</button>
-                </form>
-                <form method="post" action="{{ url_for('admin.usuario_acao', uid=u['id']) }}">
-                  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
-                  <input type="hidden" name="acao" value="{{ 'tornar_aluno' if u['papel'] == 'admin' else 'tornar_admin' }}">
-                  <button class="btn btn-mini" type="submit">{{ 'Rebaixar' if u['papel'] == 'admin' else 'Promover' }}</button>
-                </form>
-                <form method="post" action="{{ url_for('admin.usuario_acao', uid=u['id']) }}" class="linha">
-                  <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
-                  <input type="hidden" name="acao" value="resetar_senha">
-                  <input type="text" name="nova_senha" placeholder="nova senha" style="width:120px">
-                  <button class="btn btn-mini btn-aviso" type="submit">Redefinir</button>
                 </form>
               </div>
             </td>

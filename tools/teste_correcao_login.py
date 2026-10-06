@@ -1,12 +1,4 @@
-"""Verificacao das correcoes do erro de CSRF / login constante.
-
-Cenarios novos (a mais:
-  1. POST sem sessao valida -> redirect para /login (nao mais 400 em beco).
-  2. POST logado com token errado -> continua 400 (seguranca preservada).
-  3. secret_key() sem SECRET_KEY, disco so-leitura e com DATABASE_URL -> chave
-     ESTAVEL derivada do DSN (nao efemera).
-  4. secret_key() sem SECRET_KEY, disco so-leitura e sem DSN -> chave efemera.
-  5. /healthz expoe a origem da chave da sessao.
+"""Verificacao do modo sem senha: acesso livre, sem login e sem CSRF.
 
 Rodar: .venv\\Scripts\\python.exe tools\\teste_correcao_login.py
 """
@@ -34,26 +26,12 @@ def main() -> int:
     appmod.app.config.update(TESTING=True)
     cliente = appmod.app.test_client()
 
-    titulo("POST sem sessao valida (cookie expirado/assinado com outra chave)")
-    # Envia um cookie de sessao invalido: o Flask nao o decodifica e a sessao
-    # fica vazia - exatamente o que acontece quando a SECRET_KEY muda.
+    titulo("Acesso livre (sem senha)")
     resposta = cliente.post("/modulo/fundamentos-dw/quiz/iniciar",
-                            data={"modo": "treino"},
-                            headers={"Cookie": "session=eyJhbGciOiJIUzI1NiJ9.invalido.xxxxx"},
-                            follow_redirects=False)
-    ok(resposta.status_code == 302 and "/login" in resposta.headers.get("Location", ""),
-       "POST sem sessao redireciona para /login (nao 400)")
-    ok("login" in texto(cliente.get(resposta.headers["Location"])).lower()
-       or cliente.get(resposta.headers["Location"]).status_code == 200,
-       "a pagina de login abre apos o redirect")
-
-    titulo("POST logado com token CSRF errado (seguranca preservada)")
-    cliente.post("/login", data={"usuario": "pedro.santos", "senha": "trocar123", "lembrar": "1"},
-                 follow_redirects=True)
-    resposta = cliente.post("/modulo/fundamentos-dw/quiz/iniciar",
-                            data={"modo": "treino", "_csrf": "token_errado"})
-    ok(resposta.status_code == 400 and "CSRF" in texto(resposta),
-       "POST logado com token errado continua bloqueado (400)")
+                            data={"modo": "treino"}, follow_redirects=False)
+    ok(resposta.status_code in (302, 303),
+       "POST de escrita funciona sem login e sem CSRF")
+    ok(cliente.get("/").status_code == 200, "painel abre sem login")
 
     titulo("Chave de sessao estavel sem SECRET_KEY")
     salvo_env = os.environ.pop("SECRET_KEY", None)
