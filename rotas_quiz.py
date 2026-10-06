@@ -21,6 +21,27 @@ def _modulo(conn, slug):
     return mo
 
 
+def _uid_aluno(conn):
+    """Id do usuário padrão (modo sem senha): aceita tentativas antigas migradas."""
+    from comum import USUARIO_LIVRE
+
+    linha = db.q1(conn, "SELECT id FROM usuarios WHERE lower(usuario) = lower(?)",
+                  [USUARIO_LIVRE])
+    return linha["id"] if linha else None
+
+
+def _salvar_tolerante(conn, tentativa, pergunta_id: int, alternativa_id=None) -> None:
+    """Salva a resposta sem 404: ignora pergunta fora da tentativa (dado antigo).
+
+    O treino nunca deve cair numa página de erro por causa de uma questão que
+    saiu do banco ou de um form dessincronizado — só segue para a próxima.
+    """
+    try:
+        sessao.salvar_resposta(conn, tentativa, pergunta_id, alternativa_id)
+    except Exception:
+        return
+
+
 @bp.route("/modulo/<slug>/quiz/iniciar", methods=["POST"])
 @login_required
 def iniciar(slug):
@@ -53,7 +74,15 @@ def iniciar(slug):
 def executar(tid):
     usuario = usuario_atual()
     conn = db.get_db()
-    t, mapa, regras = sessao.carregar(conn, tid, usuario["id"])
+    t = db.q1(conn, "SELECT * FROM tentativas WHERE id = ?", [tid])
+    if t is None:
+        flash("Esta tentativa não existe mais neste servidor (banco temporário). "
+              "Inicie um novo treino.", "aviso")
+        return redirect(url_for("geral.dashboard"))
+    if t["usuario_id"] != usuario["id"] and t["usuario_id"] != _uid_aluno(conn):
+        abort(403, description="Esta tentativa pertence a outro usuário.")
+    t, mapa, regras = t, __import__("json").loads(t["questoes_json"] or "{}"), \
+        __import__("json").loads(t["config_json"] or "{}")
     if t["status"] != "em_andamento":
         return redirect(url_for("resultado.resultado", tid=tid))
     lista = sessao.questoes(conn, t, mapa)
@@ -87,10 +116,22 @@ def executar(tid):
 def responder(tid):
     usuario = usuario_atual()
     conn = db.get_db()
-    t, mapa, regras = sessao.carregar(conn, tid, usuario["id"], exigir_andamento=True)
+    t = db.q1(conn, "SELECT * FROM tentativas WHERE id = ?", [tid])
+    if t is None:
+        # Banco efêmero (ex.: Vercel sem Postgres): a tentativa não existe nesta
+        # instância. Volta ao módulo em vez de 404 seco.
+        flash("Esta tentativa não existe mais neste servidor (banco temporário). "
+              "Inicie um novo treino.", "aviso")
+        return redirect(url_for("geral.dashboard"))
+    if t["usuario_id"] != usuario["id"] and t["usuario_id"] != _uid_aluno(conn):
+        abort(403, description="Esta tentativa pertence a outro usuário.")
+    if t["status"] != "em_andamento":
+        return redirect(url_for("resultado.resultado", tid=tid))
+    _t, mapa, _regras = t, __import__("json").loads(t["questoes_json"] or "{}"), {}
     pergunta_id = request.form.get("pergunta_id", type=int)
     if pergunta_id:
-        sessao.salvar_resposta(conn, t, pergunta_id, request.form.get("alternativa_id", type=int))
+        _salvar_tolerante(conn, _t, pergunta_id,
+                          request.form.get("alternativa_id", type=int))
     if t["modo"] == "treino":
         return redirect(url_for("quiz.executar", tid=tid, feedback=pergunta_id))
     flash("Resposta registrada.", "ok")
@@ -139,10 +180,15 @@ def api_resposta(tid):
 def entregar(tid):
     usuario = usuario_atual()
     conn = db.get_db()
-    t, mapa, regras = sessao.carregar(conn, tid, usuario["id"])
+    t = db.q1(conn, "SELECT * FROM tentativas WHERE id = ?", [tid])
+    if t is None:
+        flash("Esta tentativa não existe mais neste servidor (banco temporário).", "aviso")
+        return redirect(url_for("geral.dashboard"))
+    if t["usuario_id"] != usuario["id"] and t["usuario_id"] != _uid_aluno(conn):
+        abort(403, description="Esta tentativa pertence a outro usuário.")
     if t["status"] == "em_andamento":
         for chave, valor in request.form.items():
             if chave.startswith("p_") and valor.isdigit():
-                sessao.salvar_resposta(conn, t, int(chave[2:]), int(valor))
+                _salvar_tolerante(conn, t, int(chave[2:]), int(valor))
         correcao.corrigir(conn, t)
     return redirect(url_for("resultado.resultado", tid=tid))
