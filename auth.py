@@ -1,7 +1,9 @@
 """Autenticação: modo sem senha (login/registro/logout só redirecionam)."""
 from __future__ import annotations
 
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, render_template, url_for
+
+import comum
 
 
 def registrar_rotas_auth(app: Flask) -> None:
