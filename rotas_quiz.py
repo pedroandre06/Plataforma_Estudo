@@ -97,6 +97,43 @@ def responder(tid):
     return redirect(url_for("quiz.executar", tid=tid))
 
 
+@bp.route("/api/tentativa/<int:tid>/resposta", methods=["POST"])
+@login_required
+def api_resposta(tid):
+    """Auto-save da prova de módulo (mesmo contrato do simulado)."""
+    from flask import jsonify
+
+    from comum import segundos_ate
+
+    usuario = usuario_atual()
+    if usuario is None:
+        return jsonify({"ok": False, "erro": "sessao_expirada"}), 401
+    conn = db.get_db()
+    t, mapa, _regras = sessao.carregar(conn, tid, usuario["id"], exigir_andamento=True)
+    data = request.get_json(silent=True) or {}
+    if "pergunta_id" in data and data.get("pergunta_id"):
+        alt = data.get("alternativa_id")
+        try:
+            alt = int(alt) if alt not in (None, "") else None
+        except (TypeError, ValueError):
+            alt = None
+        try:
+            sessao.salvar_resposta(conn, t, int(data["pergunta_id"]), alt, None)
+        except Exception:
+            pass
+    for pid, alt in (data.get("respostas") or {}).items():
+        try:
+            alt = int(alt) if alt not in (None, "") else None
+        except (TypeError, ValueError):
+            continue
+        try:
+            sessao.salvar_resposta(conn, t, int(pid), alt, None)
+        except Exception:
+            continue
+    return jsonify({"ok": True, "resumo": sessao.resumo_respostas(conn, tid),
+                    "restante": segundos_ate(t["limite_em"]) if t["limite_em"] else None})
+
+
 @bp.route("/tentativa/<int:tid>/entregar", methods=["POST"])
 @login_required
 def entregar(tid):

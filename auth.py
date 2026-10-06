@@ -45,11 +45,12 @@ def registrar_rotas_auth(app: Flask) -> None:
                 db.run(conn, "UPDATE usuarios SET tentativas_falhas = 0, bloqueado_ate = NULL,"
                              " ultimo_login_em = ? WHERE id = ?", [comum.agora(), linha["id"]])
                 session.clear()
-                session.permanent = bool(request.form.get("lembrar"))
+                session.permanent = True
                 session["usuario_id"] = linha["id"]
                 comum.csrf_token()
                 flash(f"Bem-vindo(a), {linha['nome'].split()[0]}!", "ok")
-                return redirect(request.args.get("proximo") or url_for("geral.dashboard"))
+                proximo = request.args.get("proximo") or request.form.get("proximo")
+                return redirect(proximo or url_for("geral.dashboard"))
         return render_template("login.html")
 
     @app.route("/registro", methods=["GET", "POST"])
@@ -83,6 +84,7 @@ def registrar_rotas_auth(app: Flask) -> None:
             uid = db.run(conn, "INSERT INTO usuarios (usuario, nome, email, senha_hash) VALUES (?,?,?,?)",
                          [nome_usuario, nome, email, generate_password_hash(senha)])
             session.clear()
+            session.permanent = True
             session["usuario_id"] = uid
             comum.csrf_token()
             flash("Conta criada com sucesso! Bons estudos.", "ok")

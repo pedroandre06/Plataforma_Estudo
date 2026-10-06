@@ -7,6 +7,7 @@
     <p class="sub">Acesse com seu usuário para estudar, treinar e simular provas.</p>
     <form method="post" class="form">
       <input type="hidden" name="_csrf" value="{{ csrf_token() }}">
+      <input type="hidden" name="proximo" value="{{ request.args.get('proximo', '') }}">
       <label class="campo">
         <span>Usuário</span>
         <input type="text" name="usuario" required autofocus autocomplete="username"

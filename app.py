@@ -29,6 +29,7 @@ def criar_app() -> Flask:
         SESSION_COOKIE_HTTPONLY=True,
         SESSION_COOKIE_SAMESITE="Lax",
         PERMANENT_SESSION_LIFETIME=timedelta(days=config.SESSION_DIAS),
+        SESSION_REFRESH_EACH_REQUEST=True,
         MAX_CONTENT_LENGTH=config.limite_upload_bytes(),
         JSON_AS_ASCII=False,
     )

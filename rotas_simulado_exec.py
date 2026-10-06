@@ -30,6 +30,9 @@ def executar(tid):
 @login_required
 def api_resposta(tid):
     usuario = usuario_atual()
+    if usuario is None:
+        from flask import jsonify
+        return jsonify({"ok": False, "erro": "sessao_expirada"}), 401
     conn = db.get_db()
     t, mapa, regras = sessao.carregar(conn, tid, usuario["id"], exigir_andamento=True)
     data = request.get_json(silent=True) or {}

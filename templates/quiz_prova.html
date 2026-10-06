@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block titulo %}Prova do módulo{% endblock %}
 {% block conteudo %}
+<div id="execucao" data-tid="{{ tentativa['id'] }}" data-restante="{{ restante or 0 }}" data-api="/api/tentativa/{{ tentativa['id'] }}/resposta">
 <div class="quiz-caixa">
   <div class="cabeca-pagina">
     <div>
@@ -43,5 +44,6 @@
       <button class="btn btn-primario" type="submit">Entregar prova e ver nota</button>
     </div>
   </form>
+</div>
 </div>
 {% endblock %}

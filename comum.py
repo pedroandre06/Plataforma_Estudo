@@ -98,8 +98,13 @@ def login_required(funcao):
     @wraps(funcao)
     def wrapper(*args, **kwargs):
         if usuario_atual() is None:
+            if request.path.startswith("/api/"):
+                from flask import jsonify
+                return jsonify({"ok": False, "erro": "sessao_expirada",
+                                "login": url_for("login", proximo=request.path)}), 401
             flash("Faça login para continuar.", "aviso")
-            return redirect(url_for("login", proximo=request.path))
+            return redirect(url_for("login", proximo=request.full_path if request.query_string
+                                    else request.path))
         return funcao(*args, **kwargs)
 
     return wrapper
@@ -156,9 +161,21 @@ def pagina_de_problema(erro: Exception, codigo: int = 503, titulo: str | None = 
 def registrar_app(app) -> None:
     """Conecta os helpers ao app Flask (globals de template e hooks)."""
     app.before_request(proteger_post)
+    app.before_request(_renovar_sessao)
     app.jinja_env.globals.update(
         csrf_token=csrf_token,
         fmt_nota=fmt_nota,
         usuario_atual=usuario_atual,
         agora=agora,
     )
+
+
+def _renovar_sessao():
+    """Mantém a sessão ativa enquanto o usuário navega (sliding expiration).
+
+    Sessões antigas criadas como não-permanentes (cookie de navegador) são
+    promovidas a permanentes, para não expirar ao fechar o navegador.
+    Com SESSION_REFRESH_EACH_REQUEST=True, cada resposta renova o cookie.
+    """
+    if "usuario_id" in session:
+        session.permanent = True

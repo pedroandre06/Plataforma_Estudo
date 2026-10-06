@@ -43,7 +43,9 @@
   if (!execucao) { return; }
 
   var tid = execucao.dataset.tid;
-  var form = document.getElementById("form-simulado");
+  var apiUrl = execucao.dataset.api || ("/api/simulado/" + tid + "/resposta");
+  var form = document.getElementById("form-simulado") || execucao.querySelector("form");
+  var chavePrefixo = apiUrl.indexOf("/api/tentativa/") === 0 ? "rascunho-tentativa-" : "rascunho-simulado-";
   var restante = parseInt(execucao.dataset.restante || "0", 10);
   var relogio = document.querySelector(".js-restante");
   var entregue = false;
@@ -60,12 +62,81 @@
   }
 
   function enviar(payload) {
-    return fetch("/api/simulado/" + tid + "/resposta", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    }).then(function (r) { return r.json(); });
+    var tentativas = 0;
+    function tentar(resolve) {
+      tentativas += 1;
+      fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
+        body: JSON.stringify(payload)
+      }).then(function (r) {
+        if (r.status === 401) {
+          // Sessão expirou: mantém o rascunho local e leva ao login com retorno.
+          try { guardarRascunho(payload); } catch (e) {}
+          window.location.href = "/login?proximo=" + encodeURIComponent(window.location.pathname);
+          return null;
+        }
+        return r.json();
+      }).then(function (dados) {
+        if (dados) { try { limparRascunho(payload); } catch (e) {} }
+        resolve(dados);
+      }).catch(function () {
+        // Falha de rede: guarda o rascunho local e tenta de novo 1x.
+        try { guardarRascunho(payload); } catch (e) {}
+        if (tentativas < 2) {
+          setTimeout(function () { tentar(resolve); }, 1500);
+        } else { resolve(null); }
+      });
+    }
+    return new Promise(tentar);
   }
+
+  function chaveRascunho() { return chavePrefixo + tid; }
+
+  function lerRascunho() {
+    try { return JSON.parse(localStorage.getItem(chaveRascunho()) || "{}"); }
+    catch (e) { return {}; }
+  }
+
+  function guardarRascunho(payload) {
+    var atual = lerRascunho();
+    if (payload && payload.pergunta_id && payload.alternativa_id !== undefined) {
+      atual[String(payload.pergunta_id)] = payload.alternativa_id;
+    }
+    if (payload && payload.respostas) {
+      Object.keys(payload.respostas).forEach(function (k) { atual[k] = payload.respostas[k]; });
+    }
+    localStorage.setItem(chaveRascunho(), JSON.stringify(atual));
+  }
+
+  function limparRascunho(payload) {
+    if (!payload || (!payload.pergunta_id && !payload.respostas)) {
+      localStorage.removeItem(chaveRascunho());
+      return;
+    }
+    var atual = lerRascunho();
+    if (payload.pergunta_id) { delete atual[String(payload.pergunta_id)]; }
+    if (payload.respostas) {
+      Object.keys(payload.respostas).forEach(function (k) { delete atual[k]; });
+    }
+    localStorage.setItem(chaveRascunho(), JSON.stringify(atual));
+  }
+
+  // Ao voltar à página (reload/queda), reenvia o rascunho pendente e restaura a tela.
+  (function restaurarRascunho() {
+    var pendente = lerRascunho();
+    var chaves = Object.keys(pendente);
+    if (!chaves.length) { return; }
+    chaves.forEach(function (pid) {
+      var radio = form.querySelector('input[name="p_' + pid + '"][value="' + pendente[pid] + '"]');
+      if (radio && !form.querySelector('input[name="p_' + pid + '"]:checked')) {
+        radio.checked = true;
+        marcarGrade(pid, { respondida: 1 });
+      }
+    });
+    enviar({ respostas: pendente });
+  })();
 
   document.querySelectorAll('.grade-questoes button[data-alvo]').forEach(function (botao) {
     botao.addEventListener("click", function () {
@@ -88,7 +159,7 @@
     });
   });
 
-  document.querySelectorAll('#form-simulado input[type="radio"]').forEach(function (radio) {
+  document.querySelectorAll('#execucao input[type="radio"]').forEach(function (radio) {
     radio.addEventListener("change", function () {
       var perguntaId = radio.name.replace("p_", "");
       var card = radio.closest(".card");
@@ -104,8 +175,8 @@
 
   document.querySelectorAll(".js-entrega").forEach(function (botao) {
     botao.addEventListener("click", function () {
-      var respondidas = document.querySelectorAll('#form-simulado input[type="radio"]:checked').length;
-      var total = document.querySelectorAll('#form-simulado input[type="radio"]').length;
+      var respondidas = document.querySelectorAll('#execucao input[type="radio"]:checked').length;
+      var total = document.querySelectorAll('#execucao input[type="radio"]').length;
       var faltam = Math.max(0, total - respondidas);
       var texto = faltam > 0
         ? "Ainda faltam " + faltam + " questões sem resposta. Entregar mesmo assim?"
