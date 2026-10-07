@@ -42,6 +42,33 @@ def _salvar_tolerante(conn, tentativa, pergunta_id: int, alternativa_id=None) ->
         return
 
 
+def _recuperar_ou_recriar(conn, usuario, tid_perdido: int):
+    """Devolve um tid válido quando o original sumiu (banco efêmero por instância).
+
+    Estratégia, nesta ordem:
+    1. última tentativa em andamento do usuário (retoma de onde parou);
+    2. novo treino no mesmo módulo da tentativa perdida — descoberto pelo
+       rascunho local do navegador (query ?modulo=<slug> enviada pelo JS);
+    3. None (o chamador volta ao painel com aviso).
+    """
+    from flask import request as req
+
+    em_andamento = db.q1(conn, """SELECT id FROM tentativas WHERE usuario_id = ?
+                                  AND status = 'em_andamento' ORDER BY id DESC LIMIT 1""",
+                         [usuario["id"]])
+    if em_andamento:
+        return em_andamento["id"]
+    slug = (req.args.get("modulo") or req.form.get("modulo") or "").strip()
+    if slug:
+        mo = db.q1(conn, "SELECT * FROM modulos WHERE slug = ? AND ativo = 1", [slug])
+        if mo:
+            return motor.criar_tentativa(conn, usuario["id"], modo="treino",
+                                         modulo_id=mo["id"], n_questoes=10,
+                                         mostrar_gabarito="imediato",
+                                         modulo_ids=[mo["id"]])
+    return None
+
+
 @bp.route("/modulo/<slug>/quiz/iniciar", methods=["POST"])
 @login_required
 def iniciar(slug):
@@ -76,9 +103,17 @@ def executar(tid):
     conn = db.get_db()
     t = db.q1(conn, "SELECT * FROM tentativas WHERE id = ?", [tid])
     if t is None:
-        flash("Esta tentativa não existe mais neste servidor (banco temporário). "
-              "Inicie um novo treino.", "aviso")
-        return redirect(url_for("geral.dashboard"))
+        # Banco efêmero (instância nova sem a tentativa): recria um treino
+        # equivalente a partir das respostas já renderizadas é impossível, então
+        # retoma a última tentativa em andamento ou cria uma nova no módulo.
+        tid = _recuperar_ou_recriar(conn, usuario, tid)
+        if tid is None:
+            flash("Esta tentativa não existe mais neste servidor (banco temporário). "
+                  "Inicie um novo treino.", "aviso")
+            return redirect(url_for("geral.dashboard"))
+        flash("A tentativa original não estava mais neste servidor; "
+              "retomei/ iniciei outra para você continuar.", "aviso")
+        return redirect(url_for("quiz.executar", tid=tid))
     if t["usuario_id"] != usuario["id"] and t["usuario_id"] != _uid_aluno(conn):
         abort(403, description="Esta tentativa pertence a outro usuário.")
     t, mapa, regras = t, __import__("json").loads(t["questoes_json"] or "{}"), \
@@ -118,11 +153,20 @@ def responder(tid):
     conn = db.get_db()
     t = db.q1(conn, "SELECT * FROM tentativas WHERE id = ?", [tid])
     if t is None:
-        # Banco efêmero (ex.: Vercel sem Postgres): a tentativa não existe nesta
-        # instância. Volta ao módulo em vez de 404 seco.
-        flash("Esta tentativa não existe mais neste servidor (banco temporário). "
-              "Inicie um novo treino.", "aviso")
-        return redirect(url_for("geral.dashboard"))
+        # Instância nova sem a tentativa: tenta retomar/recriar em vez de erro.
+        novo = _recuperar_ou_recriar(conn, usuario, tid)
+        if novo is None:
+            flash("Esta tentativa não existe mais neste servidor (banco temporário). "
+                  "Inicie um novo treino.", "aviso")
+            return redirect(url_for("geral.dashboard"))
+        pergunta_id = request.form.get("pergunta_id", type=int)
+        t2 = db.q1(conn, "SELECT * FROM tentativas WHERE id = ?", [novo])
+        if pergunta_id:
+            _salvar_tolerante(conn, t2, pergunta_id,
+                              request.form.get("alternativa_id", type=int))
+        flash("A tentativa original não estava mais neste servidor; "
+              "continue nesta nova.", "aviso")
+        return redirect(url_for("quiz.executar", tid=novo, feedback=pergunta_id))
     if t["usuario_id"] != usuario["id"] and t["usuario_id"] != _uid_aluno(conn):
         abort(403, description="Esta tentativa pertence a outro usuário.")
     if t["status"] != "em_andamento":
@@ -182,8 +226,11 @@ def entregar(tid):
     conn = db.get_db()
     t = db.q1(conn, "SELECT * FROM tentativas WHERE id = ?", [tid])
     if t is None:
-        flash("Esta tentativa não existe mais neste servidor (banco temporário).", "aviso")
-        return redirect(url_for("geral.dashboard"))
+        novo = _recuperar_ou_recriar(conn, usuario, tid)
+        if novo is None:
+            flash("Esta tentativa não existe mais neste servidor (banco temporário).", "aviso")
+            return redirect(url_for("geral.dashboard"))
+        return redirect(url_for("quiz.executar", tid=novo))
     if t["usuario_id"] != usuario["id"] and t["usuario_id"] != _uid_aluno(conn):
         abort(403, description="Esta tentativa pertence a outro usuário.")
     if t["status"] == "em_andamento":

@@ -207,9 +207,11 @@ def connect() -> Any:
     """Abre a conexao do motor configurado: Postgres se DATABASE_URL existir, senao SQLite."""
     if config.usar_postgres():
         return conectar_postgres(config.dsn_postgres())
-    conn = sqlite3.connect(config.caminho_sqlite(), timeout=15)
+    conn = sqlite3.connect(config.caminho_sqlite(), timeout=30)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
+    conn.execute("PRAGMA journal_mode = WAL")
+    conn.execute("PRAGMA busy_timeout = 30000")
     return conn
 
 
